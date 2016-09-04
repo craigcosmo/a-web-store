@@ -1,0 +1,45 @@
+.detail-modal {
+	> div {
+		padding: 1.5rem;
+	}
+
+	text-align: center;
+
+	.img-wrapper {
+
+	}
+	section {
+		margin-bottom: 1rem;
+		border: solid 1px #999;
+	}
+	.size {
+		background: #828384;
+		padding: 0.5rem;
+		color: #fff;
+
+	}
+	.brand {
+		font-size: 1.1rem;
+		color:#999B97;
+	}
+	img {
+		width: 100%;
+		margin-bottom: 1.5rem;
+	}
+	.rating {
+		margin-bottom: 0.5rem
+	}
+	.tool-star {
+		color: #D3E5E4;
+		margin-right: 0.1rem;
+	}
+	.tool-title {
+		font-size: 1.6rem;
+		margin-bottom: 0.4rem;
+	}
+	.tool-price {
+		font-size: 1.3rem;
+		margin-bottom: 0.3rem;
+		font-weight: 600;
+	}
+}

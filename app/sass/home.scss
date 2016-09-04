@@ -1,0 +1,242 @@
+.home {
+	background: #E9EAEB;
+	padding: 0.5rem;
+	min-width: 340px;
+	
+	main{
+		background: #fff;
+		position: relative;
+		padding: 1rem;
+	}
+
+	.grid{
+		display: flex;
+		justify-content: space-between;
+		// justify-content: center;
+		flex-flow: wrap;
+	}
+	
+	.title, .price, .rating, .btns {
+		// margin-left: 1rem;
+	}
+	.heart-btn , .document-btn  {
+		border-radius: 2px;
+		border: solid 1px #ccc;
+		text-align: center;
+		height: 25px;
+		width: 25px;
+		line-height: 10px;
+		vertical-align: middle;
+		margin-right: 1rem;
+	}
+	.heart-btn:hover , .document-btn:hover {
+		border-color: #aaa;
+	}
+	.heart-btn:hover i, .document-btn:hover i {
+		color: #999;
+	}
+	.heart-btn i, .document-btn i {
+		color: #B6B8B6;
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 1.1rem
+	}
+
+	.item, .detail-modal {
+		width: 23%;
+		// border-radius: 5px;
+		// height: 40%;
+		// background: #ccc;
+		// margin: 1%;
+		margin-bottom: 1.5rem;
+		// border: 1px solid #ccc;
+		// padding: 1%;
+		text-align: center;
+		.star-wrapper {
+			unicode-bidi: bidi-override;
+			direction: rtl;
+			cursor: default;
+		}
+		.rating {
+			margin-bottom: 1rem;
+		}
+		.tool-star i {
+			color: #D3E5E4;
+			margin-right: 0.1rem;
+		}
+		.img-wrapper {
+			text-align: center;
+				// height: 20%;
+				// max-height: 210px;
+				// width: 100%;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+			}
+		img {
+			// width: auto;
+			// max-height: 100%;
+			max-width: 100%;
+		}
+		.price {
+			margin-bottom: 10px;
+			font-weight: 500;
+		}
+		.title {
+			margin-top: 3rem;
+			margin-bottom: 2rem;
+			font-weight: 600;
+		}
+		.size {
+			background: #828384;
+			padding: 0.5rem;
+			color: #fff
+		}
+		section{
+			border: solid 1px #eee;
+		}
+		.star i {
+			color: #ccc;
+			margin-right: 0.1rem
+		}
+	}
+
+
+	.star-wrapper > span {
+	  display: inline-block;
+	  position: relative;
+	  width: 1.1em;
+	}
+	
+	.star-wrapper > span:hover,
+	.star-wrapper > span:hover ~ span {
+	  color: transparent;
+	}
+
+	.star-wrapper > span:hover:before,
+	.star-wrapper > span:hover ~ span:before {
+	   content: "\2605";
+	   position: absolute;
+	   color: gold;
+	}
+
+	.star-count {
+		color: #ccc;
+		font-size: 1.2rem;
+		vertical-align: top;
+		margin-top: 2px
+	}
+	.view-control-wrapper {
+		position: relative;
+		margin-bottom: 1rem;
+	}
+	.view-control.fixed {
+		position: fixed;
+		top: 0;
+		width: inherit;
+		right: 1.5rem;
+		left: 1.5rem;
+		background: #fff;
+		// box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.20) !important;
+		// background: blue !important;
+	}
+	.view-control {
+		height: 30px;
+		line-height: 30px;
+		display: flex;
+		// background: red;
+		.left{
+			// background: blue;
+			flex:1;
+			min-width: 190px;
+		}
+		.right{
+			// background: red;
+			min-width: 131px;
+			flex:1;
+			text-align: right;
+			span {
+				margin-right: 10px
+			}
+		}
+		button {
+			width: 25px;
+			height: 25px;
+			text-align: center;
+			display: inline-block;
+		}
+		button i {
+			color: #999;
+			vertical-align: middle;
+			font-size: 1.8rem;
+		}
+		button i:hover{
+			color: #aaa; 
+		}
+
+	}
+	/* Tablets Portrait or Landscape */
+	@media screen and (max-width:1028px) {
+		.item {
+			width: 31.1%;
+		}
+		.item img {
+			// max-width: 90%
+		}
+		.__react_component_tooltip{
+			max-width: 30% !important;
+		}
+		
+	}
+	/* Tablets Portrait or Landscape */
+	@media screen and (max-width:768px) {
+		.item {
+			width: 31.1%;
+		}
+		.item img {
+			// max-width: 80%
+		}
+		.__react_component_tooltip{
+			max-width: 40% !important;
+		}
+	}
+	/* Mobile Phones */
+	@media screen and (max-width:640px)  {
+		.item {
+			width: 48%;
+		}
+		.item img {
+			// max-width: 70%
+		}
+		.__react_component_tooltip{
+			max-width: 50% !important;
+		}
+	}
+	/* Mobile Phones */
+	@media screen and (max-width:480px) {
+		.item {
+			width: 48%;
+		}
+		.item img {
+			// max-width: 60%
+		}
+		.__react_component_tooltip{
+			max-width: 60% !important;
+		}
+	}
+	/* Mobile Phones */
+	@media screen and (max-width:360px) {
+		.item {
+			width: 100%;
+		}
+		.item img {
+			// max-width: 60%
+		}
+		.__react_component_tooltip{
+			max-width: 70% !important;
+		}
+	}
+
+	
+}
+

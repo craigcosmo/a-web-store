@@ -1,0 +1,54 @@
+{
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true,
+			"modules": true
+		}
+	},
+	"globals": {
+		"localStorage": true,
+		"firebase": true,
+		"google": true,
+		"process": true
+	},
+	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"rules": {
+		"indent": [2, "tab"],
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
+		"react/jsx-uses-react": 1,
+		"react/jsx-uses-vars": 1,
+		"quotes": [1, "single"],
+		"comma-dangle": [2, "only-multiline"],
+		"no-unused-vars": [1],
+		"no-undef": "error",
+		"no-mixed-spaces-and-tabs": "error",
+		"no-multiple-empty-lines": ["error", {"max": 5}],
+		"no-spaced-func": "error",
+		"no-whitespace-before-property": "error",
+		"no-underscore-dangle": "error",
+		"constructor-super": "error",
+		"no-const-assign": "error",
+		"no-this-before-super": "error",
+		"no-useless-computed-key": "error",
+		"no-var": "error",
+		"jsx-quotes": [1, "prefer-double"],
+		"max-depth": ["error", 3],
+		"max-nested-callbacks": ["error", 3],
+		"max-params": ["error", 4],
+		"new-parens": "error",
+		"no-nested-ternary": "error",
+		"no-unneeded-ternary": "error",
+		"quote-props": ["error", "consistent-as-needed"],
+		"semi": ["error", "never"]
+	},
+	"plugins": [
+		"react"
+	]
+}
+//"extends": "airbnb",
+

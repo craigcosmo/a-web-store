@@ -1,0 +1,144 @@
+.col-15, .col-15s, .col-15xs{
+	width: 15%;
+}
+.col-20, .col-20s, .col-20xs{
+	width: 20%;
+}
+.col-30, .col-30s, .col-30xs{
+	width: 30%;
+}
+.col-33, .col-33s, .col-33xs{
+	width: 33.33333333%;
+}
+.col-35, .col-35s, .col-35xs{
+	width: 35%;
+}
+.col-40, .col-40s, .col-40xs{
+	width: 40%;
+}
+.col-45, .col-45s, .col-45xs{
+	width: 45%;
+}
+.col-50, .col-50s, .col-50xs{
+	width: 50%;
+}
+.col-55, .col-55s, .col-55xs{
+	width: 55%;
+}
+.col-60, .col-60s, .col-60xs{
+	width: 60%;
+}
+.col-65, .col-65s, .col-65xs{
+	width: 65%;
+}
+.col-70, .col-70s, .col-70xs{
+	width: 70%;
+}
+.col-80, .col-80s, .col-80xs{
+	width: 80%;
+}
+.col-85, .col-85s, .col-85xs{
+	width: 85%;
+}
+.col-15, .col-20, .col-30, .col-33, .col-35, .col-40, .col-45, .col-50, .col-55, .col-60, .col-65, .col-70, .col-80, .col-85, .col-15s, .col-20s, .col-30s, .col-33s, .col-35s, .col-40s, .col-45s, .col-50s, .col-55s, .col-60s, .col-65s, .col-70s, .col-80s, .col-85s,.col-15xs, .col-20xs, .col-30xs, .col-33xs, .col-35xs, .col-40xs, .col-45xs, .col-50xs, .col-55xs, .col-60xs, .col-65xs, .col-70xs, .col-80xs, .col-85xs {
+	vertical-align:top;
+	display:inline-block;
+}
+/* Mobile Phones */
+@media screen and (max-width:360px) {
+	.irow{ 
+		width: 100% !important;
+		text-align:center;
+		padding:0 !important;
+	}
+	.col, .col-s, .col-xs, .col-15, .col-20, .col-30, .col-33, .col-35, .col-40, .col-45, .col-50, .col-55, .col-60, .col-65, .col-70, .col-80, .col-85, .col-15s, .col-20s, .col-30s, .col-33s, .col-35s, .col-40s, .col-45s, .col-50s, .col-55s, .col-60s, .col-65s, .col-70s, .col-80s, .col-85s,.col-15xs, .col-20xs, .col-30xs, .col-33xs, .col-35xs, .col-40xs, .col-45xs, .col-50xs, .col-55xs, .col-60xs, .col-65xs, .col-70xs, .col-80xs, .col-85xs {
+		// padding: 0 !important;
+		width: 100% !important; 
+		text-align: center !important;
+		float:none !important;
+		margin-right:0 !important;
+		margin-left:0 !important;
+	}
+	.force-align{text-align: inherit !important;}
+}
+
+/* Mobile Phones */
+@media screen and (max-width:480px) {
+	.irow{ 
+		width: 100% !important;
+		text-align:center;
+		padding:0 !important;
+		margin-right:auto;
+		margin-left:auto;
+	}
+	.col, .col-s, .col-xs, .col-15, .col-20, .col-30, .col-33, .col-35, .col-40, .col-45, .col-50, .col-55, .col-60, .col-65, .col-70, .col-80, .col-85, .col-15s, .col-20s, .col-30s, .col-33s, .col-35s, .col-40s, .col-45s, .col-50s, .col-55s, .col-60s, .col-65s, .col-70s, .col-80s, .col-85s,.col-15xs, .col-20xs, .col-30xs, .col-33xs, .col-35xs, .col-40xs, .col-45xs, .col-50xs, .col-55xs, .col-60xs, .col-65xs, .col-70xs, .col-80xs, .col-85xs {
+		// padding: 0 !important;
+		width: 100% !important; 
+		text-align: center !important;
+		float:none !important;
+		margin-right:0 !important;
+		margin-left:0 !important;
+	}
+	.force-align{text-align: inherit !important;}
+}
+
+/* Mobile Phones */
+@media screen and (max-width:640px)  {
+	.irow{ 
+		width: 100% !important;
+		text-align:center;
+		padding:0 !important;
+		margin-right:auto;
+		margin-left:auto;
+	}
+	.col, .col-s, .col-xs, .col-15, .col-20, .col-30, .col-33, .col-35, .col-40, .col-45, .col-50, .col-55, .col-60, .col-65, .col-70, .col-80, .col-85, .col-15s, .col-20s, .col-30s, .col-33s, .col-35s, .col-40s, .col-45s, .col-50s, .col-55s, .col-60s, .col-65s, .col-70s, .col-80s, .col-85s,.col-15xs, .col-20xs, .col-30xs, .col-33xs, .col-35xs, .col-40xs, .col-45xs, .col-50xs, .col-55xs, .col-60xs, .col-65xs, .col-70xs, .col-80xs, .col-85xs{
+		// padding: 0 !important;
+		width: 100% !important; 
+		text-align: center !important;
+		float:none !important;
+		margin-right:0 !important;
+		margin-left:0 !important;
+	}
+	.force-align{text-align: inherit !important;}
+}
+
+/* Tablets Portrait or Landscape */
+@media screen and (max-width:768px) {
+	.irow{ 
+		width: 100% !important;
+		text-align:center;
+		padding:0 !important;
+		margin-right:auto;
+		margin-left:auto;
+	}
+	.col-s, .col-xs, .col-15s, .col-20s, .col-30s, .col-33s, .col-35s, .col-40s, .col-45s, .col-50s, .col-55s, .col-60s, .col-65s, .col-70s, .col-80s, .col-85s,.col-15xs, .col-20xs, .col-30xs, .col-33xs, .col-35xs, .col-40xs, .col-45xs, .col-50xs, .col-55xs, .col-60xs, .col-65xs, .col-70xs, .col-80xs, .col-85xs{
+		// padding: 0 !important;
+		width: 100% !important; 
+		text-align: center !important;
+		float:none !important;
+		margin-right:0 !important;
+		margin-left:0 !important;
+	}
+	.force-align{text-align: inherit !important;}
+	
+}
+/* Tablets Portrait or Landscape */
+@media screen and (max-width:1028px) {
+	.irow{ 
+		width: 100% !important;
+		text-align:center;
+		padding:0 !important;
+		margin-right:auto;
+		margin-left:auto;
+	}
+	.col-s, .col-xs, .col-15s, .col-20s, .col-30s, .col-33s, .col-35s, .col-40s, .col-45s, .col-50s, .col-55s, .col-60s, .col-65s, .col-70s, .col-80s, .col-85s,.col-15xs, .col-20xs, .col-30xs, .col-33xs, .col-35xs, .col-40xs, .col-45xs, .col-50xs, .col-55xs, .col-60xs, .col-65xs, .col-70xs, .col-80xs, .col-85xs{
+		// padding: 0 !important;
+		width: 100% !important; 
+		text-align: center !important;
+		float:none !important;
+		margin-right:0 !important;
+		margin-left:0 !important;
+	}
+	.force-align{text-align: inherit !important;}
+	
+}
