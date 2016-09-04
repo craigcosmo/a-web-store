@@ -9,13 +9,13 @@ import path from 'path'
 let env = process.env.NODE_ENV;
 let sourceMap = 'source-map';
 let buildFolder = 'dist/development/';
-let publicPath = 'http://localhost:5050/'+buildFolder;
+let publicPath = buildFolder;
 let extraScript = true;
 
 if (env === 'production') {
     sourceMap = '';
     buildFolder = 'dist/production/';
-    publicPath = '';
+    publicPath = buildFolder;
     extraScript = false;
 }
 
