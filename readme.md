@@ -15,7 +15,7 @@ After finish installing `node` and `npm`, open the fram  folder in terminal. At 
 npm i
 ```
 
-The you should build.
+Then you should build.
 
 ## Build
 
