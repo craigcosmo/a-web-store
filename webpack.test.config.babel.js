@@ -14,6 +14,7 @@ export default {
         host: hostname,
         port: port,
         contentBase: publicFolder,
+        noInfo:true
     },
     module: {
         noParse: [

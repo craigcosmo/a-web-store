@@ -9,7 +9,9 @@
     "build": "NODE_ENV=development webpack",
     "release": "NODE_ENV=production webpack -p",
     "dev": "NODE_ENV=devserver webpack-dev-server --progress --inline --hot",
-    "test": "webpack-dev-server --config webpack.test.config.babel.js"
+    "test": "webpack-dev-server --config webpack.test.config.babel.js",
+    "t": "find ./ -name './test/*.test.js' | xargs mocha -R min -r babel/register",
+    "o": "mocha-webpack --webpack-config webpack.test.config.babel.js simple.test.js"
   },
   "author": "craig",
   "license": "craig",
