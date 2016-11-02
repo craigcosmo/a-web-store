@@ -19,15 +19,15 @@ export default class Select extends React.Component {
 	}
 	render() {
 		const options = [
-		    { value: 'one', label: 'One' },
-		    { value: 'two', label: 'Two' }
+			{ value: 'one', label: 'One' },
+			{ value: 'two', label: 'Two' }
 		]
 		return (
 			<I
-			    name="sort"
-			    value={this.state.selected}
-			    options={options}
-			    onChange={this.change}
+				name="sort"
+				value={this.state.selected}
+				options={options}
+				onChange={this.change}
 			/>
 		)
 	}

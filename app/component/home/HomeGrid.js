@@ -31,11 +31,11 @@ export default class HomeGrid extends React.Component {
 	renderStar(){
 		return (
 			<div>
-			<i class="fa fa-star" aria-hidden="true"></i>
-			<i class="fa fa-star" aria-hidden="true"></i>
-			<i class="fa fa-star" aria-hidden="true"></i>
-			<i class="fa fa-star" aria-hidden="true"></i>
-			<i class="fa fa-star" aria-hidden="true"></i>
+				<i class="fa fa-star" aria-hidden="true"></i>
+				<i class="fa fa-star" aria-hidden="true"></i>
+				<i class="fa fa-star" aria-hidden="true"></i>
+				<i class="fa fa-star" aria-hidden="true"></i>
+				<i class="fa fa-star" aria-hidden="true"></i>
 			</div>
 		)
 	}
@@ -129,32 +129,32 @@ export default class HomeGrid extends React.Component {
 	renderProduct(){
 		return this.props.home.data.map( item => 
 			(
-				<div class="item" key={item.id}>
-					<div class="img-wrapper" data-tip data-for={'i'+item.id}>
-						<img src={item.images[0].url} onClick={this.handleImageClick.bind(this,item)} />
-					</div>
-					<div class="title l b">{item.title}</div>
-					<div class="price l b">{item.price}</div>
-					<div class="rating l">
-						<div class="star ib">
-							{this.renderStar()}
-						</div>
-						<div class="star-count ib">(0)</div>
-					</div>
-					
-					<div class="l btns">
-						<button class="heart-btn">
-							<i class="fa fa-heart" aria-hidden="true"></i>
-						</button>
-						<button class="document-btn">
-							<i class="fa fa-file-o" aria-hidden="true"></i>
-						</button>
-					</div>
-					<ReactTooltip id={'i'+item.id} aria-haspopup='true' role='example' data-class="tool">
-						{this.renderTooltip(item)}
-					</ReactTooltip>
-					
+			<div class="item" key={item.id}>
+				<div class="img-wrapper" data-tip data-for={'i'+item.id}>
+					<img src={item.images[0].url} onClick={this.handleImageClick.bind(this,item)} />
 				</div>
+				<div class="title l b">{item.title}</div>
+				<div class="price l b">{item.price}</div>
+				<div class="rating l">
+					<div class="star ib">
+						{this.renderStar()}
+					</div>
+					<div class="star-count ib">(0)</div>
+				</div>
+				
+				<div class="l btns">
+					<button class="heart-btn">
+						<i class="fa fa-heart" aria-hidden="true"></i>
+					</button>
+					<button class="document-btn">
+						<i class="fa fa-file-o" aria-hidden="true"></i>
+					</button>
+				</div>
+				<ReactTooltip id={'i'+item.id} aria-haspopup="true" role="example" data-class="tool">
+					{this.renderTooltip(item)}
+				</ReactTooltip>
+				
+			</div>
 			)
 		)
 	}

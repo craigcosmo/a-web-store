@@ -33,30 +33,30 @@ export default class HomeViewControl extends React.Component {
 		this.fixViewControlPosition()
 	}
 	fixViewControlPosition(){
-		let top1= document.getElementById('top1');
+		let top1= document.getElementById('top1')
 		let top1Height = top1.offsetHeight
 		// let widthOfWrapper = document.getElementById('')
 		window.addEventListener("scroll", function(e) {
 			
 			// console.log(top1Height)
-			var top = this.scrollY || document.documentElement.scrollTop;
+			var top = this.scrollY || document.documentElement.scrollTop
 			if (top >= 15) {
-				top1.classList.add('fixed');
+				top1.classList.add('fixed')
 				top1.parentNode.style.paddingTop = top1Height + 'px'
 			} else {
-				top1.classList.remove('fixed');
+				top1.classList.remove('fixed')
 				top1.parentNode.style.paddingTop = 0 + 'px'
 			}
-		}, false);
+		}, false)
 	}
 	logChange(val) {
-	    console.log("Selected: " + val);
+		console.log("Selected: " + val)
 	}
 	render() {
 
 		const options = [
-		    { value: 'price', label: 'Price' },
-		    { value: 'title', label: 'Title' }
+			{ value: 'price', label: 'Price' },
+			{ value: 'title', label: 'Title' }
 		]
 		return (
 			<div class="view-control-wrapper">
@@ -64,12 +64,12 @@ export default class HomeViewControl extends React.Component {
 					<div class="left">
 						<span class="cap ib vam">sorting:</span>
 						<Select
-						    name="sort"
-						    clearable = {false}
-						    value={this.state.selected}
-						    options={options}
-						    onChange={this.selectChange}
-						    backspaceRemoves={false}
+							name="sort"
+							clearable = {false}
+							value={this.state.selected}
+							options={options}
+							onChange={this.selectChange}
+							backspaceRemoves={false}
 						/>
 					</div>
 					<div class="right">
