@@ -72,7 +72,7 @@ export default class HomeGrid extends React.Component {
 			<div>
 				<section>
 					<div class="img-wrapper" data-tip data-for={item.id} data-event="mouseover" >
-						<img src={item.images[0].url} />
+						<img src={'image/'+item.images[0].url} />
 					</div>
 					{this.renderSize(item)}
 				</section>
@@ -131,7 +131,7 @@ export default class HomeGrid extends React.Component {
 			(
 			<div class="item" key={item.id}>
 				<div class="img-wrapper" data-tip data-for={'i'+item.id}>
-					<img src={item.images[0].url} onClick={this.handleImageClick.bind(this,item)} />
+					<img src={'image/'+item.images[0].url} onClick={this.handleImageClick.bind(this,item)} />
 				</div>
 				<div class="title l b">{item.title}</div>
 				<div class="price l b">{item.price}</div>
