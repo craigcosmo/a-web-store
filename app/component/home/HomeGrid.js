@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal'
-import product from 'product'
+import product from 'product.json'
 import 'tooltip.scss'
 import ReactTooltip from 'react-tooltip'
 import 'tooltipContent.scss'
