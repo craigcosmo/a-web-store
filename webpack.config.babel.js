@@ -3,12 +3,12 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import OpenBrowserPlugin from 'open-browser-webpack-plugin'
-import dir from 'webpack-directory-scan'
+import dirScan from 'directory-scan'
 import loaders from './webpack/loaders'
 import path from 'path'
 
 
-let modulesDirectories = dir.get('./')
+let modulesDirectories = dirScan.get('./','dist')
 
 let env = process.env.NODE_ENV;
 let sourceMap = 'source-map';
@@ -43,7 +43,7 @@ export default {
         loaders: loaders
     },
     resolve: {
-        modulesDirectories: modulesDirectories
+        modulesDirectories: [modulesDirectories, 'node_modules']
     },
     plugins: [
         new webpack.EnvironmentPlugin(['NODE_ENV']),

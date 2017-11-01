@@ -18,6 +18,7 @@
   "dependencies": {
     "axios": "^0.14.0",
     "classnames": "^2.2.5",
+    "directory-scan": "^1.0.7",
     "jquery": "^3.1.0",
     "ramda": "^0.22.1",
     "react": "15.1.0",
