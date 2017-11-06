@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -58,19 +58,19 @@
 	
 	var _reactRedux = __webpack_require__(230);
 	
-	var _Container = __webpack_require__(256);
+	var _Container = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"Container\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
 	var _Container2 = _interopRequireDefault(_Container);
 	
-	var _store = __webpack_require__(282);
+	var _store = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"store\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _Home = __webpack_require__(319);
+	var _Home = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"Home\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
 	var _Home2 = _interopRequireDefault(_Home);
 	
-	var _Select = __webpack_require__(376);
+	var _Select = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"Select\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
@@ -92,18 +92,18 @@
 		)
 	), app);
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	module.exports = __webpack_require__(2);
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -193,12 +193,19 @@
 	
 	module.exports = React;
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
+	/*
+	object-assign
+	(c) Sindre Sorhus
+	@license MIT
+	*/
+	
 	'use strict';
 	/* eslint-disable no-unused-vars */
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 	
@@ -219,7 +226,7 @@
 			// Detect buggy property enumeration order in older V8 versions.
 	
 			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-			var test1 = new String('abc');  // eslint-disable-line
+			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
 			test1[5] = 'de';
 			if (Object.getOwnPropertyNames(test1)[0] === '5') {
 				return false;
@@ -248,7 +255,7 @@
 			}
 	
 			return true;
-		} catch (e) {
+		} catch (err) {
 			// We don't expect any of the above to throw, but better to be safe.
 			return false;
 		}
@@ -268,8 +275,8 @@
 				}
 			}
 	
-			if (Object.getOwnPropertySymbols) {
-				symbols = Object.getOwnPropertySymbols(from);
+			if (getOwnPropertySymbols) {
+				symbols = getOwnPropertySymbols(from);
 				for (var i = 0; i < symbols.length; i++) {
 					if (propIsEnumerable.call(from, symbols[i])) {
 						to[symbols[i]] = from[symbols[i]];
@@ -282,9 +289,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -478,9 +485,9 @@
 	
 	module.exports = ReactChildren;
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -602,17 +609,15 @@
 	
 	module.exports = PooledClass;
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 	
@@ -629,12 +634,18 @@
 	 * will remain to ensure logic does not differ in production.
 	 */
 	
-	function invariant(condition, format, a, b, c, d, e, f) {
-	  if (true) {
+	var validateFormat = function validateFormat(format) {};
+	
+	if (true) {
+	  validateFormat = function validateFormat(format) {
 	    if (format === undefined) {
 	      throw new Error('invariant requires an error message argument');
 	    }
-	  }
+	  };
+	}
+	
+	function invariant(condition, format, a, b, c, d, e, f) {
+	  validateFormat(format);
 	
 	  if (!condition) {
 	    var error;
@@ -656,9 +667,9 @@
 	
 	module.exports = invariant;
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -974,9 +985,9 @@
 	
 	module.exports = ReactElement;
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -1010,17 +1021,15 @@
 	
 	module.exports = ReactCurrentOwner;
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2014-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 	
@@ -1038,62 +1047,58 @@
 	var warning = emptyFunction;
 	
 	if (true) {
-	  (function () {
-	    var printWarning = function printWarning(format) {
-	      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-	        args[_key - 1] = arguments[_key];
+	  var printWarning = function printWarning(format) {
+	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	      args[_key - 1] = arguments[_key];
+	    }
+	
+	    var argIndex = 0;
+	    var message = 'Warning: ' + format.replace(/%s/g, function () {
+	      return args[argIndex++];
+	    });
+	    if (typeof console !== 'undefined') {
+	      console.error(message);
+	    }
+	    try {
+	      // --- Welcome to debugging React ---
+	      // This error was thrown as a convenience so that you can use this stack
+	      // to find the callsite that caused this warning to fire.
+	      throw new Error(message);
+	    } catch (x) {}
+	  };
+	
+	  warning = function warning(condition, format) {
+	    if (format === undefined) {
+	      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+	    }
+	
+	    if (format.indexOf('Failed Composite propType: ') === 0) {
+	      return; // Ignore CompositeComponent proptype check.
+	    }
+	
+	    if (!condition) {
+	      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+	        args[_key2 - 2] = arguments[_key2];
 	      }
 	
-	      var argIndex = 0;
-	      var message = 'Warning: ' + format.replace(/%s/g, function () {
-	        return args[argIndex++];
-	      });
-	      if (typeof console !== 'undefined') {
-	        console.error(message);
-	      }
-	      try {
-	        // --- Welcome to debugging React ---
-	        // This error was thrown as a convenience so that you can use this stack
-	        // to find the callsite that caused this warning to fire.
-	        throw new Error(message);
-	      } catch (x) {}
-	    };
-	
-	    warning = function warning(condition, format) {
-	      if (format === undefined) {
-	        throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-	      }
-	
-	      if (format.indexOf('Failed Composite propType: ') === 0) {
-	        return; // Ignore CompositeComponent proptype check.
-	      }
-	
-	      if (!condition) {
-	        for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-	          args[_key2 - 2] = arguments[_key2];
-	        }
-	
-	        printWarning.apply(undefined, [format].concat(args));
-	      }
-	    };
-	  })();
+	      printWarning.apply(undefined, [format].concat(args));
+	    }
+	  };
 	}
 	
 	module.exports = warning;
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * 
 	 */
@@ -1124,9 +1129,9 @@
 	
 	module.exports = emptyFunction;
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -1153,9 +1158,9 @@
 	
 	module.exports = canDefineProperty;
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -1316,9 +1321,9 @@
 	
 	module.exports = traverseAllChildren;
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -1361,9 +1366,9 @@
 	
 	module.exports = getIteratorFn;
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -1424,9 +1429,9 @@
 	
 	module.exports = KeyEscapeUtils;
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -1550,9 +1555,9 @@
 	
 	module.exports = ReactComponent;
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -1650,9 +1655,9 @@
 	
 	module.exports = ReactNoopUpdateQueue;
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -1671,9 +1676,9 @@
 	
 	module.exports = { debugTool: ReactDebugTool };
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -1926,17 +1931,15 @@
 	
 	module.exports = ReactDebugTool;
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 	
@@ -1966,19 +1969,17 @@
 	
 	module.exports = ExecutionEnvironment;
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -2004,17 +2005,15 @@
 	
 	module.exports = performanceNow;
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -2031,9 +2030,9 @@
 	
 	module.exports = performance || {};
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -2072,9 +2071,9 @@
 	
 	module.exports = ReactInvalidSetStateWarningDevTool;
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -2114,9 +2113,9 @@
 	
 	module.exports = ReactNativeOperationHistoryDevtool;
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2016-present, Facebook, Inc.
@@ -2264,17 +2263,15 @@
 	
 	module.exports = ReactComponentTreeDevtool;
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 	
@@ -2288,9 +2285,9 @@
 	
 	module.exports = emptyObject;
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -3017,9 +3014,9 @@
 	
 	module.exports = ReactClass;
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -3044,17 +3041,15 @@
 	
 	module.exports = ReactPropTypeLocations;
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks static-only
 	 */
@@ -3096,9 +3091,9 @@
 	
 	module.exports = keyMirror;
 
-/***/ },
+/***/ }),
 /* 29 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -3125,19 +3120,17 @@
 	
 	module.exports = ReactPropTypeLocationNames;
 
-/***/ },
+/***/ }),
 /* 30 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 	
@@ -3164,9 +3157,9 @@
 	
 	module.exports = keyOf;
 
-/***/ },
+/***/ }),
 /* 31 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -3345,9 +3338,9 @@
 	
 	module.exports = ReactDOMFactories;
 
-/***/ },
+/***/ }),
 /* 32 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -3631,17 +3624,15 @@
 	
 	module.exports = ReactElementValidator;
 
-/***/ },
+/***/ }),
 /* 33 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 	
@@ -3686,9 +3677,9 @@
 	
 	module.exports = mapObject;
 
-/***/ },
+/***/ }),
 /* 34 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -4071,9 +4062,9 @@
 	
 	module.exports = ReactPropTypes;
 
-/***/ },
+/***/ }),
 /* 35 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -4090,9 +4081,9 @@
 	
 	module.exports = '15.1.0';
 
-/***/ },
+/***/ }),
 /* 36 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -4131,18 +4122,18 @@
 	
 	module.exports = onlyChild;
 
-/***/ },
+/***/ }),
 /* 37 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	module.exports = __webpack_require__(38);
 
 
-/***/ },
+/***/ }),
 /* 38 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -4246,9 +4237,9 @@
 	
 	module.exports = React;
 
-/***/ },
+/***/ }),
 /* 39 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -4437,9 +4428,9 @@
 	
 	module.exports = ReactDOMComponentTree;
 
-/***/ },
+/***/ }),
 /* 40 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -4655,9 +4646,9 @@
 	
 	module.exports = DOMProperty;
 
-/***/ },
+/***/ }),
 /* 41 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -4678,9 +4669,9 @@
 	
 	module.exports = ReactDOMComponentFlags;
 
-/***/ },
+/***/ }),
 /* 42 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -4767,9 +4758,9 @@
 	  inject: inject
 	};
 
-/***/ },
+/***/ }),
 /* 43 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present Facebook, Inc.
@@ -5160,9 +5151,9 @@
 	
 	module.exports = BeforeInputEventPlugin;
 
-/***/ },
+/***/ }),
 /* 44 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -5262,9 +5253,9 @@
 	
 	module.exports = EventConstants;
 
-/***/ },
+/***/ }),
 /* 45 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -5404,9 +5395,9 @@
 	
 	module.exports = EventPropagators;
 
-/***/ },
+/***/ }),
 /* 46 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -5644,9 +5635,9 @@
 	
 	module.exports = EventPluginHub;
 
-/***/ },
+/***/ }),
 /* 47 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -5890,9 +5881,9 @@
 	
 	module.exports = EventPluginRegistry;
 
-/***/ },
+/***/ }),
 /* 48 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6122,9 +6113,9 @@
 	
 	module.exports = EventPluginUtils;
 
-/***/ },
+/***/ }),
 /* 49 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6203,9 +6194,9 @@
 	
 	module.exports = ReactErrorUtils;
 
-/***/ },
+/***/ }),
 /* 50 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -6267,9 +6258,9 @@
 	
 	module.exports = accumulateInto;
 
-/***/ },
+/***/ }),
 /* 51 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6302,9 +6293,9 @@
 	
 	module.exports = forEachAccumulated;
 
-/***/ },
+/***/ }),
 /* 52 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6402,9 +6393,9 @@
 	
 	module.exports = FallbackCompositionState;
 
-/***/ },
+/***/ }),
 /* 53 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6440,9 +6431,9 @@
 	
 	module.exports = getTextContentAccessor;
 
-/***/ },
+/***/ }),
 /* 54 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6481,9 +6472,9 @@
 	
 	module.exports = SyntheticCompositionEvent;
 
-/***/ },
+/***/ }),
 /* 55 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6747,9 +6738,9 @@
 	  }
 	}
 
-/***/ },
+/***/ }),
 /* 56 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -6789,9 +6780,9 @@
 	
 	module.exports = SyntheticInputEvent;
 
-/***/ },
+/***/ }),
 /* 57 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7119,9 +7110,9 @@
 	
 	module.exports = ChangeEventPlugin;
 
-/***/ },
+/***/ }),
 /* 58 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7383,9 +7374,9 @@
 	
 	module.exports = ReactUpdates;
 
-/***/ },
+/***/ }),
 /* 59 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7493,9 +7484,9 @@
 	
 	module.exports = CallbackQueue;
 
-/***/ },
+/***/ }),
 /* 60 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7519,9 +7510,9 @@
 	
 	module.exports = ReactFeatureFlags;
 
-/***/ },
+/***/ }),
 /* 61 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7695,9 +7686,9 @@
 	
 	module.exports = ReactReconciler;
 
-/***/ },
+/***/ }),
 /* 62 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7778,9 +7769,9 @@
 	
 	module.exports = ReactRef;
 
-/***/ },
+/***/ }),
 /* 63 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -7875,9 +7866,9 @@
 	
 	module.exports = ReactOwner;
 
-/***/ },
+/***/ }),
 /* 64 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8111,9 +8102,9 @@
 	
 	module.exports = Transaction;
 
-/***/ },
+/***/ }),
 /* 65 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8151,9 +8142,9 @@
 	
 	module.exports = getEventTarget;
 
-/***/ },
+/***/ }),
 /* 66 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8216,9 +8207,9 @@
 	
 	module.exports = isEventSupported;
 
-/***/ },
+/***/ }),
 /* 67 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8262,9 +8253,9 @@
 	
 	module.exports = isTextInputElement;
 
-/***/ },
+/***/ }),
 /* 68 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8294,9 +8285,9 @@
 	
 	module.exports = DefaultEventPluginOrder;
 
-/***/ },
+/***/ }),
 /* 69 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8404,9 +8395,9 @@
 	
 	module.exports = EnterLeaveEventPlugin;
 
-/***/ },
+/***/ }),
 /* 70 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8481,9 +8472,9 @@
 	
 	module.exports = SyntheticMouseEvent;
 
-/***/ },
+/***/ }),
 /* 71 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8545,9 +8536,9 @@
 	
 	module.exports = SyntheticUIEvent;
 
-/***/ },
+/***/ }),
 /* 72 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8577,9 +8568,9 @@
 	
 	module.exports = ViewportMetrics;
 
-/***/ },
+/***/ }),
 /* 73 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8625,9 +8616,9 @@
 	
 	module.exports = getEventModifierState;
 
-/***/ },
+/***/ }),
 /* 74 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8839,9 +8830,9 @@
 	
 	module.exports = HTMLDOMPropertyConfig;
 
-/***/ },
+/***/ }),
 /* 75 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -8883,9 +8874,9 @@
 	
 	module.exports = ReactComponentBrowserEnvironment;
 
-/***/ },
+/***/ }),
 /* 76 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9082,9 +9073,9 @@
 	
 	module.exports = DOMChildrenOperations;
 
-/***/ },
+/***/ }),
 /* 77 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -9204,9 +9195,9 @@
 	
 	module.exports = DOMLazyTree;
 
-/***/ },
+/***/ }),
 /* 78 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9229,9 +9220,9 @@
 	
 	module.exports = DOMNamespaces;
 
-/***/ },
+/***/ }),
 /* 79 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9266,9 +9257,9 @@
 	
 	module.exports = createMicrosoftUnsafeLocalFunction;
 
-/***/ },
+/***/ }),
 /* 80 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9311,9 +9302,9 @@
 	
 	module.exports = setTextContent;
 
-/***/ },
+/***/ }),
 /* 81 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9354,9 +9345,9 @@
 	
 	module.exports = escapeTextContentForBrowser;
 
-/***/ },
+/***/ }),
 /* 82 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9441,9 +9432,9 @@
 	
 	module.exports = setInnerHTML;
 
-/***/ },
+/***/ }),
 /* 83 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9590,19 +9581,17 @@
 	
 	module.exports = Danger;
 
-/***/ },
+/***/ }),
 /* 84 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -9678,19 +9667,17 @@
 	
 	module.exports = createNodesFromMarkup;
 
-/***/ },
+/***/ }),
 /* 85 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -9809,19 +9796,17 @@
 	
 	module.exports = createArrayFromMixed;
 
-/***/ },
+/***/ }),
 /* 86 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 	
@@ -9908,9 +9893,9 @@
 	
 	module.exports = getMarkupWrap;
 
-/***/ },
+/***/ }),
 /* 87 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9945,9 +9930,9 @@
 	
 	module.exports = ReactMultiChildUpdateTypes;
 
-/***/ },
+/***/ }),
 /* 88 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -9984,9 +9969,9 @@
 	
 	module.exports = ReactDOMIDOperations;
 
-/***/ },
+/***/ }),
 /* 89 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -10938,9 +10923,9 @@
 	
 	module.exports = ReactDOMComponent;
 
-/***/ },
+/***/ }),
 /* 90 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -10967,17 +10952,15 @@
 	
 	module.exports = AutoFocusUtils;
 
-/***/ },
+/***/ }),
 /* 91 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 	
@@ -10998,9 +10981,9 @@
 	
 	module.exports = focusNode;
 
-/***/ },
+/***/ }),
 /* 92 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11208,9 +11191,9 @@
 	
 	module.exports = CSSPropertyOperations;
 
-/***/ },
+/***/ }),
 /* 93 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11361,17 +11344,15 @@
 	
 	module.exports = CSSProperty;
 
-/***/ },
+/***/ }),
 /* 94 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -11405,19 +11386,17 @@
 	
 	module.exports = camelizeStyleName;
 
-/***/ },
+/***/ }),
 /* 95 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -11441,9 +11420,9 @@
 	
 	module.exports = camelize;
 
-/***/ },
+/***/ }),
 /* 96 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11523,17 +11502,15 @@
 	
 	module.exports = dangerousStyleValue;
 
-/***/ },
+/***/ }),
 /* 97 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -11566,19 +11543,17 @@
 	
 	module.exports = hyphenateStyleName;
 
-/***/ },
+/***/ }),
 /* 98 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -11603,17 +11578,15 @@
 	
 	module.exports = hyphenate;
 
-/***/ },
+/***/ }),
 /* 99 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * 
 	 * @typechecks static-only
@@ -11637,9 +11610,9 @@
 	
 	module.exports = memoizeStringOnly;
 
-/***/ },
+/***/ }),
 /* 100 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11864,9 +11837,9 @@
 	
 	module.exports = DOMPropertyOperations;
 
-/***/ },
+/***/ }),
 /* 101 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11885,9 +11858,9 @@
 	
 	module.exports = { debugTool: ReactDOMDebugTool };
 
-/***/ },
+/***/ }),
 /* 102 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -11951,9 +11924,9 @@
 	
 	module.exports = ReactDOMDebugTool;
 
-/***/ },
+/***/ }),
 /* 103 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12020,9 +11993,9 @@
 	
 	module.exports = ReactDOMUnknownPropertyDevtool;
 
-/***/ },
+/***/ }),
 /* 104 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12051,9 +12024,9 @@
 	
 	module.exports = quoteAttributeValueForBrowser;
 
-/***/ },
+/***/ }),
 /* 105 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12373,9 +12346,9 @@
 	
 	module.exports = ReactBrowserEventEmitter;
 
-/***/ },
+/***/ }),
 /* 106 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12411,9 +12384,9 @@
 	
 	module.exports = ReactEventEmitterMixin;
 
-/***/ },
+/***/ }),
 /* 107 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12517,9 +12490,9 @@
 	
 	module.exports = getVendorPrefixedEventName;
 
-/***/ },
+/***/ }),
 /* 108 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12546,9 +12519,9 @@
 	
 	module.exports = ReactDOMButton;
 
-/***/ },
+/***/ }),
 /* 109 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12601,9 +12574,9 @@
 	
 	module.exports = DisabledInputUtils;
 
-/***/ },
+/***/ }),
 /* 110 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12812,9 +12785,9 @@
 	
 	module.exports = ReactDOMInput;
 
-/***/ },
+/***/ }),
 /* 111 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -12950,9 +12923,9 @@
 	
 	module.exports = LinkedValueUtils;
 
-/***/ },
+/***/ }),
 /* 112 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13064,9 +13037,9 @@
 	
 	module.exports = ReactDOMOption;
 
-/***/ },
+/***/ }),
 /* 113 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13282,9 +13255,9 @@
 	
 	module.exports = ReactDOMSelect;
 
-/***/ },
+/***/ }),
 /* 114 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13429,9 +13402,9 @@
 	
 	module.exports = ReactDOMTextarea;
 
-/***/ },
+/***/ }),
 /* 115 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -13857,9 +13830,9 @@
 	
 	module.exports = ReactMultiChild;
 
-/***/ },
+/***/ }),
 /* 116 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -13913,9 +13886,9 @@
 	
 	module.exports = ReactComponentEnvironment;
 
-/***/ },
+/***/ }),
 /* 117 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -14043,9 +14016,9 @@
 	
 	module.exports = ReactChildReconciler;
 
-/***/ },
+/***/ }),
 /* 118 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -14192,9 +14165,9 @@
 	
 	module.exports = instantiateReactComponent;
 
-/***/ },
+/***/ }),
 /* 119 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15120,9 +15093,9 @@
 	
 	module.exports = ReactCompositeComponent;
 
-/***/ },
+/***/ }),
 /* 120 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15173,9 +15146,9 @@
 	
 	module.exports = ReactInstanceMap;
 
-/***/ },
+/***/ }),
 /* 121 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15215,9 +15188,9 @@
 	
 	module.exports = ReactNodeTypes;
 
-/***/ },
+/***/ }),
 /* 122 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -15435,9 +15408,9 @@
 	
 	module.exports = ReactUpdateQueue;
 
-/***/ },
+/***/ }),
 /* 123 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15482,9 +15455,9 @@
 	
 	module.exports = shouldUpdateReactComponent;
 
-/***/ },
+/***/ }),
 /* 124 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -15517,9 +15490,9 @@
 	
 	module.exports = ReactEmptyComponent;
 
-/***/ },
+/***/ }),
 /* 125 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -15617,9 +15590,9 @@
 	
 	module.exports = ReactNativeComponent;
 
-/***/ },
+/***/ }),
 /* 126 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -15671,9 +15644,9 @@
 	
 	module.exports = flattenChildren;
 
-/***/ },
+/***/ }),
 /* 127 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -15749,17 +15722,15 @@
 	
 	module.exports = ReactServerRenderingTransaction;
 
-/***/ },
+/***/ }),
 /* 128 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 * 
@@ -15780,7 +15751,8 @@
 	  if (x === y) {
 	    // Steps 1-5, 7-10
 	    // Steps 6.b-6.e: +0 != -0
-	    return x !== 0 || 1 / x === 1 / y;
+	    // Added the nonzero y check to make Flow happy, but it is redundant
+	    return x !== 0 || y !== 0 || 1 / x === 1 / y;
 	  } else {
 	    // Step 6.a: NaN == NaN
 	    return x !== x && y !== y;
@@ -15820,9 +15792,9 @@
 	
 	module.exports = shallowEqual;
 
-/***/ },
+/***/ }),
 /* 129 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -16194,9 +16166,9 @@
 	
 	module.exports = validateDOMNesting;
 
-/***/ },
+/***/ }),
 /* 130 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-present, Facebook, Inc.
@@ -16259,9 +16231,9 @@
 	
 	module.exports = ReactDOMEmptyComponent;
 
-/***/ },
+/***/ }),
 /* 131 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2015-present, Facebook, Inc.
@@ -16398,9 +16370,9 @@
 	  traverseEnterLeave: traverseEnterLeave
 	};
 
-/***/ },
+/***/ }),
 /* 132 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -16573,9 +16545,9 @@
 	
 	module.exports = ReactDOMTextComponent;
 
-/***/ },
+/***/ }),
 /* 133 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -16646,9 +16618,9 @@
 	
 	module.exports = ReactDefaultBatchingStrategy;
 
-/***/ },
+/***/ }),
 /* 134 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -16808,26 +16780,17 @@
 	
 	module.exports = ReactEventListener;
 
-/***/ },
+/***/ }),
 /* 135 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 * http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -16896,17 +16859,15 @@
 	
 	module.exports = EventListener;
 
-/***/ },
+/***/ }),
 /* 136 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -16925,10 +16886,10 @@
 	 */
 	
 	function getUnboundedScrollPosition(scrollable) {
-	  if (scrollable === window) {
+	  if (scrollable.Window && scrollable instanceof scrollable.Window) {
 	    return {
-	      x: window.pageXOffset || document.documentElement.scrollLeft,
-	      y: window.pageYOffset || document.documentElement.scrollTop
+	      x: scrollable.pageXOffset || scrollable.document.documentElement.scrollLeft,
+	      y: scrollable.pageYOffset || scrollable.document.documentElement.scrollTop
 	    };
 	  }
 	  return {
@@ -16939,9 +16900,9 @@
 	
 	module.exports = getUnboundedScrollPosition;
 
-/***/ },
+/***/ }),
 /* 137 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -16980,9 +16941,9 @@
 	
 	module.exports = ReactInjection;
 
-/***/ },
+/***/ }),
 /* 138 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -17147,9 +17108,9 @@
 	
 	module.exports = ReactReconcileTransaction;
 
-/***/ },
+/***/ }),
 /* 139 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -17276,9 +17237,9 @@
 	
 	module.exports = ReactInputSelection;
 
-/***/ },
+/***/ }),
 /* 140 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -17493,9 +17454,9 @@
 	
 	module.exports = ReactDOMSelection;
 
-/***/ },
+/***/ }),
 /* 141 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -17572,19 +17533,17 @@
 	
 	module.exports = getNodeForCharacterOffset;
 
-/***/ },
+/***/ }),
 /* 142 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * 
 	 */
@@ -17616,19 +17575,17 @@
 	
 	module.exports = containsNode;
 
-/***/ },
+/***/ }),
 /* 143 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -17645,19 +17602,17 @@
 	
 	module.exports = isTextNode;
 
-/***/ },
+/***/ }),
 /* 144 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -17667,24 +17622,24 @@
 	 * @return {boolean} Whether or not the object is a DOM node.
 	 */
 	function isNode(object) {
-	  return !!(object && (typeof Node === 'function' ? object instanceof Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
+	  var doc = object ? object.ownerDocument || object : document;
+	  var defaultView = doc.defaultView || window;
+	  return !!(object && (typeof defaultView.Node === 'function' ? object instanceof defaultView.Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
 	}
 	
 	module.exports = isNode;
 
-/***/ },
+/***/ }),
 /* 145 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * @typechecks
 	 */
@@ -17697,23 +17652,27 @@
 	 *
 	 * The activeElement will be null only if the document or document body is not
 	 * yet defined.
+	 *
+	 * @param {?DOMDocument} doc Defaults to current document.
+	 * @return {?DOMElement}
 	 */
-	function getActiveElement() /*?DOMElement*/{
-	  if (typeof document === 'undefined') {
+	function getActiveElement(doc) /*?DOMElement*/{
+	  doc = doc || (typeof document !== 'undefined' ? document : undefined);
+	  if (typeof doc === 'undefined') {
 	    return null;
 	  }
 	  try {
-	    return document.activeElement || document.body;
+	    return doc.activeElement || doc.body;
 	  } catch (e) {
-	    return document.body;
+	    return doc.body;
 	  }
 	}
 	
 	module.exports = getActiveElement;
 
-/***/ },
+/***/ }),
 /* 146 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18016,9 +17975,9 @@
 	
 	module.exports = SVGDOMPropertyConfig;
 
-/***/ },
+/***/ }),
 /* 147 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18217,9 +18176,9 @@
 	
 	module.exports = SelectEventPlugin;
 
-/***/ },
+/***/ }),
 /* 148 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18849,9 +18808,9 @@
 	
 	module.exports = SimpleEventPlugin;
 
-/***/ },
+/***/ }),
 /* 149 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18893,9 +18852,9 @@
 	
 	module.exports = SyntheticAnimationEvent;
 
-/***/ },
+/***/ }),
 /* 150 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18936,9 +18895,9 @@
 	
 	module.exports = SyntheticClipboardEvent;
 
-/***/ },
+/***/ }),
 /* 151 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -18977,9 +18936,9 @@
 	
 	module.exports = SyntheticFocusEvent;
 
-/***/ },
+/***/ }),
 /* 152 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19066,9 +19025,9 @@
 	
 	module.exports = SyntheticKeyboardEvent;
 
-/***/ },
+/***/ }),
 /* 153 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19121,9 +19080,9 @@
 	
 	module.exports = getEventCharCode;
 
-/***/ },
+/***/ }),
 /* 154 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19228,9 +19187,9 @@
 	
 	module.exports = getEventKey;
 
-/***/ },
+/***/ }),
 /* 155 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19269,9 +19228,9 @@
 	
 	module.exports = SyntheticDragEvent;
 
-/***/ },
+/***/ }),
 /* 156 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19319,9 +19278,9 @@
 	
 	module.exports = SyntheticTouchEvent;
 
-/***/ },
+/***/ }),
 /* 157 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19363,9 +19322,9 @@
 	
 	module.exports = SyntheticTransitionEvent;
 
-/***/ },
+/***/ }),
 /* 158 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19422,9 +19381,9 @@
 	
 	module.exports = SyntheticWheelEvent;
 
-/***/ },
+/***/ }),
 /* 159 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19920,9 +19879,9 @@
 	
 	module.exports = ReactMount;
 
-/***/ },
+/***/ }),
 /* 160 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19958,9 +19917,9 @@
 	
 	module.exports = ReactDOMContainerInfo;
 
-/***/ },
+/***/ }),
 /* 161 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -19981,9 +19940,9 @@
 	
 	module.exports = ReactDOMFeatureFlags;
 
-/***/ },
+/***/ }),
 /* 162 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -20036,9 +19995,9 @@
 	
 	module.exports = ReactMarkupChecksum;
 
-/***/ },
+/***/ }),
 /* 163 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -20084,9 +20043,9 @@
 	
 	module.exports = adler32;
 
-/***/ },
+/***/ }),
 /* 164 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -20147,9 +20106,9 @@
 	
 	module.exports = findDOMNode;
 
-/***/ },
+/***/ }),
 /* 165 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -20182,9 +20141,9 @@
 	
 	module.exports = getNativeComponentFromComposite;
 
-/***/ },
+/***/ }),
 /* 166 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-present, Facebook, Inc.
@@ -20203,9 +20162,9 @@
 	
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
-/***/ },
+/***/ }),
 /* 167 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -20364,9 +20323,9 @@
 	exports.hashHistory = _hashHistory3.default;
 	exports.createMemoryHistory = _createMemoryHistory3.default;
 
-/***/ },
+/***/ }),
 /* 168 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -20462,9 +20421,9 @@
 	  return routes;
 	}
 
-/***/ },
+/***/ }),
 /* 169 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -20568,9 +20527,9 @@
 	
 	exports.default = defaultExport;
 
-/***/ },
+/***/ }),
 /* 170 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -20648,9 +20607,9 @@
 	
 	exports.default = deprecateObjectProperties;
 
-/***/ },
+/***/ }),
 /* 171 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -20689,9 +20648,9 @@
 	  warned = {};
 	}
 
-/***/ },
+/***/ }),
 /* 172 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-2015, Facebook, Inc.
@@ -20755,9 +20714,9 @@
 	module.exports = warning;
 
 
-/***/ },
+/***/ }),
 /* 173 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -20792,9 +20751,9 @@
 	var route = exports.route = oneOfType([object, element]);
 	var routes = exports.routes = oneOfType([route, arrayOf(route)]);
 
-/***/ },
+/***/ }),
 /* 174 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -21009,9 +20968,9 @@
 	  return pathname.replace(/\/+/g, '/');
 	}
 
-/***/ },
+/***/ }),
 /* 175 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2013-2015, Facebook, Inc.
@@ -21066,9 +21025,9 @@
 	module.exports = invariant;
 
 
-/***/ },
+/***/ }),
 /* 176 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -21295,9 +21254,9 @@
 	exports.default = Router;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 177 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -21546,9 +21505,9 @@
 	exports['default'] = createHashHistory;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 178 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright 2014-2015, Facebook, Inc.
@@ -21612,9 +21571,9 @@
 	module.exports = warning;
 
 
-/***/ },
+/***/ }),
 /* 179 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Indicates that navigation was caused by a call to history.push.
@@ -21648,9 +21607,9 @@
 	  POP: POP
 	};
 
-/***/ },
+/***/ }),
 /* 180 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -21700,9 +21659,9 @@
 	  };
 	}
 
-/***/ },
+/***/ }),
 /* 181 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -21710,9 +21669,9 @@
 	var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 	exports.canUseDOM = canUseDOM;
 
-/***/ },
+/***/ }),
 /* 182 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -21790,9 +21749,9 @@
 	  return ua.indexOf('Firefox') === -1;
 	}
 
-/***/ },
+/***/ }),
 /* 183 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/*eslint-disable no-empty */
 	'use strict';
@@ -21868,9 +21827,9 @@
 	  return null;
 	}
 
-/***/ },
+/***/ }),
 /* 184 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -21913,9 +21872,9 @@
 	exports['default'] = createDOMHistory;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 185 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -22206,9 +22165,9 @@
 	exports['default'] = createHistory;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 186 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var pSlice = Array.prototype.slice;
 	var objectKeys = __webpack_require__(187);
@@ -22306,9 +22265,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 187 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	exports = module.exports = typeof Object.keys === 'function'
 	  ? Object.keys : shim;
@@ -22321,9 +22280,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 188 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	var supportsArgumentsClass = (function(){
 	  return Object.prototype.toString.call(arguments)
@@ -22347,9 +22306,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 189 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -22410,9 +22369,9 @@
 	  next();
 	}
 
-/***/ },
+/***/ }),
 /* 190 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -22466,9 +22425,9 @@
 	exports['default'] = createLocation;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 191 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -22495,9 +22454,9 @@
 	exports['default'] = runTransitionHook;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 192 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -22519,9 +22478,9 @@
 	exports['default'] = deprecate;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 193 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -22700,9 +22659,9 @@
 	exports['default'] = useQueries;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 194 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var strictUriEncode = __webpack_require__(195);
@@ -22772,9 +22731,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 195 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 	module.exports = function (str) {
@@ -22784,9 +22743,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 196 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -22799,8 +22758,6 @@
 	var _routerWarning = __webpack_require__(171);
 	
 	var _routerWarning2 = _interopRequireDefault(_routerWarning);
-	
-	var _Actions = __webpack_require__(179);
 	
 	var _computeChangedRoutes2 = __webpack_require__(197);
 	
@@ -22848,10 +22805,6 @@
 	    }
 	
 	    return (0, _isActive3.default)(location, indexOnly, state.location, state.routes, state.params);
-	  }
-	
-	  function createLocationFromRedirectInfo(location) {
-	    return history.createLocation(location, _Actions.REPLACE);
 	  }
 	
 	  var partialNextState = void 0;
@@ -22911,7 +22864,7 @@
 	    }
 	
 	    function handleErrorOrRedirect(error, redirectInfo) {
-	      if (error) callback(error);else callback(null, createLocationFromRedirectInfo(redirectInfo));
+	      if (error) callback(error);else callback(null, redirectInfo);
 	    }
 	  }
 	
@@ -23074,7 +23027,7 @@
 	          if (error) {
 	            listener(error);
 	          } else if (redirectLocation) {
-	            history.transitionTo(redirectLocation);
+	            history.replace(redirectLocation);
 	          } else if (nextState) {
 	            listener(null, nextState);
 	          } else {
@@ -23097,9 +23050,9 @@
 	
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 197 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -23179,9 +23132,9 @@
 	exports.default = computeChangedRoutes;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 198 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -23306,9 +23259,9 @@
 	  }
 	}
 
-/***/ },
+/***/ }),
 /* 199 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -23399,9 +23352,9 @@
 	  });
 	}
 
-/***/ },
+/***/ }),
 /* 200 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -23556,9 +23509,9 @@
 	}
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 201 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -23607,9 +23560,9 @@
 	exports.default = getComponents;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 202 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -23661,9 +23614,9 @@
 	}
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 203 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -23917,9 +23870,9 @@
 	}
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 204 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24078,9 +24031,9 @@
 	exports.default = RouterContext;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 205 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24109,9 +24062,9 @@
 	exports.default = getRouteParams;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 206 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24146,9 +24099,9 @@
 	  return history;
 	}
 
-/***/ },
+/***/ }),
 /* 207 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24236,7 +24189,7 @@
 	  },
 	
 	  propTypes: {
-	    to: oneOfType([string, object]).isRequired,
+	    to: oneOfType([string, object]),
 	    query: object,
 	    hash: string,
 	    state: object,
@@ -24297,6 +24250,11 @@
 	
 	
 	    if (router) {
+	      // If user does not specify a `to` prop, return an empty anchor tag.
+	      if (to == null) {
+	        return _react2.default.createElement('a', props);
+	      }
+	
 	      var location = createLocationDescriptor(to, { query: query, hash: hash, state: state });
 	      props.href = router.createHref(location);
 	
@@ -24322,9 +24280,9 @@
 	exports.default = Link;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 208 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24355,9 +24313,9 @@
 	exports.default = IndexLink;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 209 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24424,9 +24382,9 @@
 	}
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 210 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copyright 2015, Yahoo! Inc.
@@ -24480,9 +24438,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 211 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24548,9 +24506,9 @@
 	exports.default = IndexRedirect;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 212 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24655,9 +24613,9 @@
 	exports.default = Redirect;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 213 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24720,9 +24678,9 @@
 	exports.default = IndexRoute;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 214 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24782,9 +24740,9 @@
 	exports.default = Route;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 215 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24816,9 +24774,9 @@
 	exports.default = History;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 216 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24889,9 +24847,9 @@
 	exports.default = Lifecycle;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 217 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24939,9 +24897,9 @@
 	exports.default = RouteContext;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 218 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -24995,9 +24953,9 @@
 	exports.default = useRoutes;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 219 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25030,15 +24988,17 @@
 	exports.default = RoutingContext;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 220 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _Actions = __webpack_require__(179);
 	
 	var _invariant = __webpack_require__(175);
 	
@@ -25098,7 +25058,7 @@
 	  history = (0, _RouterUtils.createRoutingHistory)(history, transitionManager);
 	
 	  transitionManager.match(location, function (error, redirectLocation, nextState) {
-	    callback(error, redirectLocation, nextState && _extends({}, nextState, {
+	    callback(error, redirectLocation && router.createLocation(redirectLocation, _Actions.REPLACE), nextState && _extends({}, nextState, {
 	      history: history,
 	      router: router,
 	      matchContext: { history: history, transitionManager: transitionManager, router: router }
@@ -25116,9 +25076,9 @@
 	exports.default = match;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 221 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25153,9 +25113,9 @@
 	}
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 222 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25316,9 +25276,9 @@
 	exports['default'] = useBasename;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 223 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25475,9 +25435,9 @@
 	exports['default'] = createMemoryHistory;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 224 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25503,9 +25463,9 @@
 	}
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 225 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25565,9 +25525,9 @@
 	
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 226 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25586,9 +25546,9 @@
 	exports.default = (0, _createRouterHistory2.default)(_createBrowserHistory2.default);
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 227 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25771,9 +25731,9 @@
 	exports['default'] = createBrowserHistory;
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 228 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25795,9 +25755,9 @@
 	
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 229 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25816,9 +25776,9 @@
 	exports.default = (0, _createRouterHistory2.default)(_createHashHistory2.default);
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 230 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25829,7 +25789,7 @@
 	
 	var _Provider2 = _interopRequireDefault(_Provider);
 	
-	var _connect = __webpack_require__(234);
+	var _connect = __webpack_require__(238);
 	
 	var _connect2 = _interopRequireDefault(_connect);
 	
@@ -25838,9 +25798,9 @@
 	exports.Provider = _Provider2["default"];
 	exports.connect = _connect2["default"];
 
-/***/ },
+/***/ }),
 /* 231 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -25849,11 +25809,15 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _storeShape = __webpack_require__(232);
+	var _propTypes = __webpack_require__(232);
+	
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	var _storeShape = __webpack_require__(236);
 	
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 	
-	var _warning = __webpack_require__(233);
+	var _warning = __webpack_require__(237);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -25892,9 +25856,7 @@
 	  }
 	
 	  Provider.prototype.render = function render() {
-	    var children = this.props.children;
-	
-	    return _react.Children.only(children);
+	    return _react.Children.only(this.props.children);
 	  };
 	
 	  return Provider;
@@ -25902,10 +25864,12 @@
 	
 	exports["default"] = Provider;
 	
+	
 	if (true) {
 	  Provider.prototype.componentWillReceiveProps = function (nextProps) {
 	    var store = this.store;
 	    var nextStore = nextProps.store;
+	
 	
 	    if (store !== nextStore) {
 	      warnAboutReceivingStore();
@@ -25915,31 +25879,700 @@
 	
 	Provider.propTypes = {
 	  store: _storeShape2["default"].isRequired,
-	  children: _react.PropTypes.element.isRequired
+	  children: _propTypes2["default"].element.isRequired
 	};
 	Provider.childContextTypes = {
 	  store: _storeShape2["default"].isRequired
 	};
 
-/***/ },
+/***/ }),
 /* 232 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+	
+	if (true) {
+	  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+	    Symbol.for &&
+	    Symbol.for('react.element')) ||
+	    0xeac7;
+	
+	  var isValidElement = function(object) {
+	    return typeof object === 'object' &&
+	      object !== null &&
+	      object.$$typeof === REACT_ELEMENT_TYPE;
+	  };
+	
+	  // By explicitly using `prop-types` you are opting into new development behavior.
+	  // http://fb.me/prop-types-in-prod
+	  var throwOnDirectAccess = true;
+	  module.exports = __webpack_require__(233)(isValidElement, throwOnDirectAccess);
+	} else {
+	  // By explicitly using `prop-types` you are opting into new production behavior.
+	  // http://fb.me/prop-types-in-prod
+	  module.exports = require('./factoryWithThrowingShims')();
+	}
+
+
+/***/ }),
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+	
+	'use strict';
+	
+	var emptyFunction = __webpack_require__(10);
+	var invariant = __webpack_require__(6);
+	var warning = __webpack_require__(9);
+	var assign = __webpack_require__(3);
+	
+	var ReactPropTypesSecret = __webpack_require__(234);
+	var checkPropTypes = __webpack_require__(235);
+	
+	module.exports = function(isValidElement, throwOnDirectAccess) {
+	  /* global Symbol */
+	  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+	  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+	
+	  /**
+	   * Returns the iterator method function contained on the iterable object.
+	   *
+	   * Be sure to invoke the function with the iterable as context:
+	   *
+	   *     var iteratorFn = getIteratorFn(myIterable);
+	   *     if (iteratorFn) {
+	   *       var iterator = iteratorFn.call(myIterable);
+	   *       ...
+	   *     }
+	   *
+	   * @param {?object} maybeIterable
+	   * @return {?function}
+	   */
+	  function getIteratorFn(maybeIterable) {
+	    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+	    if (typeof iteratorFn === 'function') {
+	      return iteratorFn;
+	    }
+	  }
+	
+	  /**
+	   * Collection of methods that allow declaration and validation of props that are
+	   * supplied to React components. Example usage:
+	   *
+	   *   var Props = require('ReactPropTypes');
+	   *   var MyArticle = React.createClass({
+	   *     propTypes: {
+	   *       // An optional string prop named "description".
+	   *       description: Props.string,
+	   *
+	   *       // A required enum prop named "category".
+	   *       category: Props.oneOf(['News','Photos']).isRequired,
+	   *
+	   *       // A prop named "dialog" that requires an instance of Dialog.
+	   *       dialog: Props.instanceOf(Dialog).isRequired
+	   *     },
+	   *     render: function() { ... }
+	   *   });
+	   *
+	   * A more formal specification of how these methods are used:
+	   *
+	   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+	   *   decl := ReactPropTypes.{type}(.isRequired)?
+	   *
+	   * Each and every declaration produces a function with the same signature. This
+	   * allows the creation of custom validation functions. For example:
+	   *
+	   *  var MyLink = React.createClass({
+	   *    propTypes: {
+	   *      // An optional string or URI prop named "href".
+	   *      href: function(props, propName, componentName) {
+	   *        var propValue = props[propName];
+	   *        if (propValue != null && typeof propValue !== 'string' &&
+	   *            !(propValue instanceof URI)) {
+	   *          return new Error(
+	   *            'Expected a string or an URI for ' + propName + ' in ' +
+	   *            componentName
+	   *          );
+	   *        }
+	   *      }
+	   *    },
+	   *    render: function() {...}
+	   *  });
+	   *
+	   * @internal
+	   */
+	
+	  var ANONYMOUS = '<<anonymous>>';
+	
+	  // Important!
+	  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+	  var ReactPropTypes = {
+	    array: createPrimitiveTypeChecker('array'),
+	    bool: createPrimitiveTypeChecker('boolean'),
+	    func: createPrimitiveTypeChecker('function'),
+	    number: createPrimitiveTypeChecker('number'),
+	    object: createPrimitiveTypeChecker('object'),
+	    string: createPrimitiveTypeChecker('string'),
+	    symbol: createPrimitiveTypeChecker('symbol'),
+	
+	    any: createAnyTypeChecker(),
+	    arrayOf: createArrayOfTypeChecker,
+	    element: createElementTypeChecker(),
+	    instanceOf: createInstanceTypeChecker,
+	    node: createNodeChecker(),
+	    objectOf: createObjectOfTypeChecker,
+	    oneOf: createEnumTypeChecker,
+	    oneOfType: createUnionTypeChecker,
+	    shape: createShapeTypeChecker,
+	    exact: createStrictShapeTypeChecker,
+	  };
+	
+	  /**
+	   * inlined Object.is polyfill to avoid requiring consumers ship their own
+	   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+	   */
+	  /*eslint-disable no-self-compare*/
+	  function is(x, y) {
+	    // SameValue algorithm
+	    if (x === y) {
+	      // Steps 1-5, 7-10
+	      // Steps 6.b-6.e: +0 != -0
+	      return x !== 0 || 1 / x === 1 / y;
+	    } else {
+	      // Step 6.a: NaN == NaN
+	      return x !== x && y !== y;
+	    }
+	  }
+	  /*eslint-enable no-self-compare*/
+	
+	  /**
+	   * We use an Error-like object for backward compatibility as people may call
+	   * PropTypes directly and inspect their output. However, we don't use real
+	   * Errors anymore. We don't inspect their stack anyway, and creating them
+	   * is prohibitively expensive if they are created too often, such as what
+	   * happens in oneOfType() for any type before the one that matched.
+	   */
+	  function PropTypeError(message) {
+	    this.message = message;
+	    this.stack = '';
+	  }
+	  // Make `instanceof Error` still work for returned errors.
+	  PropTypeError.prototype = Error.prototype;
+	
+	  function createChainableTypeChecker(validate) {
+	    if (true) {
+	      var manualPropTypeCallCache = {};
+	      var manualPropTypeWarningCount = 0;
+	    }
+	    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+	      componentName = componentName || ANONYMOUS;
+	      propFullName = propFullName || propName;
+	
+	      if (secret !== ReactPropTypesSecret) {
+	        if (throwOnDirectAccess) {
+	          // New behavior only for users of `prop-types` package
+	          invariant(
+	            false,
+	            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+	            'Use `PropTypes.checkPropTypes()` to call them. ' +
+	            'Read more at http://fb.me/use-check-prop-types'
+	          );
+	        } else if (("development") !== 'production' && typeof console !== 'undefined') {
+	          // Old behavior for people using React.PropTypes
+	          var cacheKey = componentName + ':' + propName;
+	          if (
+	            !manualPropTypeCallCache[cacheKey] &&
+	            // Avoid spamming the console because they are often not actionable except for lib authors
+	            manualPropTypeWarningCount < 3
+	          ) {
+	            warning(
+	              false,
+	              'You are manually calling a React.PropTypes validation ' +
+	              'function for the `%s` prop on `%s`. This is deprecated ' +
+	              'and will throw in the standalone `prop-types` package. ' +
+	              'You may be seeing this warning due to a third-party PropTypes ' +
+	              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.',
+	              propFullName,
+	              componentName
+	            );
+	            manualPropTypeCallCache[cacheKey] = true;
+	            manualPropTypeWarningCount++;
+	          }
+	        }
+	      }
+	      if (props[propName] == null) {
+	        if (isRequired) {
+	          if (props[propName] === null) {
+	            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+	          }
+	          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+	        }
+	        return null;
+	      } else {
+	        return validate(props, propName, componentName, location, propFullName);
+	      }
+	    }
+	
+	    var chainedCheckType = checkType.bind(null, false);
+	    chainedCheckType.isRequired = checkType.bind(null, true);
+	
+	    return chainedCheckType;
+	  }
+	
+	  function createPrimitiveTypeChecker(expectedType) {
+	    function validate(props, propName, componentName, location, propFullName, secret) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== expectedType) {
+	        // `propValue` being instance of, say, date/regexp, pass the 'object'
+	        // check, but we can offer a more precise error message here rather than
+	        // 'of type `object`'.
+	        var preciseType = getPreciseType(propValue);
+	
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createAnyTypeChecker() {
+	    return createChainableTypeChecker(emptyFunction.thatReturnsNull);
+	  }
+	
+	  function createArrayOfTypeChecker(typeChecker) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (typeof typeChecker !== 'function') {
+	        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+	      }
+	      var propValue = props[propName];
+	      if (!Array.isArray(propValue)) {
+	        var propType = getPropType(propValue);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+	      }
+	      for (var i = 0; i < propValue.length; i++) {
+	        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+	        if (error instanceof Error) {
+	          return error;
+	        }
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createElementTypeChecker() {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      if (!isValidElement(propValue)) {
+	        var propType = getPropType(propValue);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createInstanceTypeChecker(expectedClass) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (!(props[propName] instanceof expectedClass)) {
+	        var expectedClassName = expectedClass.name || ANONYMOUS;
+	        var actualClassName = getClassName(props[propName]);
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createEnumTypeChecker(expectedValues) {
+	    if (!Array.isArray(expectedValues)) {
+	       true ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+	      return emptyFunction.thatReturnsNull;
+	    }
+	
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      for (var i = 0; i < expectedValues.length; i++) {
+	        if (is(propValue, expectedValues[i])) {
+	          return null;
+	        }
+	      }
+	
+	      var valuesString = JSON.stringify(expectedValues);
+	      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createObjectOfTypeChecker(typeChecker) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (typeof typeChecker !== 'function') {
+	        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+	      }
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+	      }
+	      for (var key in propValue) {
+	        if (propValue.hasOwnProperty(key)) {
+	          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	          if (error instanceof Error) {
+	            return error;
+	          }
+	        }
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createUnionTypeChecker(arrayOfTypeCheckers) {
+	    if (!Array.isArray(arrayOfTypeCheckers)) {
+	       true ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+	      return emptyFunction.thatReturnsNull;
+	    }
+	
+	    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+	      var checker = arrayOfTypeCheckers[i];
+	      if (typeof checker !== 'function') {
+	        warning(
+	          false,
+	          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+	          'received %s at index %s.',
+	          getPostfixForTypeWarning(checker),
+	          i
+	        );
+	        return emptyFunction.thatReturnsNull;
+	      }
+	    }
+	
+	    function validate(props, propName, componentName, location, propFullName) {
+	      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+	        var checker = arrayOfTypeCheckers[i];
+	        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+	          return null;
+	        }
+	      }
+	
+	      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createNodeChecker() {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      if (!isNode(props[propName])) {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createShapeTypeChecker(shapeTypes) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+	      }
+	      for (var key in shapeTypes) {
+	        var checker = shapeTypes[key];
+	        if (!checker) {
+	          continue;
+	        }
+	        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	        if (error) {
+	          return error;
+	        }
+	      }
+	      return null;
+	    }
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function createStrictShapeTypeChecker(shapeTypes) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+	      }
+	      // We need to check all keys in case some are required but missing from
+	      // props.
+	      var allKeys = assign({}, props[propName], shapeTypes);
+	      for (var key in allKeys) {
+	        var checker = shapeTypes[key];
+	        if (!checker) {
+	          return new PropTypeError(
+	            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+	            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+	            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+	          );
+	        }
+	        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	        if (error) {
+	          return error;
+	        }
+	      }
+	      return null;
+	    }
+	
+	    return createChainableTypeChecker(validate);
+	  }
+	
+	  function isNode(propValue) {
+	    switch (typeof propValue) {
+	      case 'number':
+	      case 'string':
+	      case 'undefined':
+	        return true;
+	      case 'boolean':
+	        return !propValue;
+	      case 'object':
+	        if (Array.isArray(propValue)) {
+	          return propValue.every(isNode);
+	        }
+	        if (propValue === null || isValidElement(propValue)) {
+	          return true;
+	        }
+	
+	        var iteratorFn = getIteratorFn(propValue);
+	        if (iteratorFn) {
+	          var iterator = iteratorFn.call(propValue);
+	          var step;
+	          if (iteratorFn !== propValue.entries) {
+	            while (!(step = iterator.next()).done) {
+	              if (!isNode(step.value)) {
+	                return false;
+	              }
+	            }
+	          } else {
+	            // Iterator will provide entry [k,v] tuples rather than values.
+	            while (!(step = iterator.next()).done) {
+	              var entry = step.value;
+	              if (entry) {
+	                if (!isNode(entry[1])) {
+	                  return false;
+	                }
+	              }
+	            }
+	          }
+	        } else {
+	          return false;
+	        }
+	
+	        return true;
+	      default:
+	        return false;
+	    }
+	  }
+	
+	  function isSymbol(propType, propValue) {
+	    // Native Symbol.
+	    if (propType === 'symbol') {
+	      return true;
+	    }
+	
+	    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+	    if (propValue['@@toStringTag'] === 'Symbol') {
+	      return true;
+	    }
+	
+	    // Fallback for non-spec compliant Symbols which are polyfilled.
+	    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+	      return true;
+	    }
+	
+	    return false;
+	  }
+	
+	  // Equivalent of `typeof` but with special handling for array and regexp.
+	  function getPropType(propValue) {
+	    var propType = typeof propValue;
+	    if (Array.isArray(propValue)) {
+	      return 'array';
+	    }
+	    if (propValue instanceof RegExp) {
+	      // Old webkits (at least until Android 4.0) return 'function' rather than
+	      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+	      // passes PropTypes.object.
+	      return 'object';
+	    }
+	    if (isSymbol(propType, propValue)) {
+	      return 'symbol';
+	    }
+	    return propType;
+	  }
+	
+	  // This handles more types than `getPropType`. Only used for error messages.
+	  // See `createPrimitiveTypeChecker`.
+	  function getPreciseType(propValue) {
+	    if (typeof propValue === 'undefined' || propValue === null) {
+	      return '' + propValue;
+	    }
+	    var propType = getPropType(propValue);
+	    if (propType === 'object') {
+	      if (propValue instanceof Date) {
+	        return 'date';
+	      } else if (propValue instanceof RegExp) {
+	        return 'regexp';
+	      }
+	    }
+	    return propType;
+	  }
+	
+	  // Returns a string that is postfixed to a warning about an invalid type.
+	  // For example, "undefined" or "of type array"
+	  function getPostfixForTypeWarning(value) {
+	    var type = getPreciseType(value);
+	    switch (type) {
+	      case 'array':
+	      case 'object':
+	        return 'an ' + type;
+	      case 'boolean':
+	      case 'date':
+	      case 'regexp':
+	        return 'a ' + type;
+	      default:
+	        return type;
+	    }
+	  }
+	
+	  // Returns class name of the object, if any.
+	  function getClassName(propValue) {
+	    if (!propValue.constructor || !propValue.constructor.name) {
+	      return ANONYMOUS;
+	    }
+	    return propValue.constructor.name;
+	  }
+	
+	  ReactPropTypes.checkPropTypes = checkPropTypes;
+	  ReactPropTypes.PropTypes = ReactPropTypes;
+	
+	  return ReactPropTypes;
+	};
+
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+	
+	'use strict';
+	
+	var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+	
+	module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+	
+	'use strict';
+	
+	if (true) {
+	  var invariant = __webpack_require__(6);
+	  var warning = __webpack_require__(9);
+	  var ReactPropTypesSecret = __webpack_require__(234);
+	  var loggedTypeFailures = {};
+	}
+	
+	/**
+	 * Assert that the values match with the type specs.
+	 * Error messages are memorized and will only be shown once.
+	 *
+	 * @param {object} typeSpecs Map of name to a ReactPropType
+	 * @param {object} values Runtime values that need to be type-checked
+	 * @param {string} location e.g. "prop", "context", "child context"
+	 * @param {string} componentName Name of the component for error messages.
+	 * @param {?Function} getStack Returns the component stack.
+	 * @private
+	 */
+	function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+	  if (true) {
+	    for (var typeSpecName in typeSpecs) {
+	      if (typeSpecs.hasOwnProperty(typeSpecName)) {
+	        var error;
+	        // Prop type validation may throw. In case they do, we don't want to
+	        // fail the render phase where it didn't fail before. So we log it.
+	        // After these have been cleaned up, we'll let them throw.
+	        try {
+	          // This is intentionally an invariant that gets caught. It's the same
+	          // behavior as without this statement except with a better message.
+	          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, typeof typeSpecs[typeSpecName]);
+	          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+	        } catch (ex) {
+	          error = ex;
+	        }
+	        warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
+	        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+	          // Only monitor this failure once because there tends to be a lot of the
+	          // same error.
+	          loggedTypeFailures[error.message] = true;
+	
+	          var stack = getStack ? getStack() : '';
+	
+	          warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	module.exports = checkPropTypes;
+
+
+/***/ }),
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	
-	var _react = __webpack_require__(1);
+	var _propTypes = __webpack_require__(232);
 	
-	exports["default"] = _react.PropTypes.shape({
-	  subscribe: _react.PropTypes.func.isRequired,
-	  dispatch: _react.PropTypes.func.isRequired,
-	  getState: _react.PropTypes.func.isRequired
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	
+	exports["default"] = _propTypes2["default"].shape({
+	  subscribe: _propTypes2["default"].func.isRequired,
+	  dispatch: _propTypes2["default"].func.isRequired,
+	  getState: _propTypes2["default"].func.isRequired
 	});
 
-/***/ },
-/* 233 */
-/***/ function(module, exports) {
+/***/ }),
+/* 237 */
+/***/ (function(module, exports) {
 
 	'use strict';
 	
@@ -25958,44 +26591,46 @@
 	  }
 	  /* eslint-enable no-console */
 	  try {
-	    // This error was thrown as a convenience so that you can use this stack
-	    // to find the callsite that caused this warning to fire.
+	    // This error was thrown as a convenience so that if you enable
+	    // "break on all exceptions" in your console,
+	    // it would pause the execution at this line.
 	    throw new Error(message);
 	    /* eslint-disable no-empty */
 	  } catch (e) {}
 	  /* eslint-enable no-empty */
 	}
 
-/***/ },
-/* 234 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
+	exports.__esModule = true;
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	exports.__esModule = true;
 	exports["default"] = connect;
 	
 	var _react = __webpack_require__(1);
 	
-	var _storeShape = __webpack_require__(232);
+	var _storeShape = __webpack_require__(236);
 	
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 	
-	var _shallowEqual = __webpack_require__(235);
+	var _shallowEqual = __webpack_require__(239);
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
-	var _wrapActionCreators = __webpack_require__(236);
+	var _wrapActionCreators = __webpack_require__(240);
 	
 	var _wrapActionCreators2 = _interopRequireDefault(_wrapActionCreators);
 	
-	var _warning = __webpack_require__(233);
+	var _warning = __webpack_require__(237);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	var _isPlainObject = __webpack_require__(251);
+	var _isPlainObject = __webpack_require__(262);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
@@ -26043,12 +26678,12 @@
 	var nextVersion = 0;
 	
 	function connect(mapStateToProps, mapDispatchToProps, mergeProps) {
-	  var options = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
+	  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 	
 	  var shouldSubscribe = Boolean(mapStateToProps);
 	  var mapState = mapStateToProps || defaultMapStateToProps;
 	
-	  var mapDispatch = undefined;
+	  var mapDispatch = void 0;
 	  if (typeof mapDispatchToProps === 'function') {
 	    mapDispatch = mapDispatchToProps;
 	  } else if (!mapDispatchToProps) {
@@ -26058,10 +26693,10 @@
 	  }
 	
 	  var finalMergeProps = mergeProps || defaultMergeProps;
-	  var _options$pure = options.pure;
-	  var pure = _options$pure === undefined ? true : _options$pure;
-	  var _options$withRef = options.withRef;
-	  var withRef = _options$withRef === undefined ? false : _options$withRef;
+	  var _options$pure = options.pure,
+	      pure = _options$pure === undefined ? true : _options$pure,
+	      _options$withRef = options.withRef,
+	      withRef = _options$withRef === undefined ? false : _options$withRef;
 	
 	  var checkMergedEquals = pure && finalMergeProps !== defaultMergeProps;
 	
@@ -26280,11 +26915,12 @@
 	      };
 	
 	      Connect.prototype.render = function render() {
-	        var haveOwnPropsChanged = this.haveOwnPropsChanged;
-	        var hasStoreStateChanged = this.hasStoreStateChanged;
-	        var haveStatePropsBeenPrecalculated = this.haveStatePropsBeenPrecalculated;
-	        var statePropsPrecalculationError = this.statePropsPrecalculationError;
-	        var renderedElement = this.renderedElement;
+	        var haveOwnPropsChanged = this.haveOwnPropsChanged,
+	            hasStoreStateChanged = this.hasStoreStateChanged,
+	            haveStatePropsBeenPrecalculated = this.haveStatePropsBeenPrecalculated,
+	            statePropsPrecalculationError = this.statePropsPrecalculationError,
+	            renderedElement = this.renderedElement;
+	
 	
 	        this.haveOwnPropsChanged = false;
 	        this.hasStoreStateChanged = false;
@@ -26364,9 +27000,9 @@
 	  };
 	}
 
-/***/ },
-/* 235 */
-/***/ function(module, exports) {
+/***/ }),
+/* 239 */
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -26395,16 +27031,16 @@
 	  return true;
 	}
 
-/***/ },
-/* 236 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	exports["default"] = wrapActionCreators;
 	
-	var _redux = __webpack_require__(237);
+	var _redux = __webpack_require__(241);
 	
 	function wrapActionCreators(actionCreators) {
 	  return function (dispatch) {
@@ -26412,40 +27048,40 @@
 	  };
 	}
 
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 	
-	var _createStore = __webpack_require__(238);
+	var _createStore = __webpack_require__(242);
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(246);
+	var _combineReducers = __webpack_require__(257);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(248);
+	var _bindActionCreators = __webpack_require__(259);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(249);
+	var _applyMiddleware = __webpack_require__(260);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
-	var _compose = __webpack_require__(250);
+	var _compose = __webpack_require__(261);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _warning = __webpack_require__(247);
+	var _warning = __webpack_require__(258);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	/*
 	* This is a dummy function to check if the function name has been altered by minification.
@@ -26454,34 +27090,34 @@
 	function isCrushed() {}
 	
 	if (("development") !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
-	  (0, _warning2["default"])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
+	  (0, _warning2['default'])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
 	}
 	
-	exports.createStore = _createStore2["default"];
-	exports.combineReducers = _combineReducers2["default"];
-	exports.bindActionCreators = _bindActionCreators2["default"];
-	exports.applyMiddleware = _applyMiddleware2["default"];
-	exports.compose = _compose2["default"];
+	exports.createStore = _createStore2['default'];
+	exports.combineReducers = _combineReducers2['default'];
+	exports.bindActionCreators = _bindActionCreators2['default'];
+	exports.applyMiddleware = _applyMiddleware2['default'];
+	exports.compose = _compose2['default'];
 
-/***/ },
-/* 238 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
 	exports.ActionTypes = undefined;
-	exports["default"] = createStore;
+	exports['default'] = createStore;
 	
-	var _isPlainObject = __webpack_require__(239);
+	var _isPlainObject = __webpack_require__(243);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _symbolObservable = __webpack_require__(244);
+	var _symbolObservable = __webpack_require__(253);
 	
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	/**
 	 * These are private action types reserved by Redux.
@@ -26491,39 +27127,38 @@
 	 */
 	var ActionTypes = exports.ActionTypes = {
 	  INIT: '@@redux/INIT'
-	};
 	
-	/**
-	 * Creates a Redux store that holds the state tree.
-	 * The only way to change the data in the store is to call `dispatch()` on it.
-	 *
-	 * There should only be a single store in your app. To specify how different
-	 * parts of the state tree respond to actions, you may combine several reducers
-	 * into a single reducer function by using `combineReducers`.
-	 *
-	 * @param {Function} reducer A function that returns the next state tree, given
-	 * the current state tree and the action to handle.
-	 *
-	 * @param {any} [initialState] The initial state. You may optionally specify it
-	 * to hydrate the state from the server in universal apps, or to restore a
-	 * previously serialized user session.
-	 * If you use `combineReducers` to produce the root reducer function, this must be
-	 * an object with the same shape as `combineReducers` keys.
-	 *
-	 * @param {Function} enhancer The store enhancer. You may optionally specify it
-	 * to enhance the store with third-party capabilities such as middleware,
-	 * time travel, persistence, etc. The only store enhancer that ships with Redux
-	 * is `applyMiddleware()`.
-	 *
-	 * @returns {Store} A Redux store that lets you read the state, dispatch actions
-	 * and subscribe to changes.
-	 */
-	function createStore(reducer, initialState, enhancer) {
+	  /**
+	   * Creates a Redux store that holds the state tree.
+	   * The only way to change the data in the store is to call `dispatch()` on it.
+	   *
+	   * There should only be a single store in your app. To specify how different
+	   * parts of the state tree respond to actions, you may combine several reducers
+	   * into a single reducer function by using `combineReducers`.
+	   *
+	   * @param {Function} reducer A function that returns the next state tree, given
+	   * the current state tree and the action to handle.
+	   *
+	   * @param {any} [preloadedState] The initial state. You may optionally specify it
+	   * to hydrate the state from the server in universal apps, or to restore a
+	   * previously serialized user session.
+	   * If you use `combineReducers` to produce the root reducer function, this must be
+	   * an object with the same shape as `combineReducers` keys.
+	   *
+	   * @param {Function} [enhancer] The store enhancer. You may optionally specify it
+	   * to enhance the store with third-party capabilities such as middleware,
+	   * time travel, persistence, etc. The only store enhancer that ships with Redux
+	   * is `applyMiddleware()`.
+	   *
+	   * @returns {Store} A Redux store that lets you read the state, dispatch actions
+	   * and subscribe to changes.
+	   */
+	};function createStore(reducer, preloadedState, enhancer) {
 	  var _ref2;
 	
-	  if (typeof initialState === 'function' && typeof enhancer === 'undefined') {
-	    enhancer = initialState;
-	    initialState = undefined;
+	  if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
+	    enhancer = preloadedState;
+	    preloadedState = undefined;
 	  }
 	
 	  if (typeof enhancer !== 'undefined') {
@@ -26531,7 +27166,7 @@
 	      throw new Error('Expected the enhancer to be a function.');
 	    }
 	
-	    return enhancer(createStore)(reducer, initialState);
+	    return enhancer(createStore)(reducer, preloadedState);
 	  }
 	
 	  if (typeof reducer !== 'function') {
@@ -26539,7 +27174,7 @@
 	  }
 	
 	  var currentReducer = reducer;
-	  var currentState = initialState;
+	  var currentState = preloadedState;
 	  var currentListeners = [];
 	  var nextListeners = currentListeners;
 	  var isDispatching = false;
@@ -26631,7 +27266,7 @@
 	   * return something else (for example, a Promise you can await).
 	   */
 	  function dispatch(action) {
-	    if (!(0, _isPlainObject2["default"])(action)) {
+	    if (!(0, _isPlainObject2['default'])(action)) {
 	      throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
 	    }
 	
@@ -26652,7 +27287,8 @@
 	
 	    var listeners = currentListeners = nextListeners;
 	    for (var i = 0; i < listeners.length; i++) {
-	      listeners[i]();
+	      var listener = listeners[i];
+	      listener();
 	    }
 	
 	    return action;
@@ -26681,7 +27317,7 @@
 	   * Interoperability point for observable/reactive libraries.
 	   * @returns {observable} A minimal observable of state changes.
 	   * For more information, see the observable proposal:
-	   * https://github.com/zenparsing/es-observable
+	   * https://github.com/tc39/proposal-observable
 	   */
 	  function observable() {
 	    var _ref;
@@ -26696,7 +27332,6 @@
 	       * be used to unsubscribe the observable from the store, and prevent further
 	       * emission of values from the observable.
 	       */
-	
 	      subscribe: function subscribe(observer) {
 	        if (typeof observer !== 'object') {
 	          throw new TypeError('Expected the observer to be an object.');
@@ -26712,7 +27347,7 @@
 	        var unsubscribe = outerSubscribe(observeState);
 	        return { unsubscribe: unsubscribe };
 	      }
-	    }, _ref[_symbolObservable2["default"]] = function () {
+	    }, _ref[_symbolObservable2['default']] = function () {
 	      return this;
 	    }, _ref;
 	  }
@@ -26727,16 +27362,16 @@
 	    subscribe: subscribe,
 	    getState: getState,
 	    replaceReducer: replaceReducer
-	  }, _ref2[_symbolObservable2["default"]] = observable, _ref2;
+	  }, _ref2[_symbolObservable2['default']] = observable, _ref2;
 	}
 
-/***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(240),
-	    isHostObject = __webpack_require__(242),
-	    isObjectLike = __webpack_require__(243);
+	var baseGetTag = __webpack_require__(244),
+	    getPrototype = __webpack_require__(250),
+	    isObjectLike = __webpack_require__(252);
 	
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -26753,13 +27388,6 @@
 	
 	/** Used to infer the `Object` constructor. */
 	var objectCtorString = funcToString.call(Object);
-	
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
 	
 	/**
 	 * Checks if `value` is a plain object, that is, an object created by the
@@ -26790,8 +27418,7 @@
 	 * // => true
 	 */
 	function isPlainObject(value) {
-	  if (!isObjectLike(value) ||
-	      objectToString.call(value) != objectTag || isHostObject(value)) {
+	  if (!isObjectLike(value) || baseGetTag(value) != objectTag) {
 	    return false;
 	  }
 	  var proto = getPrototype(value);
@@ -26799,18 +27426,170 @@
 	    return true;
 	  }
 	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-	  return (typeof Ctor == 'function' &&
-	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+	  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+	    funcToString.call(Ctor) == objectCtorString;
 	}
 	
 	module.exports = isPlainObject;
 
 
-/***/ },
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(241);
+	var Symbol = __webpack_require__(245),
+	    getRawTag = __webpack_require__(248),
+	    objectToString = __webpack_require__(249);
+	
+	/** `Object#toString` result references. */
+	var nullTag = '[object Null]',
+	    undefinedTag = '[object Undefined]';
+	
+	/** Built-in value references. */
+	var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+	
+	/**
+	 * The base implementation of `getTag` without fallbacks for buggy environments.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the `toStringTag`.
+	 */
+	function baseGetTag(value) {
+	  if (value == null) {
+	    return value === undefined ? undefinedTag : nullTag;
+	  }
+	  return (symToStringTag && symToStringTag in Object(value))
+	    ? getRawTag(value)
+	    : objectToString(value);
+	}
+	
+	module.exports = baseGetTag;
+
+
+/***/ }),
+/* 245 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var root = __webpack_require__(246);
+	
+	/** Built-in value references. */
+	var Symbol = root.Symbol;
+	
+	module.exports = Symbol;
+
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var freeGlobal = __webpack_require__(247);
+	
+	/** Detect free variable `self`. */
+	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+	
+	/** Used as a reference to the global object. */
+	var root = freeGlobal || freeSelf || Function('return this')();
+	
+	module.exports = root;
+
+
+/***/ }),
+/* 247 */
+/***/ (function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
+	var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+	
+	module.exports = freeGlobal;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ }),
+/* 248 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var Symbol = __webpack_require__(245);
+	
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var nativeObjectToString = objectProto.toString;
+	
+	/** Built-in value references. */
+	var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+	
+	/**
+	 * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the raw `toStringTag`.
+	 */
+	function getRawTag(value) {
+	  var isOwn = hasOwnProperty.call(value, symToStringTag),
+	      tag = value[symToStringTag];
+	
+	  try {
+	    value[symToStringTag] = undefined;
+	    var unmasked = true;
+	  } catch (e) {}
+	
+	  var result = nativeObjectToString.call(value);
+	  if (unmasked) {
+	    if (isOwn) {
+	      value[symToStringTag] = tag;
+	    } else {
+	      delete value[symToStringTag];
+	    }
+	  }
+	  return result;
+	}
+	
+	module.exports = getRawTag;
+
+
+/***/ }),
+/* 249 */
+/***/ (function(module, exports) {
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+	
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var nativeObjectToString = objectProto.toString;
+	
+	/**
+	 * Converts `value` to a string using `Object.prototype.toString`.
+	 *
+	 * @private
+	 * @param {*} value The value to convert.
+	 * @returns {string} Returns the converted string.
+	 */
+	function objectToString(value) {
+	  return nativeObjectToString.call(value);
+	}
+	
+	module.exports = objectToString;
+
+
+/***/ }),
+/* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var overArg = __webpack_require__(251);
 	
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -26818,9 +27597,9 @@
 	module.exports = getPrototype;
 
 
-/***/ },
-/* 241 */
-/***/ function(module, exports) {
+/***/ }),
+/* 251 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Creates a unary function that invokes `func` with its argument transformed.
@@ -26839,35 +27618,9 @@
 	module.exports = overArg;
 
 
-/***/ },
-/* 242 */
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is a host object in IE < 9.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
-	 */
-	function isHostObject(value) {
-	  // Many host objects are `Object` objects that can coerce to strings
-	  // despite having improperly defined `toString` methods.
-	  var result = false;
-	  if (value != null && typeof value.toString != 'function') {
-	    try {
-	      result = !!(value + '');
-	    } catch (e) {}
-	  }
-	  return result;
-	}
-	
-	module.exports = isHostObject;
-
-
-/***/ },
-/* 243 */
-/***/ function(module, exports) {
+/***/ }),
+/* 252 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Checks if `value` is object-like. A value is object-like if it's not `null`
@@ -26894,39 +27647,90 @@
 	 * // => false
 	 */
 	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
+	  return value != null && typeof value == 'object';
 	}
 	
 	module.exports = isObjectLike;
 
 
-/***/ },
-/* 244 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {/* global window */
+	module.exports = __webpack_require__(254);
+
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _ponyfill = __webpack_require__(256);
+	
+	var _ponyfill2 = _interopRequireDefault(_ponyfill);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var root; /* global window */
+	
+	
+	if (typeof self !== 'undefined') {
+	  root = self;
+	} else if (typeof window !== 'undefined') {
+	  root = window;
+	} else if (typeof global !== 'undefined') {
+	  root = global;
+	} else if (true) {
+	  root = module;
+	} else {
+	  root = Function('return this')();
+	}
+	
+	var result = (0, _ponyfill2['default'])(root);
+	exports['default'] = result;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(255)(module)))
+
+/***/ }),
+/* 255 */
+/***/ (function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports) {
+
 	'use strict';
 	
-	module.exports = __webpack_require__(245)(global || window || this);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ },
-/* 245 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	module.exports = function symbolObservablePonyfill(root) {
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports['default'] = symbolObservablePonyfill;
+	function symbolObservablePonyfill(root) {
 		var result;
-		var Symbol = root.Symbol;
+		var _Symbol = root.Symbol;
 	
-		if (typeof Symbol === 'function') {
-			if (Symbol.observable) {
-				result = Symbol.observable;
+		if (typeof _Symbol === 'function') {
+			if (_Symbol.observable) {
+				result = _Symbol.observable;
 			} else {
-				result = Symbol('observable');
-				Symbol.observable = result;
+				result = _Symbol('observable');
+				_Symbol.observable = result;
 			}
 		} else {
 			result = '@@observable';
@@ -26935,49 +27739,52 @@
 		return result;
 	};
 
-
-/***/ },
-/* 246 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	exports.__esModule = true;
-	exports["default"] = combineReducers;
+	exports['default'] = combineReducers;
 	
-	var _createStore = __webpack_require__(238);
+	var _createStore = __webpack_require__(242);
 	
-	var _isPlainObject = __webpack_require__(239);
+	var _isPlainObject = __webpack_require__(243);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(247);
+	var _warning = __webpack_require__(258);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function getUndefinedStateErrorMessage(key, action) {
 	  var actionType = action && action.type;
 	  var actionName = actionType && '"' + actionType.toString() + '"' || 'an action';
 	
-	  return 'Given action ' + actionName + ', reducer "' + key + '" returned undefined. ' + 'To ignore an action, you must explicitly return the previous state.';
+	  return 'Given action ' + actionName + ', reducer "' + key + '" returned undefined. ' + 'To ignore an action, you must explicitly return the previous state. ' + 'If you want this reducer to hold no value, you can return null instead of undefined.';
 	}
 	
-	function getUnexpectedStateShapeWarningMessage(inputState, reducers, action) {
+	function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
 	  var reducerKeys = Object.keys(reducers);
-	  var argumentName = action && action.type === _createStore.ActionTypes.INIT ? 'initialState argument passed to createStore' : 'previous state received by the reducer';
+	  var argumentName = action && action.type === _createStore.ActionTypes.INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
 	
 	  if (reducerKeys.length === 0) {
 	    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
 	  }
 	
-	  if (!(0, _isPlainObject2["default"])(inputState)) {
+	  if (!(0, _isPlainObject2['default'])(inputState)) {
 	    return 'The ' + argumentName + ' has unexpected type of "' + {}.toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + '". Expected argument to be an object with the following ' + ('keys: "' + reducerKeys.join('", "') + '"');
 	  }
 	
 	  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
-	    return !reducers.hasOwnProperty(key);
+	    return !reducers.hasOwnProperty(key) && !unexpectedKeyCache[key];
+	  });
+	
+	  unexpectedKeys.forEach(function (key) {
+	    unexpectedKeyCache[key] = true;
 	  });
 	
 	  if (unexpectedKeys.length > 0) {
@@ -26985,18 +27792,18 @@
 	  }
 	}
 	
-	function assertReducerSanity(reducers) {
+	function assertReducerShape(reducers) {
 	  Object.keys(reducers).forEach(function (key) {
 	    var reducer = reducers[key];
 	    var initialState = reducer(undefined, { type: _createStore.ActionTypes.INIT });
 	
 	    if (typeof initialState === 'undefined') {
-	      throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined.');
+	      throw new Error('Reducer "' + key + '" returned undefined during initialization. ' + 'If the state passed to the reducer is undefined, you must ' + 'explicitly return the initial state. The initial state may ' + 'not be undefined. If you don\'t want to set a value for this reducer, ' + 'you can use null instead of undefined.');
 	    }
 	
 	    var type = '@@redux/PROBE_UNKNOWN_ACTION_' + Math.random().toString(36).substring(7).split('').join('.');
 	    if (typeof reducer(undefined, { type: type }) === 'undefined') {
-	      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + _createStore.ActionTypes.INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined.');
+	      throw new Error('Reducer "' + key + '" returned undefined when probed with a random type. ' + ('Don\'t try to handle ' + _createStore.ActionTypes.INIT + ' or other actions in "redux/*" ') + 'namespace. They are considered private. Instead, you must return the ' + 'current state for any unknown actions, unless it is undefined, ' + 'in which case you must return the initial state, regardless of the ' + 'action type. The initial state may not be undefined, but can be null.');
 	    }
 	  });
 	}
@@ -27022,60 +27829,72 @@
 	  var finalReducers = {};
 	  for (var i = 0; i < reducerKeys.length; i++) {
 	    var key = reducerKeys[i];
+	
+	    if (true) {
+	      if (typeof reducers[key] === 'undefined') {
+	        (0, _warning2['default'])('No reducer provided for key "' + key + '"');
+	      }
+	    }
+	
 	    if (typeof reducers[key] === 'function') {
 	      finalReducers[key] = reducers[key];
 	    }
 	  }
 	  var finalReducerKeys = Object.keys(finalReducers);
 	
-	  var sanityError;
+	  var unexpectedKeyCache = void 0;
+	  if (true) {
+	    unexpectedKeyCache = {};
+	  }
+	
+	  var shapeAssertionError = void 0;
 	  try {
-	    assertReducerSanity(finalReducers);
+	    assertReducerShape(finalReducers);
 	  } catch (e) {
-	    sanityError = e;
+	    shapeAssertionError = e;
 	  }
 	
 	  return function combination() {
-	    var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	    var action = arguments[1];
 	
-	    if (sanityError) {
-	      throw sanityError;
+	    if (shapeAssertionError) {
+	      throw shapeAssertionError;
 	    }
 	
 	    if (true) {
-	      var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action);
+	      var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action, unexpectedKeyCache);
 	      if (warningMessage) {
-	        (0, _warning2["default"])(warningMessage);
+	        (0, _warning2['default'])(warningMessage);
 	      }
 	    }
 	
 	    var hasChanged = false;
 	    var nextState = {};
-	    for (var i = 0; i < finalReducerKeys.length; i++) {
-	      var key = finalReducerKeys[i];
-	      var reducer = finalReducers[key];
-	      var previousStateForKey = state[key];
+	    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
+	      var _key = finalReducerKeys[_i];
+	      var reducer = finalReducers[_key];
+	      var previousStateForKey = state[_key];
 	      var nextStateForKey = reducer(previousStateForKey, action);
 	      if (typeof nextStateForKey === 'undefined') {
-	        var errorMessage = getUndefinedStateErrorMessage(key, action);
+	        var errorMessage = getUndefinedStateErrorMessage(_key, action);
 	        throw new Error(errorMessage);
 	      }
-	      nextState[key] = nextStateForKey;
+	      nextState[_key] = nextStateForKey;
 	      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
 	    }
 	    return hasChanged ? nextState : state;
 	  };
 	}
 
-/***/ },
-/* 247 */
-/***/ function(module, exports) {
+/***/ }),
+/* 258 */
+/***/ (function(module, exports) {
 
 	'use strict';
 	
 	exports.__esModule = true;
-	exports["default"] = warning;
+	exports['default'] = warning;
 	/**
 	 * Prints a warning in the console if it exists.
 	 *
@@ -27098,14 +27917,14 @@
 	  /* eslint-enable no-empty */
 	}
 
-/***/ },
-/* 248 */
-/***/ function(module, exports) {
+/***/ }),
+/* 259 */
+/***/ (function(module, exports) {
 
 	'use strict';
 	
 	exports.__esModule = true;
-	exports["default"] = bindActionCreators;
+	exports['default'] = bindActionCreators;
 	function bindActionCreator(actionCreator, dispatch) {
 	  return function () {
 	    return dispatch(actionCreator.apply(undefined, arguments));
@@ -27154,9 +27973,9 @@
 	  return boundActionCreators;
 	}
 
-/***/ },
-/* 249 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -27164,13 +27983,13 @@
 	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
-	exports["default"] = applyMiddleware;
+	exports['default'] = applyMiddleware;
 	
-	var _compose = __webpack_require__(250);
+	var _compose = __webpack_require__(261);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	/**
 	 * Creates a store enhancer that applies middleware to the dispatch method
@@ -27194,8 +28013,8 @@
 	  }
 	
 	  return function (createStore) {
-	    return function (reducer, initialState, enhancer) {
-	      var store = createStore(reducer, initialState, enhancer);
+	    return function (reducer, preloadedState, enhancer) {
+	      var store = createStore(reducer, preloadedState, enhancer);
 	      var _dispatch = store.dispatch;
 	      var chain = [];
 	
@@ -27208,7 +28027,7 @@
 	      chain = middlewares.map(function (middleware) {
 	        return middleware(middlewareAPI);
 	      });
-	      _dispatch = _compose2["default"].apply(undefined, chain)(store.dispatch);
+	      _dispatch = _compose2['default'].apply(undefined, chain)(store.dispatch);
 	
 	      return _extends({}, store, {
 	        dispatch: _dispatch
@@ -27217,9 +28036,9 @@
 	  };
 	}
 
-/***/ },
-/* 250 */
-/***/ function(module, exports) {
+/***/ }),
+/* 261 */
+/***/ (function(module, exports) {
 
 	"use strict";
 	
@@ -27245,30 +28064,26 @@
 	    return function (arg) {
 	      return arg;
 	    };
-	  } else {
-	    var _ret = function () {
-	      var last = funcs[funcs.length - 1];
-	      var rest = funcs.slice(0, -1);
-	      return {
-	        v: function v() {
-	          return rest.reduceRight(function (composed, f) {
-	            return f(composed);
-	          }, last.apply(undefined, arguments));
-	        }
-	      };
-	    }();
-	
-	    if (typeof _ret === "object") return _ret.v;
 	  }
+	
+	  if (funcs.length === 1) {
+	    return funcs[0];
+	  }
+	
+	  return funcs.reduce(function (a, b) {
+	    return function () {
+	      return a(b.apply(undefined, arguments));
+	    };
+	  });
 	}
 
-/***/ },
-/* 251 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var getPrototype = __webpack_require__(252),
-	    isHostObject = __webpack_require__(254),
-	    isObjectLike = __webpack_require__(255);
+	var baseGetTag = __webpack_require__(263),
+	    getPrototype = __webpack_require__(269),
+	    isObjectLike = __webpack_require__(271);
 	
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -27285,13 +28100,6 @@
 	
 	/** Used to infer the `Object` constructor. */
 	var objectCtorString = funcToString.call(Object);
-	
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
 	
 	/**
 	 * Checks if `value` is a plain object, that is, an object created by the
@@ -27322,8 +28130,7 @@
 	 * // => true
 	 */
 	function isPlainObject(value) {
-	  if (!isObjectLike(value) ||
-	      objectToString.call(value) != objectTag || isHostObject(value)) {
+	  if (!isObjectLike(value) || baseGetTag(value) != objectTag) {
 	    return false;
 	  }
 	  var proto = getPrototype(value);
@@ -27331,18 +28138,170 @@
 	    return true;
 	  }
 	  var Ctor = hasOwnProperty.call(proto, 'constructor') && proto.constructor;
-	  return (typeof Ctor == 'function' &&
-	    Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString);
+	  return typeof Ctor == 'function' && Ctor instanceof Ctor &&
+	    funcToString.call(Ctor) == objectCtorString;
 	}
 	
 	module.exports = isPlainObject;
 
 
-/***/ },
-/* 252 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 263 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(253);
+	var Symbol = __webpack_require__(264),
+	    getRawTag = __webpack_require__(267),
+	    objectToString = __webpack_require__(268);
+	
+	/** `Object#toString` result references. */
+	var nullTag = '[object Null]',
+	    undefinedTag = '[object Undefined]';
+	
+	/** Built-in value references. */
+	var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+	
+	/**
+	 * The base implementation of `getTag` without fallbacks for buggy environments.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the `toStringTag`.
+	 */
+	function baseGetTag(value) {
+	  if (value == null) {
+	    return value === undefined ? undefinedTag : nullTag;
+	  }
+	  return (symToStringTag && symToStringTag in Object(value))
+	    ? getRawTag(value)
+	    : objectToString(value);
+	}
+	
+	module.exports = baseGetTag;
+
+
+/***/ }),
+/* 264 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var root = __webpack_require__(265);
+	
+	/** Built-in value references. */
+	var Symbol = root.Symbol;
+	
+	module.exports = Symbol;
+
+
+/***/ }),
+/* 265 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var freeGlobal = __webpack_require__(266);
+	
+	/** Detect free variable `self`. */
+	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+	
+	/** Used as a reference to the global object. */
+	var root = freeGlobal || freeSelf || Function('return this')();
+	
+	module.exports = root;
+
+
+/***/ }),
+/* 266 */
+/***/ (function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
+	var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+	
+	module.exports = freeGlobal;
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ }),
+/* 267 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var Symbol = __webpack_require__(264);
+	
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var nativeObjectToString = objectProto.toString;
+	
+	/** Built-in value references. */
+	var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+	
+	/**
+	 * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+	 *
+	 * @private
+	 * @param {*} value The value to query.
+	 * @returns {string} Returns the raw `toStringTag`.
+	 */
+	function getRawTag(value) {
+	  var isOwn = hasOwnProperty.call(value, symToStringTag),
+	      tag = value[symToStringTag];
+	
+	  try {
+	    value[symToStringTag] = undefined;
+	    var unmasked = true;
+	  } catch (e) {}
+	
+	  var result = nativeObjectToString.call(value);
+	  if (unmasked) {
+	    if (isOwn) {
+	      value[symToStringTag] = tag;
+	    } else {
+	      delete value[symToStringTag];
+	    }
+	  }
+	  return result;
+	}
+	
+	module.exports = getRawTag;
+
+
+/***/ }),
+/* 268 */
+/***/ (function(module, exports) {
+
+	/** Used for built-in method references. */
+	var objectProto = Object.prototype;
+	
+	/**
+	 * Used to resolve the
+	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var nativeObjectToString = objectProto.toString;
+	
+	/**
+	 * Converts `value` to a string using `Object.prototype.toString`.
+	 *
+	 * @private
+	 * @param {*} value The value to convert.
+	 * @returns {string} Returns the converted string.
+	 */
+	function objectToString(value) {
+	  return nativeObjectToString.call(value);
+	}
+	
+	module.exports = objectToString;
+
+
+/***/ }),
+/* 269 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var overArg = __webpack_require__(270);
 	
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -27350,9 +28309,9 @@
 	module.exports = getPrototype;
 
 
-/***/ },
-/* 253 */
-/***/ function(module, exports) {
+/***/ }),
+/* 270 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Creates a unary function that invokes `func` with its argument transformed.
@@ -27371,35 +28330,9 @@
 	module.exports = overArg;
 
 
-/***/ },
-/* 254 */
-/***/ function(module, exports) {
-
-	/**
-	 * Checks if `value` is a host object in IE < 9.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
-	 */
-	function isHostObject(value) {
-	  // Many host objects are `Object` objects that can coerce to strings
-	  // despite having improperly defined `toString` methods.
-	  var result = false;
-	  if (value != null && typeof value.toString != 'function') {
-	    try {
-	      result = !!(value + '');
-	    } catch (e) {}
-	  }
-	  return result;
-	}
-	
-	module.exports = isHostObject;
-
-
-/***/ },
-/* 255 */
-/***/ function(module, exports) {
+/***/ }),
+/* 271 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Checks if `value` is object-like. A value is object-like if it's not `null`
@@ -27426,19511 +28359,12 @@
 	 * // => false
 	 */
 	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
+	  return value != null && typeof value == 'object';
 	}
 	
 	module.exports = isObjectLike;
 
 
-/***/ },
-/* 256 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _redux = __webpack_require__(237);
-	
-	var _reactRedux = __webpack_require__(230);
-	
-	var _mainAction = __webpack_require__(257);
-	
-	var mainAction = _interopRequireWildcard(_mainAction);
-	
-	var _Page = __webpack_require__(260);
-	
-	var _Page2 = _interopRequireDefault(_Page);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function mapStateToProps(state) {
-		return {
-			home: state.home
-		};
-	}
-	function mapDispatchToProps(dispatch) {
-		return (0, _redux.bindActionCreators)(mainAction, dispatch);
-	}
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Page2.default);
-
-/***/ },
-/* 257 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _homeAction = __webpack_require__(258);
-	
-	Object.keys(_homeAction).forEach(function (key) {
-	  if (key === "default" || key === "__esModule") return;
-	  Object.defineProperty(exports, key, {
-	    enumerable: true,
-	    get: function get() {
-	      return _homeAction[key];
-	    }
-	  });
-	});
-
-/***/ },
-/* 258 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.sortTitle = sortTitle;
-	exports.sortPrice = sortPrice;
-	
-	var _actionConstant = __webpack_require__(259);
-	
-	var _actionConstant2 = _interopRequireDefault(_actionConstant);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function sortTitle(payload) {
-		return {
-			type: _actionConstant2.default.SORT_TITLE,
-			payload: payload
-		};
-	}
-	function sortPrice(payload) {
-		return {
-			type: _actionConstant2.default.SORT_PRICE,
-			payload: payload
-		};
-	}
-
-/***/ },
-/* 259 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		SORT_TITLE: 'SORT_TITLE',
-		SORT_PRICE: 'SORT_PRICE'
-	};
-
-/***/ },
-/* 260 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	__webpack_require__(261);
-	
-	__webpack_require__(265);
-	
-	__webpack_require__(273);
-	
-	__webpack_require__(275);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Page = function (_React$Component) {
-		_inherits(Page, _React$Component);
-	
-		function Page(props) {
-			_classCallCheck(this, Page);
-	
-			return _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).call(this, props));
-		}
-	
-		_createClass(Page, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'page' },
-					_react2.default.cloneElement(this.props.children, _extends({}, this.props))
-				);
-			}
-		}]);
-	
-		return Page;
-	}(_react2.default.Component);
-	
-	exports.default = Page;
-
-/***/ },
-/* 261 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(262);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./normalize.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./normalize.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 262 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */\n\n/**\n * 1. Change the default font family in all browsers (opinionated).\n * 2. Prevent adjustments of font size after orientation changes in IE and iOS.\n */\n\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */\n}\n\n/**\n * Remove the margin in all browsers (opinionated).\n */\n\nbody {\n  margin: 0;\n}\n\n/* HTML5 display definitions\n   ========================================================================== */\n\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n * 2. Add the correct display in IE.\n */\n\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  /* 1 */\n  display: block;\n}\n\n/**\n * Add the correct display in IE 9-.\n */\n\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n}\n\n/**\n * Add the correct display in iOS 4-7.\n */\n\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n\n/**\n * Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\n\nprogress {\n  vertical-align: baseline;\n}\n\n/**\n * Add the correct display in IE 10-.\n * 1. Add the correct display in IE.\n */\n\ntemplate,\n[hidden] {\n  display: none;\n}\n\n/* Links\n   ========================================================================== */\n\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\n\na {\n  background-color: transparent;\n  /* 1 */\n  -webkit-text-decoration-skip: objects;\n  /* 2 */\n}\n\n/**\n * Remove the outline on focused links when they are also active or hovered\n * in all browsers (opinionated).\n */\n\na:active,\na:hover {\n  outline-width: 0;\n}\n\n/* Text-level semantics\n   ========================================================================== */\n\n/**\n * 1. Remove the bottom border in Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\n\nabbr[title] {\n  border-bottom: none;\n  /* 1 */\n  text-decoration: underline;\n  /* 2 */\n  text-decoration: underline dotted;\n  /* 2 */\n}\n\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\n\nb,\nstrong {\n  font-weight: inherit;\n}\n\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/**\n * Add the correct font style in Android 4.3-.\n */\n\ndfn {\n  font-style: italic;\n}\n\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n\n/**\n * Add the correct background and color in IE 9-.\n */\n\nmark {\n  background-color: #ff0;\n  color: #000;\n}\n\n/**\n * Add the correct font size in all browsers.\n */\n\nsmall {\n  font-size: 80%;\n}\n\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/* Embedded content\n   ========================================================================== */\n\n/**\n * Remove the border on images inside links in IE 10-.\n */\n\nimg {\n  border-style: none;\n}\n\n/**\n * Hide the overflow in IE.\n */\n\nsvg:not(:root) {\n  overflow: hidden;\n}\n\n/* Grouping content\n   ========================================================================== */\n\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\n\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  /* 1 */\n  font-size: 1em;\n  /* 2 */\n}\n\n/**\n * Add the correct margin in IE 8.\n */\n\nfigure {\n  margin: 1em 40px;\n}\n\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\n\nhr {\n  box-sizing: content-box;\n  /* 1 */\n  height: 0;\n  /* 1 */\n  overflow: visible;\n  /* 2 */\n}\n\n/* Forms\n   ========================================================================== */\n\n/**\n * 1. Change font properties to `inherit` in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\n\nbutton,\ninput,\nselect,\ntextarea {\n  font: inherit;\n  /* 1 */\n  margin: 0;\n  /* 2 */\n}\n\n/**\n * Restore the font weight unset by the previous rule.\n */\n\noptgroup {\n  font-weight: bold;\n}\n\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\n\nbutton,\ninput {\n  /* 1 */\n  overflow: visible;\n}\n\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\n\nbutton,\nselect {\n  /* 1 */\n  text-transform: none;\n}\n\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\n\nbutton,\nhtml [type=\"button\"],\n[type=\"reset\"],\n[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n}\n\n/**\n * Remove the inner border and padding in Firefox.\n */\n\nbutton::-moz-focus-inner,\n[type=\"button\"]::-moz-focus-inner,\n[type=\"reset\"]::-moz-focus-inner,\n[type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\n\n/**\n * Restore the focus styles unset by the previous rule.\n */\n\nbutton:-moz-focusring,\n[type=\"button\"]:-moz-focusring,\n[type=\"reset\"]:-moz-focusring,\n[type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n\n/**\n * Change the border, margin, and padding in all browsers (opinionated).\n */\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\n\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\n\nlegend {\n  box-sizing: border-box;\n  /* 1 */\n  color: inherit;\n  /* 2 */\n  display: table;\n  /* 1 */\n  max-width: 100%;\n  /* 1 */\n  padding: 0;\n  /* 3 */\n  white-space: normal;\n  /* 1 */\n}\n\n/**\n * Remove the default vertical scrollbar in IE.\n */\n\ntextarea {\n  overflow: auto;\n}\n\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n\n[type=\"checkbox\"],\n[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */\n}\n\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n\n[type=\"number\"]::-webkit-inner-spin-button,\n[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n\n[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  outline-offset: -2px;\n  /* 2 */\n}\n\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.\n */\n\n[type=\"search\"]::-webkit-search-cancel-button,\n[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/**\n * Correct the text style of placeholders in Chrome, Edge, and Safari.\n */\n\n::-webkit-input-placeholder {\n  color: inherit;\n  opacity: 0.54;\n}\n\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n}\n\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 263 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-	
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-	
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-/* 264 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-	
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-	
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-	
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-	
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-	
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-	
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-	
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-	
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-	
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-	
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-	
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		linkElement.rel = "stylesheet";
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-	
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-	
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-	
-		update(obj);
-	
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-	
-	var replaceText = (function () {
-		var textStore = [];
-	
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-	
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-	
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-	
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-	
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-	
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-	
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var sourceMap = obj.sourceMap;
-	
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-	
-		var blob = new Blob([css], { type: "text/css" });
-	
-		var oldSrc = linkElement.href;
-	
-		linkElement.href = URL.createObjectURL(blob);
-	
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
-
-/***/ },
-/* 265 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(266);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./main.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./main.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 266 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "@font-face {\n  font-family: 'Lato';\n  font-style: normal;\n  font-weight: 300;\n  src: local(\"Lato Light\"), local(\"Lato-Light\"), url(" + __webpack_require__(267) + ") format(\"woff\");\n}\n\n@font-face {\n  font-family: 'Lato';\n  font-style: normal;\n  font-weight: 400;\n  src: local(\"Lato Regular\"), local(\"Lato-Regular\"), url(" + __webpack_require__(268) + ") format(\"woff\");\n}\n\n@font-face {\n  font-family: 'Lato';\n  font-style: normal;\n  font-weight: 700;\n  src: local(\"Lato Bold\"), local(\"Lato-Bold\"), url(" + __webpack_require__(269) + ") format(\"woff\");\n}\n\n@font-face {\n  font-family: 'Lato';\n  font-style: italic;\n  font-weight: 300;\n  src: local(\"Lato Light Italic\"), local(\"Lato-LightItalic\"), url(" + __webpack_require__(270) + ") format(\"woff\");\n}\n\n@font-face {\n  font-family: 'Lato';\n  font-style: italic;\n  font-weight: 400;\n  src: local(\"Lato Italic\"), local(\"Lato-Italic\"), url(" + __webpack_require__(271) + ") format(\"woff\");\n}\n\n@font-face {\n  font-family: 'Lato';\n  font-style: italic;\n  font-weight: 700;\n  src: local(\"Lato Bold Italic\"), local(\"Lato-BoldItalic\"), url(" + __webpack_require__(272) + ") format(\"woff\");\n}\n\n* {\n  margin: 0;\n  padding: 0;\n}\n\nhtml,\nbody {\n  width: 100%;\n  height: 100%;\n}\n\nhtml {\n  font-size: 62.5%;\n  box-sizing: border-box;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: border-box;\n}\n\nbody > * {\n  font-size: 1.4rem;\n  font-family: 'Lato';\n  font-weight: 400;\n}\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-weight: 400;\n}\n\nh1 {\n  font-size: 4.8rem;\n}\n\nh2 {\n  font-size: 3.8rem;\n}\n\nh3 {\n  font-size: 2.8rem;\n}\n\nh4 {\n  font-size: 1.8rem;\n}\n\nh5 {\n  font-size: 1.6rem;\n}\n\nh6 {\n  font-size: 1.4rem;\n}\n\na {\n  cursor: default;\n}\n\nbutton {\n  border: none;\n  outline: none;\n  background: none;\n}\n\n.ib {\n  display: inline-block;\n}\n\n.c {\n  text-align: center;\n}\n\n.r {\n  text-align: right;\n}\n\n.l {\n  text-align: left;\n}\n\n.ma {\n  margin: 0 auto;\n}\n\n.vm {\n  vertical-align: middle;\n}\n\n.pr {\n  position: relative;\n}\n\n.hide {\n  display: none;\n}\n\n.must-hide {\n  display: none !important;\n}\n\n.hidden {\n  visibility: hidden;\n}\n\n.ns {\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n\n.cap {\n  text-transform: capitalize;\n}\n\n.uc {\n  text-transform: uppercase;\n}\n\n.fc::first-letter {\n  text-transform: capitalize;\n}\n\n.clearfix::after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n\n.np {\n  padding: 0;\n}\n\n.sb {\n  font-weight: 400;\n}\n\n.b {\n  font-weight: 500;\n}\n\n.table {\n  display: table;\n}\n\n.tcell {\n  display: table-cell;\n}\n\n.trow {\n  display: table-row;\n}\n\n.mw {\n  width: 100%;\n}\n\n#app {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n\n.page {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n\nbody {\n  background: #E9EAEB;\n}\n\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 267 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/Lato-Light.woff";
-
-/***/ },
-/* 268 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/Lato-Regular.woff";
-
-/***/ },
-/* 269 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/Lato-Bold.woff";
-
-/***/ },
-/* 270 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/Lato-LightItalic.woff";
-
-/***/ },
-/* 271 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/Lato-Italic.woff";
-
-/***/ },
-/* 272 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/Lato-BoldItalic.woff";
-
-/***/ },
-/* 273 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(274);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./responsive.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./responsive.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 274 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".col-15,\n.col-15s,\n.col-15xs {\n  width: 15%;\n}\n\n.col-20,\n.col-20s,\n.col-20xs {\n  width: 20%;\n}\n\n.col-30,\n.col-30s,\n.col-30xs {\n  width: 30%;\n}\n\n.col-33,\n.col-33s,\n.col-33xs {\n  width: 33.33333333%;\n}\n\n.col-35,\n.col-35s,\n.col-35xs {\n  width: 35%;\n}\n\n.col-40,\n.col-40s,\n.col-40xs {\n  width: 40%;\n}\n\n.col-45,\n.col-45s,\n.col-45xs {\n  width: 45%;\n}\n\n.col-50,\n.col-50s,\n.col-50xs {\n  width: 50%;\n}\n\n.col-55,\n.col-55s,\n.col-55xs {\n  width: 55%;\n}\n\n.col-60,\n.col-60s,\n.col-60xs {\n  width: 60%;\n}\n\n.col-65,\n.col-65s,\n.col-65xs {\n  width: 65%;\n}\n\n.col-70,\n.col-70s,\n.col-70xs {\n  width: 70%;\n}\n\n.col-80,\n.col-80s,\n.col-80xs {\n  width: 80%;\n}\n\n.col-85,\n.col-85s,\n.col-85xs {\n  width: 85%;\n}\n\n.col-15,\n.col-20,\n.col-30,\n.col-33,\n.col-35,\n.col-40,\n.col-45,\n.col-50,\n.col-55,\n.col-60,\n.col-65,\n.col-70,\n.col-80,\n.col-85,\n.col-15s,\n.col-20s,\n.col-30s,\n.col-33s,\n.col-35s,\n.col-40s,\n.col-45s,\n.col-50s,\n.col-55s,\n.col-60s,\n.col-65s,\n.col-70s,\n.col-80s,\n.col-85s,\n.col-15xs,\n.col-20xs,\n.col-30xs,\n.col-33xs,\n.col-35xs,\n.col-40xs,\n.col-45xs,\n.col-50xs,\n.col-55xs,\n.col-60xs,\n.col-65xs,\n.col-70xs,\n.col-80xs,\n.col-85xs {\n  vertical-align: top;\n  display: inline-block;\n}\n\n/* Mobile Phones */\n\n@media screen and (max-width: 360px) {\n  .irow {\n    width: 100% !important;\n    text-align: center;\n    padding: 0 !important;\n  }\n\n  .col,\n  .col-s,\n  .col-xs,\n  .col-15,\n  .col-20,\n  .col-30,\n  .col-33,\n  .col-35,\n  .col-40,\n  .col-45,\n  .col-50,\n  .col-55,\n  .col-60,\n  .col-65,\n  .col-70,\n  .col-80,\n  .col-85,\n  .col-15s,\n  .col-20s,\n  .col-30s,\n  .col-33s,\n  .col-35s,\n  .col-40s,\n  .col-45s,\n  .col-50s,\n  .col-55s,\n  .col-60s,\n  .col-65s,\n  .col-70s,\n  .col-80s,\n  .col-85s,\n  .col-15xs,\n  .col-20xs,\n  .col-30xs,\n  .col-33xs,\n  .col-35xs,\n  .col-40xs,\n  .col-45xs,\n  .col-50xs,\n  .col-55xs,\n  .col-60xs,\n  .col-65xs,\n  .col-70xs,\n  .col-80xs,\n  .col-85xs {\n    width: 100% !important;\n    text-align: center !important;\n    float: none !important;\n    margin-right: 0 !important;\n    margin-left: 0 !important;\n  }\n\n  .force-align {\n    text-align: inherit !important;\n  }\n}\n\n/* Mobile Phones */\n\n@media screen and (max-width: 480px) {\n  .irow {\n    width: 100% !important;\n    text-align: center;\n    padding: 0 !important;\n    margin-right: auto;\n    margin-left: auto;\n  }\n\n  .col,\n  .col-s,\n  .col-xs,\n  .col-15,\n  .col-20,\n  .col-30,\n  .col-33,\n  .col-35,\n  .col-40,\n  .col-45,\n  .col-50,\n  .col-55,\n  .col-60,\n  .col-65,\n  .col-70,\n  .col-80,\n  .col-85,\n  .col-15s,\n  .col-20s,\n  .col-30s,\n  .col-33s,\n  .col-35s,\n  .col-40s,\n  .col-45s,\n  .col-50s,\n  .col-55s,\n  .col-60s,\n  .col-65s,\n  .col-70s,\n  .col-80s,\n  .col-85s,\n  .col-15xs,\n  .col-20xs,\n  .col-30xs,\n  .col-33xs,\n  .col-35xs,\n  .col-40xs,\n  .col-45xs,\n  .col-50xs,\n  .col-55xs,\n  .col-60xs,\n  .col-65xs,\n  .col-70xs,\n  .col-80xs,\n  .col-85xs {\n    width: 100% !important;\n    text-align: center !important;\n    float: none !important;\n    margin-right: 0 !important;\n    margin-left: 0 !important;\n  }\n\n  .force-align {\n    text-align: inherit !important;\n  }\n}\n\n/* Mobile Phones */\n\n@media screen and (max-width: 640px) {\n  .irow {\n    width: 100% !important;\n    text-align: center;\n    padding: 0 !important;\n    margin-right: auto;\n    margin-left: auto;\n  }\n\n  .col,\n  .col-s,\n  .col-xs,\n  .col-15,\n  .col-20,\n  .col-30,\n  .col-33,\n  .col-35,\n  .col-40,\n  .col-45,\n  .col-50,\n  .col-55,\n  .col-60,\n  .col-65,\n  .col-70,\n  .col-80,\n  .col-85,\n  .col-15s,\n  .col-20s,\n  .col-30s,\n  .col-33s,\n  .col-35s,\n  .col-40s,\n  .col-45s,\n  .col-50s,\n  .col-55s,\n  .col-60s,\n  .col-65s,\n  .col-70s,\n  .col-80s,\n  .col-85s,\n  .col-15xs,\n  .col-20xs,\n  .col-30xs,\n  .col-33xs,\n  .col-35xs,\n  .col-40xs,\n  .col-45xs,\n  .col-50xs,\n  .col-55xs,\n  .col-60xs,\n  .col-65xs,\n  .col-70xs,\n  .col-80xs,\n  .col-85xs {\n    width: 100% !important;\n    text-align: center !important;\n    float: none !important;\n    margin-right: 0 !important;\n    margin-left: 0 !important;\n  }\n\n  .force-align {\n    text-align: inherit !important;\n  }\n}\n\n/* Tablets Portrait or Landscape */\n\n@media screen and (max-width: 768px) {\n  .irow {\n    width: 100% !important;\n    text-align: center;\n    padding: 0 !important;\n    margin-right: auto;\n    margin-left: auto;\n  }\n\n  .col-s,\n  .col-xs,\n  .col-15s,\n  .col-20s,\n  .col-30s,\n  .col-33s,\n  .col-35s,\n  .col-40s,\n  .col-45s,\n  .col-50s,\n  .col-55s,\n  .col-60s,\n  .col-65s,\n  .col-70s,\n  .col-80s,\n  .col-85s,\n  .col-15xs,\n  .col-20xs,\n  .col-30xs,\n  .col-33xs,\n  .col-35xs,\n  .col-40xs,\n  .col-45xs,\n  .col-50xs,\n  .col-55xs,\n  .col-60xs,\n  .col-65xs,\n  .col-70xs,\n  .col-80xs,\n  .col-85xs {\n    width: 100% !important;\n    text-align: center !important;\n    float: none !important;\n    margin-right: 0 !important;\n    margin-left: 0 !important;\n  }\n\n  .force-align {\n    text-align: inherit !important;\n  }\n}\n\n/* Tablets Portrait or Landscape */\n\n@media screen and (max-width: 1028px) {\n  .irow {\n    width: 100% !important;\n    text-align: center;\n    padding: 0 !important;\n    margin-right: auto;\n    margin-left: auto;\n  }\n\n  .col-s,\n  .col-xs,\n  .col-15s,\n  .col-20s,\n  .col-30s,\n  .col-33s,\n  .col-35s,\n  .col-40s,\n  .col-45s,\n  .col-50s,\n  .col-55s,\n  .col-60s,\n  .col-65s,\n  .col-70s,\n  .col-80s,\n  .col-85s,\n  .col-15xs,\n  .col-20xs,\n  .col-30xs,\n  .col-33xs,\n  .col-35xs,\n  .col-40xs,\n  .col-45xs,\n  .col-50xs,\n  .col-55xs,\n  .col-60xs,\n  .col-65xs,\n  .col-70xs,\n  .col-80xs,\n  .col-85xs {\n    width: 100% !important;\n    text-align: center !important;\n    float: none !important;\n    margin-right: 0 !important;\n    margin-left: 0 !important;\n  }\n\n  .force-align {\n    text-align: inherit !important;\n  }\n}\n\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 275 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(276);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/resolve-url-loader/index.js!./fontAwesome.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/resolve-url-loader/index.js!./fontAwesome.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 276 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "/*!\n *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome\n *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)\n */\n\n/* FONT PATH\n * -------------------------- */\n\n@font-face {\n  font-family: 'FontAwesome';\n  src: url(" + __webpack_require__(277) + ");\n  src: url(" + __webpack_require__(277) + ") format('embedded-opentype'), url(" + __webpack_require__(278) + ") format('woff2'), url(" + __webpack_require__(279) + ") format('woff'), url(" + __webpack_require__(280) + ") format('truetype'), url(" + __webpack_require__(281) + ") format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n.fa {\n  display: inline-block;\n  font: normal normal normal 14px/1 FontAwesome;\n  font-size: inherit;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n/* makes the font 33% larger relative to the icon container */\n\n.fa-lg {\n  font-size: 1.33333333em;\n  line-height: 0.75em;\n  vertical-align: -15%;\n}\n\n.fa-2x {\n  font-size: 2em;\n}\n\n.fa-3x {\n  font-size: 3em;\n}\n\n.fa-4x {\n  font-size: 4em;\n}\n\n.fa-5x {\n  font-size: 5em;\n}\n\n.fa-fw {\n  width: 1.28571429em;\n  text-align: center;\n}\n\n.fa-ul {\n  padding-left: 0;\n  margin-left: 2.14285714em;\n  list-style-type: none;\n}\n\n.fa-ul > li {\n  position: relative;\n}\n\n.fa-li {\n  position: absolute;\n  left: -2.14285714em;\n  width: 2.14285714em;\n  top: 0.14285714em;\n  text-align: center;\n}\n\n.fa-li.fa-lg {\n  left: -1.85714286em;\n}\n\n.fa-border {\n  padding: .2em .25em .15em;\n  border: solid 0.08em #eee;\n  border-radius: .1em;\n}\n\n.fa-pull-left {\n  float: left;\n}\n\n.fa-pull-right {\n  float: right;\n}\n\n.fa.fa-pull-left {\n  margin-right: .3em;\n}\n\n.fa.fa-pull-right {\n  margin-left: .3em;\n}\n\n/* Deprecated as of 4.4.0 */\n\n.pull-right {\n  float: right;\n}\n\n.pull-left {\n  float: left;\n}\n\n.fa.pull-left {\n  margin-right: .3em;\n}\n\n.fa.pull-right {\n  margin-left: .3em;\n}\n\n.fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n  animation: fa-spin 2s infinite linear;\n}\n\n.fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n  animation: fa-spin 1s infinite steps(8);\n}\n\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n\n  100% {\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg);\n  }\n}\n\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n\n  100% {\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg);\n  }\n}\n\n.fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  transform: rotate(90deg);\n}\n\n.fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n  -ms-transform: rotate(180deg);\n  transform: rotate(180deg);\n}\n\n.fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n  -ms-transform: rotate(270deg);\n  transform: rotate(270deg);\n}\n\n.fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n  -ms-transform: scale(-1, 1);\n  transform: scale(-1, 1);\n}\n\n.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n  -ms-transform: scale(1, -1);\n  transform: scale(1, -1);\n}\n\n:root .fa-rotate-90,\n:root .fa-rotate-180,\n:root .fa-rotate-270,\n:root .fa-flip-horizontal,\n:root .fa-flip-vertical {\n  filter: none;\n}\n\n.fa-stack {\n  position: relative;\n  display: inline-block;\n  width: 2em;\n  height: 2em;\n  line-height: 2em;\n  vertical-align: middle;\n}\n\n.fa-stack-1x,\n.fa-stack-2x {\n  position: absolute;\n  left: 0;\n  width: 100%;\n  text-align: center;\n}\n\n.fa-stack-1x {\n  line-height: inherit;\n}\n\n.fa-stack-2x {\n  font-size: 2em;\n}\n\n.fa-inverse {\n  color: #fff;\n}\n\n/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen\n   readers do not read off random characters that represent icons */\n\n.fa-glass:before {\n  content: \"\\F000\";\n}\n\n.fa-music:before {\n  content: \"\\F001\";\n}\n\n.fa-search:before {\n  content: \"\\F002\";\n}\n\n.fa-envelope-o:before {\n  content: \"\\F003\";\n}\n\n.fa-heart:before {\n  content: \"\\F004\";\n}\n\n.fa-star:before {\n  content: \"\\F005\";\n}\n\n.fa-star-o:before {\n  content: \"\\F006\";\n}\n\n.fa-user:before {\n  content: \"\\F007\";\n}\n\n.fa-film:before {\n  content: \"\\F008\";\n}\n\n.fa-th-large:before {\n  content: \"\\F009\";\n}\n\n.fa-th:before {\n  content: \"\\F00A\";\n}\n\n.fa-th-list:before {\n  content: \"\\F00B\";\n}\n\n.fa-check:before {\n  content: \"\\F00C\";\n}\n\n.fa-remove:before,\n.fa-close:before,\n.fa-times:before {\n  content: \"\\F00D\";\n}\n\n.fa-search-plus:before {\n  content: \"\\F00E\";\n}\n\n.fa-search-minus:before {\n  content: \"\\F010\";\n}\n\n.fa-power-off:before {\n  content: \"\\F011\";\n}\n\n.fa-signal:before {\n  content: \"\\F012\";\n}\n\n.fa-gear:before,\n.fa-cog:before {\n  content: \"\\F013\";\n}\n\n.fa-trash-o:before {\n  content: \"\\F014\";\n}\n\n.fa-home:before {\n  content: \"\\F015\";\n}\n\n.fa-file-o:before {\n  content: \"\\F016\";\n}\n\n.fa-clock-o:before {\n  content: \"\\F017\";\n}\n\n.fa-road:before {\n  content: \"\\F018\";\n}\n\n.fa-download:before {\n  content: \"\\F019\";\n}\n\n.fa-arrow-circle-o-down:before {\n  content: \"\\F01A\";\n}\n\n.fa-arrow-circle-o-up:before {\n  content: \"\\F01B\";\n}\n\n.fa-inbox:before {\n  content: \"\\F01C\";\n}\n\n.fa-play-circle-o:before {\n  content: \"\\F01D\";\n}\n\n.fa-rotate-right:before,\n.fa-repeat:before {\n  content: \"\\F01E\";\n}\n\n.fa-refresh:before {\n  content: \"\\F021\";\n}\n\n.fa-list-alt:before {\n  content: \"\\F022\";\n}\n\n.fa-lock:before {\n  content: \"\\F023\";\n}\n\n.fa-flag:before {\n  content: \"\\F024\";\n}\n\n.fa-headphones:before {\n  content: \"\\F025\";\n}\n\n.fa-volume-off:before {\n  content: \"\\F026\";\n}\n\n.fa-volume-down:before {\n  content: \"\\F027\";\n}\n\n.fa-volume-up:before {\n  content: \"\\F028\";\n}\n\n.fa-qrcode:before {\n  content: \"\\F029\";\n}\n\n.fa-barcode:before {\n  content: \"\\F02A\";\n}\n\n.fa-tag:before {\n  content: \"\\F02B\";\n}\n\n.fa-tags:before {\n  content: \"\\F02C\";\n}\n\n.fa-book:before {\n  content: \"\\F02D\";\n}\n\n.fa-bookmark:before {\n  content: \"\\F02E\";\n}\n\n.fa-print:before {\n  content: \"\\F02F\";\n}\n\n.fa-camera:before {\n  content: \"\\F030\";\n}\n\n.fa-font:before {\n  content: \"\\F031\";\n}\n\n.fa-bold:before {\n  content: \"\\F032\";\n}\n\n.fa-italic:before {\n  content: \"\\F033\";\n}\n\n.fa-text-height:before {\n  content: \"\\F034\";\n}\n\n.fa-text-width:before {\n  content: \"\\F035\";\n}\n\n.fa-align-left:before {\n  content: \"\\F036\";\n}\n\n.fa-align-center:before {\n  content: \"\\F037\";\n}\n\n.fa-align-right:before {\n  content: \"\\F038\";\n}\n\n.fa-align-justify:before {\n  content: \"\\F039\";\n}\n\n.fa-list:before {\n  content: \"\\F03A\";\n}\n\n.fa-dedent:before,\n.fa-outdent:before {\n  content: \"\\F03B\";\n}\n\n.fa-indent:before {\n  content: \"\\F03C\";\n}\n\n.fa-video-camera:before {\n  content: \"\\F03D\";\n}\n\n.fa-photo:before,\n.fa-image:before,\n.fa-picture-o:before {\n  content: \"\\F03E\";\n}\n\n.fa-pencil:before {\n  content: \"\\F040\";\n}\n\n.fa-map-marker:before {\n  content: \"\\F041\";\n}\n\n.fa-adjust:before {\n  content: \"\\F042\";\n}\n\n.fa-tint:before {\n  content: \"\\F043\";\n}\n\n.fa-edit:before,\n.fa-pencil-square-o:before {\n  content: \"\\F044\";\n}\n\n.fa-share-square-o:before {\n  content: \"\\F045\";\n}\n\n.fa-check-square-o:before {\n  content: \"\\F046\";\n}\n\n.fa-arrows:before {\n  content: \"\\F047\";\n}\n\n.fa-step-backward:before {\n  content: \"\\F048\";\n}\n\n.fa-fast-backward:before {\n  content: \"\\F049\";\n}\n\n.fa-backward:before {\n  content: \"\\F04A\";\n}\n\n.fa-play:before {\n  content: \"\\F04B\";\n}\n\n.fa-pause:before {\n  content: \"\\F04C\";\n}\n\n.fa-stop:before {\n  content: \"\\F04D\";\n}\n\n.fa-forward:before {\n  content: \"\\F04E\";\n}\n\n.fa-fast-forward:before {\n  content: \"\\F050\";\n}\n\n.fa-step-forward:before {\n  content: \"\\F051\";\n}\n\n.fa-eject:before {\n  content: \"\\F052\";\n}\n\n.fa-chevron-left:before {\n  content: \"\\F053\";\n}\n\n.fa-chevron-right:before {\n  content: \"\\F054\";\n}\n\n.fa-plus-circle:before {\n  content: \"\\F055\";\n}\n\n.fa-minus-circle:before {\n  content: \"\\F056\";\n}\n\n.fa-times-circle:before {\n  content: \"\\F057\";\n}\n\n.fa-check-circle:before {\n  content: \"\\F058\";\n}\n\n.fa-question-circle:before {\n  content: \"\\F059\";\n}\n\n.fa-info-circle:before {\n  content: \"\\F05A\";\n}\n\n.fa-crosshairs:before {\n  content: \"\\F05B\";\n}\n\n.fa-times-circle-o:before {\n  content: \"\\F05C\";\n}\n\n.fa-check-circle-o:before {\n  content: \"\\F05D\";\n}\n\n.fa-ban:before {\n  content: \"\\F05E\";\n}\n\n.fa-arrow-left:before {\n  content: \"\\F060\";\n}\n\n.fa-arrow-right:before {\n  content: \"\\F061\";\n}\n\n.fa-arrow-up:before {\n  content: \"\\F062\";\n}\n\n.fa-arrow-down:before {\n  content: \"\\F063\";\n}\n\n.fa-mail-forward:before,\n.fa-share:before {\n  content: \"\\F064\";\n}\n\n.fa-expand:before {\n  content: \"\\F065\";\n}\n\n.fa-compress:before {\n  content: \"\\F066\";\n}\n\n.fa-plus:before {\n  content: \"\\F067\";\n}\n\n.fa-minus:before {\n  content: \"\\F068\";\n}\n\n.fa-asterisk:before {\n  content: \"\\F069\";\n}\n\n.fa-exclamation-circle:before {\n  content: \"\\F06A\";\n}\n\n.fa-gift:before {\n  content: \"\\F06B\";\n}\n\n.fa-leaf:before {\n  content: \"\\F06C\";\n}\n\n.fa-fire:before {\n  content: \"\\F06D\";\n}\n\n.fa-eye:before {\n  content: \"\\F06E\";\n}\n\n.fa-eye-slash:before {\n  content: \"\\F070\";\n}\n\n.fa-warning:before,\n.fa-exclamation-triangle:before {\n  content: \"\\F071\";\n}\n\n.fa-plane:before {\n  content: \"\\F072\";\n}\n\n.fa-calendar:before {\n  content: \"\\F073\";\n}\n\n.fa-random:before {\n  content: \"\\F074\";\n}\n\n.fa-comment:before {\n  content: \"\\F075\";\n}\n\n.fa-magnet:before {\n  content: \"\\F076\";\n}\n\n.fa-chevron-up:before {\n  content: \"\\F077\";\n}\n\n.fa-chevron-down:before {\n  content: \"\\F078\";\n}\n\n.fa-retweet:before {\n  content: \"\\F079\";\n}\n\n.fa-shopping-cart:before {\n  content: \"\\F07A\";\n}\n\n.fa-folder:before {\n  content: \"\\F07B\";\n}\n\n.fa-folder-open:before {\n  content: \"\\F07C\";\n}\n\n.fa-arrows-v:before {\n  content: \"\\F07D\";\n}\n\n.fa-arrows-h:before {\n  content: \"\\F07E\";\n}\n\n.fa-bar-chart-o:before,\n.fa-bar-chart:before {\n  content: \"\\F080\";\n}\n\n.fa-twitter-square:before {\n  content: \"\\F081\";\n}\n\n.fa-facebook-square:before {\n  content: \"\\F082\";\n}\n\n.fa-camera-retro:before {\n  content: \"\\F083\";\n}\n\n.fa-key:before {\n  content: \"\\F084\";\n}\n\n.fa-gears:before,\n.fa-cogs:before {\n  content: \"\\F085\";\n}\n\n.fa-comments:before {\n  content: \"\\F086\";\n}\n\n.fa-thumbs-o-up:before {\n  content: \"\\F087\";\n}\n\n.fa-thumbs-o-down:before {\n  content: \"\\F088\";\n}\n\n.fa-star-half:before {\n  content: \"\\F089\";\n}\n\n.fa-heart-o:before {\n  content: \"\\F08A\";\n}\n\n.fa-sign-out:before {\n  content: \"\\F08B\";\n}\n\n.fa-linkedin-square:before {\n  content: \"\\F08C\";\n}\n\n.fa-thumb-tack:before {\n  content: \"\\F08D\";\n}\n\n.fa-external-link:before {\n  content: \"\\F08E\";\n}\n\n.fa-sign-in:before {\n  content: \"\\F090\";\n}\n\n.fa-trophy:before {\n  content: \"\\F091\";\n}\n\n.fa-github-square:before {\n  content: \"\\F092\";\n}\n\n.fa-upload:before {\n  content: \"\\F093\";\n}\n\n.fa-lemon-o:before {\n  content: \"\\F094\";\n}\n\n.fa-phone:before {\n  content: \"\\F095\";\n}\n\n.fa-square-o:before {\n  content: \"\\F096\";\n}\n\n.fa-bookmark-o:before {\n  content: \"\\F097\";\n}\n\n.fa-phone-square:before {\n  content: \"\\F098\";\n}\n\n.fa-twitter:before {\n  content: \"\\F099\";\n}\n\n.fa-facebook-f:before,\n.fa-facebook:before {\n  content: \"\\F09A\";\n}\n\n.fa-github:before {\n  content: \"\\F09B\";\n}\n\n.fa-unlock:before {\n  content: \"\\F09C\";\n}\n\n.fa-credit-card:before {\n  content: \"\\F09D\";\n}\n\n.fa-feed:before,\n.fa-rss:before {\n  content: \"\\F09E\";\n}\n\n.fa-hdd-o:before {\n  content: \"\\F0A0\";\n}\n\n.fa-bullhorn:before {\n  content: \"\\F0A1\";\n}\n\n.fa-bell:before {\n  content: \"\\F0F3\";\n}\n\n.fa-certificate:before {\n  content: \"\\F0A3\";\n}\n\n.fa-hand-o-right:before {\n  content: \"\\F0A4\";\n}\n\n.fa-hand-o-left:before {\n  content: \"\\F0A5\";\n}\n\n.fa-hand-o-up:before {\n  content: \"\\F0A6\";\n}\n\n.fa-hand-o-down:before {\n  content: \"\\F0A7\";\n}\n\n.fa-arrow-circle-left:before {\n  content: \"\\F0A8\";\n}\n\n.fa-arrow-circle-right:before {\n  content: \"\\F0A9\";\n}\n\n.fa-arrow-circle-up:before {\n  content: \"\\F0AA\";\n}\n\n.fa-arrow-circle-down:before {\n  content: \"\\F0AB\";\n}\n\n.fa-globe:before {\n  content: \"\\F0AC\";\n}\n\n.fa-wrench:before {\n  content: \"\\F0AD\";\n}\n\n.fa-tasks:before {\n  content: \"\\F0AE\";\n}\n\n.fa-filter:before {\n  content: \"\\F0B0\";\n}\n\n.fa-briefcase:before {\n  content: \"\\F0B1\";\n}\n\n.fa-arrows-alt:before {\n  content: \"\\F0B2\";\n}\n\n.fa-group:before,\n.fa-users:before {\n  content: \"\\F0C0\";\n}\n\n.fa-chain:before,\n.fa-link:before {\n  content: \"\\F0C1\";\n}\n\n.fa-cloud:before {\n  content: \"\\F0C2\";\n}\n\n.fa-flask:before {\n  content: \"\\F0C3\";\n}\n\n.fa-cut:before,\n.fa-scissors:before {\n  content: \"\\F0C4\";\n}\n\n.fa-copy:before,\n.fa-files-o:before {\n  content: \"\\F0C5\";\n}\n\n.fa-paperclip:before {\n  content: \"\\F0C6\";\n}\n\n.fa-save:before,\n.fa-floppy-o:before {\n  content: \"\\F0C7\";\n}\n\n.fa-square:before {\n  content: \"\\F0C8\";\n}\n\n.fa-navicon:before,\n.fa-reorder:before,\n.fa-bars:before {\n  content: \"\\F0C9\";\n}\n\n.fa-list-ul:before {\n  content: \"\\F0CA\";\n}\n\n.fa-list-ol:before {\n  content: \"\\F0CB\";\n}\n\n.fa-strikethrough:before {\n  content: \"\\F0CC\";\n}\n\n.fa-underline:before {\n  content: \"\\F0CD\";\n}\n\n.fa-table:before {\n  content: \"\\F0CE\";\n}\n\n.fa-magic:before {\n  content: \"\\F0D0\";\n}\n\n.fa-truck:before {\n  content: \"\\F0D1\";\n}\n\n.fa-pinterest:before {\n  content: \"\\F0D2\";\n}\n\n.fa-pinterest-square:before {\n  content: \"\\F0D3\";\n}\n\n.fa-google-plus-square:before {\n  content: \"\\F0D4\";\n}\n\n.fa-google-plus:before {\n  content: \"\\F0D5\";\n}\n\n.fa-money:before {\n  content: \"\\F0D6\";\n}\n\n.fa-caret-down:before {\n  content: \"\\F0D7\";\n}\n\n.fa-caret-up:before {\n  content: \"\\F0D8\";\n}\n\n.fa-caret-left:before {\n  content: \"\\F0D9\";\n}\n\n.fa-caret-right:before {\n  content: \"\\F0DA\";\n}\n\n.fa-columns:before {\n  content: \"\\F0DB\";\n}\n\n.fa-unsorted:before,\n.fa-sort:before {\n  content: \"\\F0DC\";\n}\n\n.fa-sort-down:before,\n.fa-sort-desc:before {\n  content: \"\\F0DD\";\n}\n\n.fa-sort-up:before,\n.fa-sort-asc:before {\n  content: \"\\F0DE\";\n}\n\n.fa-envelope:before {\n  content: \"\\F0E0\";\n}\n\n.fa-linkedin:before {\n  content: \"\\F0E1\";\n}\n\n.fa-rotate-left:before,\n.fa-undo:before {\n  content: \"\\F0E2\";\n}\n\n.fa-legal:before,\n.fa-gavel:before {\n  content: \"\\F0E3\";\n}\n\n.fa-dashboard:before,\n.fa-tachometer:before {\n  content: \"\\F0E4\";\n}\n\n.fa-comment-o:before {\n  content: \"\\F0E5\";\n}\n\n.fa-comments-o:before {\n  content: \"\\F0E6\";\n}\n\n.fa-flash:before,\n.fa-bolt:before {\n  content: \"\\F0E7\";\n}\n\n.fa-sitemap:before {\n  content: \"\\F0E8\";\n}\n\n.fa-umbrella:before {\n  content: \"\\F0E9\";\n}\n\n.fa-paste:before,\n.fa-clipboard:before {\n  content: \"\\F0EA\";\n}\n\n.fa-lightbulb-o:before {\n  content: \"\\F0EB\";\n}\n\n.fa-exchange:before {\n  content: \"\\F0EC\";\n}\n\n.fa-cloud-download:before {\n  content: \"\\F0ED\";\n}\n\n.fa-cloud-upload:before {\n  content: \"\\F0EE\";\n}\n\n.fa-user-md:before {\n  content: \"\\F0F0\";\n}\n\n.fa-stethoscope:before {\n  content: \"\\F0F1\";\n}\n\n.fa-suitcase:before {\n  content: \"\\F0F2\";\n}\n\n.fa-bell-o:before {\n  content: \"\\F0A2\";\n}\n\n.fa-coffee:before {\n  content: \"\\F0F4\";\n}\n\n.fa-cutlery:before {\n  content: \"\\F0F5\";\n}\n\n.fa-file-text-o:before {\n  content: \"\\F0F6\";\n}\n\n.fa-building-o:before {\n  content: \"\\F0F7\";\n}\n\n.fa-hospital-o:before {\n  content: \"\\F0F8\";\n}\n\n.fa-ambulance:before {\n  content: \"\\F0F9\";\n}\n\n.fa-medkit:before {\n  content: \"\\F0FA\";\n}\n\n.fa-fighter-jet:before {\n  content: \"\\F0FB\";\n}\n\n.fa-beer:before {\n  content: \"\\F0FC\";\n}\n\n.fa-h-square:before {\n  content: \"\\F0FD\";\n}\n\n.fa-plus-square:before {\n  content: \"\\F0FE\";\n}\n\n.fa-angle-double-left:before {\n  content: \"\\F100\";\n}\n\n.fa-angle-double-right:before {\n  content: \"\\F101\";\n}\n\n.fa-angle-double-up:before {\n  content: \"\\F102\";\n}\n\n.fa-angle-double-down:before {\n  content: \"\\F103\";\n}\n\n.fa-angle-left:before {\n  content: \"\\F104\";\n}\n\n.fa-angle-right:before {\n  content: \"\\F105\";\n}\n\n.fa-angle-up:before {\n  content: \"\\F106\";\n}\n\n.fa-angle-down:before {\n  content: \"\\F107\";\n}\n\n.fa-desktop:before {\n  content: \"\\F108\";\n}\n\n.fa-laptop:before {\n  content: \"\\F109\";\n}\n\n.fa-tablet:before {\n  content: \"\\F10A\";\n}\n\n.fa-mobile-phone:before,\n.fa-mobile:before {\n  content: \"\\F10B\";\n}\n\n.fa-circle-o:before {\n  content: \"\\F10C\";\n}\n\n.fa-quote-left:before {\n  content: \"\\F10D\";\n}\n\n.fa-quote-right:before {\n  content: \"\\F10E\";\n}\n\n.fa-spinner:before {\n  content: \"\\F110\";\n}\n\n.fa-circle:before {\n  content: \"\\F111\";\n}\n\n.fa-mail-reply:before,\n.fa-reply:before {\n  content: \"\\F112\";\n}\n\n.fa-github-alt:before {\n  content: \"\\F113\";\n}\n\n.fa-folder-o:before {\n  content: \"\\F114\";\n}\n\n.fa-folder-open-o:before {\n  content: \"\\F115\";\n}\n\n.fa-smile-o:before {\n  content: \"\\F118\";\n}\n\n.fa-frown-o:before {\n  content: \"\\F119\";\n}\n\n.fa-meh-o:before {\n  content: \"\\F11A\";\n}\n\n.fa-gamepad:before {\n  content: \"\\F11B\";\n}\n\n.fa-keyboard-o:before {\n  content: \"\\F11C\";\n}\n\n.fa-flag-o:before {\n  content: \"\\F11D\";\n}\n\n.fa-flag-checkered:before {\n  content: \"\\F11E\";\n}\n\n.fa-terminal:before {\n  content: \"\\F120\";\n}\n\n.fa-code:before {\n  content: \"\\F121\";\n}\n\n.fa-mail-reply-all:before,\n.fa-reply-all:before {\n  content: \"\\F122\";\n}\n\n.fa-star-half-empty:before,\n.fa-star-half-full:before,\n.fa-star-half-o:before {\n  content: \"\\F123\";\n}\n\n.fa-location-arrow:before {\n  content: \"\\F124\";\n}\n\n.fa-crop:before {\n  content: \"\\F125\";\n}\n\n.fa-code-fork:before {\n  content: \"\\F126\";\n}\n\n.fa-unlink:before,\n.fa-chain-broken:before {\n  content: \"\\F127\";\n}\n\n.fa-question:before {\n  content: \"\\F128\";\n}\n\n.fa-info:before {\n  content: \"\\F129\";\n}\n\n.fa-exclamation:before {\n  content: \"\\F12A\";\n}\n\n.fa-superscript:before {\n  content: \"\\F12B\";\n}\n\n.fa-subscript:before {\n  content: \"\\F12C\";\n}\n\n.fa-eraser:before {\n  content: \"\\F12D\";\n}\n\n.fa-puzzle-piece:before {\n  content: \"\\F12E\";\n}\n\n.fa-microphone:before {\n  content: \"\\F130\";\n}\n\n.fa-microphone-slash:before {\n  content: \"\\F131\";\n}\n\n.fa-shield:before {\n  content: \"\\F132\";\n}\n\n.fa-calendar-o:before {\n  content: \"\\F133\";\n}\n\n.fa-fire-extinguisher:before {\n  content: \"\\F134\";\n}\n\n.fa-rocket:before {\n  content: \"\\F135\";\n}\n\n.fa-maxcdn:before {\n  content: \"\\F136\";\n}\n\n.fa-chevron-circle-left:before {\n  content: \"\\F137\";\n}\n\n.fa-chevron-circle-right:before {\n  content: \"\\F138\";\n}\n\n.fa-chevron-circle-up:before {\n  content: \"\\F139\";\n}\n\n.fa-chevron-circle-down:before {\n  content: \"\\F13A\";\n}\n\n.fa-html5:before {\n  content: \"\\F13B\";\n}\n\n.fa-css3:before {\n  content: \"\\F13C\";\n}\n\n.fa-anchor:before {\n  content: \"\\F13D\";\n}\n\n.fa-unlock-alt:before {\n  content: \"\\F13E\";\n}\n\n.fa-bullseye:before {\n  content: \"\\F140\";\n}\n\n.fa-ellipsis-h:before {\n  content: \"\\F141\";\n}\n\n.fa-ellipsis-v:before {\n  content: \"\\F142\";\n}\n\n.fa-rss-square:before {\n  content: \"\\F143\";\n}\n\n.fa-play-circle:before {\n  content: \"\\F144\";\n}\n\n.fa-ticket:before {\n  content: \"\\F145\";\n}\n\n.fa-minus-square:before {\n  content: \"\\F146\";\n}\n\n.fa-minus-square-o:before {\n  content: \"\\F147\";\n}\n\n.fa-level-up:before {\n  content: \"\\F148\";\n}\n\n.fa-level-down:before {\n  content: \"\\F149\";\n}\n\n.fa-check-square:before {\n  content: \"\\F14A\";\n}\n\n.fa-pencil-square:before {\n  content: \"\\F14B\";\n}\n\n.fa-external-link-square:before {\n  content: \"\\F14C\";\n}\n\n.fa-share-square:before {\n  content: \"\\F14D\";\n}\n\n.fa-compass:before {\n  content: \"\\F14E\";\n}\n\n.fa-toggle-down:before,\n.fa-caret-square-o-down:before {\n  content: \"\\F150\";\n}\n\n.fa-toggle-up:before,\n.fa-caret-square-o-up:before {\n  content: \"\\F151\";\n}\n\n.fa-toggle-right:before,\n.fa-caret-square-o-right:before {\n  content: \"\\F152\";\n}\n\n.fa-euro:before,\n.fa-eur:before {\n  content: \"\\F153\";\n}\n\n.fa-gbp:before {\n  content: \"\\F154\";\n}\n\n.fa-dollar:before,\n.fa-usd:before {\n  content: \"\\F155\";\n}\n\n.fa-rupee:before,\n.fa-inr:before {\n  content: \"\\F156\";\n}\n\n.fa-cny:before,\n.fa-rmb:before,\n.fa-yen:before,\n.fa-jpy:before {\n  content: \"\\F157\";\n}\n\n.fa-ruble:before,\n.fa-rouble:before,\n.fa-rub:before {\n  content: \"\\F158\";\n}\n\n.fa-won:before,\n.fa-krw:before {\n  content: \"\\F159\";\n}\n\n.fa-bitcoin:before,\n.fa-btc:before {\n  content: \"\\F15A\";\n}\n\n.fa-file:before {\n  content: \"\\F15B\";\n}\n\n.fa-file-text:before {\n  content: \"\\F15C\";\n}\n\n.fa-sort-alpha-asc:before {\n  content: \"\\F15D\";\n}\n\n.fa-sort-alpha-desc:before {\n  content: \"\\F15E\";\n}\n\n.fa-sort-amount-asc:before {\n  content: \"\\F160\";\n}\n\n.fa-sort-amount-desc:before {\n  content: \"\\F161\";\n}\n\n.fa-sort-numeric-asc:before {\n  content: \"\\F162\";\n}\n\n.fa-sort-numeric-desc:before {\n  content: \"\\F163\";\n}\n\n.fa-thumbs-up:before {\n  content: \"\\F164\";\n}\n\n.fa-thumbs-down:before {\n  content: \"\\F165\";\n}\n\n.fa-youtube-square:before {\n  content: \"\\F166\";\n}\n\n.fa-youtube:before {\n  content: \"\\F167\";\n}\n\n.fa-xing:before {\n  content: \"\\F168\";\n}\n\n.fa-xing-square:before {\n  content: \"\\F169\";\n}\n\n.fa-youtube-play:before {\n  content: \"\\F16A\";\n}\n\n.fa-dropbox:before {\n  content: \"\\F16B\";\n}\n\n.fa-stack-overflow:before {\n  content: \"\\F16C\";\n}\n\n.fa-instagram:before {\n  content: \"\\F16D\";\n}\n\n.fa-flickr:before {\n  content: \"\\F16E\";\n}\n\n.fa-adn:before {\n  content: \"\\F170\";\n}\n\n.fa-bitbucket:before {\n  content: \"\\F171\";\n}\n\n.fa-bitbucket-square:before {\n  content: \"\\F172\";\n}\n\n.fa-tumblr:before {\n  content: \"\\F173\";\n}\n\n.fa-tumblr-square:before {\n  content: \"\\F174\";\n}\n\n.fa-long-arrow-down:before {\n  content: \"\\F175\";\n}\n\n.fa-long-arrow-up:before {\n  content: \"\\F176\";\n}\n\n.fa-long-arrow-left:before {\n  content: \"\\F177\";\n}\n\n.fa-long-arrow-right:before {\n  content: \"\\F178\";\n}\n\n.fa-apple:before {\n  content: \"\\F179\";\n}\n\n.fa-windows:before {\n  content: \"\\F17A\";\n}\n\n.fa-android:before {\n  content: \"\\F17B\";\n}\n\n.fa-linux:before {\n  content: \"\\F17C\";\n}\n\n.fa-dribbble:before {\n  content: \"\\F17D\";\n}\n\n.fa-skype:before {\n  content: \"\\F17E\";\n}\n\n.fa-foursquare:before {\n  content: \"\\F180\";\n}\n\n.fa-trello:before {\n  content: \"\\F181\";\n}\n\n.fa-female:before {\n  content: \"\\F182\";\n}\n\n.fa-male:before {\n  content: \"\\F183\";\n}\n\n.fa-gittip:before,\n.fa-gratipay:before {\n  content: \"\\F184\";\n}\n\n.fa-sun-o:before {\n  content: \"\\F185\";\n}\n\n.fa-moon-o:before {\n  content: \"\\F186\";\n}\n\n.fa-archive:before {\n  content: \"\\F187\";\n}\n\n.fa-bug:before {\n  content: \"\\F188\";\n}\n\n.fa-vk:before {\n  content: \"\\F189\";\n}\n\n.fa-weibo:before {\n  content: \"\\F18A\";\n}\n\n.fa-renren:before {\n  content: \"\\F18B\";\n}\n\n.fa-pagelines:before {\n  content: \"\\F18C\";\n}\n\n.fa-stack-exchange:before {\n  content: \"\\F18D\";\n}\n\n.fa-arrow-circle-o-right:before {\n  content: \"\\F18E\";\n}\n\n.fa-arrow-circle-o-left:before {\n  content: \"\\F190\";\n}\n\n.fa-toggle-left:before,\n.fa-caret-square-o-left:before {\n  content: \"\\F191\";\n}\n\n.fa-dot-circle-o:before {\n  content: \"\\F192\";\n}\n\n.fa-wheelchair:before {\n  content: \"\\F193\";\n}\n\n.fa-vimeo-square:before {\n  content: \"\\F194\";\n}\n\n.fa-turkish-lira:before,\n.fa-try:before {\n  content: \"\\F195\";\n}\n\n.fa-plus-square-o:before {\n  content: \"\\F196\";\n}\n\n.fa-space-shuttle:before {\n  content: \"\\F197\";\n}\n\n.fa-slack:before {\n  content: \"\\F198\";\n}\n\n.fa-envelope-square:before {\n  content: \"\\F199\";\n}\n\n.fa-wordpress:before {\n  content: \"\\F19A\";\n}\n\n.fa-openid:before {\n  content: \"\\F19B\";\n}\n\n.fa-institution:before,\n.fa-bank:before,\n.fa-university:before {\n  content: \"\\F19C\";\n}\n\n.fa-mortar-board:before,\n.fa-graduation-cap:before {\n  content: \"\\F19D\";\n}\n\n.fa-yahoo:before {\n  content: \"\\F19E\";\n}\n\n.fa-google:before {\n  content: \"\\F1A0\";\n}\n\n.fa-reddit:before {\n  content: \"\\F1A1\";\n}\n\n.fa-reddit-square:before {\n  content: \"\\F1A2\";\n}\n\n.fa-stumbleupon-circle:before {\n  content: \"\\F1A3\";\n}\n\n.fa-stumbleupon:before {\n  content: \"\\F1A4\";\n}\n\n.fa-delicious:before {\n  content: \"\\F1A5\";\n}\n\n.fa-digg:before {\n  content: \"\\F1A6\";\n}\n\n.fa-pied-piper-pp:before {\n  content: \"\\F1A7\";\n}\n\n.fa-pied-piper-alt:before {\n  content: \"\\F1A8\";\n}\n\n.fa-drupal:before {\n  content: \"\\F1A9\";\n}\n\n.fa-joomla:before {\n  content: \"\\F1AA\";\n}\n\n.fa-language:before {\n  content: \"\\F1AB\";\n}\n\n.fa-fax:before {\n  content: \"\\F1AC\";\n}\n\n.fa-building:before {\n  content: \"\\F1AD\";\n}\n\n.fa-child:before {\n  content: \"\\F1AE\";\n}\n\n.fa-paw:before {\n  content: \"\\F1B0\";\n}\n\n.fa-spoon:before {\n  content: \"\\F1B1\";\n}\n\n.fa-cube:before {\n  content: \"\\F1B2\";\n}\n\n.fa-cubes:before {\n  content: \"\\F1B3\";\n}\n\n.fa-behance:before {\n  content: \"\\F1B4\";\n}\n\n.fa-behance-square:before {\n  content: \"\\F1B5\";\n}\n\n.fa-steam:before {\n  content: \"\\F1B6\";\n}\n\n.fa-steam-square:before {\n  content: \"\\F1B7\";\n}\n\n.fa-recycle:before {\n  content: \"\\F1B8\";\n}\n\n.fa-automobile:before,\n.fa-car:before {\n  content: \"\\F1B9\";\n}\n\n.fa-cab:before,\n.fa-taxi:before {\n  content: \"\\F1BA\";\n}\n\n.fa-tree:before {\n  content: \"\\F1BB\";\n}\n\n.fa-spotify:before {\n  content: \"\\F1BC\";\n}\n\n.fa-deviantart:before {\n  content: \"\\F1BD\";\n}\n\n.fa-soundcloud:before {\n  content: \"\\F1BE\";\n}\n\n.fa-database:before {\n  content: \"\\F1C0\";\n}\n\n.fa-file-pdf-o:before {\n  content: \"\\F1C1\";\n}\n\n.fa-file-word-o:before {\n  content: \"\\F1C2\";\n}\n\n.fa-file-excel-o:before {\n  content: \"\\F1C3\";\n}\n\n.fa-file-powerpoint-o:before {\n  content: \"\\F1C4\";\n}\n\n.fa-file-photo-o:before,\n.fa-file-picture-o:before,\n.fa-file-image-o:before {\n  content: \"\\F1C5\";\n}\n\n.fa-file-zip-o:before,\n.fa-file-archive-o:before {\n  content: \"\\F1C6\";\n}\n\n.fa-file-sound-o:before,\n.fa-file-audio-o:before {\n  content: \"\\F1C7\";\n}\n\n.fa-file-movie-o:before,\n.fa-file-video-o:before {\n  content: \"\\F1C8\";\n}\n\n.fa-file-code-o:before {\n  content: \"\\F1C9\";\n}\n\n.fa-vine:before {\n  content: \"\\F1CA\";\n}\n\n.fa-codepen:before {\n  content: \"\\F1CB\";\n}\n\n.fa-jsfiddle:before {\n  content: \"\\F1CC\";\n}\n\n.fa-life-bouy:before,\n.fa-life-buoy:before,\n.fa-life-saver:before,\n.fa-support:before,\n.fa-life-ring:before {\n  content: \"\\F1CD\";\n}\n\n.fa-circle-o-notch:before {\n  content: \"\\F1CE\";\n}\n\n.fa-ra:before,\n.fa-resistance:before,\n.fa-rebel:before {\n  content: \"\\F1D0\";\n}\n\n.fa-ge:before,\n.fa-empire:before {\n  content: \"\\F1D1\";\n}\n\n.fa-git-square:before {\n  content: \"\\F1D2\";\n}\n\n.fa-git:before {\n  content: \"\\F1D3\";\n}\n\n.fa-y-combinator-square:before,\n.fa-yc-square:before,\n.fa-hacker-news:before {\n  content: \"\\F1D4\";\n}\n\n.fa-tencent-weibo:before {\n  content: \"\\F1D5\";\n}\n\n.fa-qq:before {\n  content: \"\\F1D6\";\n}\n\n.fa-wechat:before,\n.fa-weixin:before {\n  content: \"\\F1D7\";\n}\n\n.fa-send:before,\n.fa-paper-plane:before {\n  content: \"\\F1D8\";\n}\n\n.fa-send-o:before,\n.fa-paper-plane-o:before {\n  content: \"\\F1D9\";\n}\n\n.fa-history:before {\n  content: \"\\F1DA\";\n}\n\n.fa-circle-thin:before {\n  content: \"\\F1DB\";\n}\n\n.fa-header:before {\n  content: \"\\F1DC\";\n}\n\n.fa-paragraph:before {\n  content: \"\\F1DD\";\n}\n\n.fa-sliders:before {\n  content: \"\\F1DE\";\n}\n\n.fa-share-alt:before {\n  content: \"\\F1E0\";\n}\n\n.fa-share-alt-square:before {\n  content: \"\\F1E1\";\n}\n\n.fa-bomb:before {\n  content: \"\\F1E2\";\n}\n\n.fa-soccer-ball-o:before,\n.fa-futbol-o:before {\n  content: \"\\F1E3\";\n}\n\n.fa-tty:before {\n  content: \"\\F1E4\";\n}\n\n.fa-binoculars:before {\n  content: \"\\F1E5\";\n}\n\n.fa-plug:before {\n  content: \"\\F1E6\";\n}\n\n.fa-slideshare:before {\n  content: \"\\F1E7\";\n}\n\n.fa-twitch:before {\n  content: \"\\F1E8\";\n}\n\n.fa-yelp:before {\n  content: \"\\F1E9\";\n}\n\n.fa-newspaper-o:before {\n  content: \"\\F1EA\";\n}\n\n.fa-wifi:before {\n  content: \"\\F1EB\";\n}\n\n.fa-calculator:before {\n  content: \"\\F1EC\";\n}\n\n.fa-paypal:before {\n  content: \"\\F1ED\";\n}\n\n.fa-google-wallet:before {\n  content: \"\\F1EE\";\n}\n\n.fa-cc-visa:before {\n  content: \"\\F1F0\";\n}\n\n.fa-cc-mastercard:before {\n  content: \"\\F1F1\";\n}\n\n.fa-cc-discover:before {\n  content: \"\\F1F2\";\n}\n\n.fa-cc-amex:before {\n  content: \"\\F1F3\";\n}\n\n.fa-cc-paypal:before {\n  content: \"\\F1F4\";\n}\n\n.fa-cc-stripe:before {\n  content: \"\\F1F5\";\n}\n\n.fa-bell-slash:before {\n  content: \"\\F1F6\";\n}\n\n.fa-bell-slash-o:before {\n  content: \"\\F1F7\";\n}\n\n.fa-trash:before {\n  content: \"\\F1F8\";\n}\n\n.fa-copyright:before {\n  content: \"\\F1F9\";\n}\n\n.fa-at:before {\n  content: \"\\F1FA\";\n}\n\n.fa-eyedropper:before {\n  content: \"\\F1FB\";\n}\n\n.fa-paint-brush:before {\n  content: \"\\F1FC\";\n}\n\n.fa-birthday-cake:before {\n  content: \"\\F1FD\";\n}\n\n.fa-area-chart:before {\n  content: \"\\F1FE\";\n}\n\n.fa-pie-chart:before {\n  content: \"\\F200\";\n}\n\n.fa-line-chart:before {\n  content: \"\\F201\";\n}\n\n.fa-lastfm:before {\n  content: \"\\F202\";\n}\n\n.fa-lastfm-square:before {\n  content: \"\\F203\";\n}\n\n.fa-toggle-off:before {\n  content: \"\\F204\";\n}\n\n.fa-toggle-on:before {\n  content: \"\\F205\";\n}\n\n.fa-bicycle:before {\n  content: \"\\F206\";\n}\n\n.fa-bus:before {\n  content: \"\\F207\";\n}\n\n.fa-ioxhost:before {\n  content: \"\\F208\";\n}\n\n.fa-angellist:before {\n  content: \"\\F209\";\n}\n\n.fa-cc:before {\n  content: \"\\F20A\";\n}\n\n.fa-shekel:before,\n.fa-sheqel:before,\n.fa-ils:before {\n  content: \"\\F20B\";\n}\n\n.fa-meanpath:before {\n  content: \"\\F20C\";\n}\n\n.fa-buysellads:before {\n  content: \"\\F20D\";\n}\n\n.fa-connectdevelop:before {\n  content: \"\\F20E\";\n}\n\n.fa-dashcube:before {\n  content: \"\\F210\";\n}\n\n.fa-forumbee:before {\n  content: \"\\F211\";\n}\n\n.fa-leanpub:before {\n  content: \"\\F212\";\n}\n\n.fa-sellsy:before {\n  content: \"\\F213\";\n}\n\n.fa-shirtsinbulk:before {\n  content: \"\\F214\";\n}\n\n.fa-simplybuilt:before {\n  content: \"\\F215\";\n}\n\n.fa-skyatlas:before {\n  content: \"\\F216\";\n}\n\n.fa-cart-plus:before {\n  content: \"\\F217\";\n}\n\n.fa-cart-arrow-down:before {\n  content: \"\\F218\";\n}\n\n.fa-diamond:before {\n  content: \"\\F219\";\n}\n\n.fa-ship:before {\n  content: \"\\F21A\";\n}\n\n.fa-user-secret:before {\n  content: \"\\F21B\";\n}\n\n.fa-motorcycle:before {\n  content: \"\\F21C\";\n}\n\n.fa-street-view:before {\n  content: \"\\F21D\";\n}\n\n.fa-heartbeat:before {\n  content: \"\\F21E\";\n}\n\n.fa-venus:before {\n  content: \"\\F221\";\n}\n\n.fa-mars:before {\n  content: \"\\F222\";\n}\n\n.fa-mercury:before {\n  content: \"\\F223\";\n}\n\n.fa-intersex:before,\n.fa-transgender:before {\n  content: \"\\F224\";\n}\n\n.fa-transgender-alt:before {\n  content: \"\\F225\";\n}\n\n.fa-venus-double:before {\n  content: \"\\F226\";\n}\n\n.fa-mars-double:before {\n  content: \"\\F227\";\n}\n\n.fa-venus-mars:before {\n  content: \"\\F228\";\n}\n\n.fa-mars-stroke:before {\n  content: \"\\F229\";\n}\n\n.fa-mars-stroke-v:before {\n  content: \"\\F22A\";\n}\n\n.fa-mars-stroke-h:before {\n  content: \"\\F22B\";\n}\n\n.fa-neuter:before {\n  content: \"\\F22C\";\n}\n\n.fa-genderless:before {\n  content: \"\\F22D\";\n}\n\n.fa-facebook-official:before {\n  content: \"\\F230\";\n}\n\n.fa-pinterest-p:before {\n  content: \"\\F231\";\n}\n\n.fa-whatsapp:before {\n  content: \"\\F232\";\n}\n\n.fa-server:before {\n  content: \"\\F233\";\n}\n\n.fa-user-plus:before {\n  content: \"\\F234\";\n}\n\n.fa-user-times:before {\n  content: \"\\F235\";\n}\n\n.fa-hotel:before,\n.fa-bed:before {\n  content: \"\\F236\";\n}\n\n.fa-viacoin:before {\n  content: \"\\F237\";\n}\n\n.fa-train:before {\n  content: \"\\F238\";\n}\n\n.fa-subway:before {\n  content: \"\\F239\";\n}\n\n.fa-medium:before {\n  content: \"\\F23A\";\n}\n\n.fa-yc:before,\n.fa-y-combinator:before {\n  content: \"\\F23B\";\n}\n\n.fa-optin-monster:before {\n  content: \"\\F23C\";\n}\n\n.fa-opencart:before {\n  content: \"\\F23D\";\n}\n\n.fa-expeditedssl:before {\n  content: \"\\F23E\";\n}\n\n.fa-battery-4:before,\n.fa-battery-full:before {\n  content: \"\\F240\";\n}\n\n.fa-battery-3:before,\n.fa-battery-three-quarters:before {\n  content: \"\\F241\";\n}\n\n.fa-battery-2:before,\n.fa-battery-half:before {\n  content: \"\\F242\";\n}\n\n.fa-battery-1:before,\n.fa-battery-quarter:before {\n  content: \"\\F243\";\n}\n\n.fa-battery-0:before,\n.fa-battery-empty:before {\n  content: \"\\F244\";\n}\n\n.fa-mouse-pointer:before {\n  content: \"\\F245\";\n}\n\n.fa-i-cursor:before {\n  content: \"\\F246\";\n}\n\n.fa-object-group:before {\n  content: \"\\F247\";\n}\n\n.fa-object-ungroup:before {\n  content: \"\\F248\";\n}\n\n.fa-sticky-note:before {\n  content: \"\\F249\";\n}\n\n.fa-sticky-note-o:before {\n  content: \"\\F24A\";\n}\n\n.fa-cc-jcb:before {\n  content: \"\\F24B\";\n}\n\n.fa-cc-diners-club:before {\n  content: \"\\F24C\";\n}\n\n.fa-clone:before {\n  content: \"\\F24D\";\n}\n\n.fa-balance-scale:before {\n  content: \"\\F24E\";\n}\n\n.fa-hourglass-o:before {\n  content: \"\\F250\";\n}\n\n.fa-hourglass-1:before,\n.fa-hourglass-start:before {\n  content: \"\\F251\";\n}\n\n.fa-hourglass-2:before,\n.fa-hourglass-half:before {\n  content: \"\\F252\";\n}\n\n.fa-hourglass-3:before,\n.fa-hourglass-end:before {\n  content: \"\\F253\";\n}\n\n.fa-hourglass:before {\n  content: \"\\F254\";\n}\n\n.fa-hand-grab-o:before,\n.fa-hand-rock-o:before {\n  content: \"\\F255\";\n}\n\n.fa-hand-stop-o:before,\n.fa-hand-paper-o:before {\n  content: \"\\F256\";\n}\n\n.fa-hand-scissors-o:before {\n  content: \"\\F257\";\n}\n\n.fa-hand-lizard-o:before {\n  content: \"\\F258\";\n}\n\n.fa-hand-spock-o:before {\n  content: \"\\F259\";\n}\n\n.fa-hand-pointer-o:before {\n  content: \"\\F25A\";\n}\n\n.fa-hand-peace-o:before {\n  content: \"\\F25B\";\n}\n\n.fa-trademark:before {\n  content: \"\\F25C\";\n}\n\n.fa-registered:before {\n  content: \"\\F25D\";\n}\n\n.fa-creative-commons:before {\n  content: \"\\F25E\";\n}\n\n.fa-gg:before {\n  content: \"\\F260\";\n}\n\n.fa-gg-circle:before {\n  content: \"\\F261\";\n}\n\n.fa-tripadvisor:before {\n  content: \"\\F262\";\n}\n\n.fa-odnoklassniki:before {\n  content: \"\\F263\";\n}\n\n.fa-odnoklassniki-square:before {\n  content: \"\\F264\";\n}\n\n.fa-get-pocket:before {\n  content: \"\\F265\";\n}\n\n.fa-wikipedia-w:before {\n  content: \"\\F266\";\n}\n\n.fa-safari:before {\n  content: \"\\F267\";\n}\n\n.fa-chrome:before {\n  content: \"\\F268\";\n}\n\n.fa-firefox:before {\n  content: \"\\F269\";\n}\n\n.fa-opera:before {\n  content: \"\\F26A\";\n}\n\n.fa-internet-explorer:before {\n  content: \"\\F26B\";\n}\n\n.fa-tv:before,\n.fa-television:before {\n  content: \"\\F26C\";\n}\n\n.fa-contao:before {\n  content: \"\\F26D\";\n}\n\n.fa-500px:before {\n  content: \"\\F26E\";\n}\n\n.fa-amazon:before {\n  content: \"\\F270\";\n}\n\n.fa-calendar-plus-o:before {\n  content: \"\\F271\";\n}\n\n.fa-calendar-minus-o:before {\n  content: \"\\F272\";\n}\n\n.fa-calendar-times-o:before {\n  content: \"\\F273\";\n}\n\n.fa-calendar-check-o:before {\n  content: \"\\F274\";\n}\n\n.fa-industry:before {\n  content: \"\\F275\";\n}\n\n.fa-map-pin:before {\n  content: \"\\F276\";\n}\n\n.fa-map-signs:before {\n  content: \"\\F277\";\n}\n\n.fa-map-o:before {\n  content: \"\\F278\";\n}\n\n.fa-map:before {\n  content: \"\\F279\";\n}\n\n.fa-commenting:before {\n  content: \"\\F27A\";\n}\n\n.fa-commenting-o:before {\n  content: \"\\F27B\";\n}\n\n.fa-houzz:before {\n  content: \"\\F27C\";\n}\n\n.fa-vimeo:before {\n  content: \"\\F27D\";\n}\n\n.fa-black-tie:before {\n  content: \"\\F27E\";\n}\n\n.fa-fonticons:before {\n  content: \"\\F280\";\n}\n\n.fa-reddit-alien:before {\n  content: \"\\F281\";\n}\n\n.fa-edge:before {\n  content: \"\\F282\";\n}\n\n.fa-credit-card-alt:before {\n  content: \"\\F283\";\n}\n\n.fa-codiepie:before {\n  content: \"\\F284\";\n}\n\n.fa-modx:before {\n  content: \"\\F285\";\n}\n\n.fa-fort-awesome:before {\n  content: \"\\F286\";\n}\n\n.fa-usb:before {\n  content: \"\\F287\";\n}\n\n.fa-product-hunt:before {\n  content: \"\\F288\";\n}\n\n.fa-mixcloud:before {\n  content: \"\\F289\";\n}\n\n.fa-scribd:before {\n  content: \"\\F28A\";\n}\n\n.fa-pause-circle:before {\n  content: \"\\F28B\";\n}\n\n.fa-pause-circle-o:before {\n  content: \"\\F28C\";\n}\n\n.fa-stop-circle:before {\n  content: \"\\F28D\";\n}\n\n.fa-stop-circle-o:before {\n  content: \"\\F28E\";\n}\n\n.fa-shopping-bag:before {\n  content: \"\\F290\";\n}\n\n.fa-shopping-basket:before {\n  content: \"\\F291\";\n}\n\n.fa-hashtag:before {\n  content: \"\\F292\";\n}\n\n.fa-bluetooth:before {\n  content: \"\\F293\";\n}\n\n.fa-bluetooth-b:before {\n  content: \"\\F294\";\n}\n\n.fa-percent:before {\n  content: \"\\F295\";\n}\n\n.fa-gitlab:before {\n  content: \"\\F296\";\n}\n\n.fa-wpbeginner:before {\n  content: \"\\F297\";\n}\n\n.fa-wpforms:before {\n  content: \"\\F298\";\n}\n\n.fa-envira:before {\n  content: \"\\F299\";\n}\n\n.fa-universal-access:before {\n  content: \"\\F29A\";\n}\n\n.fa-wheelchair-alt:before {\n  content: \"\\F29B\";\n}\n\n.fa-question-circle-o:before {\n  content: \"\\F29C\";\n}\n\n.fa-blind:before {\n  content: \"\\F29D\";\n}\n\n.fa-audio-description:before {\n  content: \"\\F29E\";\n}\n\n.fa-volume-control-phone:before {\n  content: \"\\F2A0\";\n}\n\n.fa-braille:before {\n  content: \"\\F2A1\";\n}\n\n.fa-assistive-listening-systems:before {\n  content: \"\\F2A2\";\n}\n\n.fa-asl-interpreting:before,\n.fa-american-sign-language-interpreting:before {\n  content: \"\\F2A3\";\n}\n\n.fa-deafness:before,\n.fa-hard-of-hearing:before,\n.fa-deaf:before {\n  content: \"\\F2A4\";\n}\n\n.fa-glide:before {\n  content: \"\\F2A5\";\n}\n\n.fa-glide-g:before {\n  content: \"\\F2A6\";\n}\n\n.fa-signing:before,\n.fa-sign-language:before {\n  content: \"\\F2A7\";\n}\n\n.fa-low-vision:before {\n  content: \"\\F2A8\";\n}\n\n.fa-viadeo:before {\n  content: \"\\F2A9\";\n}\n\n.fa-viadeo-square:before {\n  content: \"\\F2AA\";\n}\n\n.fa-snapchat:before {\n  content: \"\\F2AB\";\n}\n\n.fa-snapchat-ghost:before {\n  content: \"\\F2AC\";\n}\n\n.fa-snapchat-square:before {\n  content: \"\\F2AD\";\n}\n\n.fa-pied-piper:before {\n  content: \"\\F2AE\";\n}\n\n.fa-first-order:before {\n  content: \"\\F2B0\";\n}\n\n.fa-yoast:before {\n  content: \"\\F2B1\";\n}\n\n.fa-themeisle:before {\n  content: \"\\F2B2\";\n}\n\n.fa-google-plus-circle:before,\n.fa-google-plus-official:before {\n  content: \"\\F2B3\";\n}\n\n.fa-fa:before,\n.fa-font-awesome:before {\n  content: \"\\F2B4\";\n}\n\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n\n.sr-only-focusable:active,\n.sr-only-focusable:focus {\n  position: static;\n  width: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  clip: auto;\n}", "", {"version":3,"sources":["/./app/sass/fontAwesome.css"],"names":[],"mappings":"AAAA;;;GAGG;;AACH;gCAEgC;;AAAhC;EACE,2BAAA;EACA,mCAAA;EACA,2PAAA;EACA,oBAAA;EACA,mBAAA;CAGD;;AADD;EACE,sBAAA;EACA,8CAAA;EACA,mBAAA;EACA,qBAAA;EACA,oCAAA;EACA,mCAAA;CAID;;AAFD,8DAAA;;AACA;EACE,wBAAA;EACA,oBAAA;EACA,qBAAA;CAMD;;AAJD;EACE,eAAA;CAOD;;AALD;EACE,eAAA;CAQD;;AAND;EACE,eAAA;CASD;;AAPD;EACE,eAAA;CAUD;;AARD;EACE,oBAAA;EACA,mBAAA;CAWD;;AATD;EACE,gBAAA;EACA,0BAAA;EACA,sBAAA;CAYD;;AAVD;EACE,mBAAA;CAaD;;AAXD;EACE,mBAAA;EACA,oBAAA;EACA,oBAAA;EACA,kBAAA;EACA,mBAAA;CAcD;;AAZD;EACE,oBAAA;CAeD;;AAbD;EACE,0BAAA;EACA,0BAAA;EACA,oBAAA;CAgBD;;AAdD;EACE,YAAA;CAiBD;;AAfD;EACE,aAAA;CAkBD;;AAhBD;EACE,mBAAA;CAmBD;;AAjBD;EACE,kBAAA;CAoBD;;AAlBD,4BAAA;;AACA;EACE,aAAA;CAsBD;;AApBD;EACE,YAAA;CAuBD;;AArBD;EACE,mBAAA;CAwBD;;AAtBD;EACE,kBAAA;CAyBD;;AAvBD;EACE,8CAAA;EACA,sCAAA;CA0BD;;AAxBD;EACE,gDAAA;EACA,wCAAA;CA2BD;;AAzBD;EACE;IACE,gCAAA;IACA,wBAAA;GA4BD;;EA1BD;IACE,kCAAA;IACA,0BAAA;GA6BD;CACF;;AA3BD;EACE;IACE,gCAAA;IACA,wBAAA;GA8BD;;EA5BD;IACE,kCAAA;IACA,0BAAA;GA+BD;CACF;;AA7BD;EACE,uEAAA;EACA,iCAAA;EACA,6BAAA;EACA,yBAAA;CAgCD;;AA9BD;EACE,uEAAA;EACA,kCAAA;EACA,8BAAA;EACA,0BAAA;CAiCD;;AA/BD;EACE,uEAAA;EACA,kCAAA;EACA,8BAAA;EACA,0BAAA;CAkCD;;AAhCD;EACE,iFAAA;EACA,gCAAA;EACA,4BAAA;EACA,wBAAA;CAmCD;;AAjCD;EACE,iFAAA;EACA,gCAAA;EACA,4BAAA;EACA,wBAAA;CAoCD;;AAlCD;;;;;EAKE,aAAA;CAqCD;;AAnCD;EACE,mBAAA;EACA,sBAAA;EACA,WAAA;EACA,YAAA;EACA,iBAAA;EACA,uBAAA;CAsCD;;AApCD;;EAEE,mBAAA;EACA,QAAA;EACA,YAAA;EACA,mBAAA;CAuCD;;AArCD;EACE,qBAAA;CAwCD;;AAtCD;EACE,eAAA;CAyCD;;AAvCD;EACE,YAAA;CA0CD;;AAxCD;oEA2CoE;;AAzCpE;EACE,iBAAA;CA4CD;;AA1CD;EACE,iBAAA;CA6CD;;AA3CD;EACE,iBAAA;CA8CD;;AA5CD;EACE,iBAAA;CA+CD;;AA7CD;EACE,iBAAA;CAgDD;;AA9CD;EACE,iBAAA;CAiDD;;AA/CD;EACE,iBAAA;CAkDD;;AAhDD;EACE,iBAAA;CAmDD;;AAjDD;EACE,iBAAA;CAoDD;;AAlDD;EACE,iBAAA;CAqDD;;AAnDD;EACE,iBAAA;CAsDD;;AApDD;EACE,iBAAA;CAuDD;;AArDD;EACE,iBAAA;CAwDD;;AAtDD;;;EAGE,iBAAA;CAyDD;;AAvDD;EACE,iBAAA;CA0DD;;AAxDD;EACE,iBAAA;CA2DD;;AAzDD;EACE,iBAAA;CA4DD;;AA1DD;EACE,iBAAA;CA6DD;;AA3DD;;EAEE,iBAAA;CA8DD;;AA5DD;EACE,iBAAA;CA+DD;;AA7DD;EACE,iBAAA;CAgED;;AA9DD;EACE,iBAAA;CAiED;;AA/DD;EACE,iBAAA;CAkED;;AAhED;EACE,iBAAA;CAmED;;AAjED;EACE,iBAAA;CAoED;;AAlED;EACE,iBAAA;CAqED;;AAnED;EACE,iBAAA;CAsED;;AApED;EACE,iBAAA;CAuED;;AArED;EACE,iBAAA;CAwED;;AAtED;;EAEE,iBAAA;CAyED;;AAvED;EACE,iBAAA;CA0ED;;AAxED;EACE,iBAAA;CA2ED;;AAzED;EACE,iBAAA;CA4ED;;AA1ED;EACE,iBAAA;CA6ED;;AA3ED;EACE,iBAAA;CA8ED;;AA5ED;EACE,iBAAA;CA+ED;;AA7ED;EACE,iBAAA;CAgFD;;AA9ED;EACE,iBAAA;CAiFD;;AA/ED;EACE,iBAAA;CAkFD;;AAhFD;EACE,iBAAA;CAmFD;;AAjFD;EACE,iBAAA;CAoFD;;AAlFD;EACE,iBAAA;CAqFD;;AAnFD;EACE,iBAAA;CAsFD;;AApFD;EACE,iBAAA;CAuFD;;AArFD;EACE,iBAAA;CAwFD;;AAtFD;EACE,iBAAA;CAyFD;;AAvFD;EACE,iBAAA;CA0FD;;AAxFD;EACE,iBAAA;CA2FD;;AAzFD;EACE,iBAAA;CA4FD;;AA1FD;EACE,iBAAA;CA6FD;;AA3FD;EACE,iBAAA;CA8FD;;AA5FD;EACE,iBAAA;CA+FD;;AA7FD;EACE,iBAAA;CAgGD;;AA9FD;EACE,iBAAA;CAiGD;;AA/FD;EACE,iBAAA;CAkGD;;AAhGD;EACE,iBAAA;CAmGD;;AAjGD;;EAEE,iBAAA;CAoGD;;AAlGD;EACE,iBAAA;CAqGD;;AAnGD;EACE,iBAAA;CAsGD;;AApGD;;;EAGE,iBAAA;CAuGD;;AArGD;EACE,iBAAA;CAwGD;;AAtGD;EACE,iBAAA;CAyGD;;AAvGD;EACE,iBAAA;CA0GD;;AAxGD;EACE,iBAAA;CA2GD;;AAzGD;;EAEE,iBAAA;CA4GD;;AA1GD;EACE,iBAAA;CA6GD;;AA3GD;EACE,iBAAA;CA8GD;;AA5GD;EACE,iBAAA;CA+GD;;AA7GD;EACE,iBAAA;CAgHD;;AA9GD;EACE,iBAAA;CAiHD;;AA/GD;EACE,iBAAA;CAkHD;;AAhHD;EACE,iBAAA;CAmHD;;AAjHD;EACE,iBAAA;CAoHD;;AAlHD;EACE,iBAAA;CAqHD;;AAnHD;EACE,iBAAA;CAsHD;;AApHD;EACE,iBAAA;CAuHD;;AArHD;EACE,iBAAA;CAwHD;;AAtHD;EACE,iBAAA;CAyHD;;AAvHD;EACE,iBAAA;CA0HD;;AAxHD;EACE,iBAAA;CA2HD;;AAzHD;EACE,iBAAA;CA4HD;;AA1HD;EACE,iBAAA;CA6HD;;AA3HD;EACE,iBAAA;CA8HD;;AA5HD;EACE,iBAAA;CA+HD;;AA7HD;EACE,iBAAA;CAgID;;AA9HD;EACE,iBAAA;CAiID;;AA/HD;EACE,iBAAA;CAkID;;AAhID;EACE,iBAAA;CAmID;;AAjID;EACE,iBAAA;CAoID;;AAlID;EACE,iBAAA;CAqID;;AAnID;EACE,iBAAA;CAsID;;AApID;EACE,iBAAA;CAuID;;AArID;EACE,iBAAA;CAwID;;AAtID;EACE,iBAAA;CAyID;;AAvID;;EAEE,iBAAA;CA0ID;;AAxID;EACE,iBAAA;CA2ID;;AAzID;EACE,iBAAA;CA4ID;;AA1ID;EACE,iBAAA;CA6ID;;AA3ID;EACE,iBAAA;CA8ID;;AA5ID;EACE,iBAAA;CA+ID;;AA7ID;EACE,iBAAA;CAgJD;;AA9ID;EACE,iBAAA;CAiJD;;AA/ID;EACE,iBAAA;CAkJD;;AAhJD;EACE,iBAAA;CAmJD;;AAjJD;EACE,iBAAA;CAoJD;;AAlJD;EACE,iBAAA;CAqJD;;AAnJD;;EAEE,iBAAA;CAsJD;;AApJD;EACE,iBAAA;CAuJD;;AArJD;EACE,iBAAA;CAwJD;;AAtJD;EACE,iBAAA;CAyJD;;AAvJD;EACE,iBAAA;CA0JD;;AAxJD;EACE,iBAAA;CA2JD;;AAzJD;EACE,iBAAA;CA4JD;;AA1JD;EACE,iBAAA;CA6JD;;AA3JD;EACE,iBAAA;CA8JD;;AA5JD;EACE,iBAAA;CA+JD;;AA7JD;EACE,iBAAA;CAgKD;;AA9JD;EACE,iBAAA;CAiKD;;AA/JD;EACE,iBAAA;CAkKD;;AAhKD;EACE,iBAAA;CAmKD;;AAjKD;;EAEE,iBAAA;CAoKD;;AAlKD;EACE,iBAAA;CAqKD;;AAnKD;EACE,iBAAA;CAsKD;;AApKD;EACE,iBAAA;CAuKD;;AArKD;EACE,iBAAA;CAwKD;;AAtKD;;EAEE,iBAAA;CAyKD;;AAvKD;EACE,iBAAA;CA0KD;;AAxKD;EACE,iBAAA;CA2KD;;AAzKD;EACE,iBAAA;CA4KD;;AA1KD;EACE,iBAAA;CA6KD;;AA3KD;EACE,iBAAA;CA8KD;;AA5KD;EACE,iBAAA;CA+KD;;AA7KD;EACE,iBAAA;CAgLD;;AA9KD;EACE,iBAAA;CAiLD;;AA/KD;EACE,iBAAA;CAkLD;;AAhLD;EACE,iBAAA;CAmLD;;AAjLD;EACE,iBAAA;CAoLD;;AAlLD;EACE,iBAAA;CAqLD;;AAnLD;EACE,iBAAA;CAsLD;;AApLD;EACE,iBAAA;CAuLD;;AArLD;EACE,iBAAA;CAwLD;;AAtLD;EACE,iBAAA;CAyLD;;AAvLD;EACE,iBAAA;CA0LD;;AAxLD;EACE,iBAAA;CA2LD;;AAzLD;EACE,iBAAA;CA4LD;;AA1LD;;EAEE,iBAAA;CA6LD;;AA3LD;EACE,iBAAA;CA8LD;;AA5LD;EACE,iBAAA;CA+LD;;AA7LD;EACE,iBAAA;CAgMD;;AA9LD;;EAEE,iBAAA;CAiMD;;AA/LD;EACE,iBAAA;CAkMD;;AAhMD;EACE,iBAAA;CAmMD;;AAjMD;EACE,iBAAA;CAoMD;;AAlMD;EACE,iBAAA;CAqMD;;AAnMD;EACE,iBAAA;CAsMD;;AApMD;EACE,iBAAA;CAuMD;;AArMD;EACE,iBAAA;CAwMD;;AAtMD;EACE,iBAAA;CAyMD;;AAvMD;EACE,iBAAA;CA0MD;;AAxMD;EACE,iBAAA;CA2MD;;AAzMD;EACE,iBAAA;CA4MD;;AA1MD;EACE,iBAAA;CA6MD;;AA3MD;EACE,iBAAA;CA8MD;;AA5MD;EACE,iBAAA;CA+MD;;AA7MD;EACE,iBAAA;CAgND;;AA9MD;EACE,iBAAA;CAiND;;AA/MD;EACE,iBAAA;CAkND;;AAhND;EACE,iBAAA;CAmND;;AAjND;;EAEE,iBAAA;CAoND;;AAlND;;EAEE,iBAAA;CAqND;;AAnND;EACE,iBAAA;CAsND;;AApND;EACE,iBAAA;CAuND;;AArND;;EAEE,iBAAA;CAwND;;AAtND;;EAEE,iBAAA;CAyND;;AAvND;EACE,iBAAA;CA0ND;;AAxND;;EAEE,iBAAA;CA2ND;;AAzND;EACE,iBAAA;CA4ND;;AA1ND;;;EAGE,iBAAA;CA6ND;;AA3ND;EACE,iBAAA;CA8ND;;AA5ND;EACE,iBAAA;CA+ND;;AA7ND;EACE,iBAAA;CAgOD;;AA9ND;EACE,iBAAA;CAiOD;;AA/ND;EACE,iBAAA;CAkOD;;AAhOD;EACE,iBAAA;CAmOD;;AAjOD;EACE,iBAAA;CAoOD;;AAlOD;EACE,iBAAA;CAqOD;;AAnOD;EACE,iBAAA;CAsOD;;AApOD;EACE,iBAAA;CAuOD;;AArOD;EACE,iBAAA;CAwOD;;AAtOD;EACE,iBAAA;CAyOD;;AAvOD;EACE,iBAAA;CA0OD;;AAxOD;EACE,iBAAA;CA2OD;;AAzOD;EACE,iBAAA;CA4OD;;AA1OD;EACE,iBAAA;CA6OD;;AA3OD;EACE,iBAAA;CA8OD;;AA5OD;;EAEE,iBAAA;CA+OD;;AA7OD;;EAEE,iBAAA;CAgPD;;AA9OD;;EAEE,iBAAA;CAiPD;;AA/OD;EACE,iBAAA;CAkPD;;AAhPD;EACE,iBAAA;CAmPD;;AAjPD;;EAEE,iBAAA;CAoPD;;AAlPD;;EAEE,iBAAA;CAqPD;;AAnPD;;EAEE,iBAAA;CAsPD;;AApPD;EACE,iBAAA;CAuPD;;AArPD;EACE,iBAAA;CAwPD;;AAtPD;;EAEE,iBAAA;CAyPD;;AAvPD;EACE,iBAAA;CA0PD;;AAxPD;EACE,iBAAA;CA2PD;;AAzPD;;EAEE,iBAAA;CA4PD;;AA1PD;EACE,iBAAA;CA6PD;;AA3PD;EACE,iBAAA;CA8PD;;AA5PD;EACE,iBAAA;CA+PD;;AA7PD;EACE,iBAAA;CAgQD;;AA9PD;EACE,iBAAA;CAiQD;;AA/PD;EACE,iBAAA;CAkQD;;AAhQD;EACE,iBAAA;CAmQD;;AAjQD;EACE,iBAAA;CAoQD;;AAlQD;EACE,iBAAA;CAqQD;;AAnQD;EACE,iBAAA;CAsQD;;AApQD;EACE,iBAAA;CAuQD;;AArQD;EACE,iBAAA;CAwQD;;AAtQD;EACE,iBAAA;CAyQD;;AAvQD;EACE,iBAAA;CA0QD;;AAxQD;EACE,iBAAA;CA2QD;;AAzQD;EACE,iBAAA;CA4QD;;AA1QD;EACE,iBAAA;CA6QD;;AA3QD;EACE,iBAAA;CA8QD;;AA5QD;EACE,iBAAA;CA+QD;;AA7QD;EACE,iBAAA;CAgRD;;AA9QD;EACE,iBAAA;CAiRD;;AA/QD;EACE,iBAAA;CAkRD;;AAhRD;EACE,iBAAA;CAmRD;;AAjRD;EACE,iBAAA;CAoRD;;AAlRD;EACE,iBAAA;CAqRD;;AAnRD;EACE,iBAAA;CAsRD;;AApRD;EACE,iBAAA;CAuRD;;AArRD;EACE,iBAAA;CAwRD;;AAtRD;EACE,iBAAA;CAyRD;;AAvRD;EACE,iBAAA;CA0RD;;AAxRD;;EAEE,iBAAA;CA2RD;;AAzRD;EACE,iBAAA;CA4RD;;AA1RD;EACE,iBAAA;CA6RD;;AA3RD;EACE,iBAAA;CA8RD;;AA5RD;EACE,iBAAA;CA+RD;;AA7RD;EACE,iBAAA;CAgSD;;AA9RD;;EAEE,iBAAA;CAiSD;;AA/RD;EACE,iBAAA;CAkSD;;AAhSD;EACE,iBAAA;CAmSD;;AAjSD;EACE,iBAAA;CAoSD;;AAlSD;EACE,iBAAA;CAqSD;;AAnSD;EACE,iBAAA;CAsSD;;AApSD;EACE,iBAAA;CAuSD;;AArSD;EACE,iBAAA;CAwSD;;AAtSD;EACE,iBAAA;CAySD;;AAvSD;EACE,iBAAA;CA0SD;;AAxSD;EACE,iBAAA;CA2SD;;AAzSD;EACE,iBAAA;CA4SD;;AA1SD;EACE,iBAAA;CA6SD;;AA3SD;;EAEE,iBAAA;CA8SD;;AA5SD;;;EAGE,iBAAA;CA+SD;;AA7SD;EACE,iBAAA;CAgTD;;AA9SD;EACE,iBAAA;CAiTD;;AA/SD;EACE,iBAAA;CAkTD;;AAhTD;;EAEE,iBAAA;CAmTD;;AAjTD;EACE,iBAAA;CAoTD;;AAlTD;EACE,iBAAA;CAqTD;;AAnTD;EACE,iBAAA;CAsTD;;AApTD;EACE,iBAAA;CAuTD;;AArTD;EACE,iBAAA;CAwTD;;AAtTD;EACE,iBAAA;CAyTD;;AAvTD;EACE,iBAAA;CA0TD;;AAxTD;EACE,iBAAA;CA2TD;;AAzTD;EACE,iBAAA;CA4TD;;AA1TD;EACE,iBAAA;CA6TD;;AA3TD;EACE,iBAAA;CA8TD;;AA5TD;EACE,iBAAA;CA+TD;;AA7TD;EACE,iBAAA;CAgUD;;AA9TD;EACE,iBAAA;CAiUD;;AA/TD;EACE,iBAAA;CAkUD;;AAhUD;EACE,iBAAA;CAmUD;;AAjUD;EACE,iBAAA;CAoUD;;AAlUD;EACE,iBAAA;CAqUD;;AAnUD;EACE,iBAAA;CAsUD;;AApUD;EACE,iBAAA;CAuUD;;AArUD;EACE,iBAAA;CAwUD;;AAtUD;EACE,iBAAA;CAyUD;;AAvUD;EACE,iBAAA;CA0UD;;AAxUD;EACE,iBAAA;CA2UD;;AAzUD;EACE,iBAAA;CA4UD;;AA1UD;EACE,iBAAA;CA6UD;;AA3UD;EACE,iBAAA;CA8UD;;AA5UD;EACE,iBAAA;CA+UD;;AA7UD;EACE,iBAAA;CAgVD;;AA9UD;EACE,iBAAA;CAiVD;;AA/UD;EACE,iBAAA;CAkVD;;AAhVD;EACE,iBAAA;CAmVD;;AAjVD;EACE,iBAAA;CAoVD;;AAlVD;EACE,iBAAA;CAqVD;;AAnVD;EACE,iBAAA;CAsVD;;AApVD;EACE,iBAAA;CAuVD;;AArVD;EACE,iBAAA;CAwVD;;AAtVD;;EAEE,iBAAA;CAyVD;;AAvVD;;EAEE,iBAAA;CA0VD;;AAxVD;;EAEE,iBAAA;CA2VD;;AAzVD;;EAEE,iBAAA;CA4VD;;AA1VD;EACE,iBAAA;CA6VD;;AA3VD;;EAEE,iBAAA;CA8VD;;AA5VD;;EAEE,iBAAA;CA+VD;;AA7VD;;;;EAIE,iBAAA;CAgWD;;AA9VD;;;EAGE,iBAAA;CAiWD;;AA/VD;;EAEE,iBAAA;CAkWD;;AAhWD;;EAEE,iBAAA;CAmWD;;AAjWD;EACE,iBAAA;CAoWD;;AAlWD;EACE,iBAAA;CAqWD;;AAnWD;EACE,iBAAA;CAsWD;;AApWD;EACE,iBAAA;CAuWD;;AArWD;EACE,iBAAA;CAwWD;;AAtWD;EACE,iBAAA;CAyWD;;AAvWD;EACE,iBAAA;CA0WD;;AAxWD;EACE,iBAAA;CA2WD;;AAzWD;EACE,iBAAA;CA4WD;;AA1WD;EACE,iBAAA;CA6WD;;AA3WD;EACE,iBAAA;CA8WD;;AA5WD;EACE,iBAAA;CA+WD;;AA7WD;EACE,iBAAA;CAgXD;;AA9WD;EACE,iBAAA;CAiXD;;AA/WD;EACE,iBAAA;CAkXD;;AAhXD;EACE,iBAAA;CAmXD;;AAjXD;EACE,iBAAA;CAoXD;;AAlXD;EACE,iBAAA;CAqXD;;AAnXD;EACE,iBAAA;CAsXD;;AApXD;EACE,iBAAA;CAuXD;;AArXD;EACE,iBAAA;CAwXD;;AAtXD;EACE,iBAAA;CAyXD;;AAvXD;EACE,iBAAA;CA0XD;;AAxXD;EACE,iBAAA;CA2XD;;AAzXD;EACE,iBAAA;CA4XD;;AA1XD;EACE,iBAAA;CA6XD;;AA3XD;EACE,iBAAA;CA8XD;;AA5XD;EACE,iBAAA;CA+XD;;AA7XD;EACE,iBAAA;CAgYD;;AA9XD;EACE,iBAAA;CAiYD;;AA/XD;EACE,iBAAA;CAkYD;;AAhYD;EACE,iBAAA;CAmYD;;AAjYD;EACE,iBAAA;CAoYD;;AAlYD;EACE,iBAAA;CAqYD;;AAnYD;EACE,iBAAA;CAsYD;;AApYD;EACE,iBAAA;CAuYD;;AArYD;EACE,iBAAA;CAwYD;;AAtYD;EACE,iBAAA;CAyYD;;AAvYD;;EAEE,iBAAA;CA0YD;;AAxYD;EACE,iBAAA;CA2YD;;AAzYD;EACE,iBAAA;CA4YD;;AA1YD;EACE,iBAAA;CA6YD;;AA3YD;EACE,iBAAA;CA8YD;;AA5YD;EACE,iBAAA;CA+YD;;AA7YD;EACE,iBAAA;CAgZD;;AA9YD;EACE,iBAAA;CAiZD;;AA/YD;EACE,iBAAA;CAkZD;;AAhZD;EACE,iBAAA;CAmZD;;AAjZD;EACE,iBAAA;CAoZD;;AAlZD;EACE,iBAAA;CAqZD;;AAnZD;;EAEE,iBAAA;CAsZD;;AApZD;EACE,iBAAA;CAuZD;;AArZD;EACE,iBAAA;CAwZD;;AAtZD;EACE,iBAAA;CAyZD;;AAvZD;;EAEE,iBAAA;CA0ZD;;AAxZD;EACE,iBAAA;CA2ZD;;AAzZD;EACE,iBAAA;CA4ZD;;AA1ZD;EACE,iBAAA;CA6ZD;;AA3ZD;EACE,iBAAA;CA8ZD;;AA5ZD;EACE,iBAAA;CA+ZD;;AA7ZD;EACE,iBAAA;CAgaD;;AA9ZD;;;EAGE,iBAAA;CAiaD;;AA/ZD;;EAEE,iBAAA;CAkaD;;AAhaD;EACE,iBAAA;CAmaD;;AAjaD;EACE,iBAAA;CAoaD;;AAlaD;EACE,iBAAA;CAqaD;;AAnaD;EACE,iBAAA;CAsaD;;AApaD;EACE,iBAAA;CAuaD;;AAraD;EACE,iBAAA;CAwaD;;AAtaD;EACE,iBAAA;CAyaD;;AAvaD;EACE,iBAAA;CA0aD;;AAxaD;EACE,iBAAA;CA2aD;;AAzaD;EACE,iBAAA;CA4aD;;AA1aD;EACE,iBAAA;CA6aD;;AA3aD;EACE,iBAAA;CA8aD;;AA5aD;EACE,iBAAA;CA+aD;;AA7aD;EACE,iBAAA;CAgbD;;AA9aD;EACE,iBAAA;CAibD;;AA/aD;EACE,iBAAA;CAkbD;;AAhbD;EACE,iBAAA;CAmbD;;AAjbD;EACE,iBAAA;CAobD;;AAlbD;EACE,iBAAA;CAqbD;;AAnbD;EACE,iBAAA;CAsbD;;AApbD;EACE,iBAAA;CAubD;;AArbD;EACE,iBAAA;CAwbD;;AAtbD;EACE,iBAAA;CAybD;;AAvbD;EACE,iBAAA;CA0bD;;AAxbD;EACE,iBAAA;CA2bD;;AAzbD;;EAEE,iBAAA;CA4bD;;AA1bD;;EAEE,iBAAA;CA6bD;;AA3bD;EACE,iBAAA;CA8bD;;AA5bD;EACE,iBAAA;CA+bD;;AA7bD;EACE,iBAAA;CAgcD;;AA9bD;EACE,iBAAA;CAicD;;AA/bD;EACE,iBAAA;CAkcD;;AAhcD;EACE,iBAAA;CAmcD;;AAjcD;EACE,iBAAA;CAocD;;AAlcD;EACE,iBAAA;CAqcD;;AAncD;EACE,iBAAA;CAscD;;AApcD;;;EAGE,iBAAA;CAucD;;AArcD;;EAEE,iBAAA;CAwcD;;AAtcD;;EAEE,iBAAA;CAycD;;AAvcD;;EAEE,iBAAA;CA0cD;;AAxcD;EACE,iBAAA;CA2cD;;AAzcD;EACE,iBAAA;CA4cD;;AA1cD;EACE,iBAAA;CA6cD;;AA3cD;EACE,iBAAA;CA8cD;;AA5cD;;;;;EAKE,iBAAA;CA+cD;;AA7cD;EACE,iBAAA;CAgdD;;AA9cD;;;EAGE,iBAAA;CAidD;;AA/cD;;EAEE,iBAAA;CAkdD;;AAhdD;EACE,iBAAA;CAmdD;;AAjdD;EACE,iBAAA;CAodD;;AAldD;;;EAGE,iBAAA;CAqdD;;AAndD;EACE,iBAAA;CAsdD;;AApdD;EACE,iBAAA;CAudD;;AArdD;;EAEE,iBAAA;CAwdD;;AAtdD;;EAEE,iBAAA;CAydD;;AAvdD;;EAEE,iBAAA;CA0dD;;AAxdD;EACE,iBAAA;CA2dD;;AAzdD;EACE,iBAAA;CA4dD;;AA1dD;EACE,iBAAA;CA6dD;;AA3dD;EACE,iBAAA;CA8dD;;AA5dD;EACE,iBAAA;CA+dD;;AA7dD;EACE,iBAAA;CAgeD;;AA9dD;EACE,iBAAA;CAieD;;AA/dD;EACE,iBAAA;CAkeD;;AAheD;;EAEE,iBAAA;CAmeD;;AAjeD;EACE,iBAAA;CAoeD;;AAleD;EACE,iBAAA;CAqeD;;AAneD;EACE,iBAAA;CAseD;;AApeD;EACE,iBAAA;CAueD;;AAreD;EACE,iBAAA;CAweD;;AAteD;EACE,iBAAA;CAyeD;;AAveD;EACE,iBAAA;CA0eD;;AAxeD;EACE,iBAAA;CA2eD;;AAzeD;EACE,iBAAA;CA4eD;;AA1eD;EACE,iBAAA;CA6eD;;AA3eD;EACE,iBAAA;CA8eD;;AA5eD;EACE,iBAAA;CA+eD;;AA7eD;EACE,iBAAA;CAgfD;;AA9eD;EACE,iBAAA;CAifD;;AA/eD;EACE,iBAAA;CAkfD;;AAhfD;EACE,iBAAA;CAmfD;;AAjfD;EACE,iBAAA;CAofD;;AAlfD;EACE,iBAAA;CAqfD;;AAnfD;EACE,iBAAA;CAsfD;;AApfD;EACE,iBAAA;CAufD;;AArfD;EACE,iBAAA;CAwfD;;AAtfD;EACE,iBAAA;CAyfD;;AAvfD;EACE,iBAAA;CA0fD;;AAxfD;EACE,iBAAA;CA2fD;;AAzfD;EACE,iBAAA;CA4fD;;AA1fD;EACE,iBAAA;CA6fD;;AA3fD;EACE,iBAAA;CA8fD;;AA5fD;EACE,iBAAA;CA+fD;;AA7fD;EACE,iBAAA;CAggBD;;AA9fD;EACE,iBAAA;CAigBD;;AA/fD;EACE,iBAAA;CAkgBD;;AAhgBD;EACE,iBAAA;CAmgBD;;AAjgBD;EACE,iBAAA;CAogBD;;AAlgBD;EACE,iBAAA;CAqgBD;;AAngBD;EACE,iBAAA;CAsgBD;;AApgBD;EACE,iBAAA;CAugBD;;AArgBD;EACE,iBAAA;CAwgBD;;AAtgBD;;;EAGE,iBAAA;CAygBD;;AAvgBD;EACE,iBAAA;CA0gBD;;AAxgBD;EACE,iBAAA;CA2gBD;;AAzgBD;EACE,iBAAA;CA4gBD;;AA1gBD;EACE,iBAAA;CA6gBD;;AA3gBD;EACE,iBAAA;CA8gBD;;AA5gBD;EACE,iBAAA;CA+gBD;;AA7gBD;EACE,iBAAA;CAghBD;;AA9gBD;EACE,iBAAA;CAihBD;;AA/gBD;EACE,iBAAA;CAkhBD;;AAhhBD;EACE,iBAAA;CAmhBD;;AAjhBD;EACE,iBAAA;CAohBD;;AAlhBD;EACE,iBAAA;CAqhBD;;AAnhBD;EACE,iBAAA;CAshBD;;AAphBD;EACE,iBAAA;CAuhBD;;AArhBD;EACE,iBAAA;CAwhBD;;AAthBD;EACE,iBAAA;CAyhBD;;AAvhBD;EACE,iBAAA;CA0hBD;;AAxhBD;EACE,iBAAA;CA2hBD;;AAzhBD;EACE,iBAAA;CA4hBD;;AA1hBD;EACE,iBAAA;CA6hBD;;AA3hBD;EACE,iBAAA;CA8hBD;;AA5hBD;;EAEE,iBAAA;CA+hBD;;AA7hBD;EACE,iBAAA;CAgiBD;;AA9hBD;EACE,iBAAA;CAiiBD;;AA/hBD;EACE,iBAAA;CAkiBD;;AAhiBD;EACE,iBAAA;CAmiBD;;AAjiBD;EACE,iBAAA;CAoiBD;;AAliBD;EACE,iBAAA;CAqiBD;;AAniBD;EACE,iBAAA;CAsiBD;;AApiBD;EACE,iBAAA;CAuiBD;;AAriBD;EACE,iBAAA;CAwiBD;;AAtiBD;EACE,iBAAA;CAyiBD;;AAviBD;EACE,iBAAA;CA0iBD;;AAxiBD;EACE,iBAAA;CA2iBD;;AAziBD;EACE,iBAAA;CA4iBD;;AA1iBD;EACE,iBAAA;CA6iBD;;AA3iBD;EACE,iBAAA;CA8iBD;;AA5iBD;;EAEE,iBAAA;CA+iBD;;AA7iBD;EACE,iBAAA;CAgjBD;;AA9iBD;EACE,iBAAA;CAijBD;;AA/iBD;EACE,iBAAA;CAkjBD;;AAhjBD;EACE,iBAAA;CAmjBD;;AAjjBD;;EAEE,iBAAA;CAojBD;;AAljBD;EACE,iBAAA;CAqjBD;;AAnjBD;EACE,iBAAA;CAsjBD;;AApjBD;EACE,iBAAA;CAujBD;;AArjBD;;EAEE,iBAAA;CAwjBD;;AAtjBD;;EAEE,iBAAA;CAyjBD;;AAvjBD;;EAEE,iBAAA;CA0jBD;;AAxjBD;;EAEE,iBAAA;CA2jBD;;AAzjBD;;EAEE,iBAAA;CA4jBD;;AA1jBD;EACE,iBAAA;CA6jBD;;AA3jBD;EACE,iBAAA;CA8jBD;;AA5jBD;EACE,iBAAA;CA+jBD;;AA7jBD;EACE,iBAAA;CAgkBD;;AA9jBD;EACE,iBAAA;CAikBD;;AA/jBD;EACE,iBAAA;CAkkBD;;AAhkBD;EACE,iBAAA;CAmkBD;;AAjkBD;EACE,iBAAA;CAokBD;;AAlkBD;EACE,iBAAA;CAqkBD;;AAnkBD;EACE,iBAAA;CAskBD;;AApkBD;EACE,iBAAA;CAukBD;;AArkBD;;EAEE,iBAAA;CAwkBD;;AAtkBD;;EAEE,iBAAA;CAykBD;;AAvkBD;;EAEE,iBAAA;CA0kBD;;AAxkBD;EACE,iBAAA;CA2kBD;;AAzkBD;;EAEE,iBAAA;CA4kBD;;AA1kBD;;EAEE,iBAAA;CA6kBD;;AA3kBD;EACE,iBAAA;CA8kBD;;AA5kBD;EACE,iBAAA;CA+kBD;;AA7kBD;EACE,iBAAA;CAglBD;;AA9kBD;EACE,iBAAA;CAilBD;;AA/kBD;EACE,iBAAA;CAklBD;;AAhlBD;EACE,iBAAA;CAmlBD;;AAjlBD;EACE,iBAAA;CAolBD;;AAllBD;EACE,iBAAA;CAqlBD;;AAnlBD;EACE,iBAAA;CAslBD;;AAplBD;EACE,iBAAA;CAulBD;;AArlBD;EACE,iBAAA;CAwlBD;;AAtlBD;EACE,iBAAA;CAylBD;;AAvlBD;EACE,iBAAA;CA0lBD;;AAxlBD;EACE,iBAAA;CA2lBD;;AAzlBD;EACE,iBAAA;CA4lBD;;AA1lBD;EACE,iBAAA;CA6lBD;;AA3lBD;EACE,iBAAA;CA8lBD;;AA5lBD;EACE,iBAAA;CA+lBD;;AA7lBD;EACE,iBAAA;CAgmBD;;AA9lBD;EACE,iBAAA;CAimBD;;AA/lBD;;EAEE,iBAAA;CAkmBD;;AAhmBD;EACE,iBAAA;CAmmBD;;AAjmBD;EACE,iBAAA;CAomBD;;AAlmBD;EACE,iBAAA;CAqmBD;;AAnmBD;EACE,iBAAA;CAsmBD;;AApmBD;EACE,iBAAA;CAumBD;;AArmBD;EACE,iBAAA;CAwmBD;;AAtmBD;EACE,iBAAA;CAymBD;;AAvmBD;EACE,iBAAA;CA0mBD;;AAxmBD;EACE,iBAAA;CA2mBD;;AAzmBD;EACE,iBAAA;CA4mBD;;AA1mBD;EACE,iBAAA;CA6mBD;;AA3mBD;EACE,iBAAA;CA8mBD;;AA5mBD;EACE,iBAAA;CA+mBD;;AA7mBD;EACE,iBAAA;CAgnBD;;AA9mBD;EACE,iBAAA;CAinBD;;AA/mBD;EACE,iBAAA;CAknBD;;AAhnBD;EACE,iBAAA;CAmnBD;;AAjnBD;EACE,iBAAA;CAonBD;;AAlnBD;EACE,iBAAA;CAqnBD;;AAnnBD;EACE,iBAAA;CAsnBD;;AApnBD;EACE,iBAAA;CAunBD;;AArnBD;EACE,iBAAA;CAwnBD;;AAtnBD;EACE,iBAAA;CAynBD;;AAvnBD;EACE,iBAAA;CA0nBD;;AAxnBD;EACE,iBAAA;CA2nBD;;AAznBD;EACE,iBAAA;CA4nBD;;AA1nBD;EACE,iBAAA;CA6nBD;;AA3nBD;EACE,iBAAA;CA8nBD;;AA5nBD;EACE,iBAAA;CA+nBD;;AA7nBD;EACE,iBAAA;CAgoBD;;AA9nBD;EACE,iBAAA;CAioBD;;AA/nBD;EACE,iBAAA;CAkoBD;;AAhoBD;EACE,iBAAA;CAmoBD;;AAjoBD;EACE,iBAAA;CAooBD;;AAloBD;EACE,iBAAA;CAqoBD;;AAnoBD;EACE,iBAAA;CAsoBD;;AApoBD;EACE,iBAAA;CAuoBD;;AAroBD;EACE,iBAAA;CAwoBD;;AAtoBD;EACE,iBAAA;CAyoBD;;AAvoBD;EACE,iBAAA;CA0oBD;;AAxoBD;EACE,iBAAA;CA2oBD;;AAzoBD;EACE,iBAAA;CA4oBD;;AA1oBD;EACE,iBAAA;CA6oBD;;AA3oBD;EACE,iBAAA;CA8oBD;;AA5oBD;EACE,iBAAA;CA+oBD;;AA7oBD;EACE,iBAAA;CAgpBD;;AA9oBD;EACE,iBAAA;CAipBD;;AA/oBD;EACE,iBAAA;CAkpBD;;AAhpBD;EACE,iBAAA;CAmpBD;;AAjpBD;EACE,iBAAA;CAopBD;;AAlpBD;;EAEE,iBAAA;CAqpBD;;AAnpBD;;;EAGE,iBAAA;CAspBD;;AAppBD;EACE,iBAAA;CAupBD;;AArpBD;EACE,iBAAA;CAwpBD;;AAtpBD;;EAEE,iBAAA;CAypBD;;AAvpBD;EACE,iBAAA;CA0pBD;;AAxpBD;EACE,iBAAA;CA2pBD;;AAzpBD;EACE,iBAAA;CA4pBD;;AA1pBD;EACE,iBAAA;CA6pBD;;AA3pBD;EACE,iBAAA;CA8pBD;;AA5pBD;EACE,iBAAA;CA+pBD;;AA7pBD;EACE,iBAAA;CAgqBD;;AA9pBD;EACE,iBAAA;CAiqBD;;AA/pBD;EACE,iBAAA;CAkqBD;;AAhqBD;EACE,iBAAA;CAmqBD;;AAjqBD;;EAEE,iBAAA;CAoqBD;;AAlqBD;;EAEE,iBAAA;CAqqBD;;AAnqBD;EACE,mBAAA;EACA,WAAA;EACA,YAAA;EACA,WAAA;EACA,aAAA;EACA,iBAAA;EACA,uBAAA;EACA,UAAA;CAsqBD;;AApqBD;;EAEE,iBAAA;EACA,YAAA;EACA,aAAA;EACA,UAAA;EACA,kBAAA;EACA,WAAA;CAuqBD","file":"fontAwesome.css","sourcesContent":["/*!\n *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome\n *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)\n */\n/* FONT PATH\n * -------------------------- */\n@font-face {\n  font-family: 'FontAwesome';\n  src: url('../../font/fontawesome-webfont.eot');\n  src: url('../../font/fontawesome-webfont.eot') format('embedded-opentype'), url('../../font/fontawesome-webfont.woff2') format('woff2'), url('../../font/fontawesome-webfont.woff') format('woff'), url('../../font/fontawesome-webfont.ttf') format('truetype'), url('../../font/fontawesome-webfont.svg') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n.fa {\n  display: inline-block;\n  font: normal normal normal 14px/1 FontAwesome;\n  font-size: inherit;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n/* makes the font 33% larger relative to the icon container */\n.fa-lg {\n  font-size: 1.33333333em;\n  line-height: 0.75em;\n  vertical-align: -15%;\n}\n.fa-2x {\n  font-size: 2em;\n}\n.fa-3x {\n  font-size: 3em;\n}\n.fa-4x {\n  font-size: 4em;\n}\n.fa-5x {\n  font-size: 5em;\n}\n.fa-fw {\n  width: 1.28571429em;\n  text-align: center;\n}\n.fa-ul {\n  padding-left: 0;\n  margin-left: 2.14285714em;\n  list-style-type: none;\n}\n.fa-ul > li {\n  position: relative;\n}\n.fa-li {\n  position: absolute;\n  left: -2.14285714em;\n  width: 2.14285714em;\n  top: 0.14285714em;\n  text-align: center;\n}\n.fa-li.fa-lg {\n  left: -1.85714286em;\n}\n.fa-border {\n  padding: .2em .25em .15em;\n  border: solid 0.08em #eee;\n  border-radius: .1em;\n}\n.fa-pull-left {\n  float: left;\n}\n.fa-pull-right {\n  float: right;\n}\n.fa.fa-pull-left {\n  margin-right: .3em;\n}\n.fa.fa-pull-right {\n  margin-left: .3em;\n}\n/* Deprecated as of 4.4.0 */\n.pull-right {\n  float: right;\n}\n.pull-left {\n  float: left;\n}\n.fa.pull-left {\n  margin-right: .3em;\n}\n.fa.pull-right {\n  margin-left: .3em;\n}\n.fa-spin {\n  -webkit-animation: fa-spin 2s infinite linear;\n  animation: fa-spin 2s infinite linear;\n}\n.fa-pulse {\n  -webkit-animation: fa-spin 1s infinite steps(8);\n  animation: fa-spin 1s infinite steps(8);\n}\n@-webkit-keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg);\n  }\n}\n@keyframes fa-spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg);\n  }\n}\n.fa-rotate-90 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=1)\";\n  -webkit-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  transform: rotate(90deg);\n}\n.fa-rotate-180 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2)\";\n  -webkit-transform: rotate(180deg);\n  -ms-transform: rotate(180deg);\n  transform: rotate(180deg);\n}\n.fa-rotate-270 {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=3)\";\n  -webkit-transform: rotate(270deg);\n  -ms-transform: rotate(270deg);\n  transform: rotate(270deg);\n}\n.fa-flip-horizontal {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)\";\n  -webkit-transform: scale(-1, 1);\n  -ms-transform: scale(-1, 1);\n  transform: scale(-1, 1);\n}\n.fa-flip-vertical {\n  -ms-filter: \"progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)\";\n  -webkit-transform: scale(1, -1);\n  -ms-transform: scale(1, -1);\n  transform: scale(1, -1);\n}\n:root .fa-rotate-90,\n:root .fa-rotate-180,\n:root .fa-rotate-270,\n:root .fa-flip-horizontal,\n:root .fa-flip-vertical {\n  filter: none;\n}\n.fa-stack {\n  position: relative;\n  display: inline-block;\n  width: 2em;\n  height: 2em;\n  line-height: 2em;\n  vertical-align: middle;\n}\n.fa-stack-1x,\n.fa-stack-2x {\n  position: absolute;\n  left: 0;\n  width: 100%;\n  text-align: center;\n}\n.fa-stack-1x {\n  line-height: inherit;\n}\n.fa-stack-2x {\n  font-size: 2em;\n}\n.fa-inverse {\n  color: #fff;\n}\n/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen\n   readers do not read off random characters that represent icons */\n.fa-glass:before {\n  content: \"\\f000\";\n}\n.fa-music:before {\n  content: \"\\f001\";\n}\n.fa-search:before {\n  content: \"\\f002\";\n}\n.fa-envelope-o:before {\n  content: \"\\f003\";\n}\n.fa-heart:before {\n  content: \"\\f004\";\n}\n.fa-star:before {\n  content: \"\\f005\";\n}\n.fa-star-o:before {\n  content: \"\\f006\";\n}\n.fa-user:before {\n  content: \"\\f007\";\n}\n.fa-film:before {\n  content: \"\\f008\";\n}\n.fa-th-large:before {\n  content: \"\\f009\";\n}\n.fa-th:before {\n  content: \"\\f00a\";\n}\n.fa-th-list:before {\n  content: \"\\f00b\";\n}\n.fa-check:before {\n  content: \"\\f00c\";\n}\n.fa-remove:before,\n.fa-close:before,\n.fa-times:before {\n  content: \"\\f00d\";\n}\n.fa-search-plus:before {\n  content: \"\\f00e\";\n}\n.fa-search-minus:before {\n  content: \"\\f010\";\n}\n.fa-power-off:before {\n  content: \"\\f011\";\n}\n.fa-signal:before {\n  content: \"\\f012\";\n}\n.fa-gear:before,\n.fa-cog:before {\n  content: \"\\f013\";\n}\n.fa-trash-o:before {\n  content: \"\\f014\";\n}\n.fa-home:before {\n  content: \"\\f015\";\n}\n.fa-file-o:before {\n  content: \"\\f016\";\n}\n.fa-clock-o:before {\n  content: \"\\f017\";\n}\n.fa-road:before {\n  content: \"\\f018\";\n}\n.fa-download:before {\n  content: \"\\f019\";\n}\n.fa-arrow-circle-o-down:before {\n  content: \"\\f01a\";\n}\n.fa-arrow-circle-o-up:before {\n  content: \"\\f01b\";\n}\n.fa-inbox:before {\n  content: \"\\f01c\";\n}\n.fa-play-circle-o:before {\n  content: \"\\f01d\";\n}\n.fa-rotate-right:before,\n.fa-repeat:before {\n  content: \"\\f01e\";\n}\n.fa-refresh:before {\n  content: \"\\f021\";\n}\n.fa-list-alt:before {\n  content: \"\\f022\";\n}\n.fa-lock:before {\n  content: \"\\f023\";\n}\n.fa-flag:before {\n  content: \"\\f024\";\n}\n.fa-headphones:before {\n  content: \"\\f025\";\n}\n.fa-volume-off:before {\n  content: \"\\f026\";\n}\n.fa-volume-down:before {\n  content: \"\\f027\";\n}\n.fa-volume-up:before {\n  content: \"\\f028\";\n}\n.fa-qrcode:before {\n  content: \"\\f029\";\n}\n.fa-barcode:before {\n  content: \"\\f02a\";\n}\n.fa-tag:before {\n  content: \"\\f02b\";\n}\n.fa-tags:before {\n  content: \"\\f02c\";\n}\n.fa-book:before {\n  content: \"\\f02d\";\n}\n.fa-bookmark:before {\n  content: \"\\f02e\";\n}\n.fa-print:before {\n  content: \"\\f02f\";\n}\n.fa-camera:before {\n  content: \"\\f030\";\n}\n.fa-font:before {\n  content: \"\\f031\";\n}\n.fa-bold:before {\n  content: \"\\f032\";\n}\n.fa-italic:before {\n  content: \"\\f033\";\n}\n.fa-text-height:before {\n  content: \"\\f034\";\n}\n.fa-text-width:before {\n  content: \"\\f035\";\n}\n.fa-align-left:before {\n  content: \"\\f036\";\n}\n.fa-align-center:before {\n  content: \"\\f037\";\n}\n.fa-align-right:before {\n  content: \"\\f038\";\n}\n.fa-align-justify:before {\n  content: \"\\f039\";\n}\n.fa-list:before {\n  content: \"\\f03a\";\n}\n.fa-dedent:before,\n.fa-outdent:before {\n  content: \"\\f03b\";\n}\n.fa-indent:before {\n  content: \"\\f03c\";\n}\n.fa-video-camera:before {\n  content: \"\\f03d\";\n}\n.fa-photo:before,\n.fa-image:before,\n.fa-picture-o:before {\n  content: \"\\f03e\";\n}\n.fa-pencil:before {\n  content: \"\\f040\";\n}\n.fa-map-marker:before {\n  content: \"\\f041\";\n}\n.fa-adjust:before {\n  content: \"\\f042\";\n}\n.fa-tint:before {\n  content: \"\\f043\";\n}\n.fa-edit:before,\n.fa-pencil-square-o:before {\n  content: \"\\f044\";\n}\n.fa-share-square-o:before {\n  content: \"\\f045\";\n}\n.fa-check-square-o:before {\n  content: \"\\f046\";\n}\n.fa-arrows:before {\n  content: \"\\f047\";\n}\n.fa-step-backward:before {\n  content: \"\\f048\";\n}\n.fa-fast-backward:before {\n  content: \"\\f049\";\n}\n.fa-backward:before {\n  content: \"\\f04a\";\n}\n.fa-play:before {\n  content: \"\\f04b\";\n}\n.fa-pause:before {\n  content: \"\\f04c\";\n}\n.fa-stop:before {\n  content: \"\\f04d\";\n}\n.fa-forward:before {\n  content: \"\\f04e\";\n}\n.fa-fast-forward:before {\n  content: \"\\f050\";\n}\n.fa-step-forward:before {\n  content: \"\\f051\";\n}\n.fa-eject:before {\n  content: \"\\f052\";\n}\n.fa-chevron-left:before {\n  content: \"\\f053\";\n}\n.fa-chevron-right:before {\n  content: \"\\f054\";\n}\n.fa-plus-circle:before {\n  content: \"\\f055\";\n}\n.fa-minus-circle:before {\n  content: \"\\f056\";\n}\n.fa-times-circle:before {\n  content: \"\\f057\";\n}\n.fa-check-circle:before {\n  content: \"\\f058\";\n}\n.fa-question-circle:before {\n  content: \"\\f059\";\n}\n.fa-info-circle:before {\n  content: \"\\f05a\";\n}\n.fa-crosshairs:before {\n  content: \"\\f05b\";\n}\n.fa-times-circle-o:before {\n  content: \"\\f05c\";\n}\n.fa-check-circle-o:before {\n  content: \"\\f05d\";\n}\n.fa-ban:before {\n  content: \"\\f05e\";\n}\n.fa-arrow-left:before {\n  content: \"\\f060\";\n}\n.fa-arrow-right:before {\n  content: \"\\f061\";\n}\n.fa-arrow-up:before {\n  content: \"\\f062\";\n}\n.fa-arrow-down:before {\n  content: \"\\f063\";\n}\n.fa-mail-forward:before,\n.fa-share:before {\n  content: \"\\f064\";\n}\n.fa-expand:before {\n  content: \"\\f065\";\n}\n.fa-compress:before {\n  content: \"\\f066\";\n}\n.fa-plus:before {\n  content: \"\\f067\";\n}\n.fa-minus:before {\n  content: \"\\f068\";\n}\n.fa-asterisk:before {\n  content: \"\\f069\";\n}\n.fa-exclamation-circle:before {\n  content: \"\\f06a\";\n}\n.fa-gift:before {\n  content: \"\\f06b\";\n}\n.fa-leaf:before {\n  content: \"\\f06c\";\n}\n.fa-fire:before {\n  content: \"\\f06d\";\n}\n.fa-eye:before {\n  content: \"\\f06e\";\n}\n.fa-eye-slash:before {\n  content: \"\\f070\";\n}\n.fa-warning:before,\n.fa-exclamation-triangle:before {\n  content: \"\\f071\";\n}\n.fa-plane:before {\n  content: \"\\f072\";\n}\n.fa-calendar:before {\n  content: \"\\f073\";\n}\n.fa-random:before {\n  content: \"\\f074\";\n}\n.fa-comment:before {\n  content: \"\\f075\";\n}\n.fa-magnet:before {\n  content: \"\\f076\";\n}\n.fa-chevron-up:before {\n  content: \"\\f077\";\n}\n.fa-chevron-down:before {\n  content: \"\\f078\";\n}\n.fa-retweet:before {\n  content: \"\\f079\";\n}\n.fa-shopping-cart:before {\n  content: \"\\f07a\";\n}\n.fa-folder:before {\n  content: \"\\f07b\";\n}\n.fa-folder-open:before {\n  content: \"\\f07c\";\n}\n.fa-arrows-v:before {\n  content: \"\\f07d\";\n}\n.fa-arrows-h:before {\n  content: \"\\f07e\";\n}\n.fa-bar-chart-o:before,\n.fa-bar-chart:before {\n  content: \"\\f080\";\n}\n.fa-twitter-square:before {\n  content: \"\\f081\";\n}\n.fa-facebook-square:before {\n  content: \"\\f082\";\n}\n.fa-camera-retro:before {\n  content: \"\\f083\";\n}\n.fa-key:before {\n  content: \"\\f084\";\n}\n.fa-gears:before,\n.fa-cogs:before {\n  content: \"\\f085\";\n}\n.fa-comments:before {\n  content: \"\\f086\";\n}\n.fa-thumbs-o-up:before {\n  content: \"\\f087\";\n}\n.fa-thumbs-o-down:before {\n  content: \"\\f088\";\n}\n.fa-star-half:before {\n  content: \"\\f089\";\n}\n.fa-heart-o:before {\n  content: \"\\f08a\";\n}\n.fa-sign-out:before {\n  content: \"\\f08b\";\n}\n.fa-linkedin-square:before {\n  content: \"\\f08c\";\n}\n.fa-thumb-tack:before {\n  content: \"\\f08d\";\n}\n.fa-external-link:before {\n  content: \"\\f08e\";\n}\n.fa-sign-in:before {\n  content: \"\\f090\";\n}\n.fa-trophy:before {\n  content: \"\\f091\";\n}\n.fa-github-square:before {\n  content: \"\\f092\";\n}\n.fa-upload:before {\n  content: \"\\f093\";\n}\n.fa-lemon-o:before {\n  content: \"\\f094\";\n}\n.fa-phone:before {\n  content: \"\\f095\";\n}\n.fa-square-o:before {\n  content: \"\\f096\";\n}\n.fa-bookmark-o:before {\n  content: \"\\f097\";\n}\n.fa-phone-square:before {\n  content: \"\\f098\";\n}\n.fa-twitter:before {\n  content: \"\\f099\";\n}\n.fa-facebook-f:before,\n.fa-facebook:before {\n  content: \"\\f09a\";\n}\n.fa-github:before {\n  content: \"\\f09b\";\n}\n.fa-unlock:before {\n  content: \"\\f09c\";\n}\n.fa-credit-card:before {\n  content: \"\\f09d\";\n}\n.fa-feed:before,\n.fa-rss:before {\n  content: \"\\f09e\";\n}\n.fa-hdd-o:before {\n  content: \"\\f0a0\";\n}\n.fa-bullhorn:before {\n  content: \"\\f0a1\";\n}\n.fa-bell:before {\n  content: \"\\f0f3\";\n}\n.fa-certificate:before {\n  content: \"\\f0a3\";\n}\n.fa-hand-o-right:before {\n  content: \"\\f0a4\";\n}\n.fa-hand-o-left:before {\n  content: \"\\f0a5\";\n}\n.fa-hand-o-up:before {\n  content: \"\\f0a6\";\n}\n.fa-hand-o-down:before {\n  content: \"\\f0a7\";\n}\n.fa-arrow-circle-left:before {\n  content: \"\\f0a8\";\n}\n.fa-arrow-circle-right:before {\n  content: \"\\f0a9\";\n}\n.fa-arrow-circle-up:before {\n  content: \"\\f0aa\";\n}\n.fa-arrow-circle-down:before {\n  content: \"\\f0ab\";\n}\n.fa-globe:before {\n  content: \"\\f0ac\";\n}\n.fa-wrench:before {\n  content: \"\\f0ad\";\n}\n.fa-tasks:before {\n  content: \"\\f0ae\";\n}\n.fa-filter:before {\n  content: \"\\f0b0\";\n}\n.fa-briefcase:before {\n  content: \"\\f0b1\";\n}\n.fa-arrows-alt:before {\n  content: \"\\f0b2\";\n}\n.fa-group:before,\n.fa-users:before {\n  content: \"\\f0c0\";\n}\n.fa-chain:before,\n.fa-link:before {\n  content: \"\\f0c1\";\n}\n.fa-cloud:before {\n  content: \"\\f0c2\";\n}\n.fa-flask:before {\n  content: \"\\f0c3\";\n}\n.fa-cut:before,\n.fa-scissors:before {\n  content: \"\\f0c4\";\n}\n.fa-copy:before,\n.fa-files-o:before {\n  content: \"\\f0c5\";\n}\n.fa-paperclip:before {\n  content: \"\\f0c6\";\n}\n.fa-save:before,\n.fa-floppy-o:before {\n  content: \"\\f0c7\";\n}\n.fa-square:before {\n  content: \"\\f0c8\";\n}\n.fa-navicon:before,\n.fa-reorder:before,\n.fa-bars:before {\n  content: \"\\f0c9\";\n}\n.fa-list-ul:before {\n  content: \"\\f0ca\";\n}\n.fa-list-ol:before {\n  content: \"\\f0cb\";\n}\n.fa-strikethrough:before {\n  content: \"\\f0cc\";\n}\n.fa-underline:before {\n  content: \"\\f0cd\";\n}\n.fa-table:before {\n  content: \"\\f0ce\";\n}\n.fa-magic:before {\n  content: \"\\f0d0\";\n}\n.fa-truck:before {\n  content: \"\\f0d1\";\n}\n.fa-pinterest:before {\n  content: \"\\f0d2\";\n}\n.fa-pinterest-square:before {\n  content: \"\\f0d3\";\n}\n.fa-google-plus-square:before {\n  content: \"\\f0d4\";\n}\n.fa-google-plus:before {\n  content: \"\\f0d5\";\n}\n.fa-money:before {\n  content: \"\\f0d6\";\n}\n.fa-caret-down:before {\n  content: \"\\f0d7\";\n}\n.fa-caret-up:before {\n  content: \"\\f0d8\";\n}\n.fa-caret-left:before {\n  content: \"\\f0d9\";\n}\n.fa-caret-right:before {\n  content: \"\\f0da\";\n}\n.fa-columns:before {\n  content: \"\\f0db\";\n}\n.fa-unsorted:before,\n.fa-sort:before {\n  content: \"\\f0dc\";\n}\n.fa-sort-down:before,\n.fa-sort-desc:before {\n  content: \"\\f0dd\";\n}\n.fa-sort-up:before,\n.fa-sort-asc:before {\n  content: \"\\f0de\";\n}\n.fa-envelope:before {\n  content: \"\\f0e0\";\n}\n.fa-linkedin:before {\n  content: \"\\f0e1\";\n}\n.fa-rotate-left:before,\n.fa-undo:before {\n  content: \"\\f0e2\";\n}\n.fa-legal:before,\n.fa-gavel:before {\n  content: \"\\f0e3\";\n}\n.fa-dashboard:before,\n.fa-tachometer:before {\n  content: \"\\f0e4\";\n}\n.fa-comment-o:before {\n  content: \"\\f0e5\";\n}\n.fa-comments-o:before {\n  content: \"\\f0e6\";\n}\n.fa-flash:before,\n.fa-bolt:before {\n  content: \"\\f0e7\";\n}\n.fa-sitemap:before {\n  content: \"\\f0e8\";\n}\n.fa-umbrella:before {\n  content: \"\\f0e9\";\n}\n.fa-paste:before,\n.fa-clipboard:before {\n  content: \"\\f0ea\";\n}\n.fa-lightbulb-o:before {\n  content: \"\\f0eb\";\n}\n.fa-exchange:before {\n  content: \"\\f0ec\";\n}\n.fa-cloud-download:before {\n  content: \"\\f0ed\";\n}\n.fa-cloud-upload:before {\n  content: \"\\f0ee\";\n}\n.fa-user-md:before {\n  content: \"\\f0f0\";\n}\n.fa-stethoscope:before {\n  content: \"\\f0f1\";\n}\n.fa-suitcase:before {\n  content: \"\\f0f2\";\n}\n.fa-bell-o:before {\n  content: \"\\f0a2\";\n}\n.fa-coffee:before {\n  content: \"\\f0f4\";\n}\n.fa-cutlery:before {\n  content: \"\\f0f5\";\n}\n.fa-file-text-o:before {\n  content: \"\\f0f6\";\n}\n.fa-building-o:before {\n  content: \"\\f0f7\";\n}\n.fa-hospital-o:before {\n  content: \"\\f0f8\";\n}\n.fa-ambulance:before {\n  content: \"\\f0f9\";\n}\n.fa-medkit:before {\n  content: \"\\f0fa\";\n}\n.fa-fighter-jet:before {\n  content: \"\\f0fb\";\n}\n.fa-beer:before {\n  content: \"\\f0fc\";\n}\n.fa-h-square:before {\n  content: \"\\f0fd\";\n}\n.fa-plus-square:before {\n  content: \"\\f0fe\";\n}\n.fa-angle-double-left:before {\n  content: \"\\f100\";\n}\n.fa-angle-double-right:before {\n  content: \"\\f101\";\n}\n.fa-angle-double-up:before {\n  content: \"\\f102\";\n}\n.fa-angle-double-down:before {\n  content: \"\\f103\";\n}\n.fa-angle-left:before {\n  content: \"\\f104\";\n}\n.fa-angle-right:before {\n  content: \"\\f105\";\n}\n.fa-angle-up:before {\n  content: \"\\f106\";\n}\n.fa-angle-down:before {\n  content: \"\\f107\";\n}\n.fa-desktop:before {\n  content: \"\\f108\";\n}\n.fa-laptop:before {\n  content: \"\\f109\";\n}\n.fa-tablet:before {\n  content: \"\\f10a\";\n}\n.fa-mobile-phone:before,\n.fa-mobile:before {\n  content: \"\\f10b\";\n}\n.fa-circle-o:before {\n  content: \"\\f10c\";\n}\n.fa-quote-left:before {\n  content: \"\\f10d\";\n}\n.fa-quote-right:before {\n  content: \"\\f10e\";\n}\n.fa-spinner:before {\n  content: \"\\f110\";\n}\n.fa-circle:before {\n  content: \"\\f111\";\n}\n.fa-mail-reply:before,\n.fa-reply:before {\n  content: \"\\f112\";\n}\n.fa-github-alt:before {\n  content: \"\\f113\";\n}\n.fa-folder-o:before {\n  content: \"\\f114\";\n}\n.fa-folder-open-o:before {\n  content: \"\\f115\";\n}\n.fa-smile-o:before {\n  content: \"\\f118\";\n}\n.fa-frown-o:before {\n  content: \"\\f119\";\n}\n.fa-meh-o:before {\n  content: \"\\f11a\";\n}\n.fa-gamepad:before {\n  content: \"\\f11b\";\n}\n.fa-keyboard-o:before {\n  content: \"\\f11c\";\n}\n.fa-flag-o:before {\n  content: \"\\f11d\";\n}\n.fa-flag-checkered:before {\n  content: \"\\f11e\";\n}\n.fa-terminal:before {\n  content: \"\\f120\";\n}\n.fa-code:before {\n  content: \"\\f121\";\n}\n.fa-mail-reply-all:before,\n.fa-reply-all:before {\n  content: \"\\f122\";\n}\n.fa-star-half-empty:before,\n.fa-star-half-full:before,\n.fa-star-half-o:before {\n  content: \"\\f123\";\n}\n.fa-location-arrow:before {\n  content: \"\\f124\";\n}\n.fa-crop:before {\n  content: \"\\f125\";\n}\n.fa-code-fork:before {\n  content: \"\\f126\";\n}\n.fa-unlink:before,\n.fa-chain-broken:before {\n  content: \"\\f127\";\n}\n.fa-question:before {\n  content: \"\\f128\";\n}\n.fa-info:before {\n  content: \"\\f129\";\n}\n.fa-exclamation:before {\n  content: \"\\f12a\";\n}\n.fa-superscript:before {\n  content: \"\\f12b\";\n}\n.fa-subscript:before {\n  content: \"\\f12c\";\n}\n.fa-eraser:before {\n  content: \"\\f12d\";\n}\n.fa-puzzle-piece:before {\n  content: \"\\f12e\";\n}\n.fa-microphone:before {\n  content: \"\\f130\";\n}\n.fa-microphone-slash:before {\n  content: \"\\f131\";\n}\n.fa-shield:before {\n  content: \"\\f132\";\n}\n.fa-calendar-o:before {\n  content: \"\\f133\";\n}\n.fa-fire-extinguisher:before {\n  content: \"\\f134\";\n}\n.fa-rocket:before {\n  content: \"\\f135\";\n}\n.fa-maxcdn:before {\n  content: \"\\f136\";\n}\n.fa-chevron-circle-left:before {\n  content: \"\\f137\";\n}\n.fa-chevron-circle-right:before {\n  content: \"\\f138\";\n}\n.fa-chevron-circle-up:before {\n  content: \"\\f139\";\n}\n.fa-chevron-circle-down:before {\n  content: \"\\f13a\";\n}\n.fa-html5:before {\n  content: \"\\f13b\";\n}\n.fa-css3:before {\n  content: \"\\f13c\";\n}\n.fa-anchor:before {\n  content: \"\\f13d\";\n}\n.fa-unlock-alt:before {\n  content: \"\\f13e\";\n}\n.fa-bullseye:before {\n  content: \"\\f140\";\n}\n.fa-ellipsis-h:before {\n  content: \"\\f141\";\n}\n.fa-ellipsis-v:before {\n  content: \"\\f142\";\n}\n.fa-rss-square:before {\n  content: \"\\f143\";\n}\n.fa-play-circle:before {\n  content: \"\\f144\";\n}\n.fa-ticket:before {\n  content: \"\\f145\";\n}\n.fa-minus-square:before {\n  content: \"\\f146\";\n}\n.fa-minus-square-o:before {\n  content: \"\\f147\";\n}\n.fa-level-up:before {\n  content: \"\\f148\";\n}\n.fa-level-down:before {\n  content: \"\\f149\";\n}\n.fa-check-square:before {\n  content: \"\\f14a\";\n}\n.fa-pencil-square:before {\n  content: \"\\f14b\";\n}\n.fa-external-link-square:before {\n  content: \"\\f14c\";\n}\n.fa-share-square:before {\n  content: \"\\f14d\";\n}\n.fa-compass:before {\n  content: \"\\f14e\";\n}\n.fa-toggle-down:before,\n.fa-caret-square-o-down:before {\n  content: \"\\f150\";\n}\n.fa-toggle-up:before,\n.fa-caret-square-o-up:before {\n  content: \"\\f151\";\n}\n.fa-toggle-right:before,\n.fa-caret-square-o-right:before {\n  content: \"\\f152\";\n}\n.fa-euro:before,\n.fa-eur:before {\n  content: \"\\f153\";\n}\n.fa-gbp:before {\n  content: \"\\f154\";\n}\n.fa-dollar:before,\n.fa-usd:before {\n  content: \"\\f155\";\n}\n.fa-rupee:before,\n.fa-inr:before {\n  content: \"\\f156\";\n}\n.fa-cny:before,\n.fa-rmb:before,\n.fa-yen:before,\n.fa-jpy:before {\n  content: \"\\f157\";\n}\n.fa-ruble:before,\n.fa-rouble:before,\n.fa-rub:before {\n  content: \"\\f158\";\n}\n.fa-won:before,\n.fa-krw:before {\n  content: \"\\f159\";\n}\n.fa-bitcoin:before,\n.fa-btc:before {\n  content: \"\\f15a\";\n}\n.fa-file:before {\n  content: \"\\f15b\";\n}\n.fa-file-text:before {\n  content: \"\\f15c\";\n}\n.fa-sort-alpha-asc:before {\n  content: \"\\f15d\";\n}\n.fa-sort-alpha-desc:before {\n  content: \"\\f15e\";\n}\n.fa-sort-amount-asc:before {\n  content: \"\\f160\";\n}\n.fa-sort-amount-desc:before {\n  content: \"\\f161\";\n}\n.fa-sort-numeric-asc:before {\n  content: \"\\f162\";\n}\n.fa-sort-numeric-desc:before {\n  content: \"\\f163\";\n}\n.fa-thumbs-up:before {\n  content: \"\\f164\";\n}\n.fa-thumbs-down:before {\n  content: \"\\f165\";\n}\n.fa-youtube-square:before {\n  content: \"\\f166\";\n}\n.fa-youtube:before {\n  content: \"\\f167\";\n}\n.fa-xing:before {\n  content: \"\\f168\";\n}\n.fa-xing-square:before {\n  content: \"\\f169\";\n}\n.fa-youtube-play:before {\n  content: \"\\f16a\";\n}\n.fa-dropbox:before {\n  content: \"\\f16b\";\n}\n.fa-stack-overflow:before {\n  content: \"\\f16c\";\n}\n.fa-instagram:before {\n  content: \"\\f16d\";\n}\n.fa-flickr:before {\n  content: \"\\f16e\";\n}\n.fa-adn:before {\n  content: \"\\f170\";\n}\n.fa-bitbucket:before {\n  content: \"\\f171\";\n}\n.fa-bitbucket-square:before {\n  content: \"\\f172\";\n}\n.fa-tumblr:before {\n  content: \"\\f173\";\n}\n.fa-tumblr-square:before {\n  content: \"\\f174\";\n}\n.fa-long-arrow-down:before {\n  content: \"\\f175\";\n}\n.fa-long-arrow-up:before {\n  content: \"\\f176\";\n}\n.fa-long-arrow-left:before {\n  content: \"\\f177\";\n}\n.fa-long-arrow-right:before {\n  content: \"\\f178\";\n}\n.fa-apple:before {\n  content: \"\\f179\";\n}\n.fa-windows:before {\n  content: \"\\f17a\";\n}\n.fa-android:before {\n  content: \"\\f17b\";\n}\n.fa-linux:before {\n  content: \"\\f17c\";\n}\n.fa-dribbble:before {\n  content: \"\\f17d\";\n}\n.fa-skype:before {\n  content: \"\\f17e\";\n}\n.fa-foursquare:before {\n  content: \"\\f180\";\n}\n.fa-trello:before {\n  content: \"\\f181\";\n}\n.fa-female:before {\n  content: \"\\f182\";\n}\n.fa-male:before {\n  content: \"\\f183\";\n}\n.fa-gittip:before,\n.fa-gratipay:before {\n  content: \"\\f184\";\n}\n.fa-sun-o:before {\n  content: \"\\f185\";\n}\n.fa-moon-o:before {\n  content: \"\\f186\";\n}\n.fa-archive:before {\n  content: \"\\f187\";\n}\n.fa-bug:before {\n  content: \"\\f188\";\n}\n.fa-vk:before {\n  content: \"\\f189\";\n}\n.fa-weibo:before {\n  content: \"\\f18a\";\n}\n.fa-renren:before {\n  content: \"\\f18b\";\n}\n.fa-pagelines:before {\n  content: \"\\f18c\";\n}\n.fa-stack-exchange:before {\n  content: \"\\f18d\";\n}\n.fa-arrow-circle-o-right:before {\n  content: \"\\f18e\";\n}\n.fa-arrow-circle-o-left:before {\n  content: \"\\f190\";\n}\n.fa-toggle-left:before,\n.fa-caret-square-o-left:before {\n  content: \"\\f191\";\n}\n.fa-dot-circle-o:before {\n  content: \"\\f192\";\n}\n.fa-wheelchair:before {\n  content: \"\\f193\";\n}\n.fa-vimeo-square:before {\n  content: \"\\f194\";\n}\n.fa-turkish-lira:before,\n.fa-try:before {\n  content: \"\\f195\";\n}\n.fa-plus-square-o:before {\n  content: \"\\f196\";\n}\n.fa-space-shuttle:before {\n  content: \"\\f197\";\n}\n.fa-slack:before {\n  content: \"\\f198\";\n}\n.fa-envelope-square:before {\n  content: \"\\f199\";\n}\n.fa-wordpress:before {\n  content: \"\\f19a\";\n}\n.fa-openid:before {\n  content: \"\\f19b\";\n}\n.fa-institution:before,\n.fa-bank:before,\n.fa-university:before {\n  content: \"\\f19c\";\n}\n.fa-mortar-board:before,\n.fa-graduation-cap:before {\n  content: \"\\f19d\";\n}\n.fa-yahoo:before {\n  content: \"\\f19e\";\n}\n.fa-google:before {\n  content: \"\\f1a0\";\n}\n.fa-reddit:before {\n  content: \"\\f1a1\";\n}\n.fa-reddit-square:before {\n  content: \"\\f1a2\";\n}\n.fa-stumbleupon-circle:before {\n  content: \"\\f1a3\";\n}\n.fa-stumbleupon:before {\n  content: \"\\f1a4\";\n}\n.fa-delicious:before {\n  content: \"\\f1a5\";\n}\n.fa-digg:before {\n  content: \"\\f1a6\";\n}\n.fa-pied-piper-pp:before {\n  content: \"\\f1a7\";\n}\n.fa-pied-piper-alt:before {\n  content: \"\\f1a8\";\n}\n.fa-drupal:before {\n  content: \"\\f1a9\";\n}\n.fa-joomla:before {\n  content: \"\\f1aa\";\n}\n.fa-language:before {\n  content: \"\\f1ab\";\n}\n.fa-fax:before {\n  content: \"\\f1ac\";\n}\n.fa-building:before {\n  content: \"\\f1ad\";\n}\n.fa-child:before {\n  content: \"\\f1ae\";\n}\n.fa-paw:before {\n  content: \"\\f1b0\";\n}\n.fa-spoon:before {\n  content: \"\\f1b1\";\n}\n.fa-cube:before {\n  content: \"\\f1b2\";\n}\n.fa-cubes:before {\n  content: \"\\f1b3\";\n}\n.fa-behance:before {\n  content: \"\\f1b4\";\n}\n.fa-behance-square:before {\n  content: \"\\f1b5\";\n}\n.fa-steam:before {\n  content: \"\\f1b6\";\n}\n.fa-steam-square:before {\n  content: \"\\f1b7\";\n}\n.fa-recycle:before {\n  content: \"\\f1b8\";\n}\n.fa-automobile:before,\n.fa-car:before {\n  content: \"\\f1b9\";\n}\n.fa-cab:before,\n.fa-taxi:before {\n  content: \"\\f1ba\";\n}\n.fa-tree:before {\n  content: \"\\f1bb\";\n}\n.fa-spotify:before {\n  content: \"\\f1bc\";\n}\n.fa-deviantart:before {\n  content: \"\\f1bd\";\n}\n.fa-soundcloud:before {\n  content: \"\\f1be\";\n}\n.fa-database:before {\n  content: \"\\f1c0\";\n}\n.fa-file-pdf-o:before {\n  content: \"\\f1c1\";\n}\n.fa-file-word-o:before {\n  content: \"\\f1c2\";\n}\n.fa-file-excel-o:before {\n  content: \"\\f1c3\";\n}\n.fa-file-powerpoint-o:before {\n  content: \"\\f1c4\";\n}\n.fa-file-photo-o:before,\n.fa-file-picture-o:before,\n.fa-file-image-o:before {\n  content: \"\\f1c5\";\n}\n.fa-file-zip-o:before,\n.fa-file-archive-o:before {\n  content: \"\\f1c6\";\n}\n.fa-file-sound-o:before,\n.fa-file-audio-o:before {\n  content: \"\\f1c7\";\n}\n.fa-file-movie-o:before,\n.fa-file-video-o:before {\n  content: \"\\f1c8\";\n}\n.fa-file-code-o:before {\n  content: \"\\f1c9\";\n}\n.fa-vine:before {\n  content: \"\\f1ca\";\n}\n.fa-codepen:before {\n  content: \"\\f1cb\";\n}\n.fa-jsfiddle:before {\n  content: \"\\f1cc\";\n}\n.fa-life-bouy:before,\n.fa-life-buoy:before,\n.fa-life-saver:before,\n.fa-support:before,\n.fa-life-ring:before {\n  content: \"\\f1cd\";\n}\n.fa-circle-o-notch:before {\n  content: \"\\f1ce\";\n}\n.fa-ra:before,\n.fa-resistance:before,\n.fa-rebel:before {\n  content: \"\\f1d0\";\n}\n.fa-ge:before,\n.fa-empire:before {\n  content: \"\\f1d1\";\n}\n.fa-git-square:before {\n  content: \"\\f1d2\";\n}\n.fa-git:before {\n  content: \"\\f1d3\";\n}\n.fa-y-combinator-square:before,\n.fa-yc-square:before,\n.fa-hacker-news:before {\n  content: \"\\f1d4\";\n}\n.fa-tencent-weibo:before {\n  content: \"\\f1d5\";\n}\n.fa-qq:before {\n  content: \"\\f1d6\";\n}\n.fa-wechat:before,\n.fa-weixin:before {\n  content: \"\\f1d7\";\n}\n.fa-send:before,\n.fa-paper-plane:before {\n  content: \"\\f1d8\";\n}\n.fa-send-o:before,\n.fa-paper-plane-o:before {\n  content: \"\\f1d9\";\n}\n.fa-history:before {\n  content: \"\\f1da\";\n}\n.fa-circle-thin:before {\n  content: \"\\f1db\";\n}\n.fa-header:before {\n  content: \"\\f1dc\";\n}\n.fa-paragraph:before {\n  content: \"\\f1dd\";\n}\n.fa-sliders:before {\n  content: \"\\f1de\";\n}\n.fa-share-alt:before {\n  content: \"\\f1e0\";\n}\n.fa-share-alt-square:before {\n  content: \"\\f1e1\";\n}\n.fa-bomb:before {\n  content: \"\\f1e2\";\n}\n.fa-soccer-ball-o:before,\n.fa-futbol-o:before {\n  content: \"\\f1e3\";\n}\n.fa-tty:before {\n  content: \"\\f1e4\";\n}\n.fa-binoculars:before {\n  content: \"\\f1e5\";\n}\n.fa-plug:before {\n  content: \"\\f1e6\";\n}\n.fa-slideshare:before {\n  content: \"\\f1e7\";\n}\n.fa-twitch:before {\n  content: \"\\f1e8\";\n}\n.fa-yelp:before {\n  content: \"\\f1e9\";\n}\n.fa-newspaper-o:before {\n  content: \"\\f1ea\";\n}\n.fa-wifi:before {\n  content: \"\\f1eb\";\n}\n.fa-calculator:before {\n  content: \"\\f1ec\";\n}\n.fa-paypal:before {\n  content: \"\\f1ed\";\n}\n.fa-google-wallet:before {\n  content: \"\\f1ee\";\n}\n.fa-cc-visa:before {\n  content: \"\\f1f0\";\n}\n.fa-cc-mastercard:before {\n  content: \"\\f1f1\";\n}\n.fa-cc-discover:before {\n  content: \"\\f1f2\";\n}\n.fa-cc-amex:before {\n  content: \"\\f1f3\";\n}\n.fa-cc-paypal:before {\n  content: \"\\f1f4\";\n}\n.fa-cc-stripe:before {\n  content: \"\\f1f5\";\n}\n.fa-bell-slash:before {\n  content: \"\\f1f6\";\n}\n.fa-bell-slash-o:before {\n  content: \"\\f1f7\";\n}\n.fa-trash:before {\n  content: \"\\f1f8\";\n}\n.fa-copyright:before {\n  content: \"\\f1f9\";\n}\n.fa-at:before {\n  content: \"\\f1fa\";\n}\n.fa-eyedropper:before {\n  content: \"\\f1fb\";\n}\n.fa-paint-brush:before {\n  content: \"\\f1fc\";\n}\n.fa-birthday-cake:before {\n  content: \"\\f1fd\";\n}\n.fa-area-chart:before {\n  content: \"\\f1fe\";\n}\n.fa-pie-chart:before {\n  content: \"\\f200\";\n}\n.fa-line-chart:before {\n  content: \"\\f201\";\n}\n.fa-lastfm:before {\n  content: \"\\f202\";\n}\n.fa-lastfm-square:before {\n  content: \"\\f203\";\n}\n.fa-toggle-off:before {\n  content: \"\\f204\";\n}\n.fa-toggle-on:before {\n  content: \"\\f205\";\n}\n.fa-bicycle:before {\n  content: \"\\f206\";\n}\n.fa-bus:before {\n  content: \"\\f207\";\n}\n.fa-ioxhost:before {\n  content: \"\\f208\";\n}\n.fa-angellist:before {\n  content: \"\\f209\";\n}\n.fa-cc:before {\n  content: \"\\f20a\";\n}\n.fa-shekel:before,\n.fa-sheqel:before,\n.fa-ils:before {\n  content: \"\\f20b\";\n}\n.fa-meanpath:before {\n  content: \"\\f20c\";\n}\n.fa-buysellads:before {\n  content: \"\\f20d\";\n}\n.fa-connectdevelop:before {\n  content: \"\\f20e\";\n}\n.fa-dashcube:before {\n  content: \"\\f210\";\n}\n.fa-forumbee:before {\n  content: \"\\f211\";\n}\n.fa-leanpub:before {\n  content: \"\\f212\";\n}\n.fa-sellsy:before {\n  content: \"\\f213\";\n}\n.fa-shirtsinbulk:before {\n  content: \"\\f214\";\n}\n.fa-simplybuilt:before {\n  content: \"\\f215\";\n}\n.fa-skyatlas:before {\n  content: \"\\f216\";\n}\n.fa-cart-plus:before {\n  content: \"\\f217\";\n}\n.fa-cart-arrow-down:before {\n  content: \"\\f218\";\n}\n.fa-diamond:before {\n  content: \"\\f219\";\n}\n.fa-ship:before {\n  content: \"\\f21a\";\n}\n.fa-user-secret:before {\n  content: \"\\f21b\";\n}\n.fa-motorcycle:before {\n  content: \"\\f21c\";\n}\n.fa-street-view:before {\n  content: \"\\f21d\";\n}\n.fa-heartbeat:before {\n  content: \"\\f21e\";\n}\n.fa-venus:before {\n  content: \"\\f221\";\n}\n.fa-mars:before {\n  content: \"\\f222\";\n}\n.fa-mercury:before {\n  content: \"\\f223\";\n}\n.fa-intersex:before,\n.fa-transgender:before {\n  content: \"\\f224\";\n}\n.fa-transgender-alt:before {\n  content: \"\\f225\";\n}\n.fa-venus-double:before {\n  content: \"\\f226\";\n}\n.fa-mars-double:before {\n  content: \"\\f227\";\n}\n.fa-venus-mars:before {\n  content: \"\\f228\";\n}\n.fa-mars-stroke:before {\n  content: \"\\f229\";\n}\n.fa-mars-stroke-v:before {\n  content: \"\\f22a\";\n}\n.fa-mars-stroke-h:before {\n  content: \"\\f22b\";\n}\n.fa-neuter:before {\n  content: \"\\f22c\";\n}\n.fa-genderless:before {\n  content: \"\\f22d\";\n}\n.fa-facebook-official:before {\n  content: \"\\f230\";\n}\n.fa-pinterest-p:before {\n  content: \"\\f231\";\n}\n.fa-whatsapp:before {\n  content: \"\\f232\";\n}\n.fa-server:before {\n  content: \"\\f233\";\n}\n.fa-user-plus:before {\n  content: \"\\f234\";\n}\n.fa-user-times:before {\n  content: \"\\f235\";\n}\n.fa-hotel:before,\n.fa-bed:before {\n  content: \"\\f236\";\n}\n.fa-viacoin:before {\n  content: \"\\f237\";\n}\n.fa-train:before {\n  content: \"\\f238\";\n}\n.fa-subway:before {\n  content: \"\\f239\";\n}\n.fa-medium:before {\n  content: \"\\f23a\";\n}\n.fa-yc:before,\n.fa-y-combinator:before {\n  content: \"\\f23b\";\n}\n.fa-optin-monster:before {\n  content: \"\\f23c\";\n}\n.fa-opencart:before {\n  content: \"\\f23d\";\n}\n.fa-expeditedssl:before {\n  content: \"\\f23e\";\n}\n.fa-battery-4:before,\n.fa-battery-full:before {\n  content: \"\\f240\";\n}\n.fa-battery-3:before,\n.fa-battery-three-quarters:before {\n  content: \"\\f241\";\n}\n.fa-battery-2:before,\n.fa-battery-half:before {\n  content: \"\\f242\";\n}\n.fa-battery-1:before,\n.fa-battery-quarter:before {\n  content: \"\\f243\";\n}\n.fa-battery-0:before,\n.fa-battery-empty:before {\n  content: \"\\f244\";\n}\n.fa-mouse-pointer:before {\n  content: \"\\f245\";\n}\n.fa-i-cursor:before {\n  content: \"\\f246\";\n}\n.fa-object-group:before {\n  content: \"\\f247\";\n}\n.fa-object-ungroup:before {\n  content: \"\\f248\";\n}\n.fa-sticky-note:before {\n  content: \"\\f249\";\n}\n.fa-sticky-note-o:before {\n  content: \"\\f24a\";\n}\n.fa-cc-jcb:before {\n  content: \"\\f24b\";\n}\n.fa-cc-diners-club:before {\n  content: \"\\f24c\";\n}\n.fa-clone:before {\n  content: \"\\f24d\";\n}\n.fa-balance-scale:before {\n  content: \"\\f24e\";\n}\n.fa-hourglass-o:before {\n  content: \"\\f250\";\n}\n.fa-hourglass-1:before,\n.fa-hourglass-start:before {\n  content: \"\\f251\";\n}\n.fa-hourglass-2:before,\n.fa-hourglass-half:before {\n  content: \"\\f252\";\n}\n.fa-hourglass-3:before,\n.fa-hourglass-end:before {\n  content: \"\\f253\";\n}\n.fa-hourglass:before {\n  content: \"\\f254\";\n}\n.fa-hand-grab-o:before,\n.fa-hand-rock-o:before {\n  content: \"\\f255\";\n}\n.fa-hand-stop-o:before,\n.fa-hand-paper-o:before {\n  content: \"\\f256\";\n}\n.fa-hand-scissors-o:before {\n  content: \"\\f257\";\n}\n.fa-hand-lizard-o:before {\n  content: \"\\f258\";\n}\n.fa-hand-spock-o:before {\n  content: \"\\f259\";\n}\n.fa-hand-pointer-o:before {\n  content: \"\\f25a\";\n}\n.fa-hand-peace-o:before {\n  content: \"\\f25b\";\n}\n.fa-trademark:before {\n  content: \"\\f25c\";\n}\n.fa-registered:before {\n  content: \"\\f25d\";\n}\n.fa-creative-commons:before {\n  content: \"\\f25e\";\n}\n.fa-gg:before {\n  content: \"\\f260\";\n}\n.fa-gg-circle:before {\n  content: \"\\f261\";\n}\n.fa-tripadvisor:before {\n  content: \"\\f262\";\n}\n.fa-odnoklassniki:before {\n  content: \"\\f263\";\n}\n.fa-odnoklassniki-square:before {\n  content: \"\\f264\";\n}\n.fa-get-pocket:before {\n  content: \"\\f265\";\n}\n.fa-wikipedia-w:before {\n  content: \"\\f266\";\n}\n.fa-safari:before {\n  content: \"\\f267\";\n}\n.fa-chrome:before {\n  content: \"\\f268\";\n}\n.fa-firefox:before {\n  content: \"\\f269\";\n}\n.fa-opera:before {\n  content: \"\\f26a\";\n}\n.fa-internet-explorer:before {\n  content: \"\\f26b\";\n}\n.fa-tv:before,\n.fa-television:before {\n  content: \"\\f26c\";\n}\n.fa-contao:before {\n  content: \"\\f26d\";\n}\n.fa-500px:before {\n  content: \"\\f26e\";\n}\n.fa-amazon:before {\n  content: \"\\f270\";\n}\n.fa-calendar-plus-o:before {\n  content: \"\\f271\";\n}\n.fa-calendar-minus-o:before {\n  content: \"\\f272\";\n}\n.fa-calendar-times-o:before {\n  content: \"\\f273\";\n}\n.fa-calendar-check-o:before {\n  content: \"\\f274\";\n}\n.fa-industry:before {\n  content: \"\\f275\";\n}\n.fa-map-pin:before {\n  content: \"\\f276\";\n}\n.fa-map-signs:before {\n  content: \"\\f277\";\n}\n.fa-map-o:before {\n  content: \"\\f278\";\n}\n.fa-map:before {\n  content: \"\\f279\";\n}\n.fa-commenting:before {\n  content: \"\\f27a\";\n}\n.fa-commenting-o:before {\n  content: \"\\f27b\";\n}\n.fa-houzz:before {\n  content: \"\\f27c\";\n}\n.fa-vimeo:before {\n  content: \"\\f27d\";\n}\n.fa-black-tie:before {\n  content: \"\\f27e\";\n}\n.fa-fonticons:before {\n  content: \"\\f280\";\n}\n.fa-reddit-alien:before {\n  content: \"\\f281\";\n}\n.fa-edge:before {\n  content: \"\\f282\";\n}\n.fa-credit-card-alt:before {\n  content: \"\\f283\";\n}\n.fa-codiepie:before {\n  content: \"\\f284\";\n}\n.fa-modx:before {\n  content: \"\\f285\";\n}\n.fa-fort-awesome:before {\n  content: \"\\f286\";\n}\n.fa-usb:before {\n  content: \"\\f287\";\n}\n.fa-product-hunt:before {\n  content: \"\\f288\";\n}\n.fa-mixcloud:before {\n  content: \"\\f289\";\n}\n.fa-scribd:before {\n  content: \"\\f28a\";\n}\n.fa-pause-circle:before {\n  content: \"\\f28b\";\n}\n.fa-pause-circle-o:before {\n  content: \"\\f28c\";\n}\n.fa-stop-circle:before {\n  content: \"\\f28d\";\n}\n.fa-stop-circle-o:before {\n  content: \"\\f28e\";\n}\n.fa-shopping-bag:before {\n  content: \"\\f290\";\n}\n.fa-shopping-basket:before {\n  content: \"\\f291\";\n}\n.fa-hashtag:before {\n  content: \"\\f292\";\n}\n.fa-bluetooth:before {\n  content: \"\\f293\";\n}\n.fa-bluetooth-b:before {\n  content: \"\\f294\";\n}\n.fa-percent:before {\n  content: \"\\f295\";\n}\n.fa-gitlab:before {\n  content: \"\\f296\";\n}\n.fa-wpbeginner:before {\n  content: \"\\f297\";\n}\n.fa-wpforms:before {\n  content: \"\\f298\";\n}\n.fa-envira:before {\n  content: \"\\f299\";\n}\n.fa-universal-access:before {\n  content: \"\\f29a\";\n}\n.fa-wheelchair-alt:before {\n  content: \"\\f29b\";\n}\n.fa-question-circle-o:before {\n  content: \"\\f29c\";\n}\n.fa-blind:before {\n  content: \"\\f29d\";\n}\n.fa-audio-description:before {\n  content: \"\\f29e\";\n}\n.fa-volume-control-phone:before {\n  content: \"\\f2a0\";\n}\n.fa-braille:before {\n  content: \"\\f2a1\";\n}\n.fa-assistive-listening-systems:before {\n  content: \"\\f2a2\";\n}\n.fa-asl-interpreting:before,\n.fa-american-sign-language-interpreting:before {\n  content: \"\\f2a3\";\n}\n.fa-deafness:before,\n.fa-hard-of-hearing:before,\n.fa-deaf:before {\n  content: \"\\f2a4\";\n}\n.fa-glide:before {\n  content: \"\\f2a5\";\n}\n.fa-glide-g:before {\n  content: \"\\f2a6\";\n}\n.fa-signing:before,\n.fa-sign-language:before {\n  content: \"\\f2a7\";\n}\n.fa-low-vision:before {\n  content: \"\\f2a8\";\n}\n.fa-viadeo:before {\n  content: \"\\f2a9\";\n}\n.fa-viadeo-square:before {\n  content: \"\\f2aa\";\n}\n.fa-snapchat:before {\n  content: \"\\f2ab\";\n}\n.fa-snapchat-ghost:before {\n  content: \"\\f2ac\";\n}\n.fa-snapchat-square:before {\n  content: \"\\f2ad\";\n}\n.fa-pied-piper:before {\n  content: \"\\f2ae\";\n}\n.fa-first-order:before {\n  content: \"\\f2b0\";\n}\n.fa-yoast:before {\n  content: \"\\f2b1\";\n}\n.fa-themeisle:before {\n  content: \"\\f2b2\";\n}\n.fa-google-plus-circle:before,\n.fa-google-plus-official:before {\n  content: \"\\f2b3\";\n}\n.fa-fa:before,\n.fa-font-awesome:before {\n  content: \"\\f2b4\";\n}\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.sr-only-focusable:active,\n.sr-only-focusable:focus {\n  position: static;\n  width: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  clip: auto;\n}\n"],"sourceRoot":"webpack://"}]);
-	
-	// exports
-
-
-/***/ },
-/* 277 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/fontawesome-webfont.eot";
-
-/***/ },
-/* 278 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/fontawesome-webfont.woff2";
-
-/***/ },
-/* 279 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/fontawesome-webfont.woff";
-
-/***/ },
-/* 280 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/font/fontawesome-webfont.ttf";
-
-/***/ },
-/* 281 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "/image/fontawesome-webfont.svg";
-
-/***/ },
-/* 282 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.history = undefined;
-	
-	var _redux = __webpack_require__(237);
-	
-	var _reactRouterRedux = __webpack_require__(284);
-	
-	var _reactRouter = __webpack_require__(167);
-	
-	var _reduxLogger = __webpack_require__(289);
-	
-	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
-	
-	var _reduxThunk = __webpack_require__(290);
-	
-	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-	
-	var _reduxPromiseMiddleware = __webpack_require__(291);
-	
-	var _reduxPromiseMiddleware2 = _interopRequireDefault(_reduxPromiseMiddleware);
-	
-	var _axios = __webpack_require__(293);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	var _mainReducer = __webpack_require__(315);
-	
-	var _mainReducer2 = _interopRequireDefault(_mainReducer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var middleware = void 0;
-	if (process.env.production) {
-		middleware = (0, _redux.applyMiddleware)((0, _reduxPromiseMiddleware2.default)(), _reduxThunk2.default);
-	} else {
-		middleware = (0, _redux.applyMiddleware)((0, _reduxPromiseMiddleware2.default)(), _reduxThunk2.default, (0, _reduxLogger2.default)());
-	}
-	var store = (0, _redux.createStore)(_mainReducer2.default, middleware);
-	
-	var history = exports.history = (0, _reactRouterRedux.syncHistoryWithStore)(_reactRouter.hashHistory, store);
-	
-	exports.default = store;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(283)))
-
-/***/ },
-/* 283 */
-/***/ function(module, exports) {
-
-	// shim for using process in browser
-	var process = module.exports = {};
-	
-	// cached from whatever global is present so that test runners that stub it
-	// don't break things.  But we need to wrap it in a try catch in case it is
-	// wrapped in strict mode code which doesn't define any globals.  It's inside a
-	// function because try/catches deoptimize in certain engines.
-	
-	var cachedSetTimeout;
-	var cachedClearTimeout;
-	
-	function defaultSetTimout() {
-	    throw new Error('setTimeout has not been defined');
-	}
-	function defaultClearTimeout () {
-	    throw new Error('clearTimeout has not been defined');
-	}
-	(function () {
-	    try {
-	        if (typeof setTimeout === 'function') {
-	            cachedSetTimeout = setTimeout;
-	        } else {
-	            cachedSetTimeout = defaultSetTimout;
-	        }
-	    } catch (e) {
-	        cachedSetTimeout = defaultSetTimout;
-	    }
-	    try {
-	        if (typeof clearTimeout === 'function') {
-	            cachedClearTimeout = clearTimeout;
-	        } else {
-	            cachedClearTimeout = defaultClearTimeout;
-	        }
-	    } catch (e) {
-	        cachedClearTimeout = defaultClearTimeout;
-	    }
-	} ())
-	function runTimeout(fun) {
-	    if (cachedSetTimeout === setTimeout) {
-	        //normal enviroments in sane situations
-	        return setTimeout(fun, 0);
-	    }
-	    // if setTimeout wasn't available but was latter defined
-	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-	        cachedSetTimeout = setTimeout;
-	        return setTimeout(fun, 0);
-	    }
-	    try {
-	        // when when somebody has screwed with setTimeout but no I.E. maddness
-	        return cachedSetTimeout(fun, 0);
-	    } catch(e){
-	        try {
-	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-	            return cachedSetTimeout.call(null, fun, 0);
-	        } catch(e){
-	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-	            return cachedSetTimeout.call(this, fun, 0);
-	        }
-	    }
-	
-	
-	}
-	function runClearTimeout(marker) {
-	    if (cachedClearTimeout === clearTimeout) {
-	        //normal enviroments in sane situations
-	        return clearTimeout(marker);
-	    }
-	    // if clearTimeout wasn't available but was latter defined
-	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-	        cachedClearTimeout = clearTimeout;
-	        return clearTimeout(marker);
-	    }
-	    try {
-	        // when when somebody has screwed with setTimeout but no I.E. maddness
-	        return cachedClearTimeout(marker);
-	    } catch (e){
-	        try {
-	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-	            return cachedClearTimeout.call(null, marker);
-	        } catch (e){
-	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-	            return cachedClearTimeout.call(this, marker);
-	        }
-	    }
-	
-	
-	
-	}
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-	
-	function cleanUpNextTick() {
-	    if (!draining || !currentQueue) {
-	        return;
-	    }
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-	
-	function drainQueue() {
-	    if (draining) {
-	        return;
-	    }
-	    var timeout = runTimeout(cleanUpNextTick);
-	    draining = true;
-	
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
-	            }
-	        }
-	        queueIndex = -1;
-	        len = queue.length;
-	    }
-	    currentQueue = null;
-	    draining = false;
-	    runClearTimeout(timeout);
-	}
-	
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
-	        }
-	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        runTimeout(drainQueue);
-	    }
-	};
-	
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
-	
-	function noop() {}
-	
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
-	
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
-	
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
-
-
-/***/ },
-/* 284 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.routerMiddleware = exports.routerActions = exports.goForward = exports.goBack = exports.go = exports.replace = exports.push = exports.CALL_HISTORY_METHOD = exports.routerReducer = exports.LOCATION_CHANGE = exports.syncHistoryWithStore = undefined;
-	
-	var _reducer = __webpack_require__(285);
-	
-	Object.defineProperty(exports, 'LOCATION_CHANGE', {
-	  enumerable: true,
-	  get: function get() {
-	    return _reducer.LOCATION_CHANGE;
-	  }
-	});
-	Object.defineProperty(exports, 'routerReducer', {
-	  enumerable: true,
-	  get: function get() {
-	    return _reducer.routerReducer;
-	  }
-	});
-	
-	var _actions = __webpack_require__(286);
-	
-	Object.defineProperty(exports, 'CALL_HISTORY_METHOD', {
-	  enumerable: true,
-	  get: function get() {
-	    return _actions.CALL_HISTORY_METHOD;
-	  }
-	});
-	Object.defineProperty(exports, 'push', {
-	  enumerable: true,
-	  get: function get() {
-	    return _actions.push;
-	  }
-	});
-	Object.defineProperty(exports, 'replace', {
-	  enumerable: true,
-	  get: function get() {
-	    return _actions.replace;
-	  }
-	});
-	Object.defineProperty(exports, 'go', {
-	  enumerable: true,
-	  get: function get() {
-	    return _actions.go;
-	  }
-	});
-	Object.defineProperty(exports, 'goBack', {
-	  enumerable: true,
-	  get: function get() {
-	    return _actions.goBack;
-	  }
-	});
-	Object.defineProperty(exports, 'goForward', {
-	  enumerable: true,
-	  get: function get() {
-	    return _actions.goForward;
-	  }
-	});
-	Object.defineProperty(exports, 'routerActions', {
-	  enumerable: true,
-	  get: function get() {
-	    return _actions.routerActions;
-	  }
-	});
-	
-	var _sync = __webpack_require__(287);
-	
-	var _sync2 = _interopRequireDefault(_sync);
-	
-	var _middleware = __webpack_require__(288);
-	
-	var _middleware2 = _interopRequireDefault(_middleware);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	exports.syncHistoryWithStore = _sync2['default'];
-	exports.routerMiddleware = _middleware2['default'];
-
-/***/ },
-/* 285 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	exports.routerReducer = routerReducer;
-	/**
-	 * This action type will be dispatched when your history
-	 * receives a location change.
-	 */
-	var LOCATION_CHANGE = exports.LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
-	
-	var initialState = {
-	  locationBeforeTransitions: null
-	};
-	
-	/**
-	 * This reducer will update the state with the most recent location history
-	 * has transitioned to. This may not be in sync with the router, particularly
-	 * if you have asynchronously-loaded routes, so reading from and relying on
-	 * this state is discouraged.
-	 */
-	function routerReducer() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	
-	  var _ref = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-	
-	  var type = _ref.type;
-	  var payload = _ref.payload;
-	
-	  if (type === LOCATION_CHANGE) {
-	    return _extends({}, state, { locationBeforeTransitions: payload });
-	  }
-	
-	  return state;
-	}
-
-/***/ },
-/* 286 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	/**
-	 * This action type will be dispatched by the history actions below.
-	 * If you're writing a middleware to watch for navigation events, be sure to
-	 * look for actions of this type.
-	 */
-	var CALL_HISTORY_METHOD = exports.CALL_HISTORY_METHOD = '@@router/CALL_HISTORY_METHOD';
-	
-	function updateLocation(method) {
-	  return function () {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-	
-	    return {
-	      type: CALL_HISTORY_METHOD,
-	      payload: { method: method, args: args }
-	    };
-	  };
-	}
-	
-	/**
-	 * These actions correspond to the history API.
-	 * The associated routerMiddleware will capture these events before they get to
-	 * your reducer and reissue them as the matching function on your history.
-	 */
-	var push = exports.push = updateLocation('push');
-	var replace = exports.replace = updateLocation('replace');
-	var go = exports.go = updateLocation('go');
-	var goBack = exports.goBack = updateLocation('goBack');
-	var goForward = exports.goForward = updateLocation('goForward');
-	
-	var routerActions = exports.routerActions = { push: push, replace: replace, go: go, goBack: goBack, goForward: goForward };
-
-/***/ },
-/* 287 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	exports['default'] = syncHistoryWithStore;
-	
-	var _reducer = __webpack_require__(285);
-	
-	var defaultSelectLocationState = function defaultSelectLocationState(state) {
-	  return state.routing;
-	};
-	
-	/**
-	 * This function synchronizes your history state with the Redux store.
-	 * Location changes flow from history to the store. An enhanced history is
-	 * returned with a listen method that responds to store updates for location.
-	 *
-	 * When this history is provided to the router, this means the location data
-	 * will flow like this:
-	 * history.push -> store.dispatch -> enhancedHistory.listen -> router
-	 * This ensures that when the store state changes due to a replay or other
-	 * event, the router will be updated appropriately and can transition to the
-	 * correct router state.
-	 */
-	function syncHistoryWithStore(history, store) {
-	  var _ref = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
-	
-	  var _ref$selectLocationSt = _ref.selectLocationState;
-	  var selectLocationState = _ref$selectLocationSt === undefined ? defaultSelectLocationState : _ref$selectLocationSt;
-	  var _ref$adjustUrlOnRepla = _ref.adjustUrlOnReplay;
-	  var adjustUrlOnReplay = _ref$adjustUrlOnRepla === undefined ? true : _ref$adjustUrlOnRepla;
-	
-	  // Ensure that the reducer is mounted on the store and functioning properly.
-	  if (typeof selectLocationState(store.getState()) === 'undefined') {
-	    throw new Error('Expected the routing state to be available either as `state.routing` ' + 'or as the custom expression you can specify as `selectLocationState` ' + 'in the `syncHistoryWithStore()` options. ' + 'Ensure you have added the `routerReducer` to your store\'s ' + 'reducers via `combineReducers` or whatever method you use to isolate ' + 'your reducers.');
-	  }
-	
-	  var initialLocation = void 0;
-	  var isTimeTraveling = void 0;
-	  var unsubscribeFromStore = void 0;
-	  var unsubscribeFromHistory = void 0;
-	
-	  // What does the store say about current location?
-	  var getLocationInStore = function getLocationInStore(useInitialIfEmpty) {
-	    var locationState = selectLocationState(store.getState());
-	    return locationState.locationBeforeTransitions || (useInitialIfEmpty ? initialLocation : undefined);
-	  };
-	
-	  // Init currentLocation with potential location in store
-	  var currentLocation = getLocationInStore();
-	
-	  // If the store is replayed, update the URL in the browser to match.
-	  if (adjustUrlOnReplay) {
-	    var handleStoreChange = function handleStoreChange() {
-	      var locationInStore = getLocationInStore(true);
-	      if (currentLocation === locationInStore) {
-	        return;
-	      }
-	
-	      // Update address bar to reflect store state
-	      isTimeTraveling = true;
-	      currentLocation = locationInStore;
-	      history.transitionTo(_extends({}, locationInStore, {
-	        action: 'PUSH'
-	      }));
-	      isTimeTraveling = false;
-	    };
-	
-	    unsubscribeFromStore = store.subscribe(handleStoreChange);
-	    handleStoreChange();
-	  }
-	
-	  // Whenever location changes, dispatch an action to get it in the store
-	  var handleLocationChange = function handleLocationChange(location) {
-	    // ... unless we just caused that location change
-	    if (isTimeTraveling) {
-	      return;
-	    }
-	
-	    // Remember where we are
-	    currentLocation = location;
-	
-	    // Are we being called for the first time?
-	    if (!initialLocation) {
-	      // Remember as a fallback in case state is reset
-	      initialLocation = location;
-	
-	      // Respect persisted location, if any
-	      if (getLocationInStore()) {
-	        return;
-	      }
-	    }
-	
-	    // Tell the store to update by dispatching an action
-	    store.dispatch({
-	      type: _reducer.LOCATION_CHANGE,
-	      payload: location
-	    });
-	  };
-	  unsubscribeFromHistory = history.listen(handleLocationChange);
-	
-	  // The enhanced history uses store as source of truth
-	  return _extends({}, history, {
-	    // The listeners are subscribed to the store instead of history
-	
-	    listen: function listen(listener) {
-	      // Copy of last location.
-	      var lastPublishedLocation = getLocationInStore(true);
-	
-	      // Keep track of whether we unsubscribed, as Redux store
-	      // only applies changes in subscriptions on next dispatch
-	      var unsubscribed = false;
-	      var unsubscribeFromStore = store.subscribe(function () {
-	        var currentLocation = getLocationInStore(true);
-	        if (currentLocation === lastPublishedLocation) {
-	          return;
-	        }
-	        lastPublishedLocation = currentLocation;
-	        if (!unsubscribed) {
-	          listener(lastPublishedLocation);
-	        }
-	      });
-	
-	      // History listeners expect a synchronous call. Make the first call to the
-	      // listener after subscribing to the store, in case the listener causes a
-	      // location change (e.g. when it redirects)
-	      listener(lastPublishedLocation);
-	
-	      // Let user unsubscribe later
-	      return function () {
-	        unsubscribed = true;
-	        unsubscribeFromStore();
-	      };
-	    },
-	
-	
-	    // It also provides a way to destroy internal listeners
-	    unsubscribe: function unsubscribe() {
-	      if (adjustUrlOnReplay) {
-	        unsubscribeFromStore();
-	      }
-	      unsubscribeFromHistory();
-	    }
-	  });
-	}
-
-/***/ },
-/* 288 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports['default'] = routerMiddleware;
-	
-	var _actions = __webpack_require__(286);
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
-	/**
-	 * This middleware captures CALL_HISTORY_METHOD actions to redirect to the
-	 * provided history object. This will prevent these actions from reaching your
-	 * reducer or any middleware that comes after this one.
-	 */
-	function routerMiddleware(history) {
-	  return function () {
-	    return function (next) {
-	      return function (action) {
-	        if (action.type !== _actions.CALL_HISTORY_METHOD) {
-	          return next(action);
-	        }
-	
-	        var _action$payload = action.payload;
-	        var method = _action$payload.method;
-	        var args = _action$payload.args;
-	
-	        history[method].apply(history, _toConsumableArray(args));
-	      };
-	    };
-	  };
-	}
-
-/***/ },
-/* 289 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-	
-	var repeat = function repeat(str, times) {
-	  return new Array(times + 1).join(str);
-	};
-	var pad = function pad(num, maxLength) {
-	  return repeat("0", maxLength - num.toString().length) + num;
-	};
-	var formatTime = function formatTime(time) {
-	  return "@ " + pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
-	};
-	
-	// Use the new performance api to get better precision if available
-	var timer = typeof performance !== "undefined" && typeof performance.now === "function" ? performance : Date;
-	
-	/**
-	 * parse the level option of createLogger
-	 *
-	 * @property {string | function | object} level - console[level]
-	 * @property {object} action
-	 * @property {array} payload
-	 * @property {string} type
-	 */
-	
-	function getLogLevel(level, action, payload, type) {
-	  switch (typeof level === "undefined" ? "undefined" : _typeof(level)) {
-	    case "object":
-	      return typeof level[type] === "function" ? level[type].apply(level, _toConsumableArray(payload)) : level[type];
-	    case "function":
-	      return level(action);
-	    default:
-	      return level;
-	  }
-	}
-	
-	/**
-	 * Creates logger with followed options
-	 *
-	 * @namespace
-	 * @property {object} options - options for logger
-	 * @property {string | function | object} options.level - console[level]
-	 * @property {boolean} options.duration - print duration of each action?
-	 * @property {boolean} options.timestamp - print timestamp with each action?
-	 * @property {object} options.colors - custom colors
-	 * @property {object} options.logger - implementation of the `console` API
-	 * @property {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
-	 * @property {boolean} options.collapsed - is group collapsed?
-	 * @property {boolean} options.predicate - condition which resolves logger behavior
-	 * @property {function} options.stateTransformer - transform state before print
-	 * @property {function} options.actionTransformer - transform action before print
-	 * @property {function} options.errorTransformer - transform error before print
-	 */
-	
-	function createLogger() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var _options$level = options.level;
-	  var level = _options$level === undefined ? "log" : _options$level;
-	  var _options$logger = options.logger;
-	  var logger = _options$logger === undefined ? console : _options$logger;
-	  var _options$logErrors = options.logErrors;
-	  var logErrors = _options$logErrors === undefined ? true : _options$logErrors;
-	  var collapsed = options.collapsed;
-	  var predicate = options.predicate;
-	  var _options$duration = options.duration;
-	  var duration = _options$duration === undefined ? false : _options$duration;
-	  var _options$timestamp = options.timestamp;
-	  var timestamp = _options$timestamp === undefined ? true : _options$timestamp;
-	  var transformer = options.transformer;
-	  var _options$stateTransfo = options.stateTransformer;
-	  var // deprecated
-	  stateTransformer = _options$stateTransfo === undefined ? function (state) {
-	    return state;
-	  } : _options$stateTransfo;
-	  var _options$actionTransf = options.actionTransformer;
-	  var actionTransformer = _options$actionTransf === undefined ? function (actn) {
-	    return actn;
-	  } : _options$actionTransf;
-	  var _options$errorTransfo = options.errorTransformer;
-	  var errorTransformer = _options$errorTransfo === undefined ? function (error) {
-	    return error;
-	  } : _options$errorTransfo;
-	  var _options$colors = options.colors;
-	  var colors = _options$colors === undefined ? {
-	    title: function title() {
-	      return "#000000";
-	    },
-	    prevState: function prevState() {
-	      return "#9E9E9E";
-	    },
-	    action: function action() {
-	      return "#03A9F4";
-	    },
-	    nextState: function nextState() {
-	      return "#4CAF50";
-	    },
-	    error: function error() {
-	      return "#F20404";
-	    }
-	  } : _options$colors;
-	
-	  // exit if console undefined
-	
-	  if (typeof logger === "undefined") {
-	    return function () {
-	      return function (next) {
-	        return function (action) {
-	          return next(action);
-	        };
-	      };
-	    };
-	  }
-	
-	  if (transformer) {
-	    console.error("Option 'transformer' is deprecated, use stateTransformer instead");
-	  }
-	
-	  var logBuffer = [];
-	  function printBuffer() {
-	    logBuffer.forEach(function (logEntry, key) {
-	      var started = logEntry.started;
-	      var startedTime = logEntry.startedTime;
-	      var action = logEntry.action;
-	      var prevState = logEntry.prevState;
-	      var error = logEntry.error;
-	      var took = logEntry.took;
-	      var nextState = logEntry.nextState;
-	
-	      var nextEntry = logBuffer[key + 1];
-	      if (nextEntry) {
-	        nextState = nextEntry.prevState;
-	        took = nextEntry.started - started;
-	      }
-	      // message
-	      var formattedAction = actionTransformer(action);
-	      var isCollapsed = typeof collapsed === "function" ? collapsed(function () {
-	        return nextState;
-	      }, action) : collapsed;
-	
-	      var formattedTime = formatTime(startedTime);
-	      var titleCSS = colors.title ? "color: " + colors.title(formattedAction) + ";" : null;
-	      var title = "action " + (timestamp ? formattedTime : "") + " " + formattedAction.type + " " + (duration ? "(in " + took.toFixed(2) + " ms)" : "");
-	
-	      // render
-	      try {
-	        if (isCollapsed) {
-	          if (colors.title) logger.groupCollapsed("%c " + title, titleCSS);else logger.groupCollapsed(title);
-	        } else {
-	          if (colors.title) logger.group("%c " + title, titleCSS);else logger.group(title);
-	        }
-	      } catch (e) {
-	        logger.log(title);
-	      }
-	
-	      var prevStateLevel = getLogLevel(level, formattedAction, [prevState], "prevState");
-	      var actionLevel = getLogLevel(level, formattedAction, [formattedAction], "action");
-	      var errorLevel = getLogLevel(level, formattedAction, [error, prevState], "error");
-	      var nextStateLevel = getLogLevel(level, formattedAction, [nextState], "nextState");
-	
-	      if (prevStateLevel) {
-	        if (colors.prevState) logger[prevStateLevel]("%c prev state", "color: " + colors.prevState(prevState) + "; font-weight: bold", prevState);else logger[prevStateLevel]("prev state", prevState);
-	      }
-	
-	      if (actionLevel) {
-	        if (colors.action) logger[actionLevel]("%c action", "color: " + colors.action(formattedAction) + "; font-weight: bold", formattedAction);else logger[actionLevel]("action", formattedAction);
-	      }
-	
-	      if (error && errorLevel) {
-	        if (colors.error) logger[errorLevel]("%c error", "color: " + colors.error(error, prevState) + "; font-weight: bold", error);else logger[errorLevel]("error", error);
-	      }
-	
-	      if (nextStateLevel) {
-	        if (colors.nextState) logger[nextStateLevel]("%c next state", "color: " + colors.nextState(nextState) + "; font-weight: bold", nextState);else logger[nextStateLevel]("next state", nextState);
-	      }
-	
-	      try {
-	        logger.groupEnd();
-	      } catch (e) {
-	        logger.log("—— log end ——");
-	      }
-	    });
-	    logBuffer.length = 0;
-	  }
-	
-	  return function (_ref) {
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        // exit early if predicate function returns false
-	        if (typeof predicate === "function" && !predicate(getState, action)) {
-	          return next(action);
-	        }
-	
-	        var logEntry = {};
-	        logBuffer.push(logEntry);
-	
-	        logEntry.started = timer.now();
-	        logEntry.startedTime = new Date();
-	        logEntry.prevState = stateTransformer(getState());
-	        logEntry.action = action;
-	
-	        var returnedValue = undefined;
-	        if (logErrors) {
-	          try {
-	            returnedValue = next(action);
-	          } catch (e) {
-	            logEntry.error = errorTransformer(e);
-	          }
-	        } else {
-	          returnedValue = next(action);
-	        }
-	
-	        logEntry.took = timer.now() - logEntry.started;
-	        logEntry.nextState = stateTransformer(getState());
-	
-	        printBuffer();
-	
-	        if (logEntry.error) throw logEntry.error;
-	        return returnedValue;
-	      };
-	    };
-	  };
-	}
-	
-	module.exports = createLogger;
-
-/***/ },
-/* 290 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	function createThunkMiddleware(extraArgument) {
-	  return function (_ref) {
-	    var dispatch = _ref.dispatch;
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        if (typeof action === 'function') {
-	          return action(dispatch, getState, extraArgument);
-	        }
-	
-	        return next(action);
-	      };
-	    };
-	  };
-	}
-	
-	var thunk = createThunkMiddleware();
-	thunk.withExtraArgument = createThunkMiddleware;
-	
-	exports['default'] = thunk;
-
-/***/ },
-/* 291 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-	
-	var _isPromise = __webpack_require__(292);
-	
-	var _isPromise2 = _interopRequireDefault(_isPromise);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var defaultTypes = ['PENDING', 'FULFILLED', 'REJECTED'];
-	
-	/**
-	 * @function promiseMiddleware
-	 * @description
-	 * @returns {function} thunk
-	 */
-	module.exports = function promiseMiddleware() {
-	  var config = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	
-	  var promiseTypeSuffixes = config.promiseTypeSuffixes || defaultTypes;
-	
-	  return function (ref) {
-	    var dispatch = ref.dispatch;
-	
-	
-	    return function (next) {
-	      return function (action) {
-	        if (action.payload) {
-	          if (!(0, _isPromise2.default)(action.payload) && !(0, _isPromise2.default)(action.payload.promise)) {
-	            return next(action);
-	          }
-	        } else {
-	          return next(action);
-	        }
-	
-	        // Deconstruct the properties of the original action object to constants
-	        var type = action.type;
-	        var payload = action.payload;
-	        var meta = action.meta;
-	
-	        // Assign values for promise type suffixes
-	
-	        var _ref = (meta || {}).promiseTypeSuffixes || promiseTypeSuffixes;
-	
-	        var _ref2 = _slicedToArray(_ref, 3);
-	
-	        var PENDING = _ref2[0];
-	        var FULFILLED = _ref2[1];
-	        var REJECTED = _ref2[2];
-	
-	        /**
-	         * @function getAction
-	         * @description Utility function for creating a rejected or fulfilled
-	         * flux standard action object.
-	         * @param {boolean} Is the action rejected?
-	         * @returns {object} action
-	         */
-	
-	        var getAction = function getAction(newPayload, isRejected) {
-	          return _extends({
-	            type: type + '_' + (isRejected ? REJECTED : FULFILLED)
-	          }, newPayload ? {
-	            payload: newPayload
-	          } : {}, !!meta ? { meta: meta } : {}, isRejected ? {
-	            error: true
-	          } : {});
-	        };
-	
-	        /**
-	         * Assign values for promise and data variables. In the case the payload
-	         * is an object with a `promise` and `data` property, the values of those
-	         * properties will be used. In the case the payload is a promise, the
-	         * value of the payload will be used and data will be null.
-	         */
-	        var promise = void 0;
-	        var data = void 0;
-	
-	        if (!(0, _isPromise2.default)(action.payload) && _typeof(action.payload) === 'object') {
-	          promise = payload.promise;
-	          data = payload.data;
-	        } else {
-	          promise = payload;
-	          data = null;
-	        }
-	
-	        /**
-	         * First, dispatch the pending action. This flux standard action object
-	         * describes the pending state of a promise and will include any data
-	         * (for optimistic updates) and/or meta from the original action.
-	         */
-	        next(_extends({
-	          type: type + '_' + PENDING
-	        }, !!data ? { payload: data } : {}, !!meta ? { meta: meta } : {}));
-	
-	        /*
-	         * @function handleReject
-	         * @description Dispatch the rejected action and return
-	         * an error object. The error object should contain the
-	         * reason and the dispatched action.
-	         * @params reason The reason the promise was rejected
-	         * @returns {object}
-	         */
-	        var handleReject = function handleReject() {
-	          var reason = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
-	
-	          var rejectedAction = getAction(reason, true);
-	          dispatch(rejectedAction);
-	
-	          var error = reason instanceof Error ? reason : new Error();
-	
-	          error.reason = reason;
-	          error.action = rejectedAction;
-	
-	          throw error;
-	        };
-	
-	        /*
-	         * @function handleFulfill
-	         * @description Dispatch the fulfilled action and
-	         * return the success object. The success object should
-	         * contain the value and the dispatched action.
-	         * @param value The value the promise was resloved with
-	         * @returns {object}
-	         */
-	        var handleFulfill = function handleFulfill() {
-	          var value = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
-	
-	          var resolvedAction = getAction(value, false);
-	          dispatch(resolvedAction);
-	
-	          return { value: value, action: resolvedAction };
-	        };
-	
-	        /**
-	         * Second, dispatch a rejected or fulfilled action. This flux standard
-	         * action object will describe the resolved state of the promise. In
-	         * the case of a rejected promise, it will include an `error` property.
-	         *
-	         * In order to allow proper chaining of actions using `then`, a new
-	         * promise is constructed and returned. This promise will resolve
-	         * with two properties: (1) the value (if fulfilled) or reason
-	         * (if rejected) and (2) the flux standard action.
-	         *
-	         * Rejected object:
-	         * {
-	         *   reason: ...
-	         *   action: {
-	         *     error: true,
-	         *     type: 'ACTION_REJECTED',
-	         *     payload: ...
-	         *   }
-	         * }
-	         *
-	         * Fulfilled object:
-	         * {
-	         *   value: ...
-	         *   action: {
-	         *     type: 'ACTION_FULFILLED',
-	         *     payload: ...
-	         *   }
-	         * }
-	         */
-	        return promise.then(handleFulfill, handleReject);
-	      };
-	    };
-	  };
-	};
-
-/***/ },
-/* 292 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-	
-	exports.default = isPromise;
-	function isPromise(value) {
-	  if (value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
-	    return value && typeof value.then === 'function';
-	  }
-	
-	  return false;
-	}
-
-/***/ },
-/* 293 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(294);
-
-/***/ },
-/* 294 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	var bind = __webpack_require__(296);
-	var Axios = __webpack_require__(297);
-	
-	/**
-	 * Create an instance of Axios
-	 *
-	 * @param {Object} defaultConfig The default config for the instance
-	 * @return {Axios} A new instance of Axios
-	 */
-	function createInstance(defaultConfig) {
-	  var context = new Axios(defaultConfig);
-	  var instance = bind(Axios.prototype.request, context);
-	
-	  // Copy axios.prototype to instance
-	  utils.extend(instance, Axios.prototype, context);
-	
-	  // Copy context to instance
-	  utils.extend(instance, context);
-	
-	  return instance;
-	}
-	
-	// Create the default instance to be exported
-	var axios = createInstance();
-	
-	// Expose Axios class to allow class inheritance
-	axios.Axios = Axios;
-	
-	// Factory for creating new instances
-	axios.create = function create(defaultConfig) {
-	  return createInstance(defaultConfig);
-	};
-	
-	// Expose all/spread
-	axios.all = function all(promises) {
-	  return Promise.all(promises);
-	};
-	axios.spread = __webpack_require__(314);
-	
-	module.exports = axios;
-	
-	// Allow use of default import syntax in TypeScript
-	module.exports.default = axios;
-
-
-/***/ },
-/* 295 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var bind = __webpack_require__(296);
-	
-	/*global toString:true*/
-	
-	// utils is a library of generic helper functions non-specific to axios
-	
-	var toString = Object.prototype.toString;
-	
-	/**
-	 * Determine if a value is an Array
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an Array, otherwise false
-	 */
-	function isArray(val) {
-	  return toString.call(val) === '[object Array]';
-	}
-	
-	/**
-	 * Determine if a value is an ArrayBuffer
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an ArrayBuffer, otherwise false
-	 */
-	function isArrayBuffer(val) {
-	  return toString.call(val) === '[object ArrayBuffer]';
-	}
-	
-	/**
-	 * Determine if a value is a FormData
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an FormData, otherwise false
-	 */
-	function isFormData(val) {
-	  return (typeof FormData !== 'undefined') && (val instanceof FormData);
-	}
-	
-	/**
-	 * Determine if a value is a view on an ArrayBuffer
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
-	 */
-	function isArrayBufferView(val) {
-	  var result;
-	  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
-	    result = ArrayBuffer.isView(val);
-	  } else {
-	    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
-	  }
-	  return result;
-	}
-	
-	/**
-	 * Determine if a value is a String
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a String, otherwise false
-	 */
-	function isString(val) {
-	  return typeof val === 'string';
-	}
-	
-	/**
-	 * Determine if a value is a Number
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Number, otherwise false
-	 */
-	function isNumber(val) {
-	  return typeof val === 'number';
-	}
-	
-	/**
-	 * Determine if a value is undefined
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if the value is undefined, otherwise false
-	 */
-	function isUndefined(val) {
-	  return typeof val === 'undefined';
-	}
-	
-	/**
-	 * Determine if a value is an Object
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is an Object, otherwise false
-	 */
-	function isObject(val) {
-	  return val !== null && typeof val === 'object';
-	}
-	
-	/**
-	 * Determine if a value is a Date
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Date, otherwise false
-	 */
-	function isDate(val) {
-	  return toString.call(val) === '[object Date]';
-	}
-	
-	/**
-	 * Determine if a value is a File
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a File, otherwise false
-	 */
-	function isFile(val) {
-	  return toString.call(val) === '[object File]';
-	}
-	
-	/**
-	 * Determine if a value is a Blob
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Blob, otherwise false
-	 */
-	function isBlob(val) {
-	  return toString.call(val) === '[object Blob]';
-	}
-	
-	/**
-	 * Determine if a value is a Function
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Function, otherwise false
-	 */
-	function isFunction(val) {
-	  return toString.call(val) === '[object Function]';
-	}
-	
-	/**
-	 * Determine if a value is a Stream
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a Stream, otherwise false
-	 */
-	function isStream(val) {
-	  return isObject(val) && isFunction(val.pipe);
-	}
-	
-	/**
-	 * Determine if a value is a URLSearchParams object
-	 *
-	 * @param {Object} val The value to test
-	 * @returns {boolean} True if value is a URLSearchParams object, otherwise false
-	 */
-	function isURLSearchParams(val) {
-	  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
-	}
-	
-	/**
-	 * Trim excess whitespace off the beginning and end of a string
-	 *
-	 * @param {String} str The String to trim
-	 * @returns {String} The String freed of excess whitespace
-	 */
-	function trim(str) {
-	  return str.replace(/^\s*/, '').replace(/\s*$/, '');
-	}
-	
-	/**
-	 * Determine if we're running in a standard browser environment
-	 *
-	 * This allows axios to run in a web worker, and react-native.
-	 * Both environments support XMLHttpRequest, but not fully standard globals.
-	 *
-	 * web workers:
-	 *  typeof window -> undefined
-	 *  typeof document -> undefined
-	 *
-	 * react-native:
-	 *  typeof document.createElement -> undefined
-	 */
-	function isStandardBrowserEnv() {
-	  return (
-	    typeof window !== 'undefined' &&
-	    typeof document !== 'undefined' &&
-	    typeof document.createElement === 'function'
-	  );
-	}
-	
-	/**
-	 * Iterate over an Array or an Object invoking a function for each item.
-	 *
-	 * If `obj` is an Array callback will be called passing
-	 * the value, index, and complete array for each item.
-	 *
-	 * If 'obj' is an Object callback will be called passing
-	 * the value, key, and complete object for each property.
-	 *
-	 * @param {Object|Array} obj The object to iterate
-	 * @param {Function} fn The callback to invoke for each item
-	 */
-	function forEach(obj, fn) {
-	  // Don't bother if no value provided
-	  if (obj === null || typeof obj === 'undefined') {
-	    return;
-	  }
-	
-	  // Force an array if not already something iterable
-	  if (typeof obj !== 'object' && !isArray(obj)) {
-	    /*eslint no-param-reassign:0*/
-	    obj = [obj];
-	  }
-	
-	  if (isArray(obj)) {
-	    // Iterate over array values
-	    for (var i = 0, l = obj.length; i < l; i++) {
-	      fn.call(null, obj[i], i, obj);
-	    }
-	  } else {
-	    // Iterate over object keys
-	    for (var key in obj) {
-	      if (obj.hasOwnProperty(key)) {
-	        fn.call(null, obj[key], key, obj);
-	      }
-	    }
-	  }
-	}
-	
-	/**
-	 * Accepts varargs expecting each argument to be an object, then
-	 * immutably merges the properties of each object and returns result.
-	 *
-	 * When multiple objects contain the same key the later object in
-	 * the arguments list will take precedence.
-	 *
-	 * Example:
-	 *
-	 * ```js
-	 * var result = merge({foo: 123}, {foo: 456});
-	 * console.log(result.foo); // outputs 456
-	 * ```
-	 *
-	 * @param {Object} obj1 Object to merge
-	 * @returns {Object} Result of all merge properties
-	 */
-	function merge(/* obj1, obj2, obj3, ... */) {
-	  var result = {};
-	  function assignValue(val, key) {
-	    if (typeof result[key] === 'object' && typeof val === 'object') {
-	      result[key] = merge(result[key], val);
-	    } else {
-	      result[key] = val;
-	    }
-	  }
-	
-	  for (var i = 0, l = arguments.length; i < l; i++) {
-	    forEach(arguments[i], assignValue);
-	  }
-	  return result;
-	}
-	
-	/**
-	 * Extends object a by mutably adding to it the properties of object b.
-	 *
-	 * @param {Object} a The object to be extended
-	 * @param {Object} b The object to copy properties from
-	 * @param {Object} thisArg The object to bind function to
-	 * @return {Object} The resulting value of object a
-	 */
-	function extend(a, b, thisArg) {
-	  forEach(b, function assignValue(val, key) {
-	    if (thisArg && typeof val === 'function') {
-	      a[key] = bind(val, thisArg);
-	    } else {
-	      a[key] = val;
-	    }
-	  });
-	  return a;
-	}
-	
-	module.exports = {
-	  isArray: isArray,
-	  isArrayBuffer: isArrayBuffer,
-	  isFormData: isFormData,
-	  isArrayBufferView: isArrayBufferView,
-	  isString: isString,
-	  isNumber: isNumber,
-	  isObject: isObject,
-	  isUndefined: isUndefined,
-	  isDate: isDate,
-	  isFile: isFile,
-	  isBlob: isBlob,
-	  isFunction: isFunction,
-	  isStream: isStream,
-	  isURLSearchParams: isURLSearchParams,
-	  isStandardBrowserEnv: isStandardBrowserEnv,
-	  forEach: forEach,
-	  merge: merge,
-	  extend: extend,
-	  trim: trim
-	};
-
-
-/***/ },
-/* 296 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	module.exports = function bind(fn, thisArg) {
-	  return function wrap() {
-	    var args = new Array(arguments.length);
-	    for (var i = 0; i < args.length; i++) {
-	      args[i] = arguments[i];
-	    }
-	    return fn.apply(thisArg, args);
-	  };
-	};
-
-
-/***/ },
-/* 297 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var defaults = __webpack_require__(298);
-	var utils = __webpack_require__(295);
-	var InterceptorManager = __webpack_require__(300);
-	var dispatchRequest = __webpack_require__(301);
-	var isAbsoluteURL = __webpack_require__(312);
-	var combineURLs = __webpack_require__(313);
-	
-	/**
-	 * Create a new instance of Axios
-	 *
-	 * @param {Object} defaultConfig The default config for the instance
-	 */
-	function Axios(defaultConfig) {
-	  this.defaults = utils.merge(defaults, defaultConfig);
-	  this.interceptors = {
-	    request: new InterceptorManager(),
-	    response: new InterceptorManager()
-	  };
-	}
-	
-	/**
-	 * Dispatch a request
-	 *
-	 * @param {Object} config The config specific for this request (merged with this.defaults)
-	 */
-	Axios.prototype.request = function request(config) {
-	  /*eslint no-param-reassign:0*/
-	  // Allow for axios('example/url'[, config]) a la fetch API
-	  if (typeof config === 'string') {
-	    config = utils.merge({
-	      url: arguments[0]
-	    }, arguments[1]);
-	  }
-	
-	  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
-	
-	  // Support baseURL config
-	  if (config.baseURL && !isAbsoluteURL(config.url)) {
-	    config.url = combineURLs(config.baseURL, config.url);
-	  }
-	
-	  // Hook up interceptors middleware
-	  var chain = [dispatchRequest, undefined];
-	  var promise = Promise.resolve(config);
-	
-	  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-	    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-	  });
-	
-	  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-	    chain.push(interceptor.fulfilled, interceptor.rejected);
-	  });
-	
-	  while (chain.length) {
-	    promise = promise.then(chain.shift(), chain.shift());
-	  }
-	
-	  return promise;
-	};
-	
-	// Provide aliases for supported request methods
-	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-	  /*eslint func-names:0*/
-	  Axios.prototype[method] = function(url, config) {
-	    return this.request(utils.merge(config || {}, {
-	      method: method,
-	      url: url
-	    }));
-	  };
-	});
-	
-	utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-	  /*eslint func-names:0*/
-	  Axios.prototype[method] = function(url, data, config) {
-	    return this.request(utils.merge(config || {}, {
-	      method: method,
-	      url: url,
-	      data: data
-	    }));
-	  };
-	});
-	
-	module.exports = Axios;
-
-
-/***/ },
-/* 298 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	var normalizeHeaderName = __webpack_require__(299);
-	
-	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
-	var DEFAULT_CONTENT_TYPE = {
-	  'Content-Type': 'application/x-www-form-urlencoded'
-	};
-	
-	function setContentTypeIfUnset(headers, value) {
-	  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-	    headers['Content-Type'] = value;
-	  }
-	}
-	
-	module.exports = {
-	  transformRequest: [function transformRequest(data, headers) {
-	    normalizeHeaderName(headers, 'Content-Type');
-	    if (utils.isFormData(data) ||
-	      utils.isArrayBuffer(data) ||
-	      utils.isStream(data) ||
-	      utils.isFile(data) ||
-	      utils.isBlob(data)
-	    ) {
-	      return data;
-	    }
-	    if (utils.isArrayBufferView(data)) {
-	      return data.buffer;
-	    }
-	    if (utils.isURLSearchParams(data)) {
-	      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-	      return data.toString();
-	    }
-	    if (utils.isObject(data)) {
-	      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-	      return JSON.stringify(data);
-	    }
-	    return data;
-	  }],
-	
-	  transformResponse: [function transformResponse(data) {
-	    /*eslint no-param-reassign:0*/
-	    if (typeof data === 'string') {
-	      data = data.replace(PROTECTION_PREFIX, '');
-	      try {
-	        data = JSON.parse(data);
-	      } catch (e) { /* Ignore */ }
-	    }
-	    return data;
-	  }],
-	
-	  headers: {
-	    common: {
-	      'Accept': 'application/json, text/plain, */*'
-	    },
-	    patch: utils.merge(DEFAULT_CONTENT_TYPE),
-	    post: utils.merge(DEFAULT_CONTENT_TYPE),
-	    put: utils.merge(DEFAULT_CONTENT_TYPE)
-	  },
-	
-	  timeout: 0,
-	
-	  xsrfCookieName: 'XSRF-TOKEN',
-	  xsrfHeaderName: 'X-XSRF-TOKEN',
-	
-	  maxContentLength: -1,
-	
-	  validateStatus: function validateStatus(status) {
-	    return status >= 200 && status < 300;
-	  }
-	};
-
-
-/***/ },
-/* 299 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	
-	module.exports = function normalizeHeaderName(headers, normalizedName) {
-	  utils.forEach(headers, function processHeader(value, name) {
-	    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-	      headers[normalizedName] = value;
-	      delete headers[name];
-	    }
-	  });
-	};
-
-
-/***/ },
-/* 300 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	
-	function InterceptorManager() {
-	  this.handlers = [];
-	}
-	
-	/**
-	 * Add a new interceptor to the stack
-	 *
-	 * @param {Function} fulfilled The function to handle `then` for a `Promise`
-	 * @param {Function} rejected The function to handle `reject` for a `Promise`
-	 *
-	 * @return {Number} An ID used to remove interceptor later
-	 */
-	InterceptorManager.prototype.use = function use(fulfilled, rejected) {
-	  this.handlers.push({
-	    fulfilled: fulfilled,
-	    rejected: rejected
-	  });
-	  return this.handlers.length - 1;
-	};
-	
-	/**
-	 * Remove an interceptor from the stack
-	 *
-	 * @param {Number} id The ID that was returned by `use`
-	 */
-	InterceptorManager.prototype.eject = function eject(id) {
-	  if (this.handlers[id]) {
-	    this.handlers[id] = null;
-	  }
-	};
-	
-	/**
-	 * Iterate over all the registered interceptors
-	 *
-	 * This method is particularly useful for skipping over any
-	 * interceptors that may have become `null` calling `eject`.
-	 *
-	 * @param {Function} fn The function to call for each interceptor
-	 */
-	InterceptorManager.prototype.forEach = function forEach(fn) {
-	  utils.forEach(this.handlers, function forEachHandler(h) {
-	    if (h !== null) {
-	      fn(h);
-	    }
-	  });
-	};
-	
-	module.exports = InterceptorManager;
-
-
-/***/ },
-/* 301 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-	
-	var utils = __webpack_require__(295);
-	var transformData = __webpack_require__(302);
-	
-	/**
-	 * Dispatch a request to the server using whichever adapter
-	 * is supported by the current environment.
-	 *
-	 * @param {object} config The config that is to be used for the request
-	 * @returns {Promise} The Promise to be fulfilled
-	 */
-	module.exports = function dispatchRequest(config) {
-	  // Ensure headers exist
-	  config.headers = config.headers || {};
-	
-	  // Transform request data
-	  config.data = transformData(
-	    config.data,
-	    config.headers,
-	    config.transformRequest
-	  );
-	
-	  // Flatten headers
-	  config.headers = utils.merge(
-	    config.headers.common || {},
-	    config.headers[config.method] || {},
-	    config.headers || {}
-	  );
-	
-	  utils.forEach(
-	    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
-	    function cleanHeaderConfig(method) {
-	      delete config.headers[method];
-	    }
-	  );
-	
-	  var adapter;
-	
-	  if (typeof config.adapter === 'function') {
-	    // For custom adapter support
-	    adapter = config.adapter;
-	  } else if (typeof XMLHttpRequest !== 'undefined') {
-	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(303);
-	  } else if (typeof process !== 'undefined') {
-	    // For node use HTTP adapter
-	    adapter = __webpack_require__(303);
-	  }
-	
-	  return Promise.resolve(config)
-	    // Wrap synchronous adapter errors and pass configuration
-	    .then(adapter)
-	    .then(function onFulfilled(response) {
-	      // Transform response data
-	      response.data = transformData(
-	        response.data,
-	        response.headers,
-	        config.transformResponse
-	      );
-	
-	      return response;
-	    }, function onRejected(error) {
-	      // Transform response data
-	      if (error && error.response) {
-	        error.response.data = transformData(
-	          error.response.data,
-	          error.response.headers,
-	          config.transformResponse
-	        );
-	      }
-	
-	      return Promise.reject(error);
-	    });
-	};
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(283)))
-
-/***/ },
-/* 302 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	
-	/**
-	 * Transform the data for a request or a response
-	 *
-	 * @param {Object|String} data The data to be transformed
-	 * @param {Array} headers The headers for the request or response
-	 * @param {Array|Function} fns A single function or Array of functions
-	 * @returns {*} The resulting transformed data
-	 */
-	module.exports = function transformData(data, headers, fns) {
-	  /*eslint no-param-reassign:0*/
-	  utils.forEach(fns, function transform(fn) {
-	    data = fn(data, headers);
-	  });
-	
-	  return data;
-	};
-
-
-/***/ },
-/* 303 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	var settle = __webpack_require__(304);
-	var buildURL = __webpack_require__(307);
-	var parseHeaders = __webpack_require__(308);
-	var isURLSameOrigin = __webpack_require__(309);
-	var createError = __webpack_require__(305);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(310);
-	
-	module.exports = function xhrAdapter(config) {
-	  return new Promise(function dispatchXhrRequest(resolve, reject) {
-	    var requestData = config.data;
-	    var requestHeaders = config.headers;
-	
-	    if (utils.isFormData(requestData)) {
-	      delete requestHeaders['Content-Type']; // Let the browser set it
-	    }
-	
-	    var request = new XMLHttpRequest();
-	    var loadEvent = 'onreadystatechange';
-	    var xDomain = false;
-	
-	    // For IE 8/9 CORS support
-	    // Only supports POST and GET calls and doesn't returns the response headers.
-	    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-	    if (("development") !== 'test' &&
-	        typeof window !== 'undefined' &&
-	        window.XDomainRequest && !('withCredentials' in request) &&
-	        !isURLSameOrigin(config.url)) {
-	      request = new window.XDomainRequest();
-	      loadEvent = 'onload';
-	      xDomain = true;
-	      request.onprogress = function handleProgress() {};
-	      request.ontimeout = function handleTimeout() {};
-	    }
-	
-	    // HTTP basic authentication
-	    if (config.auth) {
-	      var username = config.auth.username || '';
-	      var password = config.auth.password || '';
-	      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
-	    }
-	
-	    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
-	
-	    // Set the request timeout in MS
-	    request.timeout = config.timeout;
-	
-	    // Listen for ready state
-	    request[loadEvent] = function handleLoad() {
-	      if (!request || (request.readyState !== 4 && !xDomain)) {
-	        return;
-	      }
-	
-	      // The request errored out and we didn't get a response, this will be
-	      // handled by onerror instead
-	      if (request.status === 0) {
-	        return;
-	      }
-	
-	      // Prepare the response
-	      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
-	      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
-	      var response = {
-	        data: responseData,
-	        // IE sends 1223 instead of 204 (https://github.com/mzabriskie/axios/issues/201)
-	        status: request.status === 1223 ? 204 : request.status,
-	        statusText: request.status === 1223 ? 'No Content' : request.statusText,
-	        headers: responseHeaders,
-	        config: config,
-	        request: request
-	      };
-	
-	      settle(resolve, reject, response);
-	
-	      // Clean up request
-	      request = null;
-	    };
-	
-	    // Handle low level network errors
-	    request.onerror = function handleError() {
-	      // Real errors are hidden from us by the browser
-	      // onerror should only fire if it's a network error
-	      reject(createError('Network Error', config));
-	
-	      // Clean up request
-	      request = null;
-	    };
-	
-	    // Handle timeout
-	    request.ontimeout = function handleTimeout() {
-	      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED'));
-	
-	      // Clean up request
-	      request = null;
-	    };
-	
-	    // Add xsrf header
-	    // This is only done if running in a standard browser environment.
-	    // Specifically not if we're in a web worker, or react-native.
-	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(311);
-	
-	      // Add xsrf header
-	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
-	          cookies.read(config.xsrfCookieName) :
-	          undefined;
-	
-	      if (xsrfValue) {
-	        requestHeaders[config.xsrfHeaderName] = xsrfValue;
-	      }
-	    }
-	
-	    // Add headers to the request
-	    if ('setRequestHeader' in request) {
-	      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
-	        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
-	          // Remove Content-Type if data is undefined
-	          delete requestHeaders[key];
-	        } else {
-	          // Otherwise add header to the request
-	          request.setRequestHeader(key, val);
-	        }
-	      });
-	    }
-	
-	    // Add withCredentials to request if needed
-	    if (config.withCredentials) {
-	      request.withCredentials = true;
-	    }
-	
-	    // Add responseType to request if needed
-	    if (config.responseType) {
-	      try {
-	        request.responseType = config.responseType;
-	      } catch (e) {
-	        if (request.responseType !== 'json') {
-	          throw e;
-	        }
-	      }
-	    }
-	
-	    // Handle progress if needed
-	    if (typeof config.onDownloadProgress === 'function') {
-	      request.addEventListener('progress', config.onDownloadProgress);
-	    }
-	
-	    // Not all browsers support upload events
-	    if (typeof config.onUploadProgress === 'function' && request.upload) {
-	      request.upload.addEventListener('progress', config.onUploadProgress);
-	    }
-	
-	
-	    if (requestData === undefined) {
-	      requestData = null;
-	    }
-	
-	    // Send the request
-	    request.send(requestData);
-	  });
-	};
-
-
-/***/ },
-/* 304 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var createError = __webpack_require__(305);
-	
-	/**
-	 * Resolve or reject a Promise based on response status.
-	 *
-	 * @param {Function} resolve A function that resolves the promise.
-	 * @param {Function} reject A function that rejects the promise.
-	 * @param {object} response The response.
-	 */
-	module.exports = function settle(resolve, reject, response) {
-	  var validateStatus = response.config.validateStatus;
-	  // Note: status is not exposed by XDomainRequest
-	  if (!response.status || !validateStatus || validateStatus(response.status)) {
-	    resolve(response);
-	  } else {
-	    reject(createError(
-	      'Request failed with status code ' + response.status,
-	      response.config,
-	      null,
-	      response
-	    ));
-	  }
-	};
-
-
-/***/ },
-/* 305 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var enhanceError = __webpack_require__(306);
-	
-	/**
-	 * Create an Error with the specified message, config, error code, and response.
-	 *
-	 * @param {string} message The error message.
-	 * @param {Object} config The config.
-	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
-	 @ @param {Object} [response] The response.
-	 * @returns {Error} The created error.
-	 */
-	module.exports = function createError(message, config, code, response) {
-	  var error = new Error(message);
-	  return enhanceError(error, config, code, response);
-	};
-
-
-/***/ },
-/* 306 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Update an Error with the specified config, error code, and response.
-	 *
-	 * @param {Error} error The error to update.
-	 * @param {Object} config The config.
-	 * @param {string} [code] The error code (for example, 'ECONNABORTED').
-	 @ @param {Object} [response] The response.
-	 * @returns {Error} The error.
-	 */
-	module.exports = function enhanceError(error, config, code, response) {
-	  error.config = config;
-	  if (code) {
-	    error.code = code;
-	  }
-	  error.response = response;
-	  return error;
-	};
-
-
-/***/ },
-/* 307 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	
-	function encode(val) {
-	  return encodeURIComponent(val).
-	    replace(/%40/gi, '@').
-	    replace(/%3A/gi, ':').
-	    replace(/%24/g, '$').
-	    replace(/%2C/gi, ',').
-	    replace(/%20/g, '+').
-	    replace(/%5B/gi, '[').
-	    replace(/%5D/gi, ']');
-	}
-	
-	/**
-	 * Build a URL by appending params to the end
-	 *
-	 * @param {string} url The base of the url (e.g., http://www.google.com)
-	 * @param {object} [params] The params to be appended
-	 * @returns {string} The formatted url
-	 */
-	module.exports = function buildURL(url, params, paramsSerializer) {
-	  /*eslint no-param-reassign:0*/
-	  if (!params) {
-	    return url;
-	  }
-	
-	  var serializedParams;
-	  if (paramsSerializer) {
-	    serializedParams = paramsSerializer(params);
-	  } else if (utils.isURLSearchParams(params)) {
-	    serializedParams = params.toString();
-	  } else {
-	    var parts = [];
-	
-	    utils.forEach(params, function serialize(val, key) {
-	      if (val === null || typeof val === 'undefined') {
-	        return;
-	      }
-	
-	      if (utils.isArray(val)) {
-	        key = key + '[]';
-	      }
-	
-	      if (!utils.isArray(val)) {
-	        val = [val];
-	      }
-	
-	      utils.forEach(val, function parseValue(v) {
-	        if (utils.isDate(v)) {
-	          v = v.toISOString();
-	        } else if (utils.isObject(v)) {
-	          v = JSON.stringify(v);
-	        }
-	        parts.push(encode(key) + '=' + encode(v));
-	      });
-	    });
-	
-	    serializedParams = parts.join('&');
-	  }
-	
-	  if (serializedParams) {
-	    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-	  }
-	
-	  return url;
-	};
-
-
-/***/ },
-/* 308 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	
-	/**
-	 * Parse headers into an object
-	 *
-	 * ```
-	 * Date: Wed, 27 Aug 2014 08:58:49 GMT
-	 * Content-Type: application/json
-	 * Connection: keep-alive
-	 * Transfer-Encoding: chunked
-	 * ```
-	 *
-	 * @param {String} headers Headers needing to be parsed
-	 * @returns {Object} Headers parsed into an object
-	 */
-	module.exports = function parseHeaders(headers) {
-	  var parsed = {};
-	  var key;
-	  var val;
-	  var i;
-	
-	  if (!headers) { return parsed; }
-	
-	  utils.forEach(headers.split('\n'), function parser(line) {
-	    i = line.indexOf(':');
-	    key = utils.trim(line.substr(0, i)).toLowerCase();
-	    val = utils.trim(line.substr(i + 1));
-	
-	    if (key) {
-	      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-	    }
-	  });
-	
-	  return parsed;
-	};
-
-
-/***/ },
-/* 309 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	
-	module.exports = (
-	  utils.isStandardBrowserEnv() ?
-	
-	  // Standard browser envs have full support of the APIs needed to test
-	  // whether the request URL is of the same origin as current location.
-	  (function standardBrowserEnv() {
-	    var msie = /(msie|trident)/i.test(navigator.userAgent);
-	    var urlParsingNode = document.createElement('a');
-	    var originURL;
-	
-	    /**
-	    * Parse a URL to discover it's components
-	    *
-	    * @param {String} url The URL to be parsed
-	    * @returns {Object}
-	    */
-	    function resolveURL(url) {
-	      var href = url;
-	
-	      if (msie) {
-	        // IE needs attribute set twice to normalize properties
-	        urlParsingNode.setAttribute('href', href);
-	        href = urlParsingNode.href;
-	      }
-	
-	      urlParsingNode.setAttribute('href', href);
-	
-	      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-	      return {
-	        href: urlParsingNode.href,
-	        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
-	        host: urlParsingNode.host,
-	        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
-	        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
-	        hostname: urlParsingNode.hostname,
-	        port: urlParsingNode.port,
-	        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-	                  urlParsingNode.pathname :
-	                  '/' + urlParsingNode.pathname
-	      };
-	    }
-	
-	    originURL = resolveURL(window.location.href);
-	
-	    /**
-	    * Determine if a URL shares the same origin as the current location
-	    *
-	    * @param {String} requestURL The URL to test
-	    * @returns {boolean} True if URL shares the same origin, otherwise false
-	    */
-	    return function isURLSameOrigin(requestURL) {
-	      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
-	      return (parsed.protocol === originURL.protocol &&
-	            parsed.host === originURL.host);
-	    };
-	  })() :
-	
-	  // Non standard browser envs (web workers, react-native) lack needed support.
-	  (function nonStandardBrowserEnv() {
-	    return function isURLSameOrigin() {
-	      return true;
-	    };
-	  })()
-	);
-
-
-/***/ },
-/* 310 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-	
-	var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-	
-	function E() {
-	  this.message = 'String contains an invalid character';
-	}
-	E.prototype = new Error;
-	E.prototype.code = 5;
-	E.prototype.name = 'InvalidCharacterError';
-	
-	function btoa(input) {
-	  var str = String(input);
-	  var output = '';
-	  for (
-	    // initialize result and counter
-	    var block, charCode, idx = 0, map = chars;
-	    // if the next str index does not exist:
-	    //   change the mapping table to "="
-	    //   check if d has no fractional digits
-	    str.charAt(idx | 0) || (map = '=', idx % 1);
-	    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-	    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-	  ) {
-	    charCode = str.charCodeAt(idx += 3 / 4);
-	    if (charCode > 0xFF) {
-	      throw new E();
-	    }
-	    block = block << 8 | charCode;
-	  }
-	  return output;
-	}
-	
-	module.exports = btoa;
-
-
-/***/ },
-/* 311 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var utils = __webpack_require__(295);
-	
-	module.exports = (
-	  utils.isStandardBrowserEnv() ?
-	
-	  // Standard browser envs support document.cookie
-	  (function standardBrowserEnv() {
-	    return {
-	      write: function write(name, value, expires, path, domain, secure) {
-	        var cookie = [];
-	        cookie.push(name + '=' + encodeURIComponent(value));
-	
-	        if (utils.isNumber(expires)) {
-	          cookie.push('expires=' + new Date(expires).toGMTString());
-	        }
-	
-	        if (utils.isString(path)) {
-	          cookie.push('path=' + path);
-	        }
-	
-	        if (utils.isString(domain)) {
-	          cookie.push('domain=' + domain);
-	        }
-	
-	        if (secure === true) {
-	          cookie.push('secure');
-	        }
-	
-	        document.cookie = cookie.join('; ');
-	      },
-	
-	      read: function read(name) {
-	        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-	        return (match ? decodeURIComponent(match[3]) : null);
-	      },
-	
-	      remove: function remove(name) {
-	        this.write(name, '', Date.now() - 86400000);
-	      }
-	    };
-	  })() :
-	
-	  // Non standard browser env (web workers, react-native) lack needed support.
-	  (function nonStandardBrowserEnv() {
-	    return {
-	      write: function write() {},
-	      read: function read() { return null; },
-	      remove: function remove() {}
-	    };
-	  })()
-	);
-
-
-/***/ },
-/* 312 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Determines whether the specified URL is absolute
-	 *
-	 * @param {string} url The URL to test
-	 * @returns {boolean} True if the specified URL is absolute, otherwise false
-	 */
-	module.exports = function isAbsoluteURL(url) {
-	  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-	  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-	  // by any combination of letters, digits, plus, period, or hyphen.
-	  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-	};
-
-
-/***/ },
-/* 313 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Creates a new URL by combining the specified URLs
-	 *
-	 * @param {string} baseURL The base URL
-	 * @param {string} relativeURL The relative URL
-	 * @returns {string} The combined URL
-	 */
-	module.exports = function combineURLs(baseURL, relativeURL) {
-	  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
-	};
-
-
-/***/ },
-/* 314 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	/**
-	 * Syntactic sugar for invoking a function and expanding an array for arguments.
-	 *
-	 * Common use case would be to use `Function.prototype.apply`.
-	 *
-	 *  ```js
-	 *  function f(x, y, z) {}
-	 *  var args = [1, 2, 3];
-	 *  f.apply(null, args);
-	 *  ```
-	 *
-	 * With `spread` this example can be re-written.
-	 *
-	 *  ```js
-	 *  spread(function(x, y, z) {})([1, 2, 3]);
-	 *  ```
-	 *
-	 * @param {Function} callback
-	 * @returns {Function}
-	 */
-	module.exports = function spread(callback) {
-	  return function wrap(arr) {
-	    return callback.apply(null, arr);
-	  };
-	};
-
-
-/***/ },
-/* 315 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _redux = __webpack_require__(237);
-	
-	var _reactRouterRedux = __webpack_require__(284);
-	
-	var _homeReducer = __webpack_require__(316);
-	
-	var _homeReducer2 = _interopRequireDefault(_homeReducer);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = (0, _redux.combineReducers)({
-		home: _homeReducer2.default,
-		routing: _reactRouterRedux.routerReducer
-	});
-
-/***/ },
-/* 316 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _actionConstant = __webpack_require__(259);
-	
-	var _actionConstant2 = _interopRequireDefault(_actionConstant);
-	
-	var _product = __webpack_require__(317);
-	
-	var _product2 = _interopRequireDefault(_product);
-	
-	var _ramda = __webpack_require__(318);
-	
-	var _ramda2 = _interopRequireDefault(_ramda);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var defaultState = {
-		data: sortPrice(_product2.default)
-	};
-	
-	function sortTitle(payload) {
-		var sortByNameCaseInsensitive = _ramda2.default.sortBy(_ramda2.default.compose(_ramda2.default.toLower, _ramda2.default.prop('title')));
-		payload = sortByNameCaseInsensitive(payload);
-	
-		return payload;
-	}
-	function sortPrice(payload) {
-		var sortByNameCaseInsensitive = _ramda2.default.sortBy(_ramda2.default.prop('price'));
-		payload = sortByNameCaseInsensitive(payload);
-		return payload;
-	}
-	
-	exports.default = function () {
-		var state = arguments.length <= 0 || arguments[0] === undefined ? defaultState : arguments[0];
-		var action = arguments[1];
-	
-		switch (action.type) {
-			case _actionConstant2.default.SORT_TITLE:
-				return _extends({}, state, { data: sortTitle(action.payload) });
-			case _actionConstant2.default.SORT_PRICE:
-				return _extends({}, state, { data: sortPrice(action.payload) });
-		}
-		return state;
-	};
-
-/***/ },
-/* 317 */
-/***/ function(module, exports) {
-
-	module.exports = [
-		{
-			"id": 1,
-			"title": "Handledsskydd med tumme",
-			"brand": "RESORT",
-			"price": 250,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 2,
-			"title": "Knäskydd Per4mance",
-			"brand": "RESORT",
-			"price": 349,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 3,
-			"title": "Mössa",
-			"brand": "RESORT",
-			"price": 279,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 4,
-			"title": "Knäskydd med spänne",
-			"brand": "RESORT",
-			"price": 310,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 5,
-			"title": "Knäskydd",
-			"brand": "RESORT",
-			"price": 310,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 6,
-			"title": "Armbågsskydd",
-			"brand": "RESORT",
-			"price": 258,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 7,
-			"title": "Handledsskydd",
-			"brand": "RESORT",
-			"price": 219,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 8,
-			"title": "Vadskydd",
-			"brand": "RESORT",
-			"price": 310,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 9,
-			"title": "Vristskydd",
-			"brand": "RESORT",
-			"price": 320,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 10,
-			"title": "Strumpor",
-			"brand": "RESORT",
-			"price": 285,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 11,
-			"title": "Handskar",
-			"brand": "RESORT",
-			"price": 310,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 12,
-			"title": "Långärmad T-shirt",
-			"brand": "RESORT",
-			"price": 469,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 13,
-			"title": "Långärmad T-shirt PP",
-			"brand": "RESORT",
-			"price": 499,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 14,
-			"title": "T-shirt",
-			"brand": "RESORT",
-			"price": 445,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 15,
-			"title": "Nackskydd med polokrage",
-			"brand": "RESORT",
-			"price": 335,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 16,
-			"title": "Nackskydd med kardborre",
-			"brand": "RESORT",
-			"price": 335,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 17,
-			"title": "Långkalsong, Herr",
-			"brand": "RESORT",
-			"price": 499,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 18,
-			"title": "Långkalsong PP, Herr",
-			"brand": "RESORT",
-			"price": 529,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 19,
-			"title": "Långkalsong, Dam",
-			"brand": "RESORT",
-			"price": 499,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 20,
-			"title": "Långkalsong PP, Dam",
-			"brand": "RESORT",
-			"price": 529,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 21,
-			"title": "Boxerkalsong",
-			"brand": "RESORT",
-			"price": 289,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 22,
-			"title": "Boxertrosa",
-			"brand": "RESORT",
-			"price": 289,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 23,
-			"title": "Ryggbälte med smal front",
-			"brand": "RESORT",
-			"price": 560,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 24,
-			"title": "Bäddmadrass",
-			"brand": "RESORT",
-			"price": 946,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 25,
-			"title": "Minifilt",
-			"brand": "RESORT",
-			"price": 364,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 26,
-			"title": "Lakan",
-			"brand": "RESORT",
-			"price": 729,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 27,
-			"title": "Polotröja, Herr",
-			"brand": "RESORT",
-			"price": 558,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 28,
-			"title": "Polotröja, Dam",
-			"brand": "RESORT",
-			"price": 558,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 29,
-			"title": "T-Shirt Slim fit",
-			"brand": "RESORT",
-			"price": 499,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 30,
-			"title": "Scarf",
-			"brand": "RESORT",
-			"price": 419,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 31,
-			"title": "T-shirt V-ringad",
-			"brand": "RESORT",
-			"price": 469,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 32,
-			"title": "Filt Fleece",
-			"brand": "RESORT",
-			"price": 729,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 33,
-			"title": "Ryggbälte med stöd",
-			"brand": "RESORT",
-			"price": 697,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 34,
-			"title": "Ridhandske",
-			"brand": "RESORT",
-			"price": 495,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 35,
-			"title": "Pannband",
-			"brand": "RESORT",
-			"price": 179,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 36,
-			"title": "Hjälmmössa",
-			"brand": "RESORT",
-			"price": 179,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		},
-		{
-			"id": 37,
-			"title": "Mössa Ny",
-			"brand": "RESORT",
-			"price": 279,
-			"raiting": 0,
-			"images": [
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "primary"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "model"
-				},
-				{
-					"url": "a1.jpg",
-					"thumbnail": "a1.jpg",
-					"type": "detail"
-				}
-			],
-			"size": [
-				"36 (UK8)",
-				"38 (UK10)",
-				"40 (UK12)",
-				"42 (UK14)",
-				"44 (UK16)",
-				"46 (UK18)"
-			],
-			"colors": [
-				"Black",
-				"Yellow"
-			]
-		}
-	];
-
-/***/ },
-/* 318 */
-/***/ function(module, exports, __webpack_require__) {
-
-	//  Ramda v0.22.1
-	//  https://github.com/ramda/ramda
-	//  (c) 2013-2016 Scott Sauyet, Michael Hurley, and David Chambers
-	//  Ramda may be freely distributed under the MIT license.
-	
-	;(function() {
-	
-	  'use strict';
-	
-	  /**
-	     * A special placeholder value used to specify "gaps" within curried functions,
-	     * allowing partial application of any combination of arguments, regardless of
-	     * their positions.
-	     *
-	     * If `g` is a curried ternary function and `_` is `R.__`, the following are
-	     * equivalent:
-	     *
-	     *   - `g(1, 2, 3)`
-	     *   - `g(_, 2, 3)(1)`
-	     *   - `g(_, _, 3)(1)(2)`
-	     *   - `g(_, _, 3)(1, 2)`
-	     *   - `g(_, 2, _)(1, 3)`
-	     *   - `g(_, 2)(1)(3)`
-	     *   - `g(_, 2)(1, 3)`
-	     *   - `g(_, 2)(_, 3)(1)`
-	     *
-	     * @constant
-	     * @memberOf R
-	     * @since v0.6.0
-	     * @category Function
-	     * @example
-	     *
-	     *      var greet = R.replace('{name}', R.__, 'Hello, {name}!');
-	     *      greet('Alice'); //=> 'Hello, Alice!'
-	     */
-	    var __ = { '@@functional/placeholder': true };
-	
-	    /* eslint-disable no-unused-vars */
-	    var _arity = function _arity(n, fn) {
-	        /* eslint-disable no-unused-vars */
-	        switch (n) {
-	        case 0:
-	            return function () {
-	                return fn.apply(this, arguments);
-	            };
-	        case 1:
-	            return function (a0) {
-	                return fn.apply(this, arguments);
-	            };
-	        case 2:
-	            return function (a0, a1) {
-	                return fn.apply(this, arguments);
-	            };
-	        case 3:
-	            return function (a0, a1, a2) {
-	                return fn.apply(this, arguments);
-	            };
-	        case 4:
-	            return function (a0, a1, a2, a3) {
-	                return fn.apply(this, arguments);
-	            };
-	        case 5:
-	            return function (a0, a1, a2, a3, a4) {
-	                return fn.apply(this, arguments);
-	            };
-	        case 6:
-	            return function (a0, a1, a2, a3, a4, a5) {
-	                return fn.apply(this, arguments);
-	            };
-	        case 7:
-	            return function (a0, a1, a2, a3, a4, a5, a6) {
-	                return fn.apply(this, arguments);
-	            };
-	        case 8:
-	            return function (a0, a1, a2, a3, a4, a5, a6, a7) {
-	                return fn.apply(this, arguments);
-	            };
-	        case 9:
-	            return function (a0, a1, a2, a3, a4, a5, a6, a7, a8) {
-	                return fn.apply(this, arguments);
-	            };
-	        case 10:
-	            return function (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
-	                return fn.apply(this, arguments);
-	            };
-	        default:
-	            throw new Error('First argument to _arity must be a non-negative integer no greater than ten');
-	        }
-	    };
-	
-	    var _arrayFromIterator = function _arrayFromIterator(iter) {
-	        var list = [];
-	        var next;
-	        while (!(next = iter.next()).done) {
-	            list.push(next.value);
-	        }
-	        return list;
-	    };
-	
-	    var _arrayOf = function _arrayOf() {
-	        return Array.prototype.slice.call(arguments);
-	    };
-	
-	    var _cloneRegExp = function _cloneRegExp(pattern) {
-	        return new RegExp(pattern.source, (pattern.global ? 'g' : '') + (pattern.ignoreCase ? 'i' : '') + (pattern.multiline ? 'm' : '') + (pattern.sticky ? 'y' : '') + (pattern.unicode ? 'u' : ''));
-	    };
-	
-	    var _complement = function _complement(f) {
-	        return function () {
-	            return !f.apply(this, arguments);
-	        };
-	    };
-	
-	    /**
-	     * Private `concat` function to merge two array-like objects.
-	     *
-	     * @private
-	     * @param {Array|Arguments} [set1=[]] An array-like object.
-	     * @param {Array|Arguments} [set2=[]] An array-like object.
-	     * @return {Array} A new, merged array.
-	     * @example
-	     *
-	     *      _concat([4, 5, 6], [1, 2, 3]); //=> [4, 5, 6, 1, 2, 3]
-	     */
-	    var _concat = function _concat(set1, set2) {
-	        set1 = set1 || [];
-	        set2 = set2 || [];
-	        var idx;
-	        var len1 = set1.length;
-	        var len2 = set2.length;
-	        var result = [];
-	        idx = 0;
-	        while (idx < len1) {
-	            result[result.length] = set1[idx];
-	            idx += 1;
-	        }
-	        idx = 0;
-	        while (idx < len2) {
-	            result[result.length] = set2[idx];
-	            idx += 1;
-	        }
-	        return result;
-	    };
-	
-	    var _containsWith = function _containsWith(pred, x, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        while (idx < len) {
-	            if (pred(x, list[idx])) {
-	                return true;
-	            }
-	            idx += 1;
-	        }
-	        return false;
-	    };
-	
-	    var _filter = function _filter(fn, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        var result = [];
-	        while (idx < len) {
-	            if (fn(list[idx])) {
-	                result[result.length] = list[idx];
-	            }
-	            idx += 1;
-	        }
-	        return result;
-	    };
-	
-	    var _forceReduced = function _forceReduced(x) {
-	        return {
-	            '@@transducer/value': x,
-	            '@@transducer/reduced': true
-	        };
-	    };
-	
-	    // String(x => x) evaluates to "x => x", so the pattern may not match.
-	    var _functionName = function _functionName(f) {
-	        // String(x => x) evaluates to "x => x", so the pattern may not match.
-	        var match = String(f).match(/^function (\w*)/);
-	        return match == null ? '' : match[1];
-	    };
-	
-	    var _has = function _has(prop, obj) {
-	        return Object.prototype.hasOwnProperty.call(obj, prop);
-	    };
-	
-	    var _identity = function _identity(x) {
-	        return x;
-	    };
-	
-	    var _isArguments = function () {
-	        var toString = Object.prototype.toString;
-	        return toString.call(arguments) === '[object Arguments]' ? function _isArguments(x) {
-	            return toString.call(x) === '[object Arguments]';
-	        } : function _isArguments(x) {
-	            return _has('callee', x);
-	        };
-	    }();
-	
-	    /**
-	     * Tests whether or not an object is an array.
-	     *
-	     * @private
-	     * @param {*} val The object to test.
-	     * @return {Boolean} `true` if `val` is an array, `false` otherwise.
-	     * @example
-	     *
-	     *      _isArray([]); //=> true
-	     *      _isArray(null); //=> false
-	     *      _isArray({}); //=> false
-	     */
-	    var _isArray = Array.isArray || function _isArray(val) {
-	        return val != null && val.length >= 0 && Object.prototype.toString.call(val) === '[object Array]';
-	    };
-	
-	    var _isFunction = function _isFunction(x) {
-	        return Object.prototype.toString.call(x) === '[object Function]';
-	    };
-	
-	    /**
-	     * Determine if the passed argument is an integer.
-	     *
-	     * @private
-	     * @param {*} n
-	     * @category Type
-	     * @return {Boolean}
-	     */
-	    var _isInteger = Number.isInteger || function _isInteger(n) {
-	        return n << 0 === n;
-	    };
-	
-	    var _isNumber = function _isNumber(x) {
-	        return Object.prototype.toString.call(x) === '[object Number]';
-	    };
-	
-	    var _isObject = function _isObject(x) {
-	        return Object.prototype.toString.call(x) === '[object Object]';
-	    };
-	
-	    var _isPlaceholder = function _isPlaceholder(a) {
-	        return a != null && typeof a === 'object' && a['@@functional/placeholder'] === true;
-	    };
-	
-	    var _isRegExp = function _isRegExp(x) {
-	        return Object.prototype.toString.call(x) === '[object RegExp]';
-	    };
-	
-	    var _isString = function _isString(x) {
-	        return Object.prototype.toString.call(x) === '[object String]';
-	    };
-	
-	    var _isTransformer = function _isTransformer(obj) {
-	        return typeof obj['@@transducer/step'] === 'function';
-	    };
-	
-	    var _map = function _map(fn, functor) {
-	        var idx = 0;
-	        var len = functor.length;
-	        var result = Array(len);
-	        while (idx < len) {
-	            result[idx] = fn(functor[idx]);
-	            idx += 1;
-	        }
-	        return result;
-	    };
-	
-	    // Based on https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
-	    var _objectAssign = function _objectAssign(target) {
-	        if (target == null) {
-	            throw new TypeError('Cannot convert undefined or null to object');
-	        }
-	        var output = Object(target);
-	        var idx = 1;
-	        var length = arguments.length;
-	        while (idx < length) {
-	            var source = arguments[idx];
-	            if (source != null) {
-	                for (var nextKey in source) {
-	                    if (_has(nextKey, source)) {
-	                        output[nextKey] = source[nextKey];
-	                    }
-	                }
-	            }
-	            idx += 1;
-	        }
-	        return output;
-	    };
-	
-	    var _of = function _of(x) {
-	        return [x];
-	    };
-	
-	    var _pipe = function _pipe(f, g) {
-	        return function () {
-	            return g.call(this, f.apply(this, arguments));
-	        };
-	    };
-	
-	    var _pipeP = function _pipeP(f, g) {
-	        return function () {
-	            var ctx = this;
-	            return f.apply(ctx, arguments).then(function (x) {
-	                return g.call(ctx, x);
-	            });
-	        };
-	    };
-	
-	    // \b matches word boundary; [\b] matches backspace
-	    var _quote = function _quote(s) {
-	        var escaped = s.replace(/\\/g, '\\\\').replace(/[\b]/g, '\\b')    // \b matches word boundary; [\b] matches backspace
-	    .replace(/\f/g, '\\f').replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t').replace(/\v/g, '\\v').replace(/\0/g, '\\0');
-	        return '"' + escaped.replace(/"/g, '\\"') + '"';
-	    };
-	
-	    var _reduced = function _reduced(x) {
-	        return x && x['@@transducer/reduced'] ? x : {
-	            '@@transducer/value': x,
-	            '@@transducer/reduced': true
-	        };
-	    };
-	
-	    /**
-	     * An optimized, private array `slice` implementation.
-	     *
-	     * @private
-	     * @param {Arguments|Array} args The array or arguments object to consider.
-	     * @param {Number} [from=0] The array index to slice from, inclusive.
-	     * @param {Number} [to=args.length] The array index to slice to, exclusive.
-	     * @return {Array} A new, sliced array.
-	     * @example
-	     *
-	     *      _slice([1, 2, 3, 4, 5], 1, 3); //=> [2, 3]
-	     *
-	     *      var firstThreeArgs = function(a, b, c, d) {
-	     *        return _slice(arguments, 0, 3);
-	     *      };
-	     *      firstThreeArgs(1, 2, 3, 4); //=> [1, 2, 3]
-	     */
-	    var _slice = function _slice(args, from, to) {
-	        switch (arguments.length) {
-	        case 1:
-	            return _slice(args, 0, args.length);
-	        case 2:
-	            return _slice(args, from, args.length);
-	        default:
-	            var list = [];
-	            var idx = 0;
-	            var len = Math.max(0, Math.min(args.length, to) - from);
-	            while (idx < len) {
-	                list[idx] = args[from + idx];
-	                idx += 1;
-	            }
-	            return list;
-	        }
-	    };
-	
-	    /**
-	     * Polyfill from <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString>.
-	     */
-	    var _toISOString = function () {
-	        var pad = function pad(n) {
-	            return (n < 10 ? '0' : '') + n;
-	        };
-	        return typeof Date.prototype.toISOString === 'function' ? function _toISOString(d) {
-	            return d.toISOString();
-	        } : function _toISOString(d) {
-	            return d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate()) + 'T' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()) + ':' + pad(d.getUTCSeconds()) + '.' + (d.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5) + 'Z';
-	        };
-	    }();
-	
-	    var _xfBase = {
-	        init: function () {
-	            return this.xf['@@transducer/init']();
-	        },
-	        result: function (result) {
-	            return this.xf['@@transducer/result'](result);
-	        }
-	    };
-	
-	    var _xwrap = function () {
-	        function XWrap(fn) {
-	            this.f = fn;
-	        }
-	        XWrap.prototype['@@transducer/init'] = function () {
-	            throw new Error('init not implemented on XWrap');
-	        };
-	        XWrap.prototype['@@transducer/result'] = function (acc) {
-	            return acc;
-	        };
-	        XWrap.prototype['@@transducer/step'] = function (acc, x) {
-	            return this.f(acc, x);
-	        };
-	        return function _xwrap(fn) {
-	            return new XWrap(fn);
-	        };
-	    }();
-	
-	    var _aperture = function _aperture(n, list) {
-	        var idx = 0;
-	        var limit = list.length - (n - 1);
-	        var acc = new Array(limit >= 0 ? limit : 0);
-	        while (idx < limit) {
-	            acc[idx] = _slice(list, idx, idx + n);
-	            idx += 1;
-	        }
-	        return acc;
-	    };
-	
-	    var _assign = typeof Object.assign === 'function' ? Object.assign : _objectAssign;
-	
-	    /**
-	     * Similar to hasMethod, this checks whether a function has a [methodname]
-	     * function. If it isn't an array it will execute that function otherwise it
-	     * will default to the ramda implementation.
-	     *
-	     * @private
-	     * @param {Function} fn ramda implemtation
-	     * @param {String} methodname property to check for a custom implementation
-	     * @return {Object} Whatever the return value of the method is.
-	     */
-	    var _checkForMethod = function _checkForMethod(methodname, fn) {
-	        return function () {
-	            var length = arguments.length;
-	            if (length === 0) {
-	                return fn();
-	            }
-	            var obj = arguments[length - 1];
-	            return _isArray(obj) || typeof obj[methodname] !== 'function' ? fn.apply(this, arguments) : obj[methodname].apply(obj, _slice(arguments, 0, length - 1));
-	        };
-	    };
-	
-	    /**
-	     * Optimized internal one-arity curry function.
-	     *
-	     * @private
-	     * @category Function
-	     * @param {Function} fn The function to curry.
-	     * @return {Function} The curried function.
-	     */
-	    var _curry1 = function _curry1(fn) {
-	        return function f1(a) {
-	            if (arguments.length === 0 || _isPlaceholder(a)) {
-	                return f1;
-	            } else {
-	                return fn.apply(this, arguments);
-	            }
-	        };
-	    };
-	
-	    /**
-	     * Optimized internal two-arity curry function.
-	     *
-	     * @private
-	     * @category Function
-	     * @param {Function} fn The function to curry.
-	     * @return {Function} The curried function.
-	     */
-	    var _curry2 = function _curry2(fn) {
-	        return function f2(a, b) {
-	            switch (arguments.length) {
-	            case 0:
-	                return f2;
-	            case 1:
-	                return _isPlaceholder(a) ? f2 : _curry1(function (_b) {
-	                    return fn(a, _b);
-	                });
-	            default:
-	                return _isPlaceholder(a) && _isPlaceholder(b) ? f2 : _isPlaceholder(a) ? _curry1(function (_a) {
-	                    return fn(_a, b);
-	                }) : _isPlaceholder(b) ? _curry1(function (_b) {
-	                    return fn(a, _b);
-	                }) : fn(a, b);
-	            }
-	        };
-	    };
-	
-	    /**
-	     * Optimized internal three-arity curry function.
-	     *
-	     * @private
-	     * @category Function
-	     * @param {Function} fn The function to curry.
-	     * @return {Function} The curried function.
-	     */
-	    var _curry3 = function _curry3(fn) {
-	        return function f3(a, b, c) {
-	            switch (arguments.length) {
-	            case 0:
-	                return f3;
-	            case 1:
-	                return _isPlaceholder(a) ? f3 : _curry2(function (_b, _c) {
-	                    return fn(a, _b, _c);
-	                });
-	            case 2:
-	                return _isPlaceholder(a) && _isPlaceholder(b) ? f3 : _isPlaceholder(a) ? _curry2(function (_a, _c) {
-	                    return fn(_a, b, _c);
-	                }) : _isPlaceholder(b) ? _curry2(function (_b, _c) {
-	                    return fn(a, _b, _c);
-	                }) : _curry1(function (_c) {
-	                    return fn(a, b, _c);
-	                });
-	            default:
-	                return _isPlaceholder(a) && _isPlaceholder(b) && _isPlaceholder(c) ? f3 : _isPlaceholder(a) && _isPlaceholder(b) ? _curry2(function (_a, _b) {
-	                    return fn(_a, _b, c);
-	                }) : _isPlaceholder(a) && _isPlaceholder(c) ? _curry2(function (_a, _c) {
-	                    return fn(_a, b, _c);
-	                }) : _isPlaceholder(b) && _isPlaceholder(c) ? _curry2(function (_b, _c) {
-	                    return fn(a, _b, _c);
-	                }) : _isPlaceholder(a) ? _curry1(function (_a) {
-	                    return fn(_a, b, c);
-	                }) : _isPlaceholder(b) ? _curry1(function (_b) {
-	                    return fn(a, _b, c);
-	                }) : _isPlaceholder(c) ? _curry1(function (_c) {
-	                    return fn(a, b, _c);
-	                }) : fn(a, b, c);
-	            }
-	        };
-	    };
-	
-	    /**
-	     * Internal curryN function.
-	     *
-	     * @private
-	     * @category Function
-	     * @param {Number} length The arity of the curried function.
-	     * @param {Array} received An array of arguments received thus far.
-	     * @param {Function} fn The function to curry.
-	     * @return {Function} The curried function.
-	     */
-	    var _curryN = function _curryN(length, received, fn) {
-	        return function () {
-	            var combined = [];
-	            var argsIdx = 0;
-	            var left = length;
-	            var combinedIdx = 0;
-	            while (combinedIdx < received.length || argsIdx < arguments.length) {
-	                var result;
-	                if (combinedIdx < received.length && (!_isPlaceholder(received[combinedIdx]) || argsIdx >= arguments.length)) {
-	                    result = received[combinedIdx];
-	                } else {
-	                    result = arguments[argsIdx];
-	                    argsIdx += 1;
-	                }
-	                combined[combinedIdx] = result;
-	                if (!_isPlaceholder(result)) {
-	                    left -= 1;
-	                }
-	                combinedIdx += 1;
-	            }
-	            return left <= 0 ? fn.apply(this, combined) : _arity(left, _curryN(length, combined, fn));
-	        };
-	    };
-	
-	    /**
-	     * Returns a function that dispatches with different strategies based on the
-	     * object in list position (last argument). If it is an array, executes [fn].
-	     * Otherwise, if it has a function with [methodname], it will execute that
-	     * function (functor case). Otherwise, if it is a transformer, uses transducer
-	     * [xf] to return a new transformer (transducer case). Otherwise, it will
-	     * default to executing [fn].
-	     *
-	     * @private
-	     * @param {String} methodname property to check for a custom implementation
-	     * @param {Function} xf transducer to initialize if object is transformer
-	     * @param {Function} fn default ramda implementation
-	     * @return {Function} A function that dispatches on object in list position
-	     */
-	    var _dispatchable = function _dispatchable(methodname, xf, fn) {
-	        return function () {
-	            var length = arguments.length;
-	            if (length === 0) {
-	                return fn();
-	            }
-	            var obj = arguments[length - 1];
-	            if (!_isArray(obj)) {
-	                var args = _slice(arguments, 0, length - 1);
-	                if (typeof obj[methodname] === 'function') {
-	                    return obj[methodname].apply(obj, args);
-	                }
-	                if (_isTransformer(obj)) {
-	                    var transducer = xf.apply(null, args);
-	                    return transducer(obj);
-	                }
-	            }
-	            return fn.apply(this, arguments);
-	        };
-	    };
-	
-	    var _dropLastWhile = function dropLastWhile(pred, list) {
-	        var idx = list.length - 1;
-	        while (idx >= 0 && pred(list[idx])) {
-	            idx -= 1;
-	        }
-	        return _slice(list, 0, idx + 1);
-	    };
-	
-	    var _xall = function () {
-	        function XAll(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	            this.all = true;
-	        }
-	        XAll.prototype['@@transducer/init'] = _xfBase.init;
-	        XAll.prototype['@@transducer/result'] = function (result) {
-	            if (this.all) {
-	                result = this.xf['@@transducer/step'](result, true);
-	            }
-	            return this.xf['@@transducer/result'](result);
-	        };
-	        XAll.prototype['@@transducer/step'] = function (result, input) {
-	            if (!this.f(input)) {
-	                this.all = false;
-	                result = _reduced(this.xf['@@transducer/step'](result, false));
-	            }
-	            return result;
-	        };
-	        return _curry2(function _xall(f, xf) {
-	            return new XAll(f, xf);
-	        });
-	    }();
-	
-	    var _xany = function () {
-	        function XAny(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	            this.any = false;
-	        }
-	        XAny.prototype['@@transducer/init'] = _xfBase.init;
-	        XAny.prototype['@@transducer/result'] = function (result) {
-	            if (!this.any) {
-	                result = this.xf['@@transducer/step'](result, false);
-	            }
-	            return this.xf['@@transducer/result'](result);
-	        };
-	        XAny.prototype['@@transducer/step'] = function (result, input) {
-	            if (this.f(input)) {
-	                this.any = true;
-	                result = _reduced(this.xf['@@transducer/step'](result, true));
-	            }
-	            return result;
-	        };
-	        return _curry2(function _xany(f, xf) {
-	            return new XAny(f, xf);
-	        });
-	    }();
-	
-	    var _xaperture = function () {
-	        function XAperture(n, xf) {
-	            this.xf = xf;
-	            this.pos = 0;
-	            this.full = false;
-	            this.acc = new Array(n);
-	        }
-	        XAperture.prototype['@@transducer/init'] = _xfBase.init;
-	        XAperture.prototype['@@transducer/result'] = function (result) {
-	            this.acc = null;
-	            return this.xf['@@transducer/result'](result);
-	        };
-	        XAperture.prototype['@@transducer/step'] = function (result, input) {
-	            this.store(input);
-	            return this.full ? this.xf['@@transducer/step'](result, this.getCopy()) : result;
-	        };
-	        XAperture.prototype.store = function (input) {
-	            this.acc[this.pos] = input;
-	            this.pos += 1;
-	            if (this.pos === this.acc.length) {
-	                this.pos = 0;
-	                this.full = true;
-	            }
-	        };
-	        XAperture.prototype.getCopy = function () {
-	            return _concat(_slice(this.acc, this.pos), _slice(this.acc, 0, this.pos));
-	        };
-	        return _curry2(function _xaperture(n, xf) {
-	            return new XAperture(n, xf);
-	        });
-	    }();
-	
-	    var _xdrop = function () {
-	        function XDrop(n, xf) {
-	            this.xf = xf;
-	            this.n = n;
-	        }
-	        XDrop.prototype['@@transducer/init'] = _xfBase.init;
-	        XDrop.prototype['@@transducer/result'] = _xfBase.result;
-	        XDrop.prototype['@@transducer/step'] = function (result, input) {
-	            if (this.n > 0) {
-	                this.n -= 1;
-	                return result;
-	            }
-	            return this.xf['@@transducer/step'](result, input);
-	        };
-	        return _curry2(function _xdrop(n, xf) {
-	            return new XDrop(n, xf);
-	        });
-	    }();
-	
-	    var _xdropLast = function () {
-	        function XDropLast(n, xf) {
-	            this.xf = xf;
-	            this.pos = 0;
-	            this.full = false;
-	            this.acc = new Array(n);
-	        }
-	        XDropLast.prototype['@@transducer/init'] = _xfBase.init;
-	        XDropLast.prototype['@@transducer/result'] = function (result) {
-	            this.acc = null;
-	            return this.xf['@@transducer/result'](result);
-	        };
-	        XDropLast.prototype['@@transducer/step'] = function (result, input) {
-	            if (this.full) {
-	                result = this.xf['@@transducer/step'](result, this.acc[this.pos]);
-	            }
-	            this.store(input);
-	            return result;
-	        };
-	        XDropLast.prototype.store = function (input) {
-	            this.acc[this.pos] = input;
-	            this.pos += 1;
-	            if (this.pos === this.acc.length) {
-	                this.pos = 0;
-	                this.full = true;
-	            }
-	        };
-	        return _curry2(function _xdropLast(n, xf) {
-	            return new XDropLast(n, xf);
-	        });
-	    }();
-	
-	    var _xdropRepeatsWith = function () {
-	        function XDropRepeatsWith(pred, xf) {
-	            this.xf = xf;
-	            this.pred = pred;
-	            this.lastValue = undefined;
-	            this.seenFirstValue = false;
-	        }
-	        XDropRepeatsWith.prototype['@@transducer/init'] = function () {
-	            return this.xf['@@transducer/init']();
-	        };
-	        XDropRepeatsWith.prototype['@@transducer/result'] = function (result) {
-	            return this.xf['@@transducer/result'](result);
-	        };
-	        XDropRepeatsWith.prototype['@@transducer/step'] = function (result, input) {
-	            var sameAsLast = false;
-	            if (!this.seenFirstValue) {
-	                this.seenFirstValue = true;
-	            } else if (this.pred(this.lastValue, input)) {
-	                sameAsLast = true;
-	            }
-	            this.lastValue = input;
-	            return sameAsLast ? result : this.xf['@@transducer/step'](result, input);
-	        };
-	        return _curry2(function _xdropRepeatsWith(pred, xf) {
-	            return new XDropRepeatsWith(pred, xf);
-	        });
-	    }();
-	
-	    var _xdropWhile = function () {
-	        function XDropWhile(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	        }
-	        XDropWhile.prototype['@@transducer/init'] = _xfBase.init;
-	        XDropWhile.prototype['@@transducer/result'] = _xfBase.result;
-	        XDropWhile.prototype['@@transducer/step'] = function (result, input) {
-	            if (this.f) {
-	                if (this.f(input)) {
-	                    return result;
-	                }
-	                this.f = null;
-	            }
-	            return this.xf['@@transducer/step'](result, input);
-	        };
-	        return _curry2(function _xdropWhile(f, xf) {
-	            return new XDropWhile(f, xf);
-	        });
-	    }();
-	
-	    var _xfilter = function () {
-	        function XFilter(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	        }
-	        XFilter.prototype['@@transducer/init'] = _xfBase.init;
-	        XFilter.prototype['@@transducer/result'] = _xfBase.result;
-	        XFilter.prototype['@@transducer/step'] = function (result, input) {
-	            return this.f(input) ? this.xf['@@transducer/step'](result, input) : result;
-	        };
-	        return _curry2(function _xfilter(f, xf) {
-	            return new XFilter(f, xf);
-	        });
-	    }();
-	
-	    var _xfind = function () {
-	        function XFind(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	            this.found = false;
-	        }
-	        XFind.prototype['@@transducer/init'] = _xfBase.init;
-	        XFind.prototype['@@transducer/result'] = function (result) {
-	            if (!this.found) {
-	                result = this.xf['@@transducer/step'](result, void 0);
-	            }
-	            return this.xf['@@transducer/result'](result);
-	        };
-	        XFind.prototype['@@transducer/step'] = function (result, input) {
-	            if (this.f(input)) {
-	                this.found = true;
-	                result = _reduced(this.xf['@@transducer/step'](result, input));
-	            }
-	            return result;
-	        };
-	        return _curry2(function _xfind(f, xf) {
-	            return new XFind(f, xf);
-	        });
-	    }();
-	
-	    var _xfindIndex = function () {
-	        function XFindIndex(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	            this.idx = -1;
-	            this.found = false;
-	        }
-	        XFindIndex.prototype['@@transducer/init'] = _xfBase.init;
-	        XFindIndex.prototype['@@transducer/result'] = function (result) {
-	            if (!this.found) {
-	                result = this.xf['@@transducer/step'](result, -1);
-	            }
-	            return this.xf['@@transducer/result'](result);
-	        };
-	        XFindIndex.prototype['@@transducer/step'] = function (result, input) {
-	            this.idx += 1;
-	            if (this.f(input)) {
-	                this.found = true;
-	                result = _reduced(this.xf['@@transducer/step'](result, this.idx));
-	            }
-	            return result;
-	        };
-	        return _curry2(function _xfindIndex(f, xf) {
-	            return new XFindIndex(f, xf);
-	        });
-	    }();
-	
-	    var _xfindLast = function () {
-	        function XFindLast(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	        }
-	        XFindLast.prototype['@@transducer/init'] = _xfBase.init;
-	        XFindLast.prototype['@@transducer/result'] = function (result) {
-	            return this.xf['@@transducer/result'](this.xf['@@transducer/step'](result, this.last));
-	        };
-	        XFindLast.prototype['@@transducer/step'] = function (result, input) {
-	            if (this.f(input)) {
-	                this.last = input;
-	            }
-	            return result;
-	        };
-	        return _curry2(function _xfindLast(f, xf) {
-	            return new XFindLast(f, xf);
-	        });
-	    }();
-	
-	    var _xfindLastIndex = function () {
-	        function XFindLastIndex(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	            this.idx = -1;
-	            this.lastIdx = -1;
-	        }
-	        XFindLastIndex.prototype['@@transducer/init'] = _xfBase.init;
-	        XFindLastIndex.prototype['@@transducer/result'] = function (result) {
-	            return this.xf['@@transducer/result'](this.xf['@@transducer/step'](result, this.lastIdx));
-	        };
-	        XFindLastIndex.prototype['@@transducer/step'] = function (result, input) {
-	            this.idx += 1;
-	            if (this.f(input)) {
-	                this.lastIdx = this.idx;
-	            }
-	            return result;
-	        };
-	        return _curry2(function _xfindLastIndex(f, xf) {
-	            return new XFindLastIndex(f, xf);
-	        });
-	    }();
-	
-	    var _xmap = function () {
-	        function XMap(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	        }
-	        XMap.prototype['@@transducer/init'] = _xfBase.init;
-	        XMap.prototype['@@transducer/result'] = _xfBase.result;
-	        XMap.prototype['@@transducer/step'] = function (result, input) {
-	            return this.xf['@@transducer/step'](result, this.f(input));
-	        };
-	        return _curry2(function _xmap(f, xf) {
-	            return new XMap(f, xf);
-	        });
-	    }();
-	
-	    var _xreduceBy = function () {
-	        function XReduceBy(valueFn, valueAcc, keyFn, xf) {
-	            this.valueFn = valueFn;
-	            this.valueAcc = valueAcc;
-	            this.keyFn = keyFn;
-	            this.xf = xf;
-	            this.inputs = {};
-	        }
-	        XReduceBy.prototype['@@transducer/init'] = _xfBase.init;
-	        XReduceBy.prototype['@@transducer/result'] = function (result) {
-	            var key;
-	            for (key in this.inputs) {
-	                if (_has(key, this.inputs)) {
-	                    result = this.xf['@@transducer/step'](result, this.inputs[key]);
-	                    if (result['@@transducer/reduced']) {
-	                        result = result['@@transducer/value'];
-	                        break;
-	                    }
-	                }
-	            }
-	            this.inputs = null;
-	            return this.xf['@@transducer/result'](result);
-	        };
-	        XReduceBy.prototype['@@transducer/step'] = function (result, input) {
-	            var key = this.keyFn(input);
-	            this.inputs[key] = this.inputs[key] || [
-	                key,
-	                this.valueAcc
-	            ];
-	            this.inputs[key][1] = this.valueFn(this.inputs[key][1], input);
-	            return result;
-	        };
-	        return _curryN(4, [], function _xreduceBy(valueFn, valueAcc, keyFn, xf) {
-	            return new XReduceBy(valueFn, valueAcc, keyFn, xf);
-	        });
-	    }();
-	
-	    var _xtake = function () {
-	        function XTake(n, xf) {
-	            this.xf = xf;
-	            this.n = n;
-	            this.i = 0;
-	        }
-	        XTake.prototype['@@transducer/init'] = _xfBase.init;
-	        XTake.prototype['@@transducer/result'] = _xfBase.result;
-	        XTake.prototype['@@transducer/step'] = function (result, input) {
-	            this.i += 1;
-	            var ret = this.n === 0 ? result : this.xf['@@transducer/step'](result, input);
-	            return this.i >= this.n ? _reduced(ret) : ret;
-	        };
-	        return _curry2(function _xtake(n, xf) {
-	            return new XTake(n, xf);
-	        });
-	    }();
-	
-	    var _xtakeWhile = function () {
-	        function XTakeWhile(f, xf) {
-	            this.xf = xf;
-	            this.f = f;
-	        }
-	        XTakeWhile.prototype['@@transducer/init'] = _xfBase.init;
-	        XTakeWhile.prototype['@@transducer/result'] = _xfBase.result;
-	        XTakeWhile.prototype['@@transducer/step'] = function (result, input) {
-	            return this.f(input) ? this.xf['@@transducer/step'](result, input) : _reduced(result);
-	        };
-	        return _curry2(function _xtakeWhile(f, xf) {
-	            return new XTakeWhile(f, xf);
-	        });
-	    }();
-	
-	    /**
-	     * Adds two values.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Math
-	     * @sig Number -> Number -> Number
-	     * @param {Number} a
-	     * @param {Number} b
-	     * @return {Number}
-	     * @see R.subtract
-	     * @example
-	     *
-	     *      R.add(2, 3);       //=>  5
-	     *      R.add(7)(10);      //=> 17
-	     */
-	    var add = _curry2(function add(a, b) {
-	        return Number(a) + Number(b);
-	    });
-	
-	    /**
-	     * Applies a function to the value at the given index of an array, returning a
-	     * new copy of the array with the element at the given index replaced with the
-	     * result of the function application.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category List
-	     * @sig (a -> a) -> Number -> [a] -> [a]
-	     * @param {Function} fn The function to apply.
-	     * @param {Number} idx The index.
-	     * @param {Array|Arguments} list An array-like object whose value
-	     *        at the supplied index will be replaced.
-	     * @return {Array} A copy of the supplied array-like object with
-	     *         the element at index `idx` replaced with the value
-	     *         returned by applying `fn` to the existing element.
-	     * @see R.update
-	     * @example
-	     *
-	     *      R.adjust(R.add(10), 1, [0, 1, 2]);     //=> [0, 11, 2]
-	     *      R.adjust(R.add(10))(1)([0, 1, 2]);     //=> [0, 11, 2]
-	     */
-	    var adjust = _curry3(function adjust(fn, idx, list) {
-	        if (idx >= list.length || idx < -list.length) {
-	            return list;
-	        }
-	        var start = idx < 0 ? list.length : 0;
-	        var _idx = start + idx;
-	        var _list = _concat(list);
-	        _list[_idx] = fn(list[_idx]);
-	        return _list;
-	    });
-	
-	    /**
-	     * Returns `true` if all elements of the list match the predicate, `false` if
-	     * there are any that don't.
-	     *
-	     * Dispatches to the `all` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> Boolean
-	     * @param {Function} fn The predicate function.
-	     * @param {Array} list The array to consider.
-	     * @return {Boolean} `true` if the predicate is satisfied by every element, `false`
-	     *         otherwise.
-	     * @see R.any, R.none, R.transduce
-	     * @example
-	     *
-	     *      var lessThan2 = R.flip(R.lt)(2);
-	     *      var lessThan3 = R.flip(R.lt)(3);
-	     *      R.all(lessThan2)([1, 2]); //=> false
-	     *      R.all(lessThan3)([1, 2]); //=> true
-	     */
-	    var all = _curry2(_dispatchable('all', _xall, function all(fn, list) {
-	        var idx = 0;
-	        while (idx < list.length) {
-	            if (!fn(list[idx])) {
-	                return false;
-	            }
-	            idx += 1;
-	        }
-	        return true;
-	    }));
-	
-	    /**
-	     * Returns a function that always returns the given value. Note that for
-	     * non-primitives the value returned is a reference to the original value.
-	     *
-	     * This function is known as `const`, `constant`, or `K` (for K combinator) in
-	     * other languages and libraries.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig a -> (* -> a)
-	     * @param {*} val The value to wrap in a function
-	     * @return {Function} A Function :: * -> val.
-	     * @example
-	     *
-	     *      var t = R.always('Tee');
-	     *      t(); //=> 'Tee'
-	     */
-	    var always = _curry1(function always(val) {
-	        return function () {
-	            return val;
-	        };
-	    });
-	
-	    /**
-	     * Returns `true` if both arguments are `true`; `false` otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Logic
-	     * @sig * -> * -> *
-	     * @param {Boolean} a A boolean value
-	     * @param {Boolean} b A boolean value
-	     * @return {Boolean} `true` if both arguments are `true`, `false` otherwise
-	     * @see R.both
-	     * @example
-	     *
-	     *      R.and(true, true); //=> true
-	     *      R.and(true, false); //=> false
-	     *      R.and(false, true); //=> false
-	     *      R.and(false, false); //=> false
-	     */
-	    var and = _curry2(function and(a, b) {
-	        return a && b;
-	    });
-	
-	    /**
-	     * Returns `true` if at least one of elements of the list match the predicate,
-	     * `false` otherwise.
-	     *
-	     * Dispatches to the `any` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> Boolean
-	     * @param {Function} fn The predicate function.
-	     * @param {Array} list The array to consider.
-	     * @return {Boolean} `true` if the predicate is satisfied by at least one element, `false`
-	     *         otherwise.
-	     * @see R.all, R.none, R.transduce
-	     * @example
-	     *
-	     *      var lessThan0 = R.flip(R.lt)(0);
-	     *      var lessThan2 = R.flip(R.lt)(2);
-	     *      R.any(lessThan0)([1, 2]); //=> false
-	     *      R.any(lessThan2)([1, 2]); //=> true
-	     */
-	    var any = _curry2(_dispatchable('any', _xany, function any(fn, list) {
-	        var idx = 0;
-	        while (idx < list.length) {
-	            if (fn(list[idx])) {
-	                return true;
-	            }
-	            idx += 1;
-	        }
-	        return false;
-	    }));
-	
-	    /**
-	     * Returns a new list, composed of n-tuples of consecutive elements If `n` is
-	     * greater than the length of the list, an empty list is returned.
-	     *
-	     * Dispatches to the `aperture` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.12.0
-	     * @category List
-	     * @sig Number -> [a] -> [[a]]
-	     * @param {Number} n The size of the tuples to create
-	     * @param {Array} list The list to split into `n`-tuples
-	     * @return {Array} The new list.
-	     * @see R.transduce
-	     * @example
-	     *
-	     *      R.aperture(2, [1, 2, 3, 4, 5]); //=> [[1, 2], [2, 3], [3, 4], [4, 5]]
-	     *      R.aperture(3, [1, 2, 3, 4, 5]); //=> [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
-	     *      R.aperture(7, [1, 2, 3, 4, 5]); //=> []
-	     */
-	    var aperture = _curry2(_dispatchable('aperture', _xaperture, _aperture));
-	
-	    /**
-	     * Returns a new list containing the contents of the given list, followed by
-	     * the given element.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig a -> [a] -> [a]
-	     * @param {*} el The element to add to the end of the new list.
-	     * @param {Array} list The list whose contents will be added to the beginning of the output
-	     *        list.
-	     * @return {Array} A new list containing the contents of the old list followed by `el`.
-	     * @see R.prepend
-	     * @example
-	     *
-	     *      R.append('tests', ['write', 'more']); //=> ['write', 'more', 'tests']
-	     *      R.append('tests', []); //=> ['tests']
-	     *      R.append(['tests'], ['write', 'more']); //=> ['write', 'more', ['tests']]
-	     */
-	    var append = _curry2(function append(el, list) {
-	        return _concat(list, [el]);
-	    });
-	
-	    /**
-	     * Applies function `fn` to the argument list `args`. This is useful for
-	     * creating a fixed-arity function from a variadic function. `fn` should be a
-	     * bound function if context is significant.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.7.0
-	     * @category Function
-	     * @sig (*... -> a) -> [*] -> a
-	     * @param {Function} fn
-	     * @param {Array} args
-	     * @return {*}
-	     * @see R.call, R.unapply
-	     * @example
-	     *
-	     *      var nums = [1, 2, 3, -99, 42, 6, 7];
-	     *      R.apply(Math.max, nums); //=> 42
-	     */
-	    var apply = _curry2(function apply(fn, args) {
-	        return fn.apply(this, args);
-	    });
-	
-	    /**
-	     * Makes a shallow clone of an object, setting or overriding the specified
-	     * property with the given value. Note that this copies and flattens prototype
-	     * properties onto the new object as well. All non-primitive properties are
-	     * copied by reference.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.8.0
-	     * @category Object
-	     * @sig String -> a -> {k: v} -> {k: v}
-	     * @param {String} prop the property name to set
-	     * @param {*} val the new value
-	     * @param {Object} obj the object to clone
-	     * @return {Object} a new object similar to the original except for the specified property.
-	     * @see R.dissoc
-	     * @example
-	     *
-	     *      R.assoc('c', 3, {a: 1, b: 2}); //=> {a: 1, b: 2, c: 3}
-	     */
-	    var assoc = _curry3(function assoc(prop, val, obj) {
-	        var result = {};
-	        for (var p in obj) {
-	            result[p] = obj[p];
-	        }
-	        result[prop] = val;
-	        return result;
-	    });
-	
-	    /**
-	     * Makes a shallow clone of an object, setting or overriding the nodes required
-	     * to create the given path, and placing the specific value at the tail end of
-	     * that path. Note that this copies and flattens prototype properties onto the
-	     * new object as well. All non-primitive properties are copied by reference.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.8.0
-	     * @category Object
-	     * @sig [String] -> a -> {k: v} -> {k: v}
-	     * @param {Array} path the path to set
-	     * @param {*} val the new value
-	     * @param {Object} obj the object to clone
-	     * @return {Object} a new object similar to the original except along the specified path.
-	     * @see R.dissocPath
-	     * @example
-	     *
-	     *      R.assocPath(['a', 'b', 'c'], 42, {a: {b: {c: 0}}}); //=> {a: {b: {c: 42}}}
-	     */
-	    var assocPath = _curry3(function assocPath(path, val, obj) {
-	        switch (path.length) {
-	        case 0:
-	            return val;
-	        case 1:
-	            return assoc(path[0], val, obj);
-	        default:
-	            return assoc(path[0], assocPath(_slice(path, 1), val, Object(obj[path[0]])), obj);
-	        }
-	    });
-	
-	    /**
-	     * Creates a function that is bound to a context.
-	     * Note: `R.bind` does not provide the additional argument-binding capabilities of
-	     * [Function.prototype.bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.6.0
-	     * @category Function
-	     * @category Object
-	     * @sig (* -> *) -> {*} -> (* -> *)
-	     * @param {Function} fn The function to bind to context
-	     * @param {Object} thisObj The context to bind `fn` to
-	     * @return {Function} A function that will execute in the context of `thisObj`.
-	     * @see R.partial
-	     * @example
-	     *
-	     *      var log = R.bind(console.log, console);
-	     *      R.pipe(R.assoc('a', 2), R.tap(log), R.assoc('a', 3))({a: 1}); //=> {a: 3}
-	     *      // logs {a: 2}
-	     */
-	    var bind = _curry2(function bind(fn, thisObj) {
-	        return _arity(fn.length, function () {
-	            return fn.apply(thisObj, arguments);
-	        });
-	    });
-	
-	    /**
-	     * Restricts a number to be within a range.
-	     *
-	     * Also works for other ordered types such as Strings and Dates.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.20.0
-	     * @category Relation
-	     * @sig Ord a => a -> a -> a -> a
-	     * @param {Number} minimum number
-	     * @param {Number} maximum number
-	     * @param {Number} value to be clamped
-	     * @return {Number} Returns the clamped value
-	     * @example
-	     *
-	     *      R.clamp(1, 10, -1) // => 1
-	     *      R.clamp(1, 10, 11) // => 10
-	     *      R.clamp(1, 10, 4)  // => 4
-	     */
-	    var clamp = _curry3(function clamp(min, max, value) {
-	        if (min > max) {
-	            throw new Error('min must not be greater than max in clamp(min, max, value)');
-	        }
-	        return value < min ? min : value > max ? max : value;
-	    });
-	
-	    /**
-	     * Makes a comparator function out of a function that reports whether the first
-	     * element is less than the second.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (a, b -> Boolean) -> (a, b -> Number)
-	     * @param {Function} pred A predicate function of arity two.
-	     * @return {Function} A Function :: a -> b -> Int that returns `-1` if a < b, `1` if b < a, otherwise `0`.
-	     * @example
-	     *
-	     *      var cmp = R.comparator((a, b) => a.age < b.age);
-	     *      var people = [
-	     *        // ...
-	     *      ];
-	     *      R.sort(cmp, people);
-	     */
-	    var comparator = _curry1(function comparator(pred) {
-	        return function (a, b) {
-	            return pred(a, b) ? -1 : pred(b, a) ? 1 : 0;
-	        };
-	    });
-	
-	    /**
-	     * Returns a curried equivalent of the provided function, with the specified
-	     * arity. The curried function has two unusual capabilities. First, its
-	     * arguments needn't be provided one at a time. If `g` is `R.curryN(3, f)`, the
-	     * following are equivalent:
-	     *
-	     *   - `g(1)(2)(3)`
-	     *   - `g(1)(2, 3)`
-	     *   - `g(1, 2)(3)`
-	     *   - `g(1, 2, 3)`
-	     *
-	     * Secondly, the special placeholder value `R.__` may be used to specify
-	     * "gaps", allowing partial application of any combination of arguments,
-	     * regardless of their positions. If `g` is as above and `_` is `R.__`, the
-	     * following are equivalent:
-	     *
-	     *   - `g(1, 2, 3)`
-	     *   - `g(_, 2, 3)(1)`
-	     *   - `g(_, _, 3)(1)(2)`
-	     *   - `g(_, _, 3)(1, 2)`
-	     *   - `g(_, 2)(1)(3)`
-	     *   - `g(_, 2)(1, 3)`
-	     *   - `g(_, 2)(_, 3)(1)`
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.5.0
-	     * @category Function
-	     * @sig Number -> (* -> a) -> (* -> a)
-	     * @param {Number} length The arity for the returned function.
-	     * @param {Function} fn The function to curry.
-	     * @return {Function} A new, curried function.
-	     * @see R.curry
-	     * @example
-	     *
-	     *      var sumArgs = (...args) => R.sum(args);
-	     *
-	     *      var curriedAddFourNumbers = R.curryN(4, sumArgs);
-	     *      var f = curriedAddFourNumbers(1, 2);
-	     *      var g = f(3);
-	     *      g(4); //=> 10
-	     */
-	    var curryN = _curry2(function curryN(length, fn) {
-	        if (length === 1) {
-	            return _curry1(fn);
-	        }
-	        return _arity(length, _curryN(length, [], fn));
-	    });
-	
-	    /**
-	     * Decrements its argument.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Math
-	     * @sig Number -> Number
-	     * @param {Number} n
-	     * @return {Number}
-	     * @see R.inc
-	     * @example
-	     *
-	     *      R.dec(42); //=> 41
-	     */
-	    var dec = add(-1);
-	
-	    /**
-	     * Returns the second argument if it is not `null`, `undefined` or `NaN`
-	     * otherwise the first argument is returned.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category Logic
-	     * @sig a -> b -> a | b
-	     * @param {a} val The default value.
-	     * @param {b} val The value to return if it is not null or undefined
-	     * @return {*} The the second value or the default value
-	     * @example
-	     *
-	     *      var defaultTo42 = R.defaultTo(42);
-	     *
-	     *      defaultTo42(null);  //=> 42
-	     *      defaultTo42(undefined);  //=> 42
-	     *      defaultTo42('Ramda');  //=> 'Ramda'
-	     *      defaultTo42(parseInt('string')); //=> 42
-	     */
-	    var defaultTo = _curry2(function defaultTo(d, v) {
-	        return v == null || v !== v ? d : v;
-	    });
-	
-	    /**
-	     * Finds the set (i.e. no duplicates) of all elements in the first list not
-	     * contained in the second list. Duplication is determined according to the
-	     * value returned by applying the supplied predicate to two list elements.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig (a -> a -> Boolean) -> [*] -> [*] -> [*]
-	     * @param {Function} pred A predicate used to test whether two items are equal.
-	     * @param {Array} list1 The first list.
-	     * @param {Array} list2 The second list.
-	     * @return {Array} The elements in `list1` that are not in `list2`.
-	     * @see R.difference, R.symmetricDifference, R.symmetricDifferenceWith
-	     * @example
-	     *
-	     *      var cmp = (x, y) => x.a === y.a;
-	     *      var l1 = [{a: 1}, {a: 2}, {a: 3}];
-	     *      var l2 = [{a: 3}, {a: 4}];
-	     *      R.differenceWith(cmp, l1, l2); //=> [{a: 1}, {a: 2}]
-	     */
-	    var differenceWith = _curry3(function differenceWith(pred, first, second) {
-	        var out = [];
-	        var idx = 0;
-	        var firstLen = first.length;
-	        while (idx < firstLen) {
-	            if (!_containsWith(pred, first[idx], second) && !_containsWith(pred, first[idx], out)) {
-	                out.push(first[idx]);
-	            }
-	            idx += 1;
-	        }
-	        return out;
-	    });
-	
-	    /**
-	     * Returns a new object that does not contain a `prop` property.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category Object
-	     * @sig String -> {k: v} -> {k: v}
-	     * @param {String} prop the name of the property to dissociate
-	     * @param {Object} obj the object to clone
-	     * @return {Object} a new object similar to the original but without the specified property
-	     * @see R.assoc
-	     * @example
-	     *
-	     *      R.dissoc('b', {a: 1, b: 2, c: 3}); //=> {a: 1, c: 3}
-	     */
-	    var dissoc = _curry2(function dissoc(prop, obj) {
-	        var result = {};
-	        for (var p in obj) {
-	            if (p !== prop) {
-	                result[p] = obj[p];
-	            }
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Makes a shallow clone of an object, omitting the property at the given path.
-	     * Note that this copies and flattens prototype properties onto the new object
-	     * as well. All non-primitive properties are copied by reference.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.11.0
-	     * @category Object
-	     * @sig [String] -> {k: v} -> {k: v}
-	     * @param {Array} path the path to set
-	     * @param {Object} obj the object to clone
-	     * @return {Object} a new object without the property at path
-	     * @see R.assocPath
-	     * @example
-	     *
-	     *      R.dissocPath(['a', 'b', 'c'], {a: {b: {c: 42}}}); //=> {a: {b: {}}}
-	     */
-	    var dissocPath = _curry2(function dissocPath(path, obj) {
-	        switch (path.length) {
-	        case 0:
-	            return obj;
-	        case 1:
-	            return dissoc(path[0], obj);
-	        default:
-	            var head = path[0];
-	            var tail = _slice(path, 1);
-	            return obj[head] == null ? obj : assoc(head, dissocPath(tail, obj[head]), obj);
-	        }
-	    });
-	
-	    /**
-	     * Divides two numbers. Equivalent to `a / b`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Math
-	     * @sig Number -> Number -> Number
-	     * @param {Number} a The first value.
-	     * @param {Number} b The second value.
-	     * @return {Number} The result of `a / b`.
-	     * @see R.multiply
-	     * @example
-	     *
-	     *      R.divide(71, 100); //=> 0.71
-	     *
-	     *      var half = R.divide(R.__, 2);
-	     *      half(42); //=> 21
-	     *
-	     *      var reciprocal = R.divide(1);
-	     *      reciprocal(4);   //=> 0.25
-	     */
-	    var divide = _curry2(function divide(a, b) {
-	        return a / b;
-	    });
-	
-	    /**
-	     * Returns a new list excluding the leading elements of a given list which
-	     * satisfy the supplied predicate function. It passes each value to the supplied
-	     * predicate function, skipping elements while the predicate function returns
-	     * `true`. The predicate function is applied to one argument: *(value)*.
-	     *
-	     * Dispatches to the `dropWhile` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> [a]
-	     * @param {Function} fn The function called per iteration.
-	     * @param {Array} list The collection to iterate over.
-	     * @return {Array} A new array.
-	     * @see R.takeWhile, R.transduce, R.addIndex
-	     * @example
-	     *
-	     *      var lteTwo = x => x <= 2;
-	     *
-	     *      R.dropWhile(lteTwo, [1, 2, 3, 4, 3, 2, 1]); //=> [3, 4, 3, 2, 1]
-	     */
-	    var dropWhile = _curry2(_dispatchable('dropWhile', _xdropWhile, function dropWhile(pred, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        while (idx < len && pred(list[idx])) {
-	            idx += 1;
-	        }
-	        return _slice(list, idx);
-	    }));
-	
-	    /**
-	     * Returns the empty value of its argument's type. Ramda defines the empty
-	     * value of Array (`[]`), Object (`{}`), String (`''`), and Arguments. Other
-	     * types are supported if they define `<Type>.empty` and/or
-	     * `<Type>.prototype.empty`.
-	     *
-	     * Dispatches to the `empty` method of the first argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category Function
-	     * @sig a -> a
-	     * @param {*} x
-	     * @return {*}
-	     * @example
-	     *
-	     *      R.empty(Just(42));      //=> Nothing()
-	     *      R.empty([1, 2, 3]);     //=> []
-	     *      R.empty('unicorns');    //=> ''
-	     *      R.empty({x: 1, y: 2});  //=> {}
-	     */
-	    // else
-	    var empty = _curry1(function empty(x) {
-	        return x != null && typeof x.empty === 'function' ? x.empty() : x != null && x.constructor != null && typeof x.constructor.empty === 'function' ? x.constructor.empty() : _isArray(x) ? [] : _isString(x) ? '' : _isObject(x) ? {} : _isArguments(x) ? function () {
-	            return arguments;
-	        }() : // else
-	        void 0;
-	    });
-	
-	    /**
-	     * Creates a new object by recursively evolving a shallow copy of `object`,
-	     * according to the `transformation` functions. All non-primitive properties
-	     * are copied by reference.
-	     *
-	     * A `transformation` function will not be invoked if its corresponding key
-	     * does not exist in the evolved object.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Object
-	     * @sig {k: (v -> v)} -> {k: v} -> {k: v}
-	     * @param {Object} transformations The object specifying transformation functions to apply
-	     *        to the object.
-	     * @param {Object} object The object to be transformed.
-	     * @return {Object} The transformed object.
-	     * @example
-	     *
-	     *      var tomato  = {firstName: '  Tomato ', data: {elapsed: 100, remaining: 1400}, id:123};
-	     *      var transformations = {
-	     *        firstName: R.trim,
-	     *        lastName: R.trim, // Will not get invoked.
-	     *        data: {elapsed: R.add(1), remaining: R.add(-1)}
-	     *      };
-	     *      R.evolve(transformations, tomato); //=> {firstName: 'Tomato', data: {elapsed: 101, remaining: 1399}, id:123}
-	     */
-	    var evolve = _curry2(function evolve(transformations, object) {
-	        var result = {};
-	        var transformation, key, type;
-	        for (key in object) {
-	            transformation = transformations[key];
-	            type = typeof transformation;
-	            result[key] = type === 'function' ? transformation(object[key]) : type === 'object' ? evolve(transformations[key], object[key]) : object[key];
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Returns the first element of the list which matches the predicate, or
-	     * `undefined` if no element matches.
-	     *
-	     * Dispatches to the `find` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> a | undefined
-	     * @param {Function} fn The predicate function used to determine if the element is the
-	     *        desired one.
-	     * @param {Array} list The array to consider.
-	     * @return {Object} The element found, or `undefined`.
-	     * @see R.transduce
-	     * @example
-	     *
-	     *      var xs = [{a: 1}, {a: 2}, {a: 3}];
-	     *      R.find(R.propEq('a', 2))(xs); //=> {a: 2}
-	     *      R.find(R.propEq('a', 4))(xs); //=> undefined
-	     */
-	    var find = _curry2(_dispatchable('find', _xfind, function find(fn, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        while (idx < len) {
-	            if (fn(list[idx])) {
-	                return list[idx];
-	            }
-	            idx += 1;
-	        }
-	    }));
-	
-	    /**
-	     * Returns the index of the first element of the list which matches the
-	     * predicate, or `-1` if no element matches.
-	     *
-	     * Dispatches to the `findIndex` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.1
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> Number
-	     * @param {Function} fn The predicate function used to determine if the element is the
-	     * desired one.
-	     * @param {Array} list The array to consider.
-	     * @return {Number} The index of the element found, or `-1`.
-	     * @see R.transduce
-	     * @example
-	     *
-	     *      var xs = [{a: 1}, {a: 2}, {a: 3}];
-	     *      R.findIndex(R.propEq('a', 2))(xs); //=> 1
-	     *      R.findIndex(R.propEq('a', 4))(xs); //=> -1
-	     */
-	    var findIndex = _curry2(_dispatchable('findIndex', _xfindIndex, function findIndex(fn, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        while (idx < len) {
-	            if (fn(list[idx])) {
-	                return idx;
-	            }
-	            idx += 1;
-	        }
-	        return -1;
-	    }));
-	
-	    /**
-	     * Returns the last element of the list which matches the predicate, or
-	     * `undefined` if no element matches.
-	     *
-	     * Dispatches to the `findLast` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.1
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> a | undefined
-	     * @param {Function} fn The predicate function used to determine if the element is the
-	     * desired one.
-	     * @param {Array} list The array to consider.
-	     * @return {Object} The element found, or `undefined`.
-	     * @see R.transduce
-	     * @example
-	     *
-	     *      var xs = [{a: 1, b: 0}, {a:1, b: 1}];
-	     *      R.findLast(R.propEq('a', 1))(xs); //=> {a: 1, b: 1}
-	     *      R.findLast(R.propEq('a', 4))(xs); //=> undefined
-	     */
-	    var findLast = _curry2(_dispatchable('findLast', _xfindLast, function findLast(fn, list) {
-	        var idx = list.length - 1;
-	        while (idx >= 0) {
-	            if (fn(list[idx])) {
-	                return list[idx];
-	            }
-	            idx -= 1;
-	        }
-	    }));
-	
-	    /**
-	     * Returns the index of the last element of the list which matches the
-	     * predicate, or `-1` if no element matches.
-	     *
-	     * Dispatches to the `findLastIndex` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.1
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> Number
-	     * @param {Function} fn The predicate function used to determine if the element is the
-	     * desired one.
-	     * @param {Array} list The array to consider.
-	     * @return {Number} The index of the element found, or `-1`.
-	     * @see R.transduce
-	     * @example
-	     *
-	     *      var xs = [{a: 1, b: 0}, {a:1, b: 1}];
-	     *      R.findLastIndex(R.propEq('a', 1))(xs); //=> 1
-	     *      R.findLastIndex(R.propEq('a', 4))(xs); //=> -1
-	     */
-	    var findLastIndex = _curry2(_dispatchable('findLastIndex', _xfindLastIndex, function findLastIndex(fn, list) {
-	        var idx = list.length - 1;
-	        while (idx >= 0) {
-	            if (fn(list[idx])) {
-	                return idx;
-	            }
-	            idx -= 1;
-	        }
-	        return -1;
-	    }));
-	
-	    /**
-	     * Iterate over an input `list`, calling a provided function `fn` for each
-	     * element in the list.
-	     *
-	     * `fn` receives one argument: *(value)*.
-	     *
-	     * Note: `R.forEach` does not skip deleted or unassigned indices (sparse
-	     * arrays), unlike the native `Array.prototype.forEach` method. For more
-	     * details on this behavior, see:
-	     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Description
-	     *
-	     * Also note that, unlike `Array.prototype.forEach`, Ramda's `forEach` returns
-	     * the original array. In some libraries this function is named `each`.
-	     *
-	     * Dispatches to the `forEach` method of the second argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.1
-	     * @category List
-	     * @sig (a -> *) -> [a] -> [a]
-	     * @param {Function} fn The function to invoke. Receives one argument, `value`.
-	     * @param {Array} list The list to iterate over.
-	     * @return {Array} The original list.
-	     * @see R.addIndex
-	     * @example
-	     *
-	     *      var printXPlusFive = x => console.log(x + 5);
-	     *      R.forEach(printXPlusFive, [1, 2, 3]); //=> [1, 2, 3]
-	     *      // logs 6
-	     *      // logs 7
-	     *      // logs 8
-	     */
-	    var forEach = _curry2(_checkForMethod('forEach', function forEach(fn, list) {
-	        var len = list.length;
-	        var idx = 0;
-	        while (idx < len) {
-	            fn(list[idx]);
-	            idx += 1;
-	        }
-	        return list;
-	    }));
-	
-	    /**
-	     * Creates a new object from a list key-value pairs. If a key appears in
-	     * multiple pairs, the rightmost pair is included in the object.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category List
-	     * @sig [[k,v]] -> {k: v}
-	     * @param {Array} pairs An array of two-element arrays that will be the keys and values of the output object.
-	     * @return {Object} The object made by pairing up `keys` and `values`.
-	     * @see R.toPairs, R.pair
-	     * @example
-	     *
-	     *      R.fromPairs([['a', 1], ['b', 2], ['c', 3]]); //=> {a: 1, b: 2, c: 3}
-	     */
-	    var fromPairs = _curry1(function fromPairs(pairs) {
-	        var result = {};
-	        var idx = 0;
-	        while (idx < pairs.length) {
-	            result[pairs[idx][0]] = pairs[idx][1];
-	            idx += 1;
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Takes a list and returns a list of lists where each sublist's elements are
-	     * all "equal" according to the provided equality function.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.21.0
-	     * @category List
-	     * @sig ((a, a) → Boolean) → [a] → [[a]]
-	     * @param {Function} fn Function for determining whether two given (adjacent)
-	     *        elements should be in the same group
-	     * @param {Array} list The array to group. Also accepts a string, which will be
-	     *        treated as a list of characters.
-	     * @return {List} A list that contains sublists of equal elements,
-	     *         whose concatenations are equal to the original list.
-	     * @example
-	     *
-	     * R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21])
-	     * //=> [[0], [1, 1], [2], [3], [5], [8], [13], [21]]
-	     *
-	     * R.groupWith((a, b) => a % 2 === b % 2, [0, 1, 1, 2, 3, 5, 8, 13, 21])
-	     * //=> [[0], [1, 1], [2], [3, 5], [8], [13, 21]]
-	     *
-	     * R.groupWith(R.eqBy(isVowel), 'aestiou')
-	     * //=> ['ae', 'st', 'iou']
-	     */
-	    var groupWith = _curry2(function (fn, list) {
-	        var res = [];
-	        var idx = 0;
-	        var len = list.length;
-	        while (idx < len) {
-	            var nextidx = idx + 1;
-	            while (nextidx < len && fn(list[idx], list[nextidx])) {
-	                nextidx += 1;
-	            }
-	            res.push(list.slice(idx, nextidx));
-	            idx = nextidx;
-	        }
-	        return res;
-	    });
-	
-	    /**
-	     * Returns `true` if the first argument is greater than the second; `false`
-	     * otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig Ord a => a -> a -> Boolean
-	     * @param {*} a
-	     * @param {*} b
-	     * @return {Boolean}
-	     * @see R.lt
-	     * @example
-	     *
-	     *      R.gt(2, 1); //=> true
-	     *      R.gt(2, 2); //=> false
-	     *      R.gt(2, 3); //=> false
-	     *      R.gt('a', 'z'); //=> false
-	     *      R.gt('z', 'a'); //=> true
-	     */
-	    var gt = _curry2(function gt(a, b) {
-	        return a > b;
-	    });
-	
-	    /**
-	     * Returns `true` if the first argument is greater than or equal to the second;
-	     * `false` otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig Ord a => a -> a -> Boolean
-	     * @param {Number} a
-	     * @param {Number} b
-	     * @return {Boolean}
-	     * @see R.lte
-	     * @example
-	     *
-	     *      R.gte(2, 1); //=> true
-	     *      R.gte(2, 2); //=> true
-	     *      R.gte(2, 3); //=> false
-	     *      R.gte('a', 'z'); //=> false
-	     *      R.gte('z', 'a'); //=> true
-	     */
-	    var gte = _curry2(function gte(a, b) {
-	        return a >= b;
-	    });
-	
-	    /**
-	     * Returns whether or not an object has an own property with the specified name
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.7.0
-	     * @category Object
-	     * @sig s -> {s: x} -> Boolean
-	     * @param {String} prop The name of the property to check for.
-	     * @param {Object} obj The object to query.
-	     * @return {Boolean} Whether the property exists.
-	     * @example
-	     *
-	     *      var hasName = R.has('name');
-	     *      hasName({name: 'alice'});   //=> true
-	     *      hasName({name: 'bob'});     //=> true
-	     *      hasName({});                //=> false
-	     *
-	     *      var point = {x: 0, y: 0};
-	     *      var pointHas = R.has(R.__, point);
-	     *      pointHas('x');  //=> true
-	     *      pointHas('y');  //=> true
-	     *      pointHas('z');  //=> false
-	     */
-	    var has = _curry2(_has);
-	
-	    /**
-	     * Returns whether or not an object or its prototype chain has a property with
-	     * the specified name
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.7.0
-	     * @category Object
-	     * @sig s -> {s: x} -> Boolean
-	     * @param {String} prop The name of the property to check for.
-	     * @param {Object} obj The object to query.
-	     * @return {Boolean} Whether the property exists.
-	     * @example
-	     *
-	     *      function Rectangle(width, height) {
-	     *        this.width = width;
-	     *        this.height = height;
-	     *      }
-	     *      Rectangle.prototype.area = function() {
-	     *        return this.width * this.height;
-	     *      };
-	     *
-	     *      var square = new Rectangle(2, 2);
-	     *      R.hasIn('width', square);  //=> true
-	     *      R.hasIn('area', square);  //=> true
-	     */
-	    var hasIn = _curry2(function hasIn(prop, obj) {
-	        return prop in obj;
-	    });
-	
-	    /**
-	     * Returns true if its arguments are identical, false otherwise. Values are
-	     * identical if they reference the same memory. `NaN` is identical to `NaN`;
-	     * `0` and `-0` are not identical.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.15.0
-	     * @category Relation
-	     * @sig a -> a -> Boolean
-	     * @param {*} a
-	     * @param {*} b
-	     * @return {Boolean}
-	     * @example
-	     *
-	     *      var o = {};
-	     *      R.identical(o, o); //=> true
-	     *      R.identical(1, 1); //=> true
-	     *      R.identical(1, '1'); //=> false
-	     *      R.identical([], []); //=> false
-	     *      R.identical(0, -0); //=> false
-	     *      R.identical(NaN, NaN); //=> true
-	     */
-	    // SameValue algorithm
-	    // Steps 1-5, 7-10
-	    // Steps 6.b-6.e: +0 != -0
-	    // Step 6.a: NaN == NaN
-	    var identical = _curry2(function identical(a, b) {
-	        // SameValue algorithm
-	        if (a === b) {
-	            // Steps 1-5, 7-10
-	            // Steps 6.b-6.e: +0 != -0
-	            return a !== 0 || 1 / a === 1 / b;
-	        } else {
-	            // Step 6.a: NaN == NaN
-	            return a !== a && b !== b;
-	        }
-	    });
-	
-	    /**
-	     * A function that does nothing but return the parameter supplied to it. Good
-	     * as a default or placeholder function.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig a -> a
-	     * @param {*} x The value to return.
-	     * @return {*} The input value, `x`.
-	     * @example
-	     *
-	     *      R.identity(1); //=> 1
-	     *
-	     *      var obj = {};
-	     *      R.identity(obj) === obj; //=> true
-	     */
-	    var identity = _curry1(_identity);
-	
-	    /**
-	     * Creates a function that will process either the `onTrue` or the `onFalse`
-	     * function depending upon the result of the `condition` predicate.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.8.0
-	     * @category Logic
-	     * @sig (*... -> Boolean) -> (*... -> *) -> (*... -> *) -> (*... -> *)
-	     * @param {Function} condition A predicate function
-	     * @param {Function} onTrue A function to invoke when the `condition` evaluates to a truthy value.
-	     * @param {Function} onFalse A function to invoke when the `condition` evaluates to a falsy value.
-	     * @return {Function} A new unary function that will process either the `onTrue` or the `onFalse`
-	     *                    function depending upon the result of the `condition` predicate.
-	     * @see R.unless, R.when
-	     * @example
-	     *
-	     *      var incCount = R.ifElse(
-	     *        R.has('count'),
-	     *        R.over(R.lensProp('count'), R.inc),
-	     *        R.assoc('count', 1)
-	     *      );
-	     *      incCount({});           //=> { count: 1 }
-	     *      incCount({ count: 1 }); //=> { count: 2 }
-	     */
-	    var ifElse = _curry3(function ifElse(condition, onTrue, onFalse) {
-	        return curryN(Math.max(condition.length, onTrue.length, onFalse.length), function _ifElse() {
-	            return condition.apply(this, arguments) ? onTrue.apply(this, arguments) : onFalse.apply(this, arguments);
-	        });
-	    });
-	
-	    /**
-	     * Increments its argument.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Math
-	     * @sig Number -> Number
-	     * @param {Number} n
-	     * @return {Number}
-	     * @see R.dec
-	     * @example
-	     *
-	     *      R.inc(42); //=> 43
-	     */
-	    var inc = add(1);
-	
-	    /**
-	     * Inserts the supplied element into the list, at index `index`. _Note that
-	     * this is not destructive_: it returns a copy of the list with the changes.
-	     * <small>No lists have been harmed in the application of this function.</small>
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.2.2
-	     * @category List
-	     * @sig Number -> a -> [a] -> [a]
-	     * @param {Number} index The position to insert the element
-	     * @param {*} elt The element to insert into the Array
-	     * @param {Array} list The list to insert into
-	     * @return {Array} A new Array with `elt` inserted at `index`.
-	     * @example
-	     *
-	     *      R.insert(2, 'x', [1,2,3,4]); //=> [1,2,'x',3,4]
-	     */
-	    var insert = _curry3(function insert(idx, elt, list) {
-	        idx = idx < list.length && idx >= 0 ? idx : list.length;
-	        var result = _slice(list);
-	        result.splice(idx, 0, elt);
-	        return result;
-	    });
-	
-	    /**
-	     * Inserts the sub-list into the list, at index `index`. _Note that this is not
-	     * destructive_: it returns a copy of the list with the changes.
-	     * <small>No lists have been harmed in the application of this function.</small>
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category List
-	     * @sig Number -> [a] -> [a] -> [a]
-	     * @param {Number} index The position to insert the sub-list
-	     * @param {Array} elts The sub-list to insert into the Array
-	     * @param {Array} list The list to insert the sub-list into
-	     * @return {Array} A new Array with `elts` inserted starting at `index`.
-	     * @example
-	     *
-	     *      R.insertAll(2, ['x','y','z'], [1,2,3,4]); //=> [1,2,'x','y','z',3,4]
-	     */
-	    var insertAll = _curry3(function insertAll(idx, elts, list) {
-	        idx = idx < list.length && idx >= 0 ? idx : list.length;
-	        return _concat(_concat(_slice(list, 0, idx), elts), _slice(list, idx));
-	    });
-	
-	    /**
-	     * Creates a new list with the separator interposed between elements.
-	     *
-	     * Dispatches to the `intersperse` method of the second argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category List
-	     * @sig a -> [a] -> [a]
-	     * @param {*} separator The element to add to the list.
-	     * @param {Array} list The list to be interposed.
-	     * @return {Array} The new list.
-	     * @example
-	     *
-	     *      R.intersperse('n', ['ba', 'a', 'a']); //=> ['ba', 'n', 'a', 'n', 'a']
-	     */
-	    var intersperse = _curry2(_checkForMethod('intersperse', function intersperse(separator, list) {
-	        var out = [];
-	        var idx = 0;
-	        var length = list.length;
-	        while (idx < length) {
-	            if (idx === length - 1) {
-	                out.push(list[idx]);
-	            } else {
-	                out.push(list[idx], separator);
-	            }
-	            idx += 1;
-	        }
-	        return out;
-	    }));
-	
-	    /**
-	     * See if an object (`val`) is an instance of the supplied constructor. This
-	     * function will check up the inheritance chain, if any.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category Type
-	     * @sig (* -> {*}) -> a -> Boolean
-	     * @param {Object} ctor A constructor
-	     * @param {*} val The value to test
-	     * @return {Boolean}
-	     * @example
-	     *
-	     *      R.is(Object, {}); //=> true
-	     *      R.is(Number, 1); //=> true
-	     *      R.is(Object, 1); //=> false
-	     *      R.is(String, 's'); //=> true
-	     *      R.is(String, new String('')); //=> true
-	     *      R.is(Object, new String('')); //=> true
-	     *      R.is(Object, 's'); //=> false
-	     *      R.is(Number, {}); //=> false
-	     */
-	    var is = _curry2(function is(Ctor, val) {
-	        return val != null && val.constructor === Ctor || val instanceof Ctor;
-	    });
-	
-	    /**
-	     * Tests whether or not an object is similar to an array.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.5.0
-	     * @category Type
-	     * @category List
-	     * @sig * -> Boolean
-	     * @param {*} x The object to test.
-	     * @return {Boolean} `true` if `x` has a numeric length property and extreme indices defined; `false` otherwise.
-	     * @example
-	     *
-	     *      R.isArrayLike([]); //=> true
-	     *      R.isArrayLike(true); //=> false
-	     *      R.isArrayLike({}); //=> false
-	     *      R.isArrayLike({length: 10}); //=> false
-	     *      R.isArrayLike({0: 'zero', 9: 'nine', length: 10}); //=> true
-	     */
-	    var isArrayLike = _curry1(function isArrayLike(x) {
-	        if (_isArray(x)) {
-	            return true;
-	        }
-	        if (!x) {
-	            return false;
-	        }
-	        if (typeof x !== 'object') {
-	            return false;
-	        }
-	        if (_isString(x)) {
-	            return false;
-	        }
-	        if (x.nodeType === 1) {
-	            return !!x.length;
-	        }
-	        if (x.length === 0) {
-	            return true;
-	        }
-	        if (x.length > 0) {
-	            return x.hasOwnProperty(0) && x.hasOwnProperty(x.length - 1);
-	        }
-	        return false;
-	    });
-	
-	    /**
-	     * Checks if the input value is `null` or `undefined`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Type
-	     * @sig * -> Boolean
-	     * @param {*} x The value to test.
-	     * @return {Boolean} `true` if `x` is `undefined` or `null`, otherwise `false`.
-	     * @example
-	     *
-	     *      R.isNil(null); //=> true
-	     *      R.isNil(undefined); //=> true
-	     *      R.isNil(0); //=> false
-	     *      R.isNil([]); //=> false
-	     */
-	    var isNil = _curry1(function isNil(x) {
-	        return x == null;
-	    });
-	
-	    /**
-	     * Returns a list containing the names of all the enumerable own properties of
-	     * the supplied object.
-	     * Note that the order of the output array is not guaranteed to be consistent
-	     * across different JS platforms.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig {k: v} -> [k]
-	     * @param {Object} obj The object to extract properties from
-	     * @return {Array} An array of the object's own properties.
-	     * @example
-	     *
-	     *      R.keys({a: 1, b: 2, c: 3}); //=> ['a', 'b', 'c']
-	     */
-	    // cover IE < 9 keys issues
-	    // Safari bug
-	    var keys = function () {
-	        // cover IE < 9 keys issues
-	        var hasEnumBug = !{ toString: null }.propertyIsEnumerable('toString');
-	        var nonEnumerableProps = [
-	            'constructor',
-	            'valueOf',
-	            'isPrototypeOf',
-	            'toString',
-	            'propertyIsEnumerable',
-	            'hasOwnProperty',
-	            'toLocaleString'
-	        ];
-	        // Safari bug
-	        var hasArgsEnumBug = function () {
-	            'use strict';
-	            return arguments.propertyIsEnumerable('length');
-	        }();
-	        var contains = function contains(list, item) {
-	            var idx = 0;
-	            while (idx < list.length) {
-	                if (list[idx] === item) {
-	                    return true;
-	                }
-	                idx += 1;
-	            }
-	            return false;
-	        };
-	        return typeof Object.keys === 'function' && !hasArgsEnumBug ? _curry1(function keys(obj) {
-	            return Object(obj) !== obj ? [] : Object.keys(obj);
-	        }) : _curry1(function keys(obj) {
-	            if (Object(obj) !== obj) {
-	                return [];
-	            }
-	            var prop, nIdx;
-	            var ks = [];
-	            var checkArgsLength = hasArgsEnumBug && _isArguments(obj);
-	            for (prop in obj) {
-	                if (_has(prop, obj) && (!checkArgsLength || prop !== 'length')) {
-	                    ks[ks.length] = prop;
-	                }
-	            }
-	            if (hasEnumBug) {
-	                nIdx = nonEnumerableProps.length - 1;
-	                while (nIdx >= 0) {
-	                    prop = nonEnumerableProps[nIdx];
-	                    if (_has(prop, obj) && !contains(ks, prop)) {
-	                        ks[ks.length] = prop;
-	                    }
-	                    nIdx -= 1;
-	                }
-	            }
-	            return ks;
-	        });
-	    }();
-	
-	    /**
-	     * Returns a list containing the names of all the properties of the supplied
-	     * object, including prototype properties.
-	     * Note that the order of the output array is not guaranteed to be consistent
-	     * across different JS platforms.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.2.0
-	     * @category Object
-	     * @sig {k: v} -> [k]
-	     * @param {Object} obj The object to extract properties from
-	     * @return {Array} An array of the object's own and prototype properties.
-	     * @example
-	     *
-	     *      var F = function() { this.x = 'X'; };
-	     *      F.prototype.y = 'Y';
-	     *      var f = new F();
-	     *      R.keysIn(f); //=> ['x', 'y']
-	     */
-	    var keysIn = _curry1(function keysIn(obj) {
-	        var prop;
-	        var ks = [];
-	        for (prop in obj) {
-	            ks[ks.length] = prop;
-	        }
-	        return ks;
-	    });
-	
-	    /**
-	     * Returns the number of elements in the array by returning `list.length`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category List
-	     * @sig [a] -> Number
-	     * @param {Array} list The array to inspect.
-	     * @return {Number} The length of the array.
-	     * @example
-	     *
-	     *      R.length([]); //=> 0
-	     *      R.length([1, 2, 3]); //=> 3
-	     */
-	    var length = _curry1(function length(list) {
-	        return list != null && _isNumber(list.length) ? list.length : NaN;
-	    });
-	
-	    /**
-	     * Returns `true` if the first argument is less than the second; `false`
-	     * otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig Ord a => a -> a -> Boolean
-	     * @param {*} a
-	     * @param {*} b
-	     * @return {Boolean}
-	     * @see R.gt
-	     * @example
-	     *
-	     *      R.lt(2, 1); //=> false
-	     *      R.lt(2, 2); //=> false
-	     *      R.lt(2, 3); //=> true
-	     *      R.lt('a', 'z'); //=> true
-	     *      R.lt('z', 'a'); //=> false
-	     */
-	    var lt = _curry2(function lt(a, b) {
-	        return a < b;
-	    });
-	
-	    /**
-	     * Returns `true` if the first argument is less than or equal to the second;
-	     * `false` otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig Ord a => a -> a -> Boolean
-	     * @param {Number} a
-	     * @param {Number} b
-	     * @return {Boolean}
-	     * @see R.gte
-	     * @example
-	     *
-	     *      R.lte(2, 1); //=> false
-	     *      R.lte(2, 2); //=> true
-	     *      R.lte(2, 3); //=> true
-	     *      R.lte('a', 'z'); //=> true
-	     *      R.lte('z', 'a'); //=> false
-	     */
-	    var lte = _curry2(function lte(a, b) {
-	        return a <= b;
-	    });
-	
-	    /**
-	     * The mapAccum function behaves like a combination of map and reduce; it
-	     * applies a function to each element of a list, passing an accumulating
-	     * parameter from left to right, and returning a final value of this
-	     * accumulator together with the new list.
-	     *
-	     * The iterator function receives two arguments, *acc* and *value*, and should
-	     * return a tuple *[acc, value]*.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category List
-	     * @sig (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
-	     * @param {Function} fn The function to be called on every element of the input `list`.
-	     * @param {*} acc The accumulator value.
-	     * @param {Array} list The list to iterate over.
-	     * @return {*} The final, accumulated value.
-	     * @see R.addIndex
-	     * @example
-	     *
-	     *      var digits = ['1', '2', '3', '4'];
-	     *      var appender = (a, b) => [a + b, a + b];
-	     *
-	     *      R.mapAccum(appender, 0, digits); //=> ['01234', ['01', '012', '0123', '01234']]
-	     */
-	    var mapAccum = _curry3(function mapAccum(fn, acc, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        var result = [];
-	        var tuple = [acc];
-	        while (idx < len) {
-	            tuple = fn(tuple[0], list[idx]);
-	            result[idx] = tuple[1];
-	            idx += 1;
-	        }
-	        return [
-	            tuple[0],
-	            result
-	        ];
-	    });
-	
-	    /**
-	     * The mapAccumRight function behaves like a combination of map and reduce; it
-	     * applies a function to each element of a list, passing an accumulating
-	     * parameter from right to left, and returning a final value of this
-	     * accumulator together with the new list.
-	     *
-	     * Similar to `mapAccum`, except moves through the input list from the right to
-	     * the left.
-	     *
-	     * The iterator function receives two arguments, *acc* and *value*, and should
-	     * return a tuple *[acc, value]*.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category List
-	     * @sig (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
-	     * @param {Function} fn The function to be called on every element of the input `list`.
-	     * @param {*} acc The accumulator value.
-	     * @param {Array} list The list to iterate over.
-	     * @return {*} The final, accumulated value.
-	     * @see R.addIndex
-	     * @example
-	     *
-	     *      var digits = ['1', '2', '3', '4'];
-	     *      var append = (a, b) => [a + b, a + b];
-	     *
-	     *      R.mapAccumRight(append, 0, digits); //=> ['04321', ['04321', '0432', '043', '04']]
-	     */
-	    var mapAccumRight = _curry3(function mapAccumRight(fn, acc, list) {
-	        var idx = list.length - 1;
-	        var result = [];
-	        var tuple = [acc];
-	        while (idx >= 0) {
-	            tuple = fn(tuple[0], list[idx]);
-	            result[idx] = tuple[1];
-	            idx -= 1;
-	        }
-	        return [
-	            tuple[0],
-	            result
-	        ];
-	    });
-	
-	    /**
-	     * Tests a regular expression against a String. Note that this function will
-	     * return an empty array when there are no matches. This differs from
-	     * [`String.prototype.match`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match)
-	     * which returns `null` when there are no matches.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category String
-	     * @sig RegExp -> String -> [String | Undefined]
-	     * @param {RegExp} rx A regular expression.
-	     * @param {String} str The string to match against
-	     * @return {Array} The list of matches or empty array.
-	     * @see R.test
-	     * @example
-	     *
-	     *      R.match(/([a-z]a)/g, 'bananas'); //=> ['ba', 'na', 'na']
-	     *      R.match(/a/, 'b'); //=> []
-	     *      R.match(/a/, null); //=> TypeError: null does not have a method named "match"
-	     */
-	    var match = _curry2(function match(rx, str) {
-	        return str.match(rx) || [];
-	    });
-	
-	    /**
-	     * mathMod behaves like the modulo operator should mathematically, unlike the
-	     * `%` operator (and by extension, R.modulo). So while "-17 % 5" is -2,
-	     * mathMod(-17, 5) is 3. mathMod requires Integer arguments, and returns NaN
-	     * when the modulus is zero or negative.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category Math
-	     * @sig Number -> Number -> Number
-	     * @param {Number} m The dividend.
-	     * @param {Number} p the modulus.
-	     * @return {Number} The result of `b mod a`.
-	     * @example
-	     *
-	     *      R.mathMod(-17, 5);  //=> 3
-	     *      R.mathMod(17, 5);   //=> 2
-	     *      R.mathMod(17, -5);  //=> NaN
-	     *      R.mathMod(17, 0);   //=> NaN
-	     *      R.mathMod(17.2, 5); //=> NaN
-	     *      R.mathMod(17, 5.3); //=> NaN
-	     *
-	     *      var clock = R.mathMod(R.__, 12);
-	     *      clock(15); //=> 3
-	     *      clock(24); //=> 0
-	     *
-	     *      var seventeenMod = R.mathMod(17);
-	     *      seventeenMod(3);  //=> 2
-	     *      seventeenMod(4);  //=> 1
-	     *      seventeenMod(10); //=> 7
-	     */
-	    var mathMod = _curry2(function mathMod(m, p) {
-	        if (!_isInteger(m)) {
-	            return NaN;
-	        }
-	        if (!_isInteger(p) || p < 1) {
-	            return NaN;
-	        }
-	        return (m % p + p) % p;
-	    });
-	
-	    /**
-	     * Returns the larger of its two arguments.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig Ord a => a -> a -> a
-	     * @param {*} a
-	     * @param {*} b
-	     * @return {*}
-	     * @see R.maxBy, R.min
-	     * @example
-	     *
-	     *      R.max(789, 123); //=> 789
-	     *      R.max('a', 'b'); //=> 'b'
-	     */
-	    var max = _curry2(function max(a, b) {
-	        return b > a ? b : a;
-	    });
-	
-	    /**
-	     * Takes a function and two values, and returns whichever value produces the
-	     * larger result when passed to the provided function.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.8.0
-	     * @category Relation
-	     * @sig Ord b => (a -> b) -> a -> a -> a
-	     * @param {Function} f
-	     * @param {*} a
-	     * @param {*} b
-	     * @return {*}
-	     * @see R.max, R.minBy
-	     * @example
-	     *
-	     *      //  square :: Number -> Number
-	     *      var square = n => n * n;
-	     *
-	     *      R.maxBy(square, -3, 2); //=> -3
-	     *
-	     *      R.reduce(R.maxBy(square), 0, [3, -5, 4, 1, -2]); //=> -5
-	     *      R.reduce(R.maxBy(square), 0, []); //=> 0
-	     */
-	    var maxBy = _curry3(function maxBy(f, a, b) {
-	        return f(b) > f(a) ? b : a;
-	    });
-	
-	    /**
-	     * Create a new object with the own properties of the first object merged with
-	     * the own properties of the second object. If a key exists in both objects,
-	     * the value from the second object will be used.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig {k: v} -> {k: v} -> {k: v}
-	     * @param {Object} l
-	     * @param {Object} r
-	     * @return {Object}
-	     * @see R.mergeWith, R.mergeWithKey
-	     * @example
-	     *
-	     *      R.merge({ 'name': 'fred', 'age': 10 }, { 'age': 40 });
-	     *      //=> { 'name': 'fred', 'age': 40 }
-	     *
-	     *      var resetToDefault = R.merge(R.__, {x: 0});
-	     *      resetToDefault({x: 5, y: 2}); //=> {x: 0, y: 2}
-	     */
-	    var merge = _curry2(function merge(l, r) {
-	        return _assign({}, l, r);
-	    });
-	
-	    /**
-	     * Merges a list of objects together into one object.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category List
-	     * @sig [{k: v}] -> {k: v}
-	     * @param {Array} list An array of objects
-	     * @return {Object} A merged object.
-	     * @see R.reduce
-	     * @example
-	     *
-	     *      R.mergeAll([{foo:1},{bar:2},{baz:3}]); //=> {foo:1,bar:2,baz:3}
-	     *      R.mergeAll([{foo:1},{foo:2},{bar:2}]); //=> {foo:2,bar:2}
-	     */
-	    var mergeAll = _curry1(function mergeAll(list) {
-	        return _assign.apply(null, [{}].concat(list));
-	    });
-	
-	    /**
-	     * Creates a new object with the own properties of the two provided objects. If
-	     * a key exists in both objects, the provided function is applied to the key
-	     * and the values associated with the key in each object, with the result being
-	     * used as the value associated with the key in the returned object. The key
-	     * will be excluded from the returned object if the resulting value is
-	     * `undefined`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category Object
-	     * @sig (String -> a -> a -> a) -> {a} -> {a} -> {a}
-	     * @param {Function} fn
-	     * @param {Object} l
-	     * @param {Object} r
-	     * @return {Object}
-	     * @see R.merge, R.mergeWith
-	     * @example
-	     *
-	     *      let concatValues = (k, l, r) => k == 'values' ? R.concat(l, r) : r
-	     *      R.mergeWithKey(concatValues,
-	     *                     { a: true, thing: 'foo', values: [10, 20] },
-	     *                     { b: true, thing: 'bar', values: [15, 35] });
-	     *      //=> { a: true, b: true, thing: 'bar', values: [10, 20, 15, 35] }
-	     */
-	    var mergeWithKey = _curry3(function mergeWithKey(fn, l, r) {
-	        var result = {};
-	        var k;
-	        for (k in l) {
-	            if (_has(k, l)) {
-	                result[k] = _has(k, r) ? fn(k, l[k], r[k]) : l[k];
-	            }
-	        }
-	        for (k in r) {
-	            if (_has(k, r) && !_has(k, result)) {
-	                result[k] = r[k];
-	            }
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Returns the smaller of its two arguments.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig Ord a => a -> a -> a
-	     * @param {*} a
-	     * @param {*} b
-	     * @return {*}
-	     * @see R.minBy, R.max
-	     * @example
-	     *
-	     *      R.min(789, 123); //=> 123
-	     *      R.min('a', 'b'); //=> 'a'
-	     */
-	    var min = _curry2(function min(a, b) {
-	        return b < a ? b : a;
-	    });
-	
-	    /**
-	     * Takes a function and two values, and returns whichever value produces the
-	     * smaller result when passed to the provided function.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.8.0
-	     * @category Relation
-	     * @sig Ord b => (a -> b) -> a -> a -> a
-	     * @param {Function} f
-	     * @param {*} a
-	     * @param {*} b
-	     * @return {*}
-	     * @see R.min, R.maxBy
-	     * @example
-	     *
-	     *      //  square :: Number -> Number
-	     *      var square = n => n * n;
-	     *
-	     *      R.minBy(square, -3, 2); //=> 2
-	     *
-	     *      R.reduce(R.minBy(square), Infinity, [3, -5, 4, 1, -2]); //=> 1
-	     *      R.reduce(R.minBy(square), Infinity, []); //=> Infinity
-	     */
-	    var minBy = _curry3(function minBy(f, a, b) {
-	        return f(b) < f(a) ? b : a;
-	    });
-	
-	    /**
-	     * Divides the first parameter by the second and returns the remainder. Note
-	     * that this function preserves the JavaScript-style behavior for modulo. For
-	     * mathematical modulo see `mathMod`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.1
-	     * @category Math
-	     * @sig Number -> Number -> Number
-	     * @param {Number} a The value to the divide.
-	     * @param {Number} b The pseudo-modulus
-	     * @return {Number} The result of `b % a`.
-	     * @see R.mathMod
-	     * @example
-	     *
-	     *      R.modulo(17, 3); //=> 2
-	     *      // JS behavior:
-	     *      R.modulo(-17, 3); //=> -2
-	     *      R.modulo(17, -3); //=> 2
-	     *
-	     *      var isOdd = R.modulo(R.__, 2);
-	     *      isOdd(42); //=> 0
-	     *      isOdd(21); //=> 1
-	     */
-	    var modulo = _curry2(function modulo(a, b) {
-	        return a % b;
-	    });
-	
-	    /**
-	     * Multiplies two numbers. Equivalent to `a * b` but curried.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Math
-	     * @sig Number -> Number -> Number
-	     * @param {Number} a The first value.
-	     * @param {Number} b The second value.
-	     * @return {Number} The result of `a * b`.
-	     * @see R.divide
-	     * @example
-	     *
-	     *      var double = R.multiply(2);
-	     *      var triple = R.multiply(3);
-	     *      double(3);       //=>  6
-	     *      triple(4);       //=> 12
-	     *      R.multiply(2, 5);  //=> 10
-	     */
-	    var multiply = _curry2(function multiply(a, b) {
-	        return a * b;
-	    });
-	
-	    /**
-	     * Wraps a function of any arity (including nullary) in a function that accepts
-	     * exactly `n` parameters. Any extraneous parameters will not be passed to the
-	     * supplied function.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig Number -> (* -> a) -> (* -> a)
-	     * @param {Number} n The desired arity of the new function.
-	     * @param {Function} fn The function to wrap.
-	     * @return {Function} A new function wrapping `fn`. The new function is guaranteed to be of
-	     *         arity `n`.
-	     * @example
-	     *
-	     *      var takesTwoArgs = (a, b) => [a, b];
-	     *
-	     *      takesTwoArgs.length; //=> 2
-	     *      takesTwoArgs(1, 2); //=> [1, 2]
-	     *
-	     *      var takesOneArg = R.nAry(1, takesTwoArgs);
-	     *      takesOneArg.length; //=> 1
-	     *      // Only `n` arguments are passed to the wrapped function
-	     *      takesOneArg(1, 2); //=> [1, undefined]
-	     */
-	    var nAry = _curry2(function nAry(n, fn) {
-	        switch (n) {
-	        case 0:
-	            return function () {
-	                return fn.call(this);
-	            };
-	        case 1:
-	            return function (a0) {
-	                return fn.call(this, a0);
-	            };
-	        case 2:
-	            return function (a0, a1) {
-	                return fn.call(this, a0, a1);
-	            };
-	        case 3:
-	            return function (a0, a1, a2) {
-	                return fn.call(this, a0, a1, a2);
-	            };
-	        case 4:
-	            return function (a0, a1, a2, a3) {
-	                return fn.call(this, a0, a1, a2, a3);
-	            };
-	        case 5:
-	            return function (a0, a1, a2, a3, a4) {
-	                return fn.call(this, a0, a1, a2, a3, a4);
-	            };
-	        case 6:
-	            return function (a0, a1, a2, a3, a4, a5) {
-	                return fn.call(this, a0, a1, a2, a3, a4, a5);
-	            };
-	        case 7:
-	            return function (a0, a1, a2, a3, a4, a5, a6) {
-	                return fn.call(this, a0, a1, a2, a3, a4, a5, a6);
-	            };
-	        case 8:
-	            return function (a0, a1, a2, a3, a4, a5, a6, a7) {
-	                return fn.call(this, a0, a1, a2, a3, a4, a5, a6, a7);
-	            };
-	        case 9:
-	            return function (a0, a1, a2, a3, a4, a5, a6, a7, a8) {
-	                return fn.call(this, a0, a1, a2, a3, a4, a5, a6, a7, a8);
-	            };
-	        case 10:
-	            return function (a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
-	                return fn.call(this, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9);
-	            };
-	        default:
-	            throw new Error('First argument to nAry must be a non-negative integer no greater than ten');
-	        }
-	    });
-	
-	    /**
-	     * Negates its argument.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Math
-	     * @sig Number -> Number
-	     * @param {Number} n
-	     * @return {Number}
-	     * @example
-	     *
-	     *      R.negate(42); //=> -42
-	     */
-	    var negate = _curry1(function negate(n) {
-	        return -n;
-	    });
-	
-	    /**
-	     * Returns `true` if no elements of the list match the predicate, `false`
-	     * otherwise.
-	     *
-	     * Dispatches to the `any` method of the second argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.12.0
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> Boolean
-	     * @param {Function} fn The predicate function.
-	     * @param {Array} list The array to consider.
-	     * @return {Boolean} `true` if the predicate is not satisfied by every element, `false` otherwise.
-	     * @see R.all, R.any
-	     * @example
-	     *
-	     *      var isEven = n => n % 2 === 0;
-	     *
-	     *      R.none(isEven, [1, 3, 5, 7, 9, 11]); //=> true
-	     *      R.none(isEven, [1, 3, 5, 7, 8, 11]); //=> false
-	     */
-	    var none = _curry2(_complement(_dispatchable('any', _xany, any)));
-	
-	    /**
-	     * A function that returns the `!` of its argument. It will return `true` when
-	     * passed false-y value, and `false` when passed a truth-y one.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Logic
-	     * @sig * -> Boolean
-	     * @param {*} a any value
-	     * @return {Boolean} the logical inverse of passed argument.
-	     * @see R.complement
-	     * @example
-	     *
-	     *      R.not(true); //=> false
-	     *      R.not(false); //=> true
-	     *      R.not(0); //=> true
-	     *      R.not(1); //=> false
-	     */
-	    var not = _curry1(function not(a) {
-	        return !a;
-	    });
-	
-	    /**
-	     * Returns the nth element of the given list or string. If n is negative the
-	     * element at index length + n is returned.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig Number -> [a] -> a | Undefined
-	     * @sig Number -> String -> String
-	     * @param {Number} offset
-	     * @param {*} list
-	     * @return {*}
-	     * @example
-	     *
-	     *      var list = ['foo', 'bar', 'baz', 'quux'];
-	     *      R.nth(1, list); //=> 'bar'
-	     *      R.nth(-1, list); //=> 'quux'
-	     *      R.nth(-99, list); //=> undefined
-	     *
-	     *      R.nth(2, 'abc'); //=> 'c'
-	     *      R.nth(3, 'abc'); //=> ''
-	     */
-	    var nth = _curry2(function nth(offset, list) {
-	        var idx = offset < 0 ? list.length + offset : offset;
-	        return _isString(list) ? list.charAt(idx) : list[idx];
-	    });
-	
-	    /**
-	     * Returns a function which returns its nth argument.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Function
-	     * @sig Number -> *... -> *
-	     * @param {Number} n
-	     * @return {Function}
-	     * @example
-	     *
-	     *      R.nthArg(1)('a', 'b', 'c'); //=> 'b'
-	     *      R.nthArg(-1)('a', 'b', 'c'); //=> 'c'
-	     */
-	    var nthArg = _curry1(function nthArg(n) {
-	        var arity = n < 0 ? 1 : n + 1;
-	        return curryN(arity, function () {
-	            return nth(n, arguments);
-	        });
-	    });
-	
-	    /**
-	     * Creates an object containing a single key:value pair.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.18.0
-	     * @category Object
-	     * @sig String -> a -> {String:a}
-	     * @param {String} key
-	     * @param {*} val
-	     * @return {Object}
-	     * @see R.pair
-	     * @example
-	     *
-	     *      var matchPhrases = R.compose(
-	     *        R.objOf('must'),
-	     *        R.map(R.objOf('match_phrase'))
-	     *      );
-	     *      matchPhrases(['foo', 'bar', 'baz']); //=> {must: [{match_phrase: 'foo'}, {match_phrase: 'bar'}, {match_phrase: 'baz'}]}
-	     */
-	    var objOf = _curry2(function objOf(key, val) {
-	        var obj = {};
-	        obj[key] = val;
-	        return obj;
-	    });
-	
-	    /**
-	     * Returns a singleton array containing the value provided.
-	     *
-	     * Note this `of` is different from the ES6 `of`; See
-	     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category Function
-	     * @sig a -> [a]
-	     * @param {*} x any value
-	     * @return {Array} An array wrapping `x`.
-	     * @example
-	     *
-	     *      R.of(null); //=> [null]
-	     *      R.of([42]); //=> [[42]]
-	     */
-	    var of = _curry1(_of);
-	
-	    /**
-	     * Accepts a function `fn` and returns a function that guards invocation of
-	     * `fn` such that `fn` can only ever be called once, no matter how many times
-	     * the returned function is invoked. The first value calculated is returned in
-	     * subsequent invocations.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (a... -> b) -> (a... -> b)
-	     * @param {Function} fn The function to wrap in a call-only-once wrapper.
-	     * @return {Function} The wrapped function.
-	     * @example
-	     *
-	     *      var addOneOnce = R.once(x => x + 1);
-	     *      addOneOnce(10); //=> 11
-	     *      addOneOnce(addOneOnce(50)); //=> 11
-	     */
-	    var once = _curry1(function once(fn) {
-	        var called = false;
-	        var result;
-	        return _arity(fn.length, function () {
-	            if (called) {
-	                return result;
-	            }
-	            called = true;
-	            result = fn.apply(this, arguments);
-	            return result;
-	        });
-	    });
-	
-	    /**
-	     * Returns `true` if one or both of its arguments are `true`. Returns `false`
-	     * if both arguments are `false`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Logic
-	     * @sig * -> * -> *
-	     * @param {Boolean} a A boolean value
-	     * @param {Boolean} b A boolean value
-	     * @return {Boolean} `true` if one or both arguments are `true`, `false` otherwise
-	     * @see R.either
-	     * @example
-	     *
-	     *      R.or(true, true); //=> true
-	     *      R.or(true, false); //=> true
-	     *      R.or(false, true); //=> true
-	     *      R.or(false, false); //=> false
-	     */
-	    var or = _curry2(function or(a, b) {
-	        return a || b;
-	    });
-	
-	    /**
-	     * Returns the result of "setting" the portion of the given data structure
-	     * focused by the given lens to the result of applying the given function to
-	     * the focused value.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category Object
-	     * @typedefn Lens s a = Functor f => (a -> f a) -> s -> f s
-	     * @sig Lens s a -> (a -> a) -> s -> s
-	     * @param {Lens} lens
-	     * @param {*} v
-	     * @param {*} x
-	     * @return {*}
-	     * @see R.prop, R.lensIndex, R.lensProp
-	     * @example
-	     *
-	     *      var headLens = R.lensIndex(0);
-	     *
-	     *      R.over(headLens, R.toUpper, ['foo', 'bar', 'baz']); //=> ['FOO', 'bar', 'baz']
-	     */
-	    // `Identity` is a functor that holds a single value, where `map` simply
-	    // transforms the held value with the provided function.
-	    // The value returned by the getter function is first transformed with `f`,
-	    // then set as the value of an `Identity`. This is then mapped over with the
-	    // setter function of the lens.
-	    var over = function () {
-	        // `Identity` is a functor that holds a single value, where `map` simply
-	        // transforms the held value with the provided function.
-	        var Identity = function (x) {
-	            return {
-	                value: x,
-	                map: function (f) {
-	                    return Identity(f(x));
-	                }
-	            };
-	        };
-	        return _curry3(function over(lens, f, x) {
-	            // The value returned by the getter function is first transformed with `f`,
-	            // then set as the value of an `Identity`. This is then mapped over with the
-	            // setter function of the lens.
-	            return lens(function (y) {
-	                return Identity(f(y));
-	            })(x).value;
-	        });
-	    }();
-	
-	    /**
-	     * Takes two arguments, `fst` and `snd`, and returns `[fst, snd]`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.18.0
-	     * @category List
-	     * @sig a -> b -> (a,b)
-	     * @param {*} fst
-	     * @param {*} snd
-	     * @return {Array}
-	     * @see R.objOf, R.of
-	     * @example
-	     *
-	     *      R.pair('foo', 'bar'); //=> ['foo', 'bar']
-	     */
-	    var pair = _curry2(function pair(fst, snd) {
-	        return [
-	            fst,
-	            snd
-	        ];
-	    });
-	
-	    /**
-	     * Retrieve the value at a given path.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.2.0
-	     * @category Object
-	     * @sig [String] -> {k: v} -> v | Undefined
-	     * @param {Array} path The path to use.
-	     * @param {Object} obj The object to retrieve the nested property from.
-	     * @return {*} The data at `path`.
-	     * @see R.prop
-	     * @example
-	     *
-	     *      R.path(['a', 'b'], {a: {b: 2}}); //=> 2
-	     *      R.path(['a', 'b'], {c: {b: 2}}); //=> undefined
-	     */
-	    var path = _curry2(function path(paths, obj) {
-	        var val = obj;
-	        var idx = 0;
-	        while (idx < paths.length) {
-	            if (val == null) {
-	                return;
-	            }
-	            val = val[paths[idx]];
-	            idx += 1;
-	        }
-	        return val;
-	    });
-	
-	    /**
-	     * If the given, non-null object has a value at the given path, returns the
-	     * value at that path. Otherwise returns the provided default value.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.18.0
-	     * @category Object
-	     * @sig a -> [String] -> Object -> a
-	     * @param {*} d The default value.
-	     * @param {Array} p The path to use.
-	     * @param {Object} obj The object to retrieve the nested property from.
-	     * @return {*} The data at `path` of the supplied object or the default value.
-	     * @example
-	     *
-	     *      R.pathOr('N/A', ['a', 'b'], {a: {b: 2}}); //=> 2
-	     *      R.pathOr('N/A', ['a', 'b'], {c: {b: 2}}); //=> "N/A"
-	     */
-	    var pathOr = _curry3(function pathOr(d, p, obj) {
-	        return defaultTo(d, path(p, obj));
-	    });
-	
-	    /**
-	     * Returns `true` if the specified object property at given path satisfies the
-	     * given predicate; `false` otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category Logic
-	     * @sig (a -> Boolean) -> [String] -> Object -> Boolean
-	     * @param {Function} pred
-	     * @param {Array} propPath
-	     * @param {*} obj
-	     * @return {Boolean}
-	     * @see R.propSatisfies, R.path
-	     * @example
-	     *
-	     *      R.pathSatisfies(y => y > 0, ['x', 'y'], {x: {y: 2}}); //=> true
-	     */
-	    var pathSatisfies = _curry3(function pathSatisfies(pred, propPath, obj) {
-	        return propPath.length > 0 && pred(path(propPath, obj));
-	    });
-	
-	    /**
-	     * Returns a partial copy of an object containing only the keys specified. If
-	     * the key does not exist, the property is ignored.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig [k] -> {k: v} -> {k: v}
-	     * @param {Array} names an array of String property names to copy onto a new object
-	     * @param {Object} obj The object to copy from
-	     * @return {Object} A new object with only properties from `names` on it.
-	     * @see R.omit, R.props
-	     * @example
-	     *
-	     *      R.pick(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
-	     *      R.pick(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1}
-	     */
-	    var pick = _curry2(function pick(names, obj) {
-	        var result = {};
-	        var idx = 0;
-	        while (idx < names.length) {
-	            if (names[idx] in obj) {
-	                result[names[idx]] = obj[names[idx]];
-	            }
-	            idx += 1;
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Similar to `pick` except that this one includes a `key: undefined` pair for
-	     * properties that don't exist.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig [k] -> {k: v} -> {k: v}
-	     * @param {Array} names an array of String property names to copy onto a new object
-	     * @param {Object} obj The object to copy from
-	     * @return {Object} A new object with only properties from `names` on it.
-	     * @see R.pick
-	     * @example
-	     *
-	     *      R.pickAll(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, d: 4}
-	     *      R.pickAll(['a', 'e', 'f'], {a: 1, b: 2, c: 3, d: 4}); //=> {a: 1, e: undefined, f: undefined}
-	     */
-	    var pickAll = _curry2(function pickAll(names, obj) {
-	        var result = {};
-	        var idx = 0;
-	        var len = names.length;
-	        while (idx < len) {
-	            var name = names[idx];
-	            result[name] = obj[name];
-	            idx += 1;
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Returns a partial copy of an object containing only the keys that satisfy
-	     * the supplied predicate.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.8.0
-	     * @category Object
-	     * @sig (v, k -> Boolean) -> {k: v} -> {k: v}
-	     * @param {Function} pred A predicate to determine whether or not a key
-	     *        should be included on the output object.
-	     * @param {Object} obj The object to copy from
-	     * @return {Object} A new object with only properties that satisfy `pred`
-	     *         on it.
-	     * @see R.pick, R.filter
-	     * @example
-	     *
-	     *      var isUpperCase = (val, key) => key.toUpperCase() === key;
-	     *      R.pickBy(isUpperCase, {a: 1, b: 2, A: 3, B: 4}); //=> {A: 3, B: 4}
-	     */
-	    var pickBy = _curry2(function pickBy(test, obj) {
-	        var result = {};
-	        for (var prop in obj) {
-	            if (test(obj[prop], prop, obj)) {
-	                result[prop] = obj[prop];
-	            }
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Returns a new list with the given element at the front, followed by the
-	     * contents of the list.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig a -> [a] -> [a]
-	     * @param {*} el The item to add to the head of the output list.
-	     * @param {Array} list The array to add to the tail of the output list.
-	     * @return {Array} A new array.
-	     * @see R.append
-	     * @example
-	     *
-	     *      R.prepend('fee', ['fi', 'fo', 'fum']); //=> ['fee', 'fi', 'fo', 'fum']
-	     */
-	    var prepend = _curry2(function prepend(el, list) {
-	        return _concat([el], list);
-	    });
-	
-	    /**
-	     * Returns a function that when supplied an object returns the indicated
-	     * property of that object, if it exists.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig s -> {s: a} -> a | Undefined
-	     * @param {String} p The property name
-	     * @param {Object} obj The object to query
-	     * @return {*} The value at `obj.p`.
-	     * @see R.path
-	     * @example
-	     *
-	     *      R.prop('x', {x: 100}); //=> 100
-	     *      R.prop('x', {}); //=> undefined
-	     */
-	    var prop = _curry2(function prop(p, obj) {
-	        return obj[p];
-	    });
-	
-	    /**
-	     * Returns `true` if the specified object property is of the given type;
-	     * `false` otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category Type
-	     * @sig Type -> String -> Object -> Boolean
-	     * @param {Function} type
-	     * @param {String} name
-	     * @param {*} obj
-	     * @return {Boolean}
-	     * @see R.is, R.propSatisfies
-	     * @example
-	     *
-	     *      R.propIs(Number, 'x', {x: 1, y: 2});  //=> true
-	     *      R.propIs(Number, 'x', {x: 'foo'});    //=> false
-	     *      R.propIs(Number, 'x', {});            //=> false
-	     */
-	    var propIs = _curry3(function propIs(type, name, obj) {
-	        return is(type, obj[name]);
-	    });
-	
-	    /**
-	     * If the given, non-null object has an own property with the specified name,
-	     * returns the value of that property. Otherwise returns the provided default
-	     * value.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.6.0
-	     * @category Object
-	     * @sig a -> String -> Object -> a
-	     * @param {*} val The default value.
-	     * @param {String} p The name of the property to return.
-	     * @param {Object} obj The object to query.
-	     * @return {*} The value of given property of the supplied object or the default value.
-	     * @example
-	     *
-	     *      var alice = {
-	     *        name: 'ALICE',
-	     *        age: 101
-	     *      };
-	     *      var favorite = R.prop('favoriteLibrary');
-	     *      var favoriteWithDefault = R.propOr('Ramda', 'favoriteLibrary');
-	     *
-	     *      favorite(alice);  //=> undefined
-	     *      favoriteWithDefault(alice);  //=> 'Ramda'
-	     */
-	    var propOr = _curry3(function propOr(val, p, obj) {
-	        return obj != null && _has(p, obj) ? obj[p] : val;
-	    });
-	
-	    /**
-	     * Returns `true` if the specified object property satisfies the given
-	     * predicate; `false` otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category Logic
-	     * @sig (a -> Boolean) -> String -> {String: a} -> Boolean
-	     * @param {Function} pred
-	     * @param {String} name
-	     * @param {*} obj
-	     * @return {Boolean}
-	     * @see R.propEq, R.propIs
-	     * @example
-	     *
-	     *      R.propSatisfies(x => x > 0, 'x', {x: 1, y: 2}); //=> true
-	     */
-	    var propSatisfies = _curry3(function propSatisfies(pred, name, obj) {
-	        return pred(obj[name]);
-	    });
-	
-	    /**
-	     * Acts as multiple `prop`: array of keys in, array of values out. Preserves
-	     * order.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig [k] -> {k: v} -> [v]
-	     * @param {Array} ps The property names to fetch
-	     * @param {Object} obj The object to query
-	     * @return {Array} The corresponding values or partially applied function.
-	     * @example
-	     *
-	     *      R.props(['x', 'y'], {x: 1, y: 2}); //=> [1, 2]
-	     *      R.props(['c', 'a', 'b'], {b: 2, a: 1}); //=> [undefined, 1, 2]
-	     *
-	     *      var fullName = R.compose(R.join(' '), R.props(['first', 'last']));
-	     *      fullName({last: 'Bullet-Tooth', age: 33, first: 'Tony'}); //=> 'Tony Bullet-Tooth'
-	     */
-	    var props = _curry2(function props(ps, obj) {
-	        var len = ps.length;
-	        var out = [];
-	        var idx = 0;
-	        while (idx < len) {
-	            out[idx] = obj[ps[idx]];
-	            idx += 1;
-	        }
-	        return out;
-	    });
-	
-	    /**
-	     * Returns a list of numbers from `from` (inclusive) to `to` (exclusive).
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig Number -> Number -> [Number]
-	     * @param {Number} from The first number in the list.
-	     * @param {Number} to One more than the last number in the list.
-	     * @return {Array} The list of numbers in tthe set `[a, b)`.
-	     * @example
-	     *
-	     *      R.range(1, 5);    //=> [1, 2, 3, 4]
-	     *      R.range(50, 53);  //=> [50, 51, 52]
-	     */
-	    var range = _curry2(function range(from, to) {
-	        if (!(_isNumber(from) && _isNumber(to))) {
-	            throw new TypeError('Both arguments to range must be numbers');
-	        }
-	        var result = [];
-	        var n = from;
-	        while (n < to) {
-	            result.push(n);
-	            n += 1;
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Returns a single item by iterating through the list, successively calling
-	     * the iterator function and passing it an accumulator value and the current
-	     * value from the array, and then passing the result to the next call.
-	     *
-	     * Similar to `reduce`, except moves through the input list from the right to
-	     * the left.
-	     *
-	     * The iterator function receives two values: *(acc, value)*
-	     *
-	     * Note: `R.reduceRight` does not skip deleted or unassigned indices (sparse
-	     * arrays), unlike the native `Array.prototype.reduce` method. For more details
-	     * on this behavior, see:
-	     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight#Description
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig (a,b -> a) -> a -> [b] -> a
-	     * @param {Function} fn The iterator function. Receives two values, the accumulator and the
-	     *        current element from the array.
-	     * @param {*} acc The accumulator value.
-	     * @param {Array} list The list to iterate over.
-	     * @return {*} The final, accumulated value.
-	     * @see R.addIndex
-	     * @example
-	     *
-	     *      var pairs = [ ['a', 1], ['b', 2], ['c', 3] ];
-	     *      var flattenPairs = (acc, pair) => acc.concat(pair);
-	     *
-	     *      R.reduceRight(flattenPairs, [], pairs); //=> [ 'c', 3, 'b', 2, 'a', 1 ]
-	     */
-	    var reduceRight = _curry3(function reduceRight(fn, acc, list) {
-	        var idx = list.length - 1;
-	        while (idx >= 0) {
-	            acc = fn(acc, list[idx]);
-	            idx -= 1;
-	        }
-	        return acc;
-	    });
-	
-	    /**
-	     * Returns a value wrapped to indicate that it is the final value of the reduce
-	     * and transduce functions. The returned value should be considered a black
-	     * box: the internal structure is not guaranteed to be stable.
-	     *
-	     * Note: this optimization is unavailable to functions not explicitly listed
-	     * above. For instance, it is not currently supported by reduceRight.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.15.0
-	     * @category List
-	     * @sig a -> *
-	     * @param {*} x The final value of the reduce.
-	     * @return {*} The wrapped value.
-	     * @see R.reduce, R.transduce
-	     * @example
-	     *
-	     *      R.reduce(
-	     *        R.pipe(R.add, R.when(R.gte(R.__, 10), R.reduced)),
-	     *        0,
-	     *        [1, 2, 3, 4, 5]) // 10
-	     */
-	    var reduced = _curry1(_reduced);
-	
-	    /**
-	     * Removes the sub-list of `list` starting at index `start` and containing
-	     * `count` elements. _Note that this is not destructive_: it returns a copy of
-	     * the list with the changes.
-	     * <small>No lists have been harmed in the application of this function.</small>
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.2.2
-	     * @category List
-	     * @sig Number -> Number -> [a] -> [a]
-	     * @param {Number} start The position to start removing elements
-	     * @param {Number} count The number of elements to remove
-	     * @param {Array} list The list to remove from
-	     * @return {Array} A new Array with `count` elements from `start` removed.
-	     * @example
-	     *
-	     *      R.remove(2, 3, [1,2,3,4,5,6,7,8]); //=> [1,2,6,7,8]
-	     */
-	    var remove = _curry3(function remove(start, count, list) {
-	        return _concat(_slice(list, 0, Math.min(start, list.length)), _slice(list, Math.min(list.length, start + count)));
-	    });
-	
-	    /**
-	     * Replace a substring or regex match in a string with a replacement.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.7.0
-	     * @category String
-	     * @sig RegExp|String -> String -> String -> String
-	     * @param {RegExp|String} pattern A regular expression or a substring to match.
-	     * @param {String} replacement The string to replace the matches with.
-	     * @param {String} str The String to do the search and replacement in.
-	     * @return {String} The result.
-	     * @example
-	     *
-	     *      R.replace('foo', 'bar', 'foo foo foo'); //=> 'bar foo foo'
-	     *      R.replace(/foo/, 'bar', 'foo foo foo'); //=> 'bar foo foo'
-	     *
-	     *      // Use the "g" (global) flag to replace all occurrences:
-	     *      R.replace(/foo/g, 'bar', 'foo foo foo'); //=> 'bar bar bar'
-	     */
-	    var replace = _curry3(function replace(regex, replacement, str) {
-	        return str.replace(regex, replacement);
-	    });
-	
-	    /**
-	     * Returns a new list or string with the elements or characters in reverse
-	     * order.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig [a] -> [a]
-	     * @sig String -> String
-	     * @param {Array|String} list
-	     * @return {Array|String}
-	     * @example
-	     *
-	     *      R.reverse([1, 2, 3]);  //=> [3, 2, 1]
-	     *      R.reverse([1, 2]);     //=> [2, 1]
-	     *      R.reverse([1]);        //=> [1]
-	     *      R.reverse([]);         //=> []
-	     *
-	     *      R.reverse('abc');      //=> 'cba'
-	     *      R.reverse('ab');       //=> 'ba'
-	     *      R.reverse('a');        //=> 'a'
-	     *      R.reverse('');         //=> ''
-	     */
-	    var reverse = _curry1(function reverse(list) {
-	        return _isString(list) ? list.split('').reverse().join('') : _slice(list).reverse();
-	    });
-	
-	    /**
-	     * Scan is similar to reduce, but returns a list of successively reduced values
-	     * from the left
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category List
-	     * @sig (a,b -> a) -> a -> [b] -> [a]
-	     * @param {Function} fn The iterator function. Receives two values, the accumulator and the
-	     *        current element from the array
-	     * @param {*} acc The accumulator value.
-	     * @param {Array} list The list to iterate over.
-	     * @return {Array} A list of all intermediately reduced values.
-	     * @example
-	     *
-	     *      var numbers = [1, 2, 3, 4];
-	     *      var factorials = R.scan(R.multiply, 1, numbers); //=> [1, 1, 2, 6, 24]
-	     */
-	    var scan = _curry3(function scan(fn, acc, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        var result = [acc];
-	        while (idx < len) {
-	            acc = fn(acc, list[idx]);
-	            result[idx + 1] = acc;
-	            idx += 1;
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Returns the result of "setting" the portion of the given data structure
-	     * focused by the given lens to the given value.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category Object
-	     * @typedefn Lens s a = Functor f => (a -> f a) -> s -> f s
-	     * @sig Lens s a -> a -> s -> s
-	     * @param {Lens} lens
-	     * @param {*} v
-	     * @param {*} x
-	     * @return {*}
-	     * @see R.prop, R.lensIndex, R.lensProp
-	     * @example
-	     *
-	     *      var xLens = R.lensProp('x');
-	     *
-	     *      R.set(xLens, 4, {x: 1, y: 2});  //=> {x: 4, y: 2}
-	     *      R.set(xLens, 8, {x: 1, y: 2});  //=> {x: 8, y: 2}
-	     */
-	    var set = _curry3(function set(lens, v, x) {
-	        return over(lens, always(v), x);
-	    });
-	
-	    /**
-	     * Returns the elements of the given list or string (or object with a `slice`
-	     * method) from `fromIndex` (inclusive) to `toIndex` (exclusive).
-	     *
-	     * Dispatches to the `slice` method of the third argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.4
-	     * @category List
-	     * @sig Number -> Number -> [a] -> [a]
-	     * @sig Number -> Number -> String -> String
-	     * @param {Number} fromIndex The start index (inclusive).
-	     * @param {Number} toIndex The end index (exclusive).
-	     * @param {*} list
-	     * @return {*}
-	     * @example
-	     *
-	     *      R.slice(1, 3, ['a', 'b', 'c', 'd']);        //=> ['b', 'c']
-	     *      R.slice(1, Infinity, ['a', 'b', 'c', 'd']); //=> ['b', 'c', 'd']
-	     *      R.slice(0, -1, ['a', 'b', 'c', 'd']);       //=> ['a', 'b', 'c']
-	     *      R.slice(-3, -1, ['a', 'b', 'c', 'd']);      //=> ['b', 'c']
-	     *      R.slice(0, 3, 'ramda');                     //=> 'ram'
-	     */
-	    var slice = _curry3(_checkForMethod('slice', function slice(fromIndex, toIndex, list) {
-	        return Array.prototype.slice.call(list, fromIndex, toIndex);
-	    }));
-	
-	    /**
-	     * Returns a copy of the list, sorted according to the comparator function,
-	     * which should accept two values at a time and return a negative number if the
-	     * first value is smaller, a positive number if it's larger, and zero if they
-	     * are equal. Please note that this is a **copy** of the list. It does not
-	     * modify the original.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig (a,a -> Number) -> [a] -> [a]
-	     * @param {Function} comparator A sorting function :: a -> b -> Int
-	     * @param {Array} list The list to sort
-	     * @return {Array} a new array with its elements sorted by the comparator function.
-	     * @example
-	     *
-	     *      var diff = function(a, b) { return a - b; };
-	     *      R.sort(diff, [4,2,7,5]); //=> [2, 4, 5, 7]
-	     */
-	    var sort = _curry2(function sort(comparator, list) {
-	        return _slice(list).sort(comparator);
-	    });
-	
-	    /**
-	     * Sorts the list according to the supplied function.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig Ord b => (a -> b) -> [a] -> [a]
-	     * @param {Function} fn
-	     * @param {Array} list The list to sort.
-	     * @return {Array} A new list sorted by the keys generated by `fn`.
-	     * @example
-	     *
-	     *      var sortByFirstItem = R.sortBy(R.prop(0));
-	     *      var sortByNameCaseInsensitive = R.sortBy(R.compose(R.toLower, R.prop('name')));
-	     *      var pairs = [[-1, 1], [-2, 2], [-3, 3]];
-	     *      sortByFirstItem(pairs); //=> [[-3, 3], [-2, 2], [-1, 1]]
-	     *      var alice = {
-	     *        name: 'ALICE',
-	     *        age: 101
-	     *      };
-	     *      var bob = {
-	     *        name: 'Bob',
-	     *        age: -10
-	     *      };
-	     *      var clara = {
-	     *        name: 'clara',
-	     *        age: 314.159
-	     *      };
-	     *      var people = [clara, bob, alice];
-	     *      sortByNameCaseInsensitive(people); //=> [alice, bob, clara]
-	     */
-	    var sortBy = _curry2(function sortBy(fn, list) {
-	        return _slice(list).sort(function (a, b) {
-	            var aa = fn(a);
-	            var bb = fn(b);
-	            return aa < bb ? -1 : aa > bb ? 1 : 0;
-	        });
-	    });
-	
-	    /**
-	     * Splits a given list or string at a given index.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category List
-	     * @sig Number -> [a] -> [[a], [a]]
-	     * @sig Number -> String -> [String, String]
-	     * @param {Number} index The index where the array/string is split.
-	     * @param {Array|String} array The array/string to be split.
-	     * @return {Array}
-	     * @example
-	     *
-	     *      R.splitAt(1, [1, 2, 3]);          //=> [[1], [2, 3]]
-	     *      R.splitAt(5, 'hello world');      //=> ['hello', ' world']
-	     *      R.splitAt(-1, 'foobar');          //=> ['fooba', 'r']
-	     */
-	    var splitAt = _curry2(function splitAt(index, array) {
-	        return [
-	            slice(0, index, array),
-	            slice(index, length(array), array)
-	        ];
-	    });
-	
-	    /**
-	     * Splits a collection into slices of the specified length.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category List
-	     * @sig Number -> [a] -> [[a]]
-	     * @sig Number -> String -> [String]
-	     * @param {Number} n
-	     * @param {Array} list
-	     * @return {Array}
-	     * @example
-	     *
-	     *      R.splitEvery(3, [1, 2, 3, 4, 5, 6, 7]); //=> [[1, 2, 3], [4, 5, 6], [7]]
-	     *      R.splitEvery(3, 'foobarbaz'); //=> ['foo', 'bar', 'baz']
-	     */
-	    var splitEvery = _curry2(function splitEvery(n, list) {
-	        if (n <= 0) {
-	            throw new Error('First argument to splitEvery must be a positive integer');
-	        }
-	        var result = [];
-	        var idx = 0;
-	        while (idx < list.length) {
-	            result.push(slice(idx, idx += n, list));
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Takes a list and a predicate and returns a pair of lists with the following properties:
-	     *
-	     *  - the result of concatenating the two output lists is equivalent to the input list;
-	     *  - none of the elements of the first output list satisfies the predicate; and
-	     *  - if the second output list is non-empty, its first element satisfies the predicate.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> [[a], [a]]
-	     * @param {Function} pred The predicate that determines where the array is split.
-	     * @param {Array} list The array to be split.
-	     * @return {Array}
-	     * @example
-	     *
-	     *      R.splitWhen(R.equals(2), [1, 2, 3, 1, 2, 3]);   //=> [[1], [2, 3, 1, 2, 3]]
-	     */
-	    var splitWhen = _curry2(function splitWhen(pred, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        var prefix = [];
-	        while (idx < len && !pred(list[idx])) {
-	            prefix.push(list[idx]);
-	            idx += 1;
-	        }
-	        return [
-	            prefix,
-	            _slice(list, idx)
-	        ];
-	    });
-	
-	    /**
-	     * Subtracts its second argument from its first argument.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Math
-	     * @sig Number -> Number -> Number
-	     * @param {Number} a The first value.
-	     * @param {Number} b The second value.
-	     * @return {Number} The result of `a - b`.
-	     * @see R.add
-	     * @example
-	     *
-	     *      R.subtract(10, 8); //=> 2
-	     *
-	     *      var minus5 = R.subtract(R.__, 5);
-	     *      minus5(17); //=> 12
-	     *
-	     *      var complementaryAngle = R.subtract(90);
-	     *      complementaryAngle(30); //=> 60
-	     *      complementaryAngle(72); //=> 18
-	     */
-	    var subtract = _curry2(function subtract(a, b) {
-	        return Number(a) - Number(b);
-	    });
-	
-	    /**
-	     * Returns all but the first element of the given list or string (or object
-	     * with a `tail` method).
-	     *
-	     * Dispatches to the `slice` method of the first argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig [a] -> [a]
-	     * @sig String -> String
-	     * @param {*} list
-	     * @return {*}
-	     * @see R.head, R.init, R.last
-	     * @example
-	     *
-	     *      R.tail([1, 2, 3]);  //=> [2, 3]
-	     *      R.tail([1, 2]);     //=> [2]
-	     *      R.tail([1]);        //=> []
-	     *      R.tail([]);         //=> []
-	     *
-	     *      R.tail('abc');  //=> 'bc'
-	     *      R.tail('ab');   //=> 'b'
-	     *      R.tail('a');    //=> ''
-	     *      R.tail('');     //=> ''
-	     */
-	    var tail = _checkForMethod('tail', slice(1, Infinity));
-	
-	    /**
-	     * Returns the first `n` elements of the given list, string, or
-	     * transducer/transformer (or object with a `take` method).
-	     *
-	     * Dispatches to the `take` method of the second argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig Number -> [a] -> [a]
-	     * @sig Number -> String -> String
-	     * @param {Number} n
-	     * @param {*} list
-	     * @return {*}
-	     * @see R.drop
-	     * @example
-	     *
-	     *      R.take(1, ['foo', 'bar', 'baz']); //=> ['foo']
-	     *      R.take(2, ['foo', 'bar', 'baz']); //=> ['foo', 'bar']
-	     *      R.take(3, ['foo', 'bar', 'baz']); //=> ['foo', 'bar', 'baz']
-	     *      R.take(4, ['foo', 'bar', 'baz']); //=> ['foo', 'bar', 'baz']
-	     *      R.take(3, 'ramda');               //=> 'ram'
-	     *
-	     *      var personnel = [
-	     *        'Dave Brubeck',
-	     *        'Paul Desmond',
-	     *        'Eugene Wright',
-	     *        'Joe Morello',
-	     *        'Gerry Mulligan',
-	     *        'Bob Bates',
-	     *        'Joe Dodge',
-	     *        'Ron Crotty'
-	     *      ];
-	     *
-	     *      var takeFive = R.take(5);
-	     *      takeFive(personnel);
-	     *      //=> ['Dave Brubeck', 'Paul Desmond', 'Eugene Wright', 'Joe Morello', 'Gerry Mulligan']
-	     */
-	    var take = _curry2(_dispatchable('take', _xtake, function take(n, xs) {
-	        return slice(0, n < 0 ? Infinity : n, xs);
-	    }));
-	
-	    /**
-	     * Returns a new list containing the last `n` elements of a given list, passing
-	     * each value to the supplied predicate function, and terminating when the
-	     * predicate function returns `false`. Excludes the element that caused the
-	     * predicate function to fail. The predicate function is passed one argument:
-	     * *(value)*.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> [a]
-	     * @param {Function} fn The function called per iteration.
-	     * @param {Array} list The collection to iterate over.
-	     * @return {Array} A new array.
-	     * @see R.dropLastWhile, R.addIndex
-	     * @example
-	     *
-	     *      var isNotOne = x => x !== 1;
-	     *
-	     *      R.takeLastWhile(isNotOne, [1, 2, 3, 4]); //=> [2, 3, 4]
-	     */
-	    var takeLastWhile = _curry2(function takeLastWhile(fn, list) {
-	        var idx = list.length - 1;
-	        while (idx >= 0 && fn(list[idx])) {
-	            idx -= 1;
-	        }
-	        return _slice(list, idx + 1, Infinity);
-	    });
-	
-	    /**
-	     * Returns a new list containing the first `n` elements of a given list,
-	     * passing each value to the supplied predicate function, and terminating when
-	     * the predicate function returns `false`. Excludes the element that caused the
-	     * predicate function to fail. The predicate function is passed one argument:
-	     * *(value)*.
-	     *
-	     * Dispatches to the `takeWhile` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> [a]
-	     * @param {Function} fn The function called per iteration.
-	     * @param {Array} list The collection to iterate over.
-	     * @return {Array} A new array.
-	     * @see R.dropWhile, R.transduce, R.addIndex
-	     * @example
-	     *
-	     *      var isNotFour = x => x !== 4;
-	     *
-	     *      R.takeWhile(isNotFour, [1, 2, 3, 4, 3, 2, 1]); //=> [1, 2, 3]
-	     */
-	    var takeWhile = _curry2(_dispatchable('takeWhile', _xtakeWhile, function takeWhile(fn, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        while (idx < len && fn(list[idx])) {
-	            idx += 1;
-	        }
-	        return _slice(list, 0, idx);
-	    }));
-	
-	    /**
-	     * Runs the given function with the supplied object, then returns the object.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (a -> *) -> a -> a
-	     * @param {Function} fn The function to call with `x`. The return value of `fn` will be thrown away.
-	     * @param {*} x
-	     * @return {*} `x`.
-	     * @example
-	     *
-	     *      var sayX = x => console.log('x is ' + x);
-	     *      R.tap(sayX, 100); //=> 100
-	     *      // logs 'x is 100'
-	     */
-	    var tap = _curry2(function tap(fn, x) {
-	        fn(x);
-	        return x;
-	    });
-	
-	    /**
-	     * Calls an input function `n` times, returning an array containing the results
-	     * of those function calls.
-	     *
-	     * `fn` is passed one argument: The current value of `n`, which begins at `0`
-	     * and is gradually incremented to `n - 1`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.2.3
-	     * @category List
-	     * @sig (Number -> a) -> Number -> [a]
-	     * @param {Function} fn The function to invoke. Passed one argument, the current value of `n`.
-	     * @param {Number} n A value between `0` and `n - 1`. Increments after each function call.
-	     * @return {Array} An array containing the return values of all calls to `fn`.
-	     * @example
-	     *
-	     *      R.times(R.identity, 5); //=> [0, 1, 2, 3, 4]
-	     */
-	    var times = _curry2(function times(fn, n) {
-	        var len = Number(n);
-	        var idx = 0;
-	        var list;
-	        if (len < 0 || isNaN(len)) {
-	            throw new RangeError('n must be a non-negative number');
-	        }
-	        list = new Array(len);
-	        while (idx < len) {
-	            list[idx] = fn(idx);
-	            idx += 1;
-	        }
-	        return list;
-	    });
-	
-	    /**
-	     * Converts an object into an array of key, value arrays. Only the object's
-	     * own properties are used.
-	     * Note that the order of the output array is not guaranteed to be consistent
-	     * across different JS platforms.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.4.0
-	     * @category Object
-	     * @sig {String: *} -> [[String,*]]
-	     * @param {Object} obj The object to extract from
-	     * @return {Array} An array of key, value arrays from the object's own properties.
-	     * @see R.fromPairs
-	     * @example
-	     *
-	     *      R.toPairs({a: 1, b: 2, c: 3}); //=> [['a', 1], ['b', 2], ['c', 3]]
-	     */
-	    var toPairs = _curry1(function toPairs(obj) {
-	        var pairs = [];
-	        for (var prop in obj) {
-	            if (_has(prop, obj)) {
-	                pairs[pairs.length] = [
-	                    prop,
-	                    obj[prop]
-	                ];
-	            }
-	        }
-	        return pairs;
-	    });
-	
-	    /**
-	     * Converts an object into an array of key, value arrays. The object's own
-	     * properties and prototype properties are used. Note that the order of the
-	     * output array is not guaranteed to be consistent across different JS
-	     * platforms.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.4.0
-	     * @category Object
-	     * @sig {String: *} -> [[String,*]]
-	     * @param {Object} obj The object to extract from
-	     * @return {Array} An array of key, value arrays from the object's own
-	     *         and prototype properties.
-	     * @example
-	     *
-	     *      var F = function() { this.x = 'X'; };
-	     *      F.prototype.y = 'Y';
-	     *      var f = new F();
-	     *      R.toPairsIn(f); //=> [['x','X'], ['y','Y']]
-	     */
-	    var toPairsIn = _curry1(function toPairsIn(obj) {
-	        var pairs = [];
-	        for (var prop in obj) {
-	            pairs[pairs.length] = [
-	                prop,
-	                obj[prop]
-	            ];
-	        }
-	        return pairs;
-	    });
-	
-	    /**
-	     * Transposes the rows and columns of a 2D list.
-	     * When passed a list of `n` lists of length `x`,
-	     * returns a list of `x` lists of length `n`.
-	     *
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category List
-	     * @sig [[a]] -> [[a]]
-	     * @param {Array} list A 2D list
-	     * @return {Array} A 2D list
-	     * @example
-	     *
-	     *      R.transpose([[1, 'a'], [2, 'b'], [3, 'c']]) //=> [[1, 2, 3], ['a', 'b', 'c']]
-	     *      R.transpose([[1, 2, 3], ['a', 'b', 'c']]) //=> [[1, 'a'], [2, 'b'], [3, 'c']]
-	     *
-	     * If some of the rows are shorter than the following rows, their elements are skipped:
-	     *
-	     *      R.transpose([[10, 11], [20], [], [30, 31, 32]]) //=> [[10, 20, 30], [11, 31], [32]]
-	     */
-	    var transpose = _curry1(function transpose(outerlist) {
-	        var i = 0;
-	        var result = [];
-	        while (i < outerlist.length) {
-	            var innerlist = outerlist[i];
-	            var j = 0;
-	            while (j < innerlist.length) {
-	                if (typeof result[j] === 'undefined') {
-	                    result[j] = [];
-	                }
-	                result[j].push(innerlist[j]);
-	                j += 1;
-	            }
-	            i += 1;
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Removes (strips) whitespace from both ends of the string.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.6.0
-	     * @category String
-	     * @sig String -> String
-	     * @param {String} str The string to trim.
-	     * @return {String} Trimmed version of `str`.
-	     * @example
-	     *
-	     *      R.trim('   xyz  '); //=> 'xyz'
-	     *      R.map(R.trim, R.split(',', 'x, y, z')); //=> ['x', 'y', 'z']
-	     */
-	    var trim = function () {
-	        var ws = '\t\n\x0B\f\r \xA0\u1680\u180E\u2000\u2001\u2002\u2003' + '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028' + '\u2029\uFEFF';
-	        var zeroWidth = '\u200B';
-	        var hasProtoTrim = typeof String.prototype.trim === 'function';
-	        if (!hasProtoTrim || (ws.trim() || !zeroWidth.trim())) {
-	            return _curry1(function trim(str) {
-	                var beginRx = new RegExp('^[' + ws + '][' + ws + ']*');
-	                var endRx = new RegExp('[' + ws + '][' + ws + ']*$');
-	                return str.replace(beginRx, '').replace(endRx, '');
-	            });
-	        } else {
-	            return _curry1(function trim(str) {
-	                return str.trim();
-	            });
-	        }
-	    }();
-	
-	    /**
-	     * `tryCatch` takes two functions, a `tryer` and a `catcher`. The returned
-	     * function evaluates the `tryer`; if it does not throw, it simply returns the
-	     * result. If the `tryer` *does* throw, the returned function evaluates the
-	     * `catcher` function and returns its result. Note that for effective
-	     * composition with this function, both the `tryer` and `catcher` functions
-	     * must return the same type of results.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.20.0
-	     * @category Function
-	     * @sig (...x -> a) -> ((e, ...x) -> a) -> (...x -> a)
-	     * @param {Function} tryer The function that may throw.
-	     * @param {Function} catcher The function that will be evaluated if `tryer` throws.
-	     * @return {Function} A new function that will catch exceptions and send then to the catcher.
-	     * @example
-	     *
-	     *      R.tryCatch(R.prop('x'), R.F)({x: true}); //=> true
-	     *      R.tryCatch(R.prop('x'), R.F)(null);      //=> false
-	     */
-	    var tryCatch = _curry2(function _tryCatch(tryer, catcher) {
-	        return _arity(tryer.length, function () {
-	            try {
-	                return tryer.apply(this, arguments);
-	            } catch (e) {
-	                return catcher.apply(this, _concat([e], arguments));
-	            }
-	        });
-	    });
-	
-	    /**
-	     * Gives a single-word string description of the (native) type of a value,
-	     * returning such answers as 'Object', 'Number', 'Array', or 'Null'. Does not
-	     * attempt to distinguish user Object types any further, reporting them all as
-	     * 'Object'.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.8.0
-	     * @category Type
-	     * @sig (* -> {*}) -> String
-	     * @param {*} val The value to test
-	     * @return {String}
-	     * @example
-	     *
-	     *      R.type({}); //=> "Object"
-	     *      R.type(1); //=> "Number"
-	     *      R.type(false); //=> "Boolean"
-	     *      R.type('s'); //=> "String"
-	     *      R.type(null); //=> "Null"
-	     *      R.type([]); //=> "Array"
-	     *      R.type(/[A-z]/); //=> "RegExp"
-	     */
-	    var type = _curry1(function type(val) {
-	        return val === null ? 'Null' : val === undefined ? 'Undefined' : Object.prototype.toString.call(val).slice(8, -1);
-	    });
-	
-	    /**
-	     * Takes a function `fn`, which takes a single array argument, and returns a
-	     * function which:
-	     *
-	     *   - takes any number of positional arguments;
-	     *   - passes these arguments to `fn` as an array; and
-	     *   - returns the result.
-	     *
-	     * In other words, R.unapply derives a variadic function from a function which
-	     * takes an array. R.unapply is the inverse of R.apply.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.8.0
-	     * @category Function
-	     * @sig ([*...] -> a) -> (*... -> a)
-	     * @param {Function} fn
-	     * @return {Function}
-	     * @see R.apply
-	     * @example
-	     *
-	     *      R.unapply(JSON.stringify)(1, 2, 3); //=> '[1,2,3]'
-	     */
-	    var unapply = _curry1(function unapply(fn) {
-	        return function () {
-	            return fn(_slice(arguments));
-	        };
-	    });
-	
-	    /**
-	     * Wraps a function of any arity (including nullary) in a function that accepts
-	     * exactly 1 parameter. Any extraneous parameters will not be passed to the
-	     * supplied function.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.2.0
-	     * @category Function
-	     * @sig (* -> b) -> (a -> b)
-	     * @param {Function} fn The function to wrap.
-	     * @return {Function} A new function wrapping `fn`. The new function is guaranteed to be of
-	     *         arity 1.
-	     * @example
-	     *
-	     *      var takesTwoArgs = function(a, b) {
-	     *        return [a, b];
-	     *      };
-	     *      takesTwoArgs.length; //=> 2
-	     *      takesTwoArgs(1, 2); //=> [1, 2]
-	     *
-	     *      var takesOneArg = R.unary(takesTwoArgs);
-	     *      takesOneArg.length; //=> 1
-	     *      // Only 1 argument is passed to the wrapped function
-	     *      takesOneArg(1, 2); //=> [1, undefined]
-	     */
-	    var unary = _curry1(function unary(fn) {
-	        return nAry(1, fn);
-	    });
-	
-	    /**
-	     * Returns a function of arity `n` from a (manually) curried function.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category Function
-	     * @sig Number -> (a -> b) -> (a -> c)
-	     * @param {Number} length The arity for the returned function.
-	     * @param {Function} fn The function to uncurry.
-	     * @return {Function} A new function.
-	     * @see R.curry
-	     * @example
-	     *
-	     *      var addFour = a => b => c => d => a + b + c + d;
-	     *
-	     *      var uncurriedAddFour = R.uncurryN(4, addFour);
-	     *      uncurriedAddFour(1, 2, 3, 4); //=> 10
-	     */
-	    var uncurryN = _curry2(function uncurryN(depth, fn) {
-	        return curryN(depth, function () {
-	            var currentDepth = 1;
-	            var value = fn;
-	            var idx = 0;
-	            var endIdx;
-	            while (currentDepth <= depth && typeof value === 'function') {
-	                endIdx = currentDepth === depth ? arguments.length : idx + value.length;
-	                value = value.apply(this, _slice(arguments, idx, endIdx));
-	                currentDepth += 1;
-	                idx = endIdx;
-	            }
-	            return value;
-	        });
-	    });
-	
-	    /**
-	     * Builds a list from a seed value. Accepts an iterator function, which returns
-	     * either false to stop iteration or an array of length 2 containing the value
-	     * to add to the resulting list and the seed to be used in the next call to the
-	     * iterator function.
-	     *
-	     * The iterator function receives one argument: *(seed)*.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category List
-	     * @sig (a -> [b]) -> * -> [b]
-	     * @param {Function} fn The iterator function. receives one argument, `seed`, and returns
-	     *        either false to quit iteration or an array of length two to proceed. The element
-	     *        at index 0 of this array will be added to the resulting array, and the element
-	     *        at index 1 will be passed to the next call to `fn`.
-	     * @param {*} seed The seed value.
-	     * @return {Array} The final list.
-	     * @example
-	     *
-	     *      var f = n => n > 50 ? false : [-n, n + 10];
-	     *      R.unfold(f, 10); //=> [-10, -20, -30, -40, -50]
-	     */
-	    var unfold = _curry2(function unfold(fn, seed) {
-	        var pair = fn(seed);
-	        var result = [];
-	        while (pair && pair.length) {
-	            result[result.length] = pair[0];
-	            pair = fn(pair[1]);
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Returns a new list containing only one copy of each element in the original
-	     * list, based upon the value returned by applying the supplied predicate to
-	     * two list elements. Prefers the first item if two items compare equal based
-	     * on the predicate.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.2.0
-	     * @category List
-	     * @sig (a, a -> Boolean) -> [a] -> [a]
-	     * @param {Function} pred A predicate used to test whether two items are equal.
-	     * @param {Array} list The array to consider.
-	     * @return {Array} The list of unique items.
-	     * @example
-	     *
-	     *      var strEq = R.eqBy(String);
-	     *      R.uniqWith(strEq)([1, '1', 2, 1]); //=> [1, 2]
-	     *      R.uniqWith(strEq)([{}, {}]);       //=> [{}]
-	     *      R.uniqWith(strEq)([1, '1', 1]);    //=> [1]
-	     *      R.uniqWith(strEq)(['1', 1, 1]);    //=> ['1']
-	     */
-	    var uniqWith = _curry2(function uniqWith(pred, list) {
-	        var idx = 0;
-	        var len = list.length;
-	        var result = [];
-	        var item;
-	        while (idx < len) {
-	            item = list[idx];
-	            if (!_containsWith(pred, item, result)) {
-	                result[result.length] = item;
-	            }
-	            idx += 1;
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Tests the final argument by passing it to the given predicate function. If
-	     * the predicate is not satisfied, the function will return the result of
-	     * calling the `whenFalseFn` function with the same argument. If the predicate
-	     * is satisfied, the argument is returned as is.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.18.0
-	     * @category Logic
-	     * @sig (a -> Boolean) -> (a -> a) -> a -> a
-	     * @param {Function} pred        A predicate function
-	     * @param {Function} whenFalseFn A function to invoke when the `pred` evaluates
-	     *                               to a falsy value.
-	     * @param {*}        x           An object to test with the `pred` function and
-	     *                               pass to `whenFalseFn` if necessary.
-	     * @return {*} Either `x` or the result of applying `x` to `whenFalseFn`.
-	     * @see R.ifElse, R.when
-	     * @example
-	     *
-	     *      // coerceArray :: (a|[a]) -> [a]
-	     *      var coerceArray = R.unless(R.isArrayLike, R.of);
-	     *      coerceArray([1, 2, 3]); //=> [1, 2, 3]
-	     *      coerceArray(1);         //=> [1]
-	     */
-	    var unless = _curry3(function unless(pred, whenFalseFn, x) {
-	        return pred(x) ? x : whenFalseFn(x);
-	    });
-	
-	    /**
-	     * Takes a predicate, a transformation function, and an initial value,
-	     * and returns a value of the same type as the initial value.
-	     * It does so by applying the transformation until the predicate is satisfied,
-	     * at which point it returns the satisfactory value.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.20.0
-	     * @category Logic
-	     * @sig (a -> Boolean) -> (a -> a) -> a -> a
-	     * @param {Function} pred A predicate function
-	     * @param {Function} fn The iterator function
-	     * @param {*} init Initial value
-	     * @return {*} Final value that satisfies predicate
-	     * @example
-	     *
-	     *      R.until(R.gt(R.__, 100), R.multiply(2))(1) // => 128
-	     */
-	    var until = _curry3(function until(pred, fn, init) {
-	        var val = init;
-	        while (!pred(val)) {
-	            val = fn(val);
-	        }
-	        return val;
-	    });
-	
-	    /**
-	     * Returns a new copy of the array with the element at the provided index
-	     * replaced with the given value.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category List
-	     * @sig Number -> a -> [a] -> [a]
-	     * @param {Number} idx The index to update.
-	     * @param {*} x The value to exist at the given index of the returned array.
-	     * @param {Array|Arguments} list The source array-like object to be updated.
-	     * @return {Array} A copy of `list` with the value at index `idx` replaced with `x`.
-	     * @see R.adjust
-	     * @example
-	     *
-	     *      R.update(1, 11, [0, 1, 2]);     //=> [0, 11, 2]
-	     *      R.update(1)(11)([0, 1, 2]);     //=> [0, 11, 2]
-	     */
-	    var update = _curry3(function update(idx, x, list) {
-	        return adjust(always(x), idx, list);
-	    });
-	
-	    /**
-	     * Accepts a function `fn` and a list of transformer functions and returns a
-	     * new curried function. When the new function is invoked, it calls the
-	     * function `fn` with parameters consisting of the result of calling each
-	     * supplied handler on successive arguments to the new function.
-	     *
-	     * If more arguments are passed to the returned function than transformer
-	     * functions, those arguments are passed directly to `fn` as additional
-	     * parameters. If you expect additional arguments that don't need to be
-	     * transformed, although you can ignore them, it's best to pass an identity
-	     * function so that the new function reports the correct arity.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (x1 -> x2 -> ... -> z) -> [(a -> x1), (b -> x2), ...] -> (a -> b -> ... -> z)
-	     * @param {Function} fn The function to wrap.
-	     * @param {Array} transformers A list of transformer functions
-	     * @return {Function} The wrapped function.
-	     * @example
-	     *
-	     *      R.useWith(Math.pow, [R.identity, R.identity])(3, 4); //=> 81
-	     *      R.useWith(Math.pow, [R.identity, R.identity])(3)(4); //=> 81
-	     *      R.useWith(Math.pow, [R.dec, R.inc])(3, 4); //=> 32
-	     *      R.useWith(Math.pow, [R.dec, R.inc])(3)(4); //=> 32
-	     */
-	    var useWith = _curry2(function useWith(fn, transformers) {
-	        return curryN(transformers.length, function () {
-	            var args = [];
-	            var idx = 0;
-	            while (idx < transformers.length) {
-	                args.push(transformers[idx].call(this, arguments[idx]));
-	                idx += 1;
-	            }
-	            return fn.apply(this, args.concat(_slice(arguments, transformers.length)));
-	        });
-	    });
-	
-	    /**
-	     * Returns a list of all the enumerable own properties of the supplied object.
-	     * Note that the order of the output array is not guaranteed across different
-	     * JS platforms.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig {k: v} -> [v]
-	     * @param {Object} obj The object to extract values from
-	     * @return {Array} An array of the values of the object's own properties.
-	     * @example
-	     *
-	     *      R.values({a: 1, b: 2, c: 3}); //=> [1, 2, 3]
-	     */
-	    var values = _curry1(function values(obj) {
-	        var props = keys(obj);
-	        var len = props.length;
-	        var vals = [];
-	        var idx = 0;
-	        while (idx < len) {
-	            vals[idx] = obj[props[idx]];
-	            idx += 1;
-	        }
-	        return vals;
-	    });
-	
-	    /**
-	     * Returns a list of all the properties, including prototype properties, of the
-	     * supplied object.
-	     * Note that the order of the output array is not guaranteed to be consistent
-	     * across different JS platforms.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.2.0
-	     * @category Object
-	     * @sig {k: v} -> [v]
-	     * @param {Object} obj The object to extract values from
-	     * @return {Array} An array of the values of the object's own and prototype properties.
-	     * @example
-	     *
-	     *      var F = function() { this.x = 'X'; };
-	     *      F.prototype.y = 'Y';
-	     *      var f = new F();
-	     *      R.valuesIn(f); //=> ['X', 'Y']
-	     */
-	    var valuesIn = _curry1(function valuesIn(obj) {
-	        var prop;
-	        var vs = [];
-	        for (prop in obj) {
-	            vs[vs.length] = obj[prop];
-	        }
-	        return vs;
-	    });
-	
-	    /**
-	     * Returns a "view" of the given data structure, determined by the given lens.
-	     * The lens's focus determines which portion of the data structure is visible.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category Object
-	     * @typedefn Lens s a = Functor f => (a -> f a) -> s -> f s
-	     * @sig Lens s a -> s -> a
-	     * @param {Lens} lens
-	     * @param {*} x
-	     * @return {*}
-	     * @see R.prop, R.lensIndex, R.lensProp
-	     * @example
-	     *
-	     *      var xLens = R.lensProp('x');
-	     *
-	     *      R.view(xLens, {x: 1, y: 2});  //=> 1
-	     *      R.view(xLens, {x: 4, y: 2});  //=> 4
-	     */
-	    // `Const` is a functor that effectively ignores the function given to `map`.
-	    // Using `Const` effectively ignores the setter function of the `lens`,
-	    // leaving the value returned by the getter function unmodified.
-	    var view = function () {
-	        // `Const` is a functor that effectively ignores the function given to `map`.
-	        var Const = function (x) {
-	            return {
-	                value: x,
-	                map: function () {
-	                    return this;
-	                }
-	            };
-	        };
-	        return _curry2(function view(lens, x) {
-	            // Using `Const` effectively ignores the setter function of the `lens`,
-	            // leaving the value returned by the getter function unmodified.
-	            return lens(Const)(x).value;
-	        });
-	    }();
-	
-	    /**
-	     * Tests the final argument by passing it to the given predicate function. If
-	     * the predicate is satisfied, the function will return the result of calling
-	     * the `whenTrueFn` function with the same argument. If the predicate is not
-	     * satisfied, the argument is returned as is.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.18.0
-	     * @category Logic
-	     * @sig (a -> Boolean) -> (a -> a) -> a -> a
-	     * @param {Function} pred       A predicate function
-	     * @param {Function} whenTrueFn A function to invoke when the `condition`
-	     *                              evaluates to a truthy value.
-	     * @param {*}        x          An object to test with the `pred` function and
-	     *                              pass to `whenTrueFn` if necessary.
-	     * @return {*} Either `x` or the result of applying `x` to `whenTrueFn`.
-	     * @see R.ifElse, R.unless
-	     * @example
-	     *
-	     *      // truncate :: String -> String
-	     *      var truncate = R.when(
-	     *        R.propSatisfies(R.gt(R.__, 10), 'length'),
-	     *        R.pipe(R.take(10), R.append('…'), R.join(''))
-	     *      );
-	     *      truncate('12345');         //=> '12345'
-	     *      truncate('0123456789ABC'); //=> '0123456789…'
-	     */
-	    var when = _curry3(function when(pred, whenTrueFn, x) {
-	        return pred(x) ? whenTrueFn(x) : x;
-	    });
-	
-	    /**
-	     * Takes a spec object and a test object; returns true if the test satisfies
-	     * the spec. Each of the spec's own properties must be a predicate function.
-	     * Each predicate is applied to the value of the corresponding property of the
-	     * test object. `where` returns true if all the predicates return true, false
-	     * otherwise.
-	     *
-	     * `where` is well suited to declaratively expressing constraints for other
-	     * functions such as `filter` and `find`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.1
-	     * @category Object
-	     * @sig {String: (* -> Boolean)} -> {String: *} -> Boolean
-	     * @param {Object} spec
-	     * @param {Object} testObj
-	     * @return {Boolean}
-	     * @example
-	     *
-	     *      // pred :: Object -> Boolean
-	     *      var pred = where({
-	     *        a: equals('foo'),
-	     *        b: complement(equals('bar')),
-	     *        x: gt(__, 10),
-	     *        y: lt(__, 20)
-	     *      });
-	     *
-	     *      pred({a: 'foo', b: 'xxx', x: 11, y: 19}); //=> true
-	     *      pred({a: 'xxx', b: 'xxx', x: 11, y: 19}); //=> false
-	     *      pred({a: 'foo', b: 'bar', x: 11, y: 19}); //=> false
-	     *      pred({a: 'foo', b: 'xxx', x: 10, y: 19}); //=> false
-	     *      pred({a: 'foo', b: 'xxx', x: 11, y: 20}); //=> false
-	     */
-	    var where = _curry2(function where(spec, testObj) {
-	        for (var prop in spec) {
-	            if (_has(prop, spec) && !spec[prop](testObj[prop])) {
-	                return false;
-	            }
-	        }
-	        return true;
-	    });
-	
-	    /**
-	     * Wrap a function inside another to allow you to make adjustments to the
-	     * parameters, or do other processing either before the internal function is
-	     * called or with its results.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (a... -> b) -> ((a... -> b) -> a... -> c) -> (a... -> c)
-	     * @param {Function} fn The function to wrap.
-	     * @param {Function} wrapper The wrapper function.
-	     * @return {Function} The wrapped function.
-	     * @deprecated since v0.22.0
-	     * @example
-	     *
-	     *      var greet = name => 'Hello ' + name;
-	     *
-	     *      var shoutedGreet = R.wrap(greet, (gr, name) => gr(name).toUpperCase());
-	     *
-	     *      shoutedGreet("Kathy"); //=> "HELLO KATHY"
-	     *
-	     *      var shortenedGreet = R.wrap(greet, function(gr, name) {
-	     *        return gr(name.substring(0, 3));
-	     *      });
-	     *      shortenedGreet("Robert"); //=> "Hello Rob"
-	     */
-	    var wrap = _curry2(function wrap(fn, wrapper) {
-	        return curryN(fn.length, function () {
-	            return wrapper.apply(this, _concat([fn], arguments));
-	        });
-	    });
-	
-	    /**
-	     * Creates a new list out of the two supplied by creating each possible pair
-	     * from the lists.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig [a] -> [b] -> [[a,b]]
-	     * @param {Array} as The first list.
-	     * @param {Array} bs The second list.
-	     * @return {Array} The list made by combining each possible pair from
-	     *         `as` and `bs` into pairs (`[a, b]`).
-	     * @example
-	     *
-	     *      R.xprod([1, 2], ['a', 'b']); //=> [[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b']]
-	     */
-	    // = xprodWith(prepend); (takes about 3 times as long...)
-	    var xprod = _curry2(function xprod(a, b) {
-	        // = xprodWith(prepend); (takes about 3 times as long...)
-	        var idx = 0;
-	        var ilen = a.length;
-	        var j;
-	        var jlen = b.length;
-	        var result = [];
-	        while (idx < ilen) {
-	            j = 0;
-	            while (j < jlen) {
-	                result[result.length] = [
-	                    a[idx],
-	                    b[j]
-	                ];
-	                j += 1;
-	            }
-	            idx += 1;
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Creates a new list out of the two supplied by pairing up equally-positioned
-	     * items from both lists. The returned list is truncated to the length of the
-	     * shorter of the two input lists.
-	     * Note: `zip` is equivalent to `zipWith(function(a, b) { return [a, b] })`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig [a] -> [b] -> [[a,b]]
-	     * @param {Array} list1 The first array to consider.
-	     * @param {Array} list2 The second array to consider.
-	     * @return {Array} The list made by pairing up same-indexed elements of `list1` and `list2`.
-	     * @example
-	     *
-	     *      R.zip([1, 2, 3], ['a', 'b', 'c']); //=> [[1, 'a'], [2, 'b'], [3, 'c']]
-	     */
-	    var zip = _curry2(function zip(a, b) {
-	        var rv = [];
-	        var idx = 0;
-	        var len = Math.min(a.length, b.length);
-	        while (idx < len) {
-	            rv[idx] = [
-	                a[idx],
-	                b[idx]
-	            ];
-	            idx += 1;
-	        }
-	        return rv;
-	    });
-	
-	    /**
-	     * Creates a new object out of a list of keys and a list of values.
-	     * Key/value pairing is truncated to the length of the shorter of the two lists.
-	     * Note: `zipObj` is equivalent to `pipe(zipWith(pair), fromPairs)`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category List
-	     * @sig [String] -> [*] -> {String: *}
-	     * @param {Array} keys The array that will be properties on the output object.
-	     * @param {Array} values The list of values on the output object.
-	     * @return {Object} The object made by pairing up same-indexed elements of `keys` and `values`.
-	     * @example
-	     *
-	     *      R.zipObj(['a', 'b', 'c'], [1, 2, 3]); //=> {a: 1, b: 2, c: 3}
-	     */
-	    var zipObj = _curry2(function zipObj(keys, values) {
-	        var idx = 0;
-	        var len = Math.min(keys.length, values.length);
-	        var out = {};
-	        while (idx < len) {
-	            out[keys[idx]] = values[idx];
-	            idx += 1;
-	        }
-	        return out;
-	    });
-	
-	    /**
-	     * Creates a new list out of the two supplied by applying the function to each
-	     * equally-positioned pair in the lists. The returned list is truncated to the
-	     * length of the shorter of the two input lists.
-	     *
-	     * @function
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig (a,b -> c) -> [a] -> [b] -> [c]
-	     * @param {Function} fn The function used to combine the two elements into one value.
-	     * @param {Array} list1 The first array to consider.
-	     * @param {Array} list2 The second array to consider.
-	     * @return {Array} The list made by combining same-indexed elements of `list1` and `list2`
-	     *         using `fn`.
-	     * @example
-	     *
-	     *      var f = (x, y) => {
-	     *        // ...
-	     *      };
-	     *      R.zipWith(f, [1, 2, 3], ['a', 'b', 'c']);
-	     *      //=> [f(1, 'a'), f(2, 'b'), f(3, 'c')]
-	     */
-	    var zipWith = _curry3(function zipWith(fn, a, b) {
-	        var rv = [];
-	        var idx = 0;
-	        var len = Math.min(a.length, b.length);
-	        while (idx < len) {
-	            rv[idx] = fn(a[idx], b[idx]);
-	            idx += 1;
-	        }
-	        return rv;
-	    });
-	
-	    /**
-	     * A function that always returns `false`. Any passed in parameters are ignored.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Function
-	     * @sig * -> Boolean
-	     * @param {*}
-	     * @return {Boolean}
-	     * @see R.always, R.T
-	     * @example
-	     *
-	     *      R.F(); //=> false
-	     */
-	    var F = always(false);
-	
-	    /**
-	     * A function that always returns `true`. Any passed in parameters are ignored.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Function
-	     * @sig * -> Boolean
-	     * @param {*}
-	     * @return {Boolean}
-	     * @see R.always, R.F
-	     * @example
-	     *
-	     *      R.T(); //=> true
-	     */
-	    var T = always(true);
-	
-	    /**
-	     * Copies an object.
-	     *
-	     * @private
-	     * @param {*} value The value to be copied
-	     * @param {Array} refFrom Array containing the source references
-	     * @param {Array} refTo Array containing the copied source references
-	     * @param {Boolean} deep Whether or not to perform deep cloning.
-	     * @return {*} The copied value.
-	     */
-	    var _clone = function _clone(value, refFrom, refTo, deep) {
-	        var copy = function copy(copiedValue) {
-	            var len = refFrom.length;
-	            var idx = 0;
-	            while (idx < len) {
-	                if (value === refFrom[idx]) {
-	                    return refTo[idx];
-	                }
-	                idx += 1;
-	            }
-	            refFrom[idx + 1] = value;
-	            refTo[idx + 1] = copiedValue;
-	            for (var key in value) {
-	                copiedValue[key] = deep ? _clone(value[key], refFrom, refTo, true) : value[key];
-	            }
-	            return copiedValue;
-	        };
-	        switch (type(value)) {
-	        case 'Object':
-	            return copy({});
-	        case 'Array':
-	            return copy([]);
-	        case 'Date':
-	            return new Date(value.valueOf());
-	        case 'RegExp':
-	            return _cloneRegExp(value);
-	        default:
-	            return value;
-	        }
-	    };
-	
-	    var _createPartialApplicator = function _createPartialApplicator(concat) {
-	        return _curry2(function (fn, args) {
-	            return _arity(Math.max(0, fn.length - args.length), function () {
-	                return fn.apply(this, concat(args, arguments));
-	            });
-	        });
-	    };
-	
-	    var _dropLast = function dropLast(n, xs) {
-	        return take(n < xs.length ? xs.length - n : 0, xs);
-	    };
-	
-	    // Values of other types are only equal if identical.
-	    var _equals = function _equals(a, b, stackA, stackB) {
-	        if (identical(a, b)) {
-	            return true;
-	        }
-	        if (type(a) !== type(b)) {
-	            return false;
-	        }
-	        if (a == null || b == null) {
-	            return false;
-	        }
-	        if (typeof a.equals === 'function' || typeof b.equals === 'function') {
-	            return typeof a.equals === 'function' && a.equals(b) && typeof b.equals === 'function' && b.equals(a);
-	        }
-	        switch (type(a)) {
-	        case 'Arguments':
-	        case 'Array':
-	        case 'Object':
-	            if (typeof a.constructor === 'function' && _functionName(a.constructor) === 'Promise') {
-	                return a === b;
-	            }
-	            break;
-	        case 'Boolean':
-	        case 'Number':
-	        case 'String':
-	            if (!(typeof a === typeof b && identical(a.valueOf(), b.valueOf()))) {
-	                return false;
-	            }
-	            break;
-	        case 'Date':
-	            if (!identical(a.valueOf(), b.valueOf())) {
-	                return false;
-	            }
-	            break;
-	        case 'Error':
-	            return a.name === b.name && a.message === b.message;
-	        case 'RegExp':
-	            if (!(a.source === b.source && a.global === b.global && a.ignoreCase === b.ignoreCase && a.multiline === b.multiline && a.sticky === b.sticky && a.unicode === b.unicode)) {
-	                return false;
-	            }
-	            break;
-	        case 'Map':
-	        case 'Set':
-	            if (!_equals(_arrayFromIterator(a.entries()), _arrayFromIterator(b.entries()), stackA, stackB)) {
-	                return false;
-	            }
-	            break;
-	        case 'Int8Array':
-	        case 'Uint8Array':
-	        case 'Uint8ClampedArray':
-	        case 'Int16Array':
-	        case 'Uint16Array':
-	        case 'Int32Array':
-	        case 'Uint32Array':
-	        case 'Float32Array':
-	        case 'Float64Array':
-	            break;
-	        case 'ArrayBuffer':
-	            break;
-	        default:
-	            // Values of other types are only equal if identical.
-	            return false;
-	        }
-	        var keysA = keys(a);
-	        if (keysA.length !== keys(b).length) {
-	            return false;
-	        }
-	        var idx = stackA.length - 1;
-	        while (idx >= 0) {
-	            if (stackA[idx] === a) {
-	                return stackB[idx] === b;
-	            }
-	            idx -= 1;
-	        }
-	        stackA.push(a);
-	        stackB.push(b);
-	        idx = keysA.length - 1;
-	        while (idx >= 0) {
-	            var key = keysA[idx];
-	            if (!(_has(key, b) && _equals(b[key], a[key], stackA, stackB))) {
-	                return false;
-	            }
-	            idx -= 1;
-	        }
-	        stackA.pop();
-	        stackB.pop();
-	        return true;
-	    };
-	
-	    /**
-	     * `_makeFlat` is a helper function that returns a one-level or fully recursive
-	     * function based on the flag passed in.
-	     *
-	     * @private
-	     */
-	    var _makeFlat = function _makeFlat(recursive) {
-	        return function flatt(list) {
-	            var value, jlen, j;
-	            var result = [];
-	            var idx = 0;
-	            var ilen = list.length;
-	            while (idx < ilen) {
-	                if (isArrayLike(list[idx])) {
-	                    value = recursive ? flatt(list[idx]) : list[idx];
-	                    j = 0;
-	                    jlen = value.length;
-	                    while (j < jlen) {
-	                        result[result.length] = value[j];
-	                        j += 1;
-	                    }
-	                } else {
-	                    result[result.length] = list[idx];
-	                }
-	                idx += 1;
-	            }
-	            return result;
-	        };
-	    };
-	
-	    var _reduce = function () {
-	        function _arrayReduce(xf, acc, list) {
-	            var idx = 0;
-	            var len = list.length;
-	            while (idx < len) {
-	                acc = xf['@@transducer/step'](acc, list[idx]);
-	                if (acc && acc['@@transducer/reduced']) {
-	                    acc = acc['@@transducer/value'];
-	                    break;
-	                }
-	                idx += 1;
-	            }
-	            return xf['@@transducer/result'](acc);
-	        }
-	        function _iterableReduce(xf, acc, iter) {
-	            var step = iter.next();
-	            while (!step.done) {
-	                acc = xf['@@transducer/step'](acc, step.value);
-	                if (acc && acc['@@transducer/reduced']) {
-	                    acc = acc['@@transducer/value'];
-	                    break;
-	                }
-	                step = iter.next();
-	            }
-	            return xf['@@transducer/result'](acc);
-	        }
-	        function _methodReduce(xf, acc, obj) {
-	            return xf['@@transducer/result'](obj.reduce(bind(xf['@@transducer/step'], xf), acc));
-	        }
-	        var symIterator = typeof Symbol !== 'undefined' ? Symbol.iterator : '@@iterator';
-	        return function _reduce(fn, acc, list) {
-	            if (typeof fn === 'function') {
-	                fn = _xwrap(fn);
-	            }
-	            if (isArrayLike(list)) {
-	                return _arrayReduce(fn, acc, list);
-	            }
-	            if (typeof list.reduce === 'function') {
-	                return _methodReduce(fn, acc, list);
-	            }
-	            if (list[symIterator] != null) {
-	                return _iterableReduce(fn, acc, list[symIterator]());
-	            }
-	            if (typeof list.next === 'function') {
-	                return _iterableReduce(fn, acc, list);
-	            }
-	            throw new TypeError('reduce: list must be array or iterable');
-	        };
-	    }();
-	
-	    var _stepCat = function () {
-	        var _stepCatArray = {
-	            '@@transducer/init': Array,
-	            '@@transducer/step': function (xs, x) {
-	                xs.push(x);
-	                return xs;
-	            },
-	            '@@transducer/result': _identity
-	        };
-	        var _stepCatString = {
-	            '@@transducer/init': String,
-	            '@@transducer/step': function (a, b) {
-	                return a + b;
-	            },
-	            '@@transducer/result': _identity
-	        };
-	        var _stepCatObject = {
-	            '@@transducer/init': Object,
-	            '@@transducer/step': function (result, input) {
-	                return _assign(result, isArrayLike(input) ? objOf(input[0], input[1]) : input);
-	            },
-	            '@@transducer/result': _identity
-	        };
-	        return function _stepCat(obj) {
-	            if (_isTransformer(obj)) {
-	                return obj;
-	            }
-	            if (isArrayLike(obj)) {
-	                return _stepCatArray;
-	            }
-	            if (typeof obj === 'string') {
-	                return _stepCatString;
-	            }
-	            if (typeof obj === 'object') {
-	                return _stepCatObject;
-	            }
-	            throw new Error('Cannot create transformer for ' + obj);
-	        };
-	    }();
-	
-	    var _xdropLastWhile = function () {
-	        function XDropLastWhile(fn, xf) {
-	            this.f = fn;
-	            this.retained = [];
-	            this.xf = xf;
-	        }
-	        XDropLastWhile.prototype['@@transducer/init'] = _xfBase.init;
-	        XDropLastWhile.prototype['@@transducer/result'] = function (result) {
-	            this.retained = null;
-	            return this.xf['@@transducer/result'](result);
-	        };
-	        XDropLastWhile.prototype['@@transducer/step'] = function (result, input) {
-	            return this.f(input) ? this.retain(result, input) : this.flush(result, input);
-	        };
-	        XDropLastWhile.prototype.flush = function (result, input) {
-	            result = _reduce(this.xf['@@transducer/step'], result, this.retained);
-	            this.retained = [];
-	            return this.xf['@@transducer/step'](result, input);
-	        };
-	        XDropLastWhile.prototype.retain = function (result, input) {
-	            this.retained.push(input);
-	            return result;
-	        };
-	        return _curry2(function _xdropLastWhile(fn, xf) {
-	            return new XDropLastWhile(fn, xf);
-	        });
-	    }();
-	
-	    /**
-	     * Creates a new list iteration function from an existing one by adding two new
-	     * parameters to its callback function: the current index, and the entire list.
-	     *
-	     * This would turn, for instance, Ramda's simple `map` function into one that
-	     * more closely resembles `Array.prototype.map`. Note that this will only work
-	     * for functions in which the iteration callback function is the first
-	     * parameter, and where the list is the last parameter. (This latter might be
-	     * unimportant if the list parameter is not used.)
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.15.0
-	     * @category Function
-	     * @category List
-	     * @sig ((a ... -> b) ... -> [a] -> *) -> (a ..., Int, [a] -> b) ... -> [a] -> *)
-	     * @param {Function} fn A list iteration function that does not pass index or list to its callback
-	     * @return {Function} An altered list iteration function that passes (item, index, list) to its callback
-	     * @example
-	     *
-	     *      var mapIndexed = R.addIndex(R.map);
-	     *      mapIndexed((val, idx) => idx + '-' + val, ['f', 'o', 'o', 'b', 'a', 'r']);
-	     *      //=> ['0-f', '1-o', '2-o', '3-b', '4-a', '5-r']
-	     */
-	    var addIndex = _curry1(function addIndex(fn) {
-	        return curryN(fn.length, function () {
-	            var idx = 0;
-	            var origFn = arguments[0];
-	            var list = arguments[arguments.length - 1];
-	            var args = _slice(arguments);
-	            args[0] = function () {
-	                var result = origFn.apply(this, _concat(arguments, [
-	                    idx,
-	                    list
-	                ]));
-	                idx += 1;
-	                return result;
-	            };
-	            return fn.apply(this, args);
-	        });
-	    });
-	
-	    /**
-	     * Wraps a function of any arity (including nullary) in a function that accepts
-	     * exactly 2 parameters. Any extraneous parameters will not be passed to the
-	     * supplied function.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.2.0
-	     * @category Function
-	     * @sig (* -> c) -> (a, b -> c)
-	     * @param {Function} fn The function to wrap.
-	     * @return {Function} A new function wrapping `fn`. The new function is guaranteed to be of
-	     *         arity 2.
-	     * @example
-	     *
-	     *      var takesThreeArgs = function(a, b, c) {
-	     *        return [a, b, c];
-	     *      };
-	     *      takesThreeArgs.length; //=> 3
-	     *      takesThreeArgs(1, 2, 3); //=> [1, 2, 3]
-	     *
-	     *      var takesTwoArgs = R.binary(takesThreeArgs);
-	     *      takesTwoArgs.length; //=> 2
-	     *      // Only 2 arguments are passed to the wrapped function
-	     *      takesTwoArgs(1, 2, 3); //=> [1, 2, undefined]
-	     */
-	    var binary = _curry1(function binary(fn) {
-	        return nAry(2, fn);
-	    });
-	
-	    /**
-	     * Creates a deep copy of the value which may contain (nested) `Array`s and
-	     * `Object`s, `Number`s, `String`s, `Boolean`s and `Date`s. `Function`s are not
-	     * copied, but assigned by their reference.
-	     *
-	     * Dispatches to a `clone` method if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig {*} -> {*}
-	     * @param {*} value The object or array to clone
-	     * @return {*} A new object or array.
-	     * @example
-	     *
-	     *      var objects = [{}, {}, {}];
-	     *      var objectsClone = R.clone(objects);
-	     *      objects[0] === objectsClone[0]; //=> false
-	     */
-	    var clone = _curry1(function clone(value) {
-	        return value != null && typeof value.clone === 'function' ? value.clone() : _clone(value, [], [], true);
-	    });
-	
-	    /**
-	     * Returns a curried equivalent of the provided function. The curried function
-	     * has two unusual capabilities. First, its arguments needn't be provided one
-	     * at a time. If `f` is a ternary function and `g` is `R.curry(f)`, the
-	     * following are equivalent:
-	     *
-	     *   - `g(1)(2)(3)`
-	     *   - `g(1)(2, 3)`
-	     *   - `g(1, 2)(3)`
-	     *   - `g(1, 2, 3)`
-	     *
-	     * Secondly, the special placeholder value `R.__` may be used to specify
-	     * "gaps", allowing partial application of any combination of arguments,
-	     * regardless of their positions. If `g` is as above and `_` is `R.__`, the
-	     * following are equivalent:
-	     *
-	     *   - `g(1, 2, 3)`
-	     *   - `g(_, 2, 3)(1)`
-	     *   - `g(_, _, 3)(1)(2)`
-	     *   - `g(_, _, 3)(1, 2)`
-	     *   - `g(_, 2)(1)(3)`
-	     *   - `g(_, 2)(1, 3)`
-	     *   - `g(_, 2)(_, 3)(1)`
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (* -> a) -> (* -> a)
-	     * @param {Function} fn The function to curry.
-	     * @return {Function} A new, curried function.
-	     * @see R.curryN
-	     * @example
-	     *
-	     *      var addFourNumbers = (a, b, c, d) => a + b + c + d;
-	     *
-	     *      var curriedAddFourNumbers = R.curry(addFourNumbers);
-	     *      var f = curriedAddFourNumbers(1, 2);
-	     *      var g = f(3);
-	     *      g(4); //=> 10
-	     */
-	    var curry = _curry1(function curry(fn) {
-	        return curryN(fn.length, fn);
-	    });
-	
-	    /**
-	     * Returns all but the first `n` elements of the given list, string, or
-	     * transducer/transformer (or object with a `drop` method).
-	     *
-	     * Dispatches to the `drop` method of the second argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig Number -> [a] -> [a]
-	     * @sig Number -> String -> String
-	     * @param {Number} n
-	     * @param {*} list
-	     * @return {*}
-	     * @see R.take, R.transduce
-	     * @example
-	     *
-	     *      R.drop(1, ['foo', 'bar', 'baz']); //=> ['bar', 'baz']
-	     *      R.drop(2, ['foo', 'bar', 'baz']); //=> ['baz']
-	     *      R.drop(3, ['foo', 'bar', 'baz']); //=> []
-	     *      R.drop(4, ['foo', 'bar', 'baz']); //=> []
-	     *      R.drop(3, 'ramda');               //=> 'da'
-	     */
-	    var drop = _curry2(_dispatchable('drop', _xdrop, function drop(n, xs) {
-	        return slice(Math.max(0, n), Infinity, xs);
-	    }));
-	
-	    /**
-	     * Returns a list containing all but the last `n` elements of the given `list`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category List
-	     * @sig Number -> [a] -> [a]
-	     * @sig Number -> String -> String
-	     * @param {Number} n The number of elements of `xs` to skip.
-	     * @param {Array} xs The collection to consider.
-	     * @return {Array}
-	     * @see R.takeLast
-	     * @example
-	     *
-	     *      R.dropLast(1, ['foo', 'bar', 'baz']); //=> ['foo', 'bar']
-	     *      R.dropLast(2, ['foo', 'bar', 'baz']); //=> ['foo']
-	     *      R.dropLast(3, ['foo', 'bar', 'baz']); //=> []
-	     *      R.dropLast(4, ['foo', 'bar', 'baz']); //=> []
-	     *      R.dropLast(3, 'ramda');               //=> 'ra'
-	     */
-	    var dropLast = _curry2(_dispatchable('dropLast', _xdropLast, _dropLast));
-	
-	    /**
-	     * Returns a new list excluding all the tailing elements of a given list which
-	     * satisfy the supplied predicate function. It passes each value from the right
-	     * to the supplied predicate function, skipping elements while the predicate
-	     * function returns `true`. The predicate function is applied to one argument:
-	     * *(value)*.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category List
-	     * @sig (a -> Boolean) -> [a] -> [a]
-	     * @param {Function} fn The function called per iteration.
-	     * @param {Array} list The collection to iterate over.
-	     * @return {Array} A new array.
-	     * @see R.takeLastWhile, R.addIndex
-	     * @example
-	     *
-	     *      var lteThree = x => x <= 3;
-	     *
-	     *      R.dropLastWhile(lteThree, [1, 2, 3, 4, 3, 2, 1]); //=> [1, 2, 3, 4]
-	     */
-	    var dropLastWhile = _curry2(_dispatchable('dropLastWhile', _xdropLastWhile, _dropLastWhile));
-	
-	    /**
-	     * Returns `true` if its arguments are equivalent, `false` otherwise. Handles
-	     * cyclical data structures.
-	     *
-	     * Dispatches symmetrically to the `equals` methods of both arguments, if
-	     * present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.15.0
-	     * @category Relation
-	     * @sig a -> b -> Boolean
-	     * @param {*} a
-	     * @param {*} b
-	     * @return {Boolean}
-	     * @example
-	     *
-	     *      R.equals(1, 1); //=> true
-	     *      R.equals(1, '1'); //=> false
-	     *      R.equals([1, 2, 3], [1, 2, 3]); //=> true
-	     *
-	     *      var a = {}; a.v = a;
-	     *      var b = {}; b.v = b;
-	     *      R.equals(a, b); //=> true
-	     */
-	    var equals = _curry2(function equals(a, b) {
-	        return _equals(a, b, [], []);
-	    });
-	
-	    /**
-	     * Takes a predicate and a "filterable", and returns a new filterable of the
-	     * same type containing the members of the given filterable which satisfy the
-	     * given predicate.
-	     *
-	     * Dispatches to the `filter` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig Filterable f => (a -> Boolean) -> f a -> f a
-	     * @param {Function} pred
-	     * @param {Array} filterable
-	     * @return {Array}
-	     * @see R.reject, R.transduce, R.addIndex
-	     * @example
-	     *
-	     *      var isEven = n => n % 2 === 0;
-	     *
-	     *      R.filter(isEven, [1, 2, 3, 4]); //=> [2, 4]
-	     *
-	     *      R.filter(isEven, {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, d: 4}
-	     */
-	    // else
-	    var filter = _curry2(_dispatchable('filter', _xfilter, function (pred, filterable) {
-	        return _isObject(filterable) ? _reduce(function (acc, key) {
-	            if (pred(filterable[key])) {
-	                acc[key] = filterable[key];
-	            }
-	            return acc;
-	        }, {}, keys(filterable)) : // else
-	        _filter(pred, filterable);
-	    }));
-	
-	    /**
-	     * Returns a new list by pulling every item out of it (and all its sub-arrays)
-	     * and putting them in a new array, depth-first.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig [a] -> [b]
-	     * @param {Array} list The array to consider.
-	     * @return {Array} The flattened list.
-	     * @see R.unnest
-	     * @example
-	     *
-	     *      R.flatten([1, 2, [3, 4], 5, [6, [7, 8, [9, [10, 11], 12]]]]);
-	     *      //=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-	     */
-	    var flatten = _curry1(_makeFlat(true));
-	
-	    /**
-	     * Returns a new function much like the supplied one, except that the first two
-	     * arguments' order is reversed.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (a -> b -> c -> ... -> z) -> (b -> a -> c -> ... -> z)
-	     * @param {Function} fn The function to invoke with its first two parameters reversed.
-	     * @return {*} The result of invoking `fn` with its first two parameters' order reversed.
-	     * @example
-	     *
-	     *      var mergeThree = (a, b, c) => [].concat(a, b, c);
-	     *
-	     *      mergeThree(1, 2, 3); //=> [1, 2, 3]
-	     *
-	     *      R.flip(mergeThree)(1, 2, 3); //=> [2, 1, 3]
-	     */
-	    var flip = _curry1(function flip(fn) {
-	        return curry(function (a, b) {
-	            var args = _slice(arguments);
-	            args[0] = b;
-	            args[1] = a;
-	            return fn.apply(this, args);
-	        });
-	    });
-	
-	    /**
-	     * Returns the first element of the given list or string. In some libraries
-	     * this function is named `first`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig [a] -> a | Undefined
-	     * @sig String -> String
-	     * @param {Array|String} list
-	     * @return {*}
-	     * @see R.tail, R.init, R.last
-	     * @example
-	     *
-	     *      R.head(['fi', 'fo', 'fum']); //=> 'fi'
-	     *      R.head([]); //=> undefined
-	     *
-	     *      R.head('abc'); //=> 'a'
-	     *      R.head(''); //=> ''
-	     */
-	    var head = nth(0);
-	
-	    /**
-	     * Returns all but the last element of the given list or string.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category List
-	     * @sig [a] -> [a]
-	     * @sig String -> String
-	     * @param {*} list
-	     * @return {*}
-	     * @see R.last, R.head, R.tail
-	     * @example
-	     *
-	     *      R.init([1, 2, 3]);  //=> [1, 2]
-	     *      R.init([1, 2]);     //=> [1]
-	     *      R.init([1]);        //=> []
-	     *      R.init([]);         //=> []
-	     *
-	     *      R.init('abc');  //=> 'ab'
-	     *      R.init('ab');   //=> 'a'
-	     *      R.init('a');    //=> ''
-	     *      R.init('');     //=> ''
-	     */
-	    var init = slice(0, -1);
-	
-	    /**
-	     * Combines two lists into a set (i.e. no duplicates) composed of those
-	     * elements common to both lists. Duplication is determined according to the
-	     * value returned by applying the supplied predicate to two list elements.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig (a -> a -> Boolean) -> [*] -> [*] -> [*]
-	     * @param {Function} pred A predicate function that determines whether
-	     *        the two supplied elements are equal.
-	     * @param {Array} list1 One list of items to compare
-	     * @param {Array} list2 A second list of items to compare
-	     * @return {Array} A new list containing those elements common to both lists.
-	     * @see R.intersection
-	     * @example
-	     *
-	     *      var buffaloSpringfield = [
-	     *        {id: 824, name: 'Richie Furay'},
-	     *        {id: 956, name: 'Dewey Martin'},
-	     *        {id: 313, name: 'Bruce Palmer'},
-	     *        {id: 456, name: 'Stephen Stills'},
-	     *        {id: 177, name: 'Neil Young'}
-	     *      ];
-	     *      var csny = [
-	     *        {id: 204, name: 'David Crosby'},
-	     *        {id: 456, name: 'Stephen Stills'},
-	     *        {id: 539, name: 'Graham Nash'},
-	     *        {id: 177, name: 'Neil Young'}
-	     *      ];
-	     *
-	     *      R.intersectionWith(R.eqBy(R.prop('id')), buffaloSpringfield, csny);
-	     *      //=> [{id: 456, name: 'Stephen Stills'}, {id: 177, name: 'Neil Young'}]
-	     */
-	    var intersectionWith = _curry3(function intersectionWith(pred, list1, list2) {
-	        var lookupList, filteredList;
-	        if (list1.length > list2.length) {
-	            lookupList = list1;
-	            filteredList = list2;
-	        } else {
-	            lookupList = list2;
-	            filteredList = list1;
-	        }
-	        var results = [];
-	        var idx = 0;
-	        while (idx < filteredList.length) {
-	            if (_containsWith(pred, filteredList[idx], lookupList)) {
-	                results[results.length] = filteredList[idx];
-	            }
-	            idx += 1;
-	        }
-	        return uniqWith(pred, results);
-	    });
-	
-	    /**
-	     * Transforms the items of the list with the transducer and appends the
-	     * transformed items to the accumulator using an appropriate iterator function
-	     * based on the accumulator type.
-	     *
-	     * The accumulator can be an array, string, object or a transformer. Iterated
-	     * items will be appended to arrays and concatenated to strings. Objects will
-	     * be merged directly or 2-item arrays will be merged as key, value pairs.
-	     *
-	     * The accumulator can also be a transformer object that provides a 2-arity
-	     * reducing iterator function, step, 0-arity initial value function, init, and
-	     * 1-arity result extraction function result. The step function is used as the
-	     * iterator function in reduce. The result function is used to convert the
-	     * final accumulator into the return type and in most cases is R.identity. The
-	     * init function is used to provide the initial accumulator.
-	     *
-	     * The iteration is performed with R.reduce after initializing the transducer.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.12.0
-	     * @category List
-	     * @sig a -> (b -> b) -> [c] -> a
-	     * @param {*} acc The initial accumulator value.
-	     * @param {Function} xf The transducer function. Receives a transformer and returns a transformer.
-	     * @param {Array} list The list to iterate over.
-	     * @return {*} The final, accumulated value.
-	     * @example
-	     *
-	     *      var numbers = [1, 2, 3, 4];
-	     *      var transducer = R.compose(R.map(R.add(1)), R.take(2));
-	     *
-	     *      R.into([], transducer, numbers); //=> [2, 3]
-	     *
-	     *      var intoArray = R.into([]);
-	     *      intoArray(transducer, numbers); //=> [2, 3]
-	     */
-	    var into = _curry3(function into(acc, xf, list) {
-	        return _isTransformer(acc) ? _reduce(xf(acc), acc['@@transducer/init'](), list) : _reduce(xf(_stepCat(acc)), _clone(acc, [], [], false), list);
-	    });
-	
-	    /**
-	     * Same as R.invertObj, however this accounts for objects with duplicate values
-	     * by putting the values into an array.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Object
-	     * @sig {s: x} -> {x: [ s, ... ]}
-	     * @param {Object} obj The object or array to invert
-	     * @return {Object} out A new object with keys
-	     * in an array.
-	     * @example
-	     *
-	     *      var raceResultsByFirstName = {
-	     *        first: 'alice',
-	     *        second: 'jake',
-	     *        third: 'alice',
-	     *      };
-	     *      R.invert(raceResultsByFirstName);
-	     *      //=> { 'alice': ['first', 'third'], 'jake':['second'] }
-	     */
-	    var invert = _curry1(function invert(obj) {
-	        var props = keys(obj);
-	        var len = props.length;
-	        var idx = 0;
-	        var out = {};
-	        while (idx < len) {
-	            var key = props[idx];
-	            var val = obj[key];
-	            var list = _has(val, out) ? out[val] : out[val] = [];
-	            list[list.length] = key;
-	            idx += 1;
-	        }
-	        return out;
-	    });
-	
-	    /**
-	     * Returns a new object with the keys of the given object as values, and the
-	     * values of the given object, which are coerced to strings, as keys. Note
-	     * that the last key found is preferred when handling the same value.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Object
-	     * @sig {s: x} -> {x: s}
-	     * @param {Object} obj The object or array to invert
-	     * @return {Object} out A new object
-	     * @example
-	     *
-	     *      var raceResults = {
-	     *        first: 'alice',
-	     *        second: 'jake'
-	     *      };
-	     *      R.invertObj(raceResults);
-	     *      //=> { 'alice': 'first', 'jake':'second' }
-	     *
-	     *      // Alternatively:
-	     *      var raceResults = ['alice', 'jake'];
-	     *      R.invertObj(raceResults);
-	     *      //=> { 'alice': '0', 'jake':'1' }
-	     */
-	    var invertObj = _curry1(function invertObj(obj) {
-	        var props = keys(obj);
-	        var len = props.length;
-	        var idx = 0;
-	        var out = {};
-	        while (idx < len) {
-	            var key = props[idx];
-	            out[obj[key]] = key;
-	            idx += 1;
-	        }
-	        return out;
-	    });
-	
-	    /**
-	     * Returns `true` if the given value is its type's empty value; `false`
-	     * otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Logic
-	     * @sig a -> Boolean
-	     * @param {*} x
-	     * @return {Boolean}
-	     * @see R.empty
-	     * @example
-	     *
-	     *      R.isEmpty([1, 2, 3]);   //=> false
-	     *      R.isEmpty([]);          //=> true
-	     *      R.isEmpty('');          //=> true
-	     *      R.isEmpty(null);        //=> false
-	     *      R.isEmpty({});          //=> true
-	     *      R.isEmpty({length: 0}); //=> false
-	     */
-	    var isEmpty = _curry1(function isEmpty(x) {
-	        return x != null && equals(x, empty(x));
-	    });
-	
-	    /**
-	     * Returns the last element of the given list or string.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.4
-	     * @category List
-	     * @sig [a] -> a | Undefined
-	     * @sig String -> String
-	     * @param {*} list
-	     * @return {*}
-	     * @see R.init, R.head, R.tail
-	     * @example
-	     *
-	     *      R.last(['fi', 'fo', 'fum']); //=> 'fum'
-	     *      R.last([]); //=> undefined
-	     *
-	     *      R.last('abc'); //=> 'c'
-	     *      R.last(''); //=> ''
-	     */
-	    var last = nth(-1);
-	
-	    /**
-	     * Returns the position of the last occurrence of an item in an array, or -1 if
-	     * the item is not included in the array. `R.equals` is used to determine
-	     * equality.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig a -> [a] -> Number
-	     * @param {*} target The item to find.
-	     * @param {Array} xs The array to search in.
-	     * @return {Number} the index of the target, or -1 if the target is not found.
-	     * @see R.indexOf
-	     * @example
-	     *
-	     *      R.lastIndexOf(3, [-1,3,3,0,1,2,3,4]); //=> 6
-	     *      R.lastIndexOf(10, [1,2,3,4]); //=> -1
-	     */
-	    var lastIndexOf = _curry2(function lastIndexOf(target, xs) {
-	        if (typeof xs.lastIndexOf === 'function' && !_isArray(xs)) {
-	            return xs.lastIndexOf(target);
-	        } else {
-	            var idx = xs.length - 1;
-	            while (idx >= 0) {
-	                if (equals(xs[idx], target)) {
-	                    return idx;
-	                }
-	                idx -= 1;
-	            }
-	            return -1;
-	        }
-	    });
-	
-	    /**
-	     * Takes a function and
-	     * a [functor](https://github.com/fantasyland/fantasy-land#functor),
-	     * applies the function to each of the functor's values, and returns
-	     * a functor of the same shape.
-	     *
-	     * Ramda provides suitable `map` implementations for `Array` and `Object`,
-	     * so this function may be applied to `[1, 2, 3]` or `{x: 1, y: 2, z: 3}`.
-	     *
-	     * Dispatches to the `map` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * Also treats functions as functors and will compose them together.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig Functor f => (a -> b) -> f a -> f b
-	     * @param {Function} fn The function to be called on every element of the input `list`.
-	     * @param {Array} list The list to be iterated over.
-	     * @return {Array} The new list.
-	     * @see R.transduce, R.addIndex
-	     * @example
-	     *
-	     *      var double = x => x * 2;
-	     *
-	     *      R.map(double, [1, 2, 3]); //=> [2, 4, 6]
-	     *
-	     *      R.map(double, {x: 1, y: 2, z: 3}); //=> {x: 2, y: 4, z: 6}
-	     */
-	    var map = _curry2(_dispatchable('map', _xmap, function map(fn, functor) {
-	        switch (Object.prototype.toString.call(functor)) {
-	        case '[object Function]':
-	            return curryN(functor.length, function () {
-	                return fn.call(this, functor.apply(this, arguments));
-	            });
-	        case '[object Object]':
-	            return _reduce(function (acc, key) {
-	                acc[key] = fn(functor[key]);
-	                return acc;
-	            }, {}, keys(functor));
-	        default:
-	            return _map(fn, functor);
-	        }
-	    }));
-	
-	    /**
-	     * An Object-specific version of `map`. The function is applied to three
-	     * arguments: *(value, key, obj)*. If only the value is significant, use
-	     * `map` instead.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Object
-	     * @sig ((*, String, Object) -> *) -> Object -> Object
-	     * @param {Function} fn
-	     * @param {Object} obj
-	     * @return {Object}
-	     * @see R.map
-	     * @example
-	     *
-	     *      var values = { x: 1, y: 2, z: 3 };
-	     *      var prependKeyAndDouble = (num, key, obj) => key + (num * 2);
-	     *
-	     *      R.mapObjIndexed(prependKeyAndDouble, values); //=> { x: 'x2', y: 'y4', z: 'z6' }
-	     */
-	    var mapObjIndexed = _curry2(function mapObjIndexed(fn, obj) {
-	        return _reduce(function (acc, key) {
-	            acc[key] = fn(obj[key], key, obj);
-	            return acc;
-	        }, {}, keys(obj));
-	    });
-	
-	    /**
-	     * Creates a new object with the own properties of the two provided objects. If
-	     * a key exists in both objects, the provided function is applied to the values
-	     * associated with the key in each object, with the result being used as the
-	     * value associated with the key in the returned object. The key will be
-	     * excluded from the returned object if the resulting value is `undefined`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category Object
-	     * @sig (a -> a -> a) -> {a} -> {a} -> {a}
-	     * @param {Function} fn
-	     * @param {Object} l
-	     * @param {Object} r
-	     * @return {Object}
-	     * @see R.merge, R.mergeWithKey
-	     * @example
-	     *
-	     *      R.mergeWith(R.concat,
-	     *                  { a: true, values: [10, 20] },
-	     *                  { b: true, values: [15, 35] });
-	     *      //=> { a: true, b: true, values: [10, 20, 15, 35] }
-	     */
-	    var mergeWith = _curry3(function mergeWith(fn, l, r) {
-	        return mergeWithKey(function (_, _l, _r) {
-	            return fn(_l, _r);
-	        }, l, r);
-	    });
-	
-	    /**
-	     * Takes a function `f` and a list of arguments, and returns a function `g`.
-	     * When applied, `g` returns the result of applying `f` to the arguments
-	     * provided initially followed by the arguments provided to `g`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category Function
-	     * @sig ((a, b, c, ..., n) -> x) -> [a, b, c, ...] -> ((d, e, f, ..., n) -> x)
-	     * @param {Function} f
-	     * @param {Array} args
-	     * @return {Function}
-	     * @see R.partialRight
-	     * @example
-	     *
-	     *      var multiply = (a, b) => a * b;
-	     *      var double = R.partial(multiply, [2]);
-	     *      double(2); //=> 4
-	     *
-	     *      var greet = (salutation, title, firstName, lastName) =>
-	     *        salutation + ', ' + title + ' ' + firstName + ' ' + lastName + '!';
-	     *
-	     *      var sayHello = R.partial(greet, ['Hello']);
-	     *      var sayHelloToMs = R.partial(sayHello, ['Ms.']);
-	     *      sayHelloToMs('Jane', 'Jones'); //=> 'Hello, Ms. Jane Jones!'
-	     */
-	    var partial = _createPartialApplicator(_concat);
-	
-	    /**
-	     * Takes a function `f` and a list of arguments, and returns a function `g`.
-	     * When applied, `g` returns the result of applying `f` to the arguments
-	     * provided to `g` followed by the arguments provided initially.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category Function
-	     * @sig ((a, b, c, ..., n) -> x) -> [d, e, f, ..., n] -> ((a, b, c, ...) -> x)
-	     * @param {Function} f
-	     * @param {Array} args
-	     * @return {Function}
-	     * @see R.partial
-	     * @example
-	     *
-	     *      var greet = (salutation, title, firstName, lastName) =>
-	     *        salutation + ', ' + title + ' ' + firstName + ' ' + lastName + '!';
-	     *
-	     *      var greetMsJaneJones = R.partialRight(greet, ['Ms.', 'Jane', 'Jones']);
-	     *
-	     *      greetMsJaneJones('Hello'); //=> 'Hello, Ms. Jane Jones!'
-	     */
-	    var partialRight = _createPartialApplicator(flip(_concat));
-	
-	    /**
-	     * Determines whether a nested path on an object has a specific value, in
-	     * `R.equals` terms. Most likely used to filter a list.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.7.0
-	     * @category Relation
-	     * @sig [String] -> * -> {String: *} -> Boolean
-	     * @param {Array} path The path of the nested property to use
-	     * @param {*} val The value to compare the nested property with
-	     * @param {Object} obj The object to check the nested property in
-	     * @return {Boolean} `true` if the value equals the nested object property,
-	     *         `false` otherwise.
-	     * @example
-	     *
-	     *      var user1 = { address: { zipCode: 90210 } };
-	     *      var user2 = { address: { zipCode: 55555 } };
-	     *      var user3 = { name: 'Bob' };
-	     *      var users = [ user1, user2, user3 ];
-	     *      var isFamous = R.pathEq(['address', 'zipCode'], 90210);
-	     *      R.filter(isFamous, users); //=> [ user1 ]
-	     */
-	    var pathEq = _curry3(function pathEq(_path, val, obj) {
-	        return equals(path(_path, obj), val);
-	    });
-	
-	    /**
-	     * Returns a new list by plucking the same named property off all objects in
-	     * the list supplied.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig k -> [{k: v}] -> [v]
-	     * @param {Number|String} key The key name to pluck off of each object.
-	     * @param {Array} list The array to consider.
-	     * @return {Array} The list of values for the given key.
-	     * @see R.props
-	     * @example
-	     *
-	     *      R.pluck('a')([{a: 1}, {a: 2}]); //=> [1, 2]
-	     *      R.pluck(0)([[1, 2], [3, 4]]);   //=> [1, 3]
-	     */
-	    var pluck = _curry2(function pluck(p, list) {
-	        return map(prop(p), list);
-	    });
-	
-	    /**
-	     * Reasonable analog to SQL `select` statement.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @category Relation
-	     * @sig [k] -> [{k: v}] -> [{k: v}]
-	     * @param {Array} props The property names to project
-	     * @param {Array} objs The objects to query
-	     * @return {Array} An array of objects with just the `props` properties.
-	     * @example
-	     *
-	     *      var abby = {name: 'Abby', age: 7, hair: 'blond', grade: 2};
-	     *      var fred = {name: 'Fred', age: 12, hair: 'brown', grade: 7};
-	     *      var kids = [abby, fred];
-	     *      R.project(['name', 'grade'], kids); //=> [{name: 'Abby', grade: 2}, {name: 'Fred', grade: 7}]
-	     */
-	    // passing `identity` gives correct arity
-	    var project = useWith(_map, [
-	        pickAll,
-	        identity
-	    ]);
-	
-	    /**
-	     * Returns `true` if the specified object property is equal, in `R.equals`
-	     * terms, to the given value; `false` otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig String -> a -> Object -> Boolean
-	     * @param {String} name
-	     * @param {*} val
-	     * @param {*} obj
-	     * @return {Boolean}
-	     * @see R.equals, R.propSatisfies
-	     * @example
-	     *
-	     *      var abby = {name: 'Abby', age: 7, hair: 'blond'};
-	     *      var fred = {name: 'Fred', age: 12, hair: 'brown'};
-	     *      var rusty = {name: 'Rusty', age: 10, hair: 'brown'};
-	     *      var alois = {name: 'Alois', age: 15, disposition: 'surly'};
-	     *      var kids = [abby, fred, rusty, alois];
-	     *      var hasBrownHair = R.propEq('hair', 'brown');
-	     *      R.filter(hasBrownHair, kids); //=> [fred, rusty]
-	     */
-	    var propEq = _curry3(function propEq(name, val, obj) {
-	        return equals(val, obj[name]);
-	    });
-	
-	    /**
-	     * Returns a single item by iterating through the list, successively calling
-	     * the iterator function and passing it an accumulator value and the current
-	     * value from the array, and then passing the result to the next call.
-	     *
-	     * The iterator function receives two values: *(acc, value)*. It may use
-	     * `R.reduced` to shortcut the iteration.
-	     *
-	     * Note: `R.reduce` does not skip deleted or unassigned indices (sparse
-	     * arrays), unlike the native `Array.prototype.reduce` method. For more details
-	     * on this behavior, see:
-	     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#Description
-	     *
-	     * Dispatches to the `reduce` method of the third argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig ((a, b) -> a) -> a -> [b] -> a
-	     * @param {Function} fn The iterator function. Receives two values, the accumulator and the
-	     *        current element from the array.
-	     * @param {*} acc The accumulator value.
-	     * @param {Array} list The list to iterate over.
-	     * @return {*} The final, accumulated value.
-	     * @see R.reduced, R.addIndex
-	     * @example
-	     *
-	     *      var numbers = [1, 2, 3];
-	     *      var plus = (a, b) => a + b;
-	     *
-	     *      R.reduce(plus, 10, numbers); //=> 16
-	     */
-	    var reduce = _curry3(_reduce);
-	
-	    /**
-	     * Groups the elements of the list according to the result of calling
-	     * the String-returning function `keyFn` on each element and reduces the elements
-	     * of each group to a single value via the reducer function `valueFn`.
-	     *
-	     * This function is basically a more general `groupBy` function.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.20.0
-	     * @category List
-	     * @sig ((a, b) -> a) -> a -> (b -> String) -> [b] -> {String: a}
-	     * @param {Function} valueFn The function that reduces the elements of each group to a single
-	     *        value. Receives two values, accumulator for a particular group and the current element.
-	     * @param {*} acc The (initial) accumulator value for each group.
-	     * @param {Function} keyFn The function that maps the list's element into a key.
-	     * @param {Array} list The array to group.
-	     * @return {Object} An object with the output of `keyFn` for keys, mapped to the output of
-	     *         `valueFn` for elements which produced that key when passed to `keyFn`.
-	     * @see R.groupBy, R.reduce
-	     * @example
-	     *
-	     *      var reduceToNamesBy = R.reduceBy((acc, student) => acc.concat(student.name), []);
-	     *      var namesByGrade = reduceToNamesBy(function(student) {
-	     *        var score = student.score;
-	     *        return score < 65 ? 'F' :
-	     *               score < 70 ? 'D' :
-	     *               score < 80 ? 'C' :
-	     *               score < 90 ? 'B' : 'A';
-	     *      });
-	     *      var students = [{name: 'Lucy', score: 92},
-	     *                      {name: 'Drew', score: 85},
-	     *                      // ...
-	     *                      {name: 'Bart', score: 62}];
-	     *      namesByGrade(students);
-	     *      // {
-	     *      //   'A': ['Lucy'],
-	     *      //   'B': ['Drew']
-	     *      //   // ...,
-	     *      //   'F': ['Bart']
-	     *      // }
-	     */
-	    var reduceBy = _curryN(4, [], _dispatchable('reduceBy', _xreduceBy, function reduceBy(valueFn, valueAcc, keyFn, list) {
-	        return _reduce(function (acc, elt) {
-	            var key = keyFn(elt);
-	            acc[key] = valueFn(_has(key, acc) ? acc[key] : valueAcc, elt);
-	            return acc;
-	        }, {}, list);
-	    }));
-	
-	    /**
-	     * Like `reduce`, `reduceWhile` returns a single item by iterating through
-	     * the list, successively calling the iterator function. `reduceWhile` also
-	     * takes a predicate that is evaluated before each step. If the predicate returns
-	     * `false`, it "short-circuits" the iteration and returns the current value
-	     * of the accumulator.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.22.0
-	     * @category List
-	     * @sig ((a, b) -> Boolean) -> ((a, b) -> a) -> a -> [b] -> a
-	     * @param {Function} pred The predicate. It is passed the accumulator and the
-	     *        current element.
-	     * @param {Function} fn The iterator function. Receives two values, the
-	     *        accumulator and the current element.
-	     * @param {*} a The accumulator value.
-	     * @param {Array} list The list to iterate over.
-	     * @return {*} The final, accumulated value.
-	     * @see R.reduce, R.reduced
-	     * @example
-	     *
-	     *      var isOdd = (acc, x) => x % 2 === 1;
-	     *      var xs = [1, 3, 5, 60, 777, 800];
-	     *      R.reduceWhile(isOdd, R.add, 0, xs); //=> 9
-	     *
-	     *      var ys = [2, 4, 6]
-	     *      R.reduceWhile(isOdd, R.add, 111, ys); //=> 111
-	     */
-	    var reduceWhile = _curryN(4, [], function _reduceWhile(pred, fn, a, list) {
-	        return _reduce(function (acc, x) {
-	            return pred(acc, x) ? fn(acc, x) : _reduced(acc);
-	        }, a, list);
-	    });
-	
-	    /**
-	     * The complement of `filter`.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig Filterable f => (a -> Boolean) -> f a -> f a
-	     * @param {Function} pred
-	     * @param {Array} filterable
-	     * @return {Array}
-	     * @see R.filter, R.transduce, R.addIndex
-	     * @example
-	     *
-	     *      var isOdd = (n) => n % 2 === 1;
-	     *
-	     *      R.reject(isOdd, [1, 2, 3, 4]); //=> [2, 4]
-	     *
-	     *      R.reject(isOdd, {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, d: 4}
-	     */
-	    var reject = _curry2(function reject(pred, filterable) {
-	        return filter(_complement(pred), filterable);
-	    });
-	
-	    /**
-	     * Returns a fixed list of size `n` containing a specified identical value.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.1
-	     * @category List
-	     * @sig a -> n -> [a]
-	     * @param {*} value The value to repeat.
-	     * @param {Number} n The desired size of the output list.
-	     * @return {Array} A new array containing `n` `value`s.
-	     * @example
-	     *
-	     *      R.repeat('hi', 5); //=> ['hi', 'hi', 'hi', 'hi', 'hi']
-	     *
-	     *      var obj = {};
-	     *      var repeatedObjs = R.repeat(obj, 5); //=> [{}, {}, {}, {}, {}]
-	     *      repeatedObjs[0] === repeatedObjs[1]; //=> true
-	     */
-	    var repeat = _curry2(function repeat(value, n) {
-	        return times(always(value), n);
-	    });
-	
-	    /**
-	     * Adds together all the elements of a list.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Math
-	     * @sig [Number] -> Number
-	     * @param {Array} list An array of numbers
-	     * @return {Number} The sum of all the numbers in the list.
-	     * @see R.reduce
-	     * @example
-	     *
-	     *      R.sum([2,4,6,8,100,1]); //=> 121
-	     */
-	    var sum = reduce(add, 0);
-	
-	    /**
-	     * Returns a new list containing the last `n` elements of the given list.
-	     * If `n > list.length`, returns a list of `list.length` elements.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category List
-	     * @sig Number -> [a] -> [a]
-	     * @sig Number -> String -> String
-	     * @param {Number} n The number of elements to return.
-	     * @param {Array} xs The collection to consider.
-	     * @return {Array}
-	     * @see R.dropLast
-	     * @example
-	     *
-	     *      R.takeLast(1, ['foo', 'bar', 'baz']); //=> ['baz']
-	     *      R.takeLast(2, ['foo', 'bar', 'baz']); //=> ['bar', 'baz']
-	     *      R.takeLast(3, ['foo', 'bar', 'baz']); //=> ['foo', 'bar', 'baz']
-	     *      R.takeLast(4, ['foo', 'bar', 'baz']); //=> ['foo', 'bar', 'baz']
-	     *      R.takeLast(3, 'ramda');               //=> 'mda'
-	     */
-	    var takeLast = _curry2(function takeLast(n, xs) {
-	        return drop(n >= 0 ? xs.length - n : 0, xs);
-	    });
-	
-	    /**
-	     * Initializes a transducer using supplied iterator function. Returns a single
-	     * item by iterating through the list, successively calling the transformed
-	     * iterator function and passing it an accumulator value and the current value
-	     * from the array, and then passing the result to the next call.
-	     *
-	     * The iterator function receives two values: *(acc, value)*. It will be
-	     * wrapped as a transformer to initialize the transducer. A transformer can be
-	     * passed directly in place of an iterator function. In both cases, iteration
-	     * may be stopped early with the `R.reduced` function.
-	     *
-	     * A transducer is a function that accepts a transformer and returns a
-	     * transformer and can be composed directly.
-	     *
-	     * A transformer is an an object that provides a 2-arity reducing iterator
-	     * function, step, 0-arity initial value function, init, and 1-arity result
-	     * extraction function, result. The step function is used as the iterator
-	     * function in reduce. The result function is used to convert the final
-	     * accumulator into the return type and in most cases is R.identity. The init
-	     * function can be used to provide an initial accumulator, but is ignored by
-	     * transduce.
-	     *
-	     * The iteration is performed with R.reduce after initializing the transducer.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.12.0
-	     * @category List
-	     * @sig (c -> c) -> (a,b -> a) -> a -> [b] -> a
-	     * @param {Function} xf The transducer function. Receives a transformer and returns a transformer.
-	     * @param {Function} fn The iterator function. Receives two values, the accumulator and the
-	     *        current element from the array. Wrapped as transformer, if necessary, and used to
-	     *        initialize the transducer
-	     * @param {*} acc The initial accumulator value.
-	     * @param {Array} list The list to iterate over.
-	     * @return {*} The final, accumulated value.
-	     * @see R.reduce, R.reduced, R.into
-	     * @example
-	     *
-	     *      var numbers = [1, 2, 3, 4];
-	     *      var transducer = R.compose(R.map(R.add(1)), R.take(2));
-	     *
-	     *      R.transduce(transducer, R.flip(R.append), [], numbers); //=> [2, 3]
-	     */
-	    var transduce = curryN(4, function transduce(xf, fn, acc, list) {
-	        return _reduce(xf(typeof fn === 'function' ? _xwrap(fn) : fn), acc, list);
-	    });
-	
-	    /**
-	     * Combines two lists into a set (i.e. no duplicates) composed of the elements
-	     * of each list. Duplication is determined according to the value returned by
-	     * applying the supplied predicate to two list elements.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig (a -> a -> Boolean) -> [*] -> [*] -> [*]
-	     * @param {Function} pred A predicate used to test whether two items are equal.
-	     * @param {Array} list1 The first list.
-	     * @param {Array} list2 The second list.
-	     * @return {Array} The first and second lists concatenated, with
-	     *         duplicates removed.
-	     * @see R.union
-	     * @example
-	     *
-	     *      var l1 = [{a: 1}, {a: 2}];
-	     *      var l2 = [{a: 1}, {a: 4}];
-	     *      R.unionWith(R.eqBy(R.prop('a')), l1, l2); //=> [{a: 1}, {a: 2}, {a: 4}]
-	     */
-	    var unionWith = _curry3(function unionWith(pred, list1, list2) {
-	        return uniqWith(pred, _concat(list1, list2));
-	    });
-	
-	    /**
-	     * Takes a spec object and a test object; returns true if the test satisfies
-	     * the spec, false otherwise. An object satisfies the spec if, for each of the
-	     * spec's own properties, accessing that property of the object gives the same
-	     * value (in `R.equals` terms) as accessing that property of the spec.
-	     *
-	     * `whereEq` is a specialization of [`where`](#where).
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category Object
-	     * @sig {String: *} -> {String: *} -> Boolean
-	     * @param {Object} spec
-	     * @param {Object} testObj
-	     * @return {Boolean}
-	     * @see R.where
-	     * @example
-	     *
-	     *      // pred :: Object -> Boolean
-	     *      var pred = R.whereEq({a: 1, b: 2});
-	     *
-	     *      pred({a: 1});              //=> false
-	     *      pred({a: 1, b: 2});        //=> true
-	     *      pred({a: 1, b: 2, c: 3});  //=> true
-	     *      pred({a: 1, b: 1});        //=> false
-	     */
-	    var whereEq = _curry2(function whereEq(spec, testObj) {
-	        return where(map(equals, spec), testObj);
-	    });
-	
-	    var _flatCat = function () {
-	        var preservingReduced = function (xf) {
-	            return {
-	                '@@transducer/init': _xfBase.init,
-	                '@@transducer/result': function (result) {
-	                    return xf['@@transducer/result'](result);
-	                },
-	                '@@transducer/step': function (result, input) {
-	                    var ret = xf['@@transducer/step'](result, input);
-	                    return ret['@@transducer/reduced'] ? _forceReduced(ret) : ret;
-	                }
-	            };
-	        };
-	        return function _xcat(xf) {
-	            var rxf = preservingReduced(xf);
-	            return {
-	                '@@transducer/init': _xfBase.init,
-	                '@@transducer/result': function (result) {
-	                    return rxf['@@transducer/result'](result);
-	                },
-	                '@@transducer/step': function (result, input) {
-	                    return !isArrayLike(input) ? _reduce(rxf, result, [input]) : _reduce(rxf, result, input);
-	                }
-	            };
-	        };
-	    }();
-	
-	    // Array.prototype.indexOf doesn't exist below IE9
-	    // manually crawl the list to distinguish between +0 and -0
-	    // NaN
-	    // non-zero numbers can utilise Set
-	    // all these types can utilise Set
-	    // null can utilise Set
-	    // anything else not covered above, defer to R.equals
-	    var _indexOf = function _indexOf(list, a, idx) {
-	        var inf, item;
-	        // Array.prototype.indexOf doesn't exist below IE9
-	        if (typeof list.indexOf === 'function') {
-	            switch (typeof a) {
-	            case 'number':
-	                if (a === 0) {
-	                    // manually crawl the list to distinguish between +0 and -0
-	                    inf = 1 / a;
-	                    while (idx < list.length) {
-	                        item = list[idx];
-	                        if (item === 0 && 1 / item === inf) {
-	                            return idx;
-	                        }
-	                        idx += 1;
-	                    }
-	                    return -1;
-	                } else if (a !== a) {
-	                    // NaN
-	                    while (idx < list.length) {
-	                        item = list[idx];
-	                        if (typeof item === 'number' && item !== item) {
-	                            return idx;
-	                        }
-	                        idx += 1;
-	                    }
-	                    return -1;
-	                }
-	                // non-zero numbers can utilise Set
-	                return list.indexOf(a, idx);
-	            // all these types can utilise Set
-	            case 'string':
-	            case 'boolean':
-	            case 'function':
-	            case 'undefined':
-	                return list.indexOf(a, idx);
-	            case 'object':
-	                if (a === null) {
-	                    // null can utilise Set
-	                    return list.indexOf(a, idx);
-	                }
-	            }
-	        }
-	        // anything else not covered above, defer to R.equals
-	        while (idx < list.length) {
-	            if (equals(list[idx], a)) {
-	                return idx;
-	            }
-	            idx += 1;
-	        }
-	        return -1;
-	    };
-	
-	    var _xchain = _curry2(function _xchain(f, xf) {
-	        return map(f, _flatCat(xf));
-	    });
-	
-	    /**
-	     * Takes a list of predicates and returns a predicate that returns true for a
-	     * given list of arguments if every one of the provided predicates is satisfied
-	     * by those arguments.
-	     *
-	     * The function returned is a curried function whose arity matches that of the
-	     * highest-arity predicate.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Logic
-	     * @sig [(*... -> Boolean)] -> (*... -> Boolean)
-	     * @param {Array} preds
-	     * @return {Function}
-	     * @see R.anyPass
-	     * @example
-	     *
-	     *      var isQueen = R.propEq('rank', 'Q');
-	     *      var isSpade = R.propEq('suit', '♠︎');
-	     *      var isQueenOfSpades = R.allPass([isQueen, isSpade]);
-	     *
-	     *      isQueenOfSpades({rank: 'Q', suit: '♣︎'}); //=> false
-	     *      isQueenOfSpades({rank: 'Q', suit: '♠︎'}); //=> true
-	     */
-	    var allPass = _curry1(function allPass(preds) {
-	        return curryN(reduce(max, 0, pluck('length', preds)), function () {
-	            var idx = 0;
-	            var len = preds.length;
-	            while (idx < len) {
-	                if (!preds[idx].apply(this, arguments)) {
-	                    return false;
-	                }
-	                idx += 1;
-	            }
-	            return true;
-	        });
-	    });
-	
-	    /**
-	     * Takes a list of predicates and returns a predicate that returns true for a
-	     * given list of arguments if at least one of the provided predicates is
-	     * satisfied by those arguments.
-	     *
-	     * The function returned is a curried function whose arity matches that of the
-	     * highest-arity predicate.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Logic
-	     * @sig [(*... -> Boolean)] -> (*... -> Boolean)
-	     * @param {Array} preds
-	     * @return {Function}
-	     * @see R.allPass
-	     * @example
-	     *
-	     *      var gte = R.anyPass([R.gt, R.equals]);
-	     *
-	     *      gte(3, 2); //=> true
-	     *      gte(2, 2); //=> true
-	     *      gte(2, 3); //=> false
-	     */
-	    var anyPass = _curry1(function anyPass(preds) {
-	        return curryN(reduce(max, 0, pluck('length', preds)), function () {
-	            var idx = 0;
-	            var len = preds.length;
-	            while (idx < len) {
-	                if (preds[idx].apply(this, arguments)) {
-	                    return true;
-	                }
-	                idx += 1;
-	            }
-	            return false;
-	        });
-	    });
-	
-	    /**
-	     * ap applies a list of functions to a list of values.
-	     *
-	     * Dispatches to the `ap` method of the second argument, if present. Also
-	     * treats curried functions as applicatives.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category Function
-	     * @sig [a -> b] -> [a] -> [b]
-	     * @sig Apply f => f (a -> b) -> f a -> f b
-	     * @param {Array} fns An array of functions
-	     * @param {Array} vs An array of values
-	     * @return {Array} An array of results of applying each of `fns` to all of `vs` in turn.
-	     * @example
-	     *
-	     *      R.ap([R.multiply(2), R.add(3)], [1,2,3]); //=> [2, 4, 6, 4, 5, 6]
-	     */
-	    // else
-	    var ap = _curry2(function ap(applicative, fn) {
-	        return typeof applicative.ap === 'function' ? applicative.ap(fn) : typeof applicative === 'function' ? function (x) {
-	            return applicative(x)(fn(x));
-	        } : // else
-	        _reduce(function (acc, f) {
-	            return _concat(acc, map(f, fn));
-	        }, [], applicative);
-	    });
-	
-	    /**
-	     * Given a spec object recursively mapping properties to functions, creates a
-	     * function producing an object of the same structure, by mapping each property
-	     * to the result of calling its associated function with the supplied arguments.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.20.0
-	     * @category Function
-	     * @sig {k: ((a, b, ..., m) -> v)} -> ((a, b, ..., m) -> {k: v})
-	     * @param {Object} spec an object recursively mapping properties to functions for
-	     *        producing the values for these properties.
-	     * @return {Function} A function that returns an object of the same structure
-	     * as `spec', with each property set to the value returned by calling its
-	     * associated function with the supplied arguments.
-	     * @see R.converge, R.juxt
-	     * @example
-	     *
-	     *      var getMetrics = R.applySpec({
-	     *                                      sum: R.add,
-	     *                                      nested: { mul: R.multiply }
-	     *                                   });
-	     *      getMetrics(2, 4); // => { sum: 6, nested: { mul: 8 } }
-	     */
-	    var applySpec = _curry1(function applySpec(spec) {
-	        spec = map(function (v) {
-	            return typeof v == 'function' ? v : applySpec(v);
-	        }, spec);
-	        return curryN(reduce(max, 0, pluck('length', values(spec))), function () {
-	            var args = arguments;
-	            return map(function (f) {
-	                return apply(f, args);
-	            }, spec);
-	        });
-	    });
-	
-	    /**
-	     * Returns the result of calling its first argument with the remaining
-	     * arguments. This is occasionally useful as a converging function for
-	     * `R.converge`: the left branch can produce a function while the right branch
-	     * produces a value to be passed to that function as an argument.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category Function
-	     * @sig (*... -> a),*... -> a
-	     * @param {Function} fn The function to apply to the remaining arguments.
-	     * @param {...*} args Any number of positional arguments.
-	     * @return {*}
-	     * @see R.apply
-	     * @example
-	     *
-	     *      var indentN = R.pipe(R.times(R.always(' ')),
-	     *                           R.join(''),
-	     *                           R.replace(/^(?!$)/gm));
-	     *
-	     *      var format = R.converge(R.call, [
-	     *                                  R.pipe(R.prop('indent'), indentN),
-	     *                                  R.prop('value')
-	     *                              ]);
-	     *
-	     *      format({indent: 2, value: 'foo\nbar\nbaz\n'}); //=> '  foo\n  bar\n  baz\n'
-	     */
-	    var call = curry(function call(fn) {
-	        return fn.apply(this, _slice(arguments, 1));
-	    });
-	
-	    /**
-	     * `chain` maps a function over a list and concatenates the results. `chain`
-	     * is also known as `flatMap` in some libraries
-	     *
-	     * Dispatches to the `chain` method of the second argument, if present,
-	     * according to the [FantasyLand Chain spec](https://github.com/fantasyland/fantasy-land#chain).
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category List
-	     * @sig Chain m => (a -> m b) -> m a -> m b
-	     * @param {Function} fn
-	     * @param {Array} list
-	     * @return {Array}
-	     * @example
-	     *
-	     *      var duplicate = n => [n, n];
-	     *      R.chain(duplicate, [1, 2, 3]); //=> [1, 1, 2, 2, 3, 3]
-	     */
-	    var chain = _curry2(_dispatchable('chain', _xchain, function chain(fn, monad) {
-	        if (typeof monad === 'function') {
-	            return function () {
-	                return monad.call(this, fn.apply(this, arguments)).apply(this, arguments);
-	            };
-	        }
-	        return _makeFlat(false)(map(fn, monad));
-	    }));
-	
-	    /**
-	     * Returns a function, `fn`, which encapsulates if/else-if/else logic.
-	     * `R.cond` takes a list of [predicate, transform] pairs. All of the arguments
-	     * to `fn` are applied to each of the predicates in turn until one returns a
-	     * "truthy" value, at which point `fn` returns the result of applying its
-	     * arguments to the corresponding transformer. If none of the predicates
-	     * matches, `fn` returns undefined.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.6.0
-	     * @category Logic
-	     * @sig [[(*... -> Boolean),(*... -> *)]] -> (*... -> *)
-	     * @param {Array} pairs
-	     * @return {Function}
-	     * @example
-	     *
-	     *      var fn = R.cond([
-	     *        [R.equals(0),   R.always('water freezes at 0°C')],
-	     *        [R.equals(100), R.always('water boils at 100°C')],
-	     *        [R.T,           temp => 'nothing special happens at ' + temp + '°C']
-	     *      ]);
-	     *      fn(0); //=> 'water freezes at 0°C'
-	     *      fn(50); //=> 'nothing special happens at 50°C'
-	     *      fn(100); //=> 'water boils at 100°C'
-	     */
-	    var cond = _curry1(function cond(pairs) {
-	        var arity = reduce(max, 0, map(function (pair) {
-	            return pair[0].length;
-	        }, pairs));
-	        return _arity(arity, function () {
-	            var idx = 0;
-	            while (idx < pairs.length) {
-	                if (pairs[idx][0].apply(this, arguments)) {
-	                    return pairs[idx][1].apply(this, arguments);
-	                }
-	                idx += 1;
-	            }
-	        });
-	    });
-	
-	    /**
-	     * Wraps a constructor function inside a curried function that can be called
-	     * with the same arguments and returns the same type. The arity of the function
-	     * returned is specified to allow using variadic constructor functions.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.4.0
-	     * @category Function
-	     * @sig Number -> (* -> {*}) -> (* -> {*})
-	     * @param {Number} n The arity of the constructor function.
-	     * @param {Function} Fn The constructor function to wrap.
-	     * @return {Function} A wrapped, curried constructor function.
-	     * @example
-	     *
-	     *      // Variadic constructor function
-	     *      var Widget = () => {
-	     *        this.children = Array.prototype.slice.call(arguments);
-	     *        // ...
-	     *      };
-	     *      Widget.prototype = {
-	     *        // ...
-	     *      };
-	     *      var allConfigs = [
-	     *        // ...
-	     *      ];
-	     *      R.map(R.constructN(1, Widget), allConfigs); // a list of Widgets
-	     */
-	    var constructN = _curry2(function constructN(n, Fn) {
-	        if (n > 10) {
-	            throw new Error('Constructor with greater than ten arguments');
-	        }
-	        if (n === 0) {
-	            return function () {
-	                return new Fn();
-	            };
-	        }
-	        return curry(nAry(n, function ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9) {
-	            switch (arguments.length) {
-	            case 1:
-	                return new Fn($0);
-	            case 2:
-	                return new Fn($0, $1);
-	            case 3:
-	                return new Fn($0, $1, $2);
-	            case 4:
-	                return new Fn($0, $1, $2, $3);
-	            case 5:
-	                return new Fn($0, $1, $2, $3, $4);
-	            case 6:
-	                return new Fn($0, $1, $2, $3, $4, $5);
-	            case 7:
-	                return new Fn($0, $1, $2, $3, $4, $5, $6);
-	            case 8:
-	                return new Fn($0, $1, $2, $3, $4, $5, $6, $7);
-	            case 9:
-	                return new Fn($0, $1, $2, $3, $4, $5, $6, $7, $8);
-	            case 10:
-	                return new Fn($0, $1, $2, $3, $4, $5, $6, $7, $8, $9);
-	            }
-	        }));
-	    });
-	
-	    /**
-	     * Accepts a converging function and a list of branching functions and returns
-	     * a new function. When invoked, this new function is applied to some
-	     * arguments, each branching function is applied to those same arguments. The
-	     * results of each branching function are passed as arguments to the converging
-	     * function to produce the return value.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.4.2
-	     * @category Function
-	     * @sig (x1 -> x2 -> ... -> z) -> [(a -> b -> ... -> x1), (a -> b -> ... -> x2), ...] -> (a -> b -> ... -> z)
-	     * @param {Function} after A function. `after` will be invoked with the return values of
-	     *        `fn1` and `fn2` as its arguments.
-	     * @param {Array} functions A list of functions.
-	     * @return {Function} A new function.
-	     * @example
-	     *
-	     *      var add = (a, b) => a + b;
-	     *      var multiply = (a, b) => a * b;
-	     *      var subtract = (a, b) => a - b;
-	     *
-	     *      //≅ multiply( add(1, 2), subtract(1, 2) );
-	     *      R.converge(multiply, [add, subtract])(1, 2); //=> -3
-	     *
-	     *      var add3 = (a, b, c) => a + b + c;
-	     *      R.converge(add3, [multiply, add, subtract])(1, 2); //=> 4
-	     */
-	    var converge = _curry2(function converge(after, fns) {
-	        return curryN(reduce(max, 0, pluck('length', fns)), function () {
-	            var args = arguments;
-	            var context = this;
-	            return after.apply(context, _map(function (fn) {
-	                return fn.apply(context, args);
-	            }, fns));
-	        });
-	    });
-	
-	    /**
-	     * Counts the elements of a list according to how many match each value of a
-	     * key generated by the supplied function. Returns an object mapping the keys
-	     * produced by `fn` to the number of occurrences in the list. Note that all
-	     * keys are coerced to strings because of how JavaScript objects work.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig (a -> String) -> [a] -> {*}
-	     * @param {Function} fn The function used to map values to keys.
-	     * @param {Array} list The list to count elements from.
-	     * @return {Object} An object mapping keys to number of occurrences in the list.
-	     * @example
-	     *
-	     *      var numbers = [1.0, 1.1, 1.2, 2.0, 3.0, 2.2];
-	     *      var letters = R.split('', 'abcABCaaaBBc');
-	     *      R.countBy(Math.floor)(numbers);    //=> {'1': 3, '2': 2, '3': 1}
-	     *      R.countBy(R.toLower)(letters);   //=> {'a': 5, 'b': 4, 'c': 3}
-	     */
-	    var countBy = reduceBy(function (acc, elem) {
-	        return acc + 1;
-	    }, 0);
-	
-	    /**
-	     * Returns a new list without any consecutively repeating elements. Equality is
-	     * determined by applying the supplied predicate two consecutive elements. The
-	     * first element in a series of equal element is the one being preserved.
-	     *
-	     * Dispatches to the `dropRepeatsWith` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category List
-	     * @sig (a, a -> Boolean) -> [a] -> [a]
-	     * @param {Function} pred A predicate used to test whether two items are equal.
-	     * @param {Array} list The array to consider.
-	     * @return {Array} `list` without repeating elements.
-	     * @see R.transduce
-	     * @example
-	     *
-	     *      var l = [1, -1, 1, 3, 4, -4, -4, -5, 5, 3, 3];
-	     *      R.dropRepeatsWith(R.eqBy(Math.abs), l); //=> [1, 3, 4, -5, 3]
-	     */
-	    var dropRepeatsWith = _curry2(_dispatchable('dropRepeatsWith', _xdropRepeatsWith, function dropRepeatsWith(pred, list) {
-	        var result = [];
-	        var idx = 1;
-	        var len = list.length;
-	        if (len !== 0) {
-	            result[0] = list[0];
-	            while (idx < len) {
-	                if (!pred(last(result), list[idx])) {
-	                    result[result.length] = list[idx];
-	                }
-	                idx += 1;
-	            }
-	        }
-	        return result;
-	    }));
-	
-	    /**
-	     * Takes a function and two values in its domain and returns `true` if the
-	     * values map to the same value in the codomain; `false` otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.18.0
-	     * @category Relation
-	     * @sig (a -> b) -> a -> a -> Boolean
-	     * @param {Function} f
-	     * @param {*} x
-	     * @param {*} y
-	     * @return {Boolean}
-	     * @example
-	     *
-	     *      R.eqBy(Math.abs, 5, -5); //=> true
-	     */
-	    var eqBy = _curry3(function eqBy(f, x, y) {
-	        return equals(f(x), f(y));
-	    });
-	
-	    /**
-	     * Reports whether two objects have the same value, in `R.equals` terms, for
-	     * the specified property. Useful as a curried predicate.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig k -> {k: v} -> {k: v} -> Boolean
-	     * @param {String} prop The name of the property to compare
-	     * @param {Object} obj1
-	     * @param {Object} obj2
-	     * @return {Boolean}
-	     *
-	     * @example
-	     *
-	     *      var o1 = { a: 1, b: 2, c: 3, d: 4 };
-	     *      var o2 = { a: 10, b: 20, c: 3, d: 40 };
-	     *      R.eqProps('a', o1, o2); //=> false
-	     *      R.eqProps('c', o1, o2); //=> true
-	     */
-	    var eqProps = _curry3(function eqProps(prop, obj1, obj2) {
-	        return equals(obj1[prop], obj2[prop]);
-	    });
-	
-	    /**
-	     * Splits a list into sub-lists stored in an object, based on the result of
-	     * calling a String-returning function on each element, and grouping the
-	     * results according to values returned.
-	     *
-	     * Dispatches to the `groupBy` method of the second argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig (a -> String) -> [a] -> {String: [a]}
-	     * @param {Function} fn Function :: a -> String
-	     * @param {Array} list The array to group
-	     * @return {Object} An object with the output of `fn` for keys, mapped to arrays of elements
-	     *         that produced that key when passed to `fn`.
-	     * @see R.transduce
-	     * @example
-	     *
-	     *      var byGrade = R.groupBy(function(student) {
-	     *        var score = student.score;
-	     *        return score < 65 ? 'F' :
-	     *               score < 70 ? 'D' :
-	     *               score < 80 ? 'C' :
-	     *               score < 90 ? 'B' : 'A';
-	     *      });
-	     *      var students = [{name: 'Abby', score: 84},
-	     *                      {name: 'Eddy', score: 58},
-	     *                      // ...
-	     *                      {name: 'Jack', score: 69}];
-	     *      byGrade(students);
-	     *      // {
-	     *      //   'A': [{name: 'Dianne', score: 99}],
-	     *      //   'B': [{name: 'Abby', score: 84}]
-	     *      //   // ...,
-	     *      //   'F': [{name: 'Eddy', score: 58}]
-	     *      // }
-	     */
-	    var groupBy = _curry2(_checkForMethod('groupBy', reduceBy(function (acc, item) {
-	        if (acc == null) {
-	            acc = [];
-	        }
-	        acc.push(item);
-	        return acc;
-	    }, null)));
-	
-	    /**
-	     * Given a function that generates a key, turns a list of objects into an
-	     * object indexing the objects by the given key. Note that if multiple
-	     * objects generate the same value for the indexing key only the last value
-	     * will be included in the generated object.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category List
-	     * @sig (a -> String) -> [{k: v}] -> {k: {k: v}}
-	     * @param {Function} fn Function :: a -> String
-	     * @param {Array} array The array of objects to index
-	     * @return {Object} An object indexing each array element by the given property.
-	     * @example
-	     *
-	     *      var list = [{id: 'xyz', title: 'A'}, {id: 'abc', title: 'B'}];
-	     *      R.indexBy(R.prop('id'), list);
-	     *      //=> {abc: {id: 'abc', title: 'B'}, xyz: {id: 'xyz', title: 'A'}}
-	     */
-	    var indexBy = reduceBy(function (acc, elem) {
-	        return elem;
-	    }, null);
-	
-	    /**
-	     * Returns the position of the first occurrence of an item in an array, or -1
-	     * if the item is not included in the array. `R.equals` is used to determine
-	     * equality.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig a -> [a] -> Number
-	     * @param {*} target The item to find.
-	     * @param {Array} xs The array to search in.
-	     * @return {Number} the index of the target, or -1 if the target is not found.
-	     * @see R.lastIndexOf
-	     * @example
-	     *
-	     *      R.indexOf(3, [1,2,3,4]); //=> 2
-	     *      R.indexOf(10, [1,2,3,4]); //=> -1
-	     */
-	    var indexOf = _curry2(function indexOf(target, xs) {
-	        return typeof xs.indexOf === 'function' && !_isArray(xs) ? xs.indexOf(target) : _indexOf(xs, target, 0);
-	    });
-	
-	    /**
-	     * juxt applies a list of functions to a list of values.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category Function
-	     * @sig [(a, b, ..., m) -> n] -> ((a, b, ..., m) -> [n])
-	     * @param {Array} fns An array of functions
-	     * @return {Function} A function that returns a list of values after applying each of the original `fns` to its parameters.
-	     * @see R.applySpec
-	     * @example
-	     *
-	     *      var getRange = R.juxt([Math.min, Math.max]);
-	     *      getRange(3, 4, 9, -3); //=> [-3, 9]
-	     */
-	    var juxt = _curry1(function juxt(fns) {
-	        return converge(_arrayOf, fns);
-	    });
-	
-	    /**
-	     * Returns a lens for the given getter and setter functions. The getter "gets"
-	     * the value of the focus; the setter "sets" the value of the focus. The setter
-	     * should not mutate the data structure.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.8.0
-	     * @category Object
-	     * @typedefn Lens s a = Functor f => (a -> f a) -> s -> f s
-	     * @sig (s -> a) -> ((a, s) -> s) -> Lens s a
-	     * @param {Function} getter
-	     * @param {Function} setter
-	     * @return {Lens}
-	     * @see R.view, R.set, R.over, R.lensIndex, R.lensProp
-	     * @example
-	     *
-	     *      var xLens = R.lens(R.prop('x'), R.assoc('x'));
-	     *
-	     *      R.view(xLens, {x: 1, y: 2});            //=> 1
-	     *      R.set(xLens, 4, {x: 1, y: 2});          //=> {x: 4, y: 2}
-	     *      R.over(xLens, R.negate, {x: 1, y: 2});  //=> {x: -1, y: 2}
-	     */
-	    var lens = _curry2(function lens(getter, setter) {
-	        return function (toFunctorFn) {
-	            return function (target) {
-	                return map(function (focus) {
-	                    return setter(focus, target);
-	                }, toFunctorFn(getter(target)));
-	            };
-	        };
-	    });
-	
-	    /**
-	     * Returns a lens whose focus is the specified index.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category Object
-	     * @typedefn Lens s a = Functor f => (a -> f a) -> s -> f s
-	     * @sig Number -> Lens s a
-	     * @param {Number} n
-	     * @return {Lens}
-	     * @see R.view, R.set, R.over
-	     * @example
-	     *
-	     *      var headLens = R.lensIndex(0);
-	     *
-	     *      R.view(headLens, ['a', 'b', 'c']);            //=> 'a'
-	     *      R.set(headLens, 'x', ['a', 'b', 'c']);        //=> ['x', 'b', 'c']
-	     *      R.over(headLens, R.toUpper, ['a', 'b', 'c']); //=> ['A', 'b', 'c']
-	     */
-	    var lensIndex = _curry1(function lensIndex(n) {
-	        return lens(nth(n), update(n));
-	    });
-	
-	    /**
-	     * Returns a lens whose focus is the specified path.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category Object
-	     * @typedefn Lens s a = Functor f => (a -> f a) -> s -> f s
-	     * @sig [String] -> Lens s a
-	     * @param {Array} path The path to use.
-	     * @return {Lens}
-	     * @see R.view, R.set, R.over
-	     * @example
-	     *
-	     *      var xyLens = R.lensPath(['x', 'y']);
-	     *
-	     *      R.view(xyLens, {x: {y: 2, z: 3}});            //=> 2
-	     *      R.set(xyLens, 4, {x: {y: 2, z: 3}});          //=> {x: {y: 4, z: 3}}
-	     *      R.over(xyLens, R.negate, {x: {y: 2, z: 3}});  //=> {x: {y: -2, z: 3}}
-	     */
-	    var lensPath = _curry1(function lensPath(p) {
-	        return lens(path(p), assocPath(p));
-	    });
-	
-	    /**
-	     * Returns a lens whose focus is the specified property.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category Object
-	     * @typedefn Lens s a = Functor f => (a -> f a) -> s -> f s
-	     * @sig String -> Lens s a
-	     * @param {String} k
-	     * @return {Lens}
-	     * @see R.view, R.set, R.over
-	     * @example
-	     *
-	     *      var xLens = R.lensProp('x');
-	     *
-	     *      R.view(xLens, {x: 1, y: 2});            //=> 1
-	     *      R.set(xLens, 4, {x: 1, y: 2});          //=> {x: 4, y: 2}
-	     *      R.over(xLens, R.negate, {x: 1, y: 2});  //=> {x: -1, y: 2}
-	     */
-	    var lensProp = _curry1(function lensProp(k) {
-	        return lens(prop(k), assoc(k));
-	    });
-	
-	    /**
-	     * "lifts" a function to be the specified arity, so that it may "map over" that
-	     * many lists, Functions or other objects that satisfy the [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply).
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.7.0
-	     * @category Function
-	     * @sig Number -> (*... -> *) -> ([*]... -> [*])
-	     * @param {Function} fn The function to lift into higher context
-	     * @return {Function} The lifted function.
-	     * @see R.lift, R.ap
-	     * @example
-	     *
-	     *      var madd3 = R.liftN(3, R.curryN(3, (...args) => R.sum(args)));
-	     *      madd3([1,2,3], [1,2,3], [1]); //=> [3, 4, 5, 4, 5, 6, 5, 6, 7]
-	     */
-	    var liftN = _curry2(function liftN(arity, fn) {
-	        var lifted = curryN(arity, fn);
-	        return curryN(arity, function () {
-	            return _reduce(ap, map(lifted, arguments[0]), _slice(arguments, 1));
-	        });
-	    });
-	
-	    /**
-	     * Returns the mean of the given list of numbers.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category Math
-	     * @sig [Number] -> Number
-	     * @param {Array} list
-	     * @return {Number}
-	     * @example
-	     *
-	     *      R.mean([2, 7, 9]); //=> 6
-	     *      R.mean([]); //=> NaN
-	     */
-	    var mean = _curry1(function mean(list) {
-	        return sum(list) / list.length;
-	    });
-	
-	    /**
-	     * Returns the median of the given list of numbers.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category Math
-	     * @sig [Number] -> Number
-	     * @param {Array} list
-	     * @return {Number}
-	     * @example
-	     *
-	     *      R.median([2, 9, 7]); //=> 7
-	     *      R.median([7, 2, 10, 9]); //=> 8
-	     *      R.median([]); //=> NaN
-	     */
-	    var median = _curry1(function median(list) {
-	        var len = list.length;
-	        if (len === 0) {
-	            return NaN;
-	        }
-	        var width = 2 - len % 2;
-	        var idx = (len - width) / 2;
-	        return mean(_slice(list).sort(function (a, b) {
-	            return a < b ? -1 : a > b ? 1 : 0;
-	        }).slice(idx, idx + width));
-	    });
-	
-	    /**
-	     * Takes a predicate and a list or other "filterable" object and returns the
-	     * pair of filterable objects of the same type of elements which do and do not
-	     * satisfy, the predicate, respectively.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.4
-	     * @category List
-	     * @sig Filterable f => (a -> Boolean) -> f a -> [f a, f a]
-	     * @param {Function} pred A predicate to determine which side the element belongs to.
-	     * @param {Array} filterable the list (or other filterable) to partition.
-	     * @return {Array} An array, containing first the subset of elements that satisfy the
-	     *         predicate, and second the subset of elements that do not satisfy.
-	     * @see R.filter, R.reject
-	     * @example
-	     *
-	     *      R.partition(R.contains('s'), ['sss', 'ttt', 'foo', 'bars']);
-	     *      // => [ [ 'sss', 'bars' ],  [ 'ttt', 'foo' ] ]
-	     *
-	     *      R.partition(R.contains('s'), { a: 'sss', b: 'ttt', foo: 'bars' });
-	     *      // => [ { a: 'sss', foo: 'bars' }, { b: 'ttt' }  ]
-	     */
-	    var partition = juxt([
-	        filter,
-	        reject
-	    ]);
-	
-	    /**
-	     * Performs left-to-right function composition. The leftmost function may have
-	     * any arity; the remaining functions must be unary.
-	     *
-	     * In some libraries this function is named `sequence`.
-	     *
-	     * **Note:** The result of pipe is not automatically curried.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (((a, b, ..., n) -> o), (o -> p), ..., (x -> y), (y -> z)) -> ((a, b, ..., n) -> z)
-	     * @param {...Function} functions
-	     * @return {Function}
-	     * @see R.compose
-	     * @example
-	     *
-	     *      var f = R.pipe(Math.pow, R.negate, R.inc);
-	     *
-	     *      f(3, 4); // -(3^4) + 1
-	     */
-	    var pipe = function pipe() {
-	        if (arguments.length === 0) {
-	            throw new Error('pipe requires at least one argument');
-	        }
-	        return _arity(arguments[0].length, reduce(_pipe, arguments[0], tail(arguments)));
-	    };
-	
-	    /**
-	     * Performs left-to-right composition of one or more Promise-returning
-	     * functions. The leftmost function may have any arity; the remaining functions
-	     * must be unary.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category Function
-	     * @sig ((a -> Promise b), (b -> Promise c), ..., (y -> Promise z)) -> (a -> Promise z)
-	     * @param {...Function} functions
-	     * @return {Function}
-	     * @see R.composeP
-	     * @example
-	     *
-	     *      //  followersForUser :: String -> Promise [User]
-	     *      var followersForUser = R.pipeP(db.getUserById, db.getFollowers);
-	     */
-	    var pipeP = function pipeP() {
-	        if (arguments.length === 0) {
-	            throw new Error('pipeP requires at least one argument');
-	        }
-	        return _arity(arguments[0].length, reduce(_pipeP, arguments[0], tail(arguments)));
-	    };
-	
-	    /**
-	     * Multiplies together all the elements of a list.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Math
-	     * @sig [Number] -> Number
-	     * @param {Array} list An array of numbers
-	     * @return {Number} The product of all the numbers in the list.
-	     * @see R.reduce
-	     * @example
-	     *
-	     *      R.product([2,4,6,8,100,1]); //=> 38400
-	     */
-	    var product = reduce(multiply, 1);
-	
-	    /**
-	     * Transforms a [Traversable](https://github.com/fantasyland/fantasy-land#traversable)
-	     * of [Applicative](https://github.com/fantasyland/fantasy-land#applicative) into an
-	     * Applicative of Traversable.
-	     *
-	     * Dispatches to the `sequence` method of the second argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category List
-	     * @sig (Applicative f, Traversable t) => (a -> f a) -> t (f a) -> f (t a)
-	     * @param {Function} of
-	     * @param {*} traversable
-	     * @return {*}
-	     * @see R.traverse
-	     * @example
-	     *
-	     *      R.sequence(Maybe.of, [Just(1), Just(2), Just(3)]);   //=> Just([1, 2, 3])
-	     *      R.sequence(Maybe.of, [Just(1), Just(2), Nothing()]); //=> Nothing()
-	     *
-	     *      R.sequence(R.of, Just([1, 2, 3])); //=> [Just(1), Just(2), Just(3)]
-	     *      R.sequence(R.of, Nothing());       //=> [Nothing()]
-	     */
-	    var sequence = _curry2(function sequence(of, traversable) {
-	        return typeof traversable.sequence === 'function' ? traversable.sequence(of) : reduceRight(function (acc, x) {
-	            return ap(map(prepend, x), acc);
-	        }, of([]), traversable);
-	    });
-	
-	    /**
-	     * Maps an [Applicative](https://github.com/fantasyland/fantasy-land#applicative)-returning
-	     * function over a [Traversable](https://github.com/fantasyland/fantasy-land#traversable),
-	     * then uses [`sequence`](#sequence) to transform the resulting Traversable of Applicative
-	     * into an Applicative of Traversable.
-	     *
-	     * Dispatches to the `sequence` method of the third argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category List
-	     * @sig (Applicative f, Traversable t) => (a -> f a) -> (a -> f b) -> t a -> f (t b)
-	     * @param {Function} of
-	     * @param {Function} f
-	     * @param {*} traversable
-	     * @return {*}
-	     * @see R.sequence
-	     * @example
-	     *
-	     *      // Returns `Nothing` if the given divisor is `0`
-	     *      safeDiv = n => d => d === 0 ? Nothing() : Just(n / d)
-	     *
-	     *      R.traverse(Maybe.of, safeDiv(10), [2, 4, 5]); //=> Just([5, 2.5, 2])
-	     *      R.traverse(Maybe.of, safeDiv(10), [2, 0, 5]); //=> Nothing
-	     */
-	    var traverse = _curry3(function traverse(of, f, traversable) {
-	        return sequence(of, map(f, traversable));
-	    });
-	
-	    /**
-	     * Shorthand for `R.chain(R.identity)`, which removes one level of nesting from
-	     * any [Chain](https://github.com/fantasyland/fantasy-land#chain).
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.3.0
-	     * @category List
-	     * @sig Chain c => c (c a) -> c a
-	     * @param {*} list
-	     * @return {*}
-	     * @see R.flatten, R.chain
-	     * @example
-	     *
-	     *      R.unnest([1, [2], [[3]]]); //=> [1, 2, [3]]
-	     *      R.unnest([[1, 2], [3, 4], [5, 6]]); //=> [1, 2, 3, 4, 5, 6]
-	     */
-	    var unnest = chain(_identity);
-	
-	    var _contains = function _contains(a, list) {
-	        return _indexOf(list, a, 0) >= 0;
-	    };
-	
-	    //  mapPairs :: (Object, [String]) -> [String]
-	    var _toString = function _toString(x, seen) {
-	        var recur = function recur(y) {
-	            var xs = seen.concat([x]);
-	            return _contains(y, xs) ? '<Circular>' : _toString(y, xs);
-	        };
-	        //  mapPairs :: (Object, [String]) -> [String]
-	        var mapPairs = function (obj, keys) {
-	            return _map(function (k) {
-	                return _quote(k) + ': ' + recur(obj[k]);
-	            }, keys.slice().sort());
-	        };
-	        switch (Object.prototype.toString.call(x)) {
-	        case '[object Arguments]':
-	            return '(function() { return arguments; }(' + _map(recur, x).join(', ') + '))';
-	        case '[object Array]':
-	            return '[' + _map(recur, x).concat(mapPairs(x, reject(function (k) {
-	                return /^\d+$/.test(k);
-	            }, keys(x)))).join(', ') + ']';
-	        case '[object Boolean]':
-	            return typeof x === 'object' ? 'new Boolean(' + recur(x.valueOf()) + ')' : x.toString();
-	        case '[object Date]':
-	            return 'new Date(' + (isNaN(x.valueOf()) ? recur(NaN) : _quote(_toISOString(x))) + ')';
-	        case '[object Null]':
-	            return 'null';
-	        case '[object Number]':
-	            return typeof x === 'object' ? 'new Number(' + recur(x.valueOf()) + ')' : 1 / x === -Infinity ? '-0' : x.toString(10);
-	        case '[object String]':
-	            return typeof x === 'object' ? 'new String(' + recur(x.valueOf()) + ')' : _quote(x);
-	        case '[object Undefined]':
-	            return 'undefined';
-	        default:
-	            if (typeof x.toString === 'function') {
-	                var repr = x.toString();
-	                if (repr !== '[object Object]') {
-	                    return repr;
-	                }
-	            }
-	            return '{' + mapPairs(x, keys(x)).join(', ') + '}';
-	        }
-	    };
-	
-	    /**
-	     * Performs right-to-left function composition. The rightmost function may have
-	     * any arity; the remaining functions must be unary.
-	     *
-	     * **Note:** The result of compose is not automatically curried.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig ((y -> z), (x -> y), ..., (o -> p), ((a, b, ..., n) -> o)) -> ((a, b, ..., n) -> z)
-	     * @param {...Function} functions
-	     * @return {Function}
-	     * @see R.pipe
-	     * @example
-	     *
-	     *      var f = R.compose(R.inc, R.negate, Math.pow);
-	     *
-	     *      f(3, 4); // -(3^4) + 1
-	     */
-	    var compose = function compose() {
-	        if (arguments.length === 0) {
-	            throw new Error('compose requires at least one argument');
-	        }
-	        return pipe.apply(this, reverse(arguments));
-	    };
-	
-	    /**
-	     * Returns the right-to-left Kleisli composition of the provided functions,
-	     * each of which must return a value of a type supported by [`chain`](#chain).
-	     *
-	     * `R.composeK(h, g, f)` is equivalent to `R.compose(R.chain(h), R.chain(g), R.chain(f))`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category Function
-	     * @sig Chain m => ((y -> m z), (x -> m y), ..., (a -> m b)) -> (m a -> m z)
-	     * @param {...Function}
-	     * @return {Function}
-	     * @see R.pipeK
-	     * @example
-	     *
-	     *      //  parseJson :: String -> Maybe *
-	     *      //  get :: String -> Object -> Maybe *
-	     *
-	     *      //  getStateCode :: Maybe String -> Maybe String
-	     *      var getStateCode = R.composeK(
-	     *        R.compose(Maybe.of, R.toUpper),
-	     *        get('state'),
-	     *        get('address'),
-	     *        get('user'),
-	     *        parseJson
-	     *      );
-	     *
-	     *      getStateCode(Maybe.of('{"user":{"address":{"state":"ny"}}}'));
-	     *      //=> Just('NY')
-	     *      getStateCode(Maybe.of('[Invalid JSON]'));
-	     *      //=> Nothing()
-	     */
-	    var composeK = function composeK() {
-	        return compose.apply(this, prepend(identity, map(chain, arguments)));
-	    };
-	
-	    /**
-	     * Performs right-to-left composition of one or more Promise-returning
-	     * functions. The rightmost function may have any arity; the remaining
-	     * functions must be unary.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.10.0
-	     * @category Function
-	     * @sig ((y -> Promise z), (x -> Promise y), ..., (a -> Promise b)) -> (a -> Promise z)
-	     * @param {...Function} functions
-	     * @return {Function}
-	     * @see R.pipeP
-	     * @example
-	     *
-	     *      //  followersForUser :: String -> Promise [User]
-	     *      var followersForUser = R.composeP(db.getFollowers, db.getUserById);
-	     */
-	    var composeP = function composeP() {
-	        if (arguments.length === 0) {
-	            throw new Error('composeP requires at least one argument');
-	        }
-	        return pipeP.apply(this, reverse(arguments));
-	    };
-	
-	    /**
-	     * Wraps a constructor function inside a curried function that can be called
-	     * with the same arguments and returns the same type.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (* -> {*}) -> (* -> {*})
-	     * @param {Function} Fn The constructor function to wrap.
-	     * @return {Function} A wrapped, curried constructor function.
-	     * @example
-	     *
-	     *      // Constructor function
-	     *      var Widget = config => {
-	     *        // ...
-	     *      };
-	     *      Widget.prototype = {
-	     *        // ...
-	     *      };
-	     *      var allConfigs = [
-	     *        // ...
-	     *      ];
-	     *      R.map(R.construct(Widget), allConfigs); // a list of Widgets
-	     */
-	    var construct = _curry1(function construct(Fn) {
-	        return constructN(Fn.length, Fn);
-	    });
-	
-	    /**
-	     * Returns `true` if the specified value is equal, in `R.equals` terms, to at
-	     * least one element of the given list; `false` otherwise.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig a -> [a] -> Boolean
-	     * @param {Object} a The item to compare against.
-	     * @param {Array} list The array to consider.
-	     * @return {Boolean} `true` if the item is in the list, `false` otherwise.
-	     * @see R.any
-	     * @example
-	     *
-	     *      R.contains(3, [1, 2, 3]); //=> true
-	     *      R.contains(4, [1, 2, 3]); //=> false
-	     *      R.contains([42], [[42]]); //=> true
-	     */
-	    var contains = _curry2(_contains);
-	
-	    /**
-	     * Finds the set (i.e. no duplicates) of all elements in the first list not
-	     * contained in the second list.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig [*] -> [*] -> [*]
-	     * @param {Array} list1 The first list.
-	     * @param {Array} list2 The second list.
-	     * @return {Array} The elements in `list1` that are not in `list2`.
-	     * @see R.differenceWith, R.symmetricDifference, R.symmetricDifferenceWith
-	     * @example
-	     *
-	     *      R.difference([1,2,3,4], [7,6,5,4,3]); //=> [1,2]
-	     *      R.difference([7,6,5,4,3], [1,2,3,4]); //=> [7,6,5]
-	     */
-	    var difference = _curry2(function difference(first, second) {
-	        var out = [];
-	        var idx = 0;
-	        var firstLen = first.length;
-	        while (idx < firstLen) {
-	            if (!_contains(first[idx], second) && !_contains(first[idx], out)) {
-	                out[out.length] = first[idx];
-	            }
-	            idx += 1;
-	        }
-	        return out;
-	    });
-	
-	    /**
-	     * Returns a new list without any consecutively repeating elements. `R.equals`
-	     * is used to determine equality.
-	     *
-	     * Dispatches to the `dropRepeats` method of the first argument, if present.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category List
-	     * @sig [a] -> [a]
-	     * @param {Array} list The array to consider.
-	     * @return {Array} `list` without repeating elements.
-	     * @see R.transduce
-	     * @example
-	     *
-	     *     R.dropRepeats([1, 1, 1, 2, 3, 4, 4, 2, 2]); //=> [1, 2, 3, 4, 2]
-	     */
-	    var dropRepeats = _curry1(_dispatchable('dropRepeats', _xdropRepeatsWith(equals), dropRepeatsWith(equals)));
-	
-	    /**
-	     * "lifts" a function of arity > 1 so that it may "map over" a list, Function or other
-	     * object that satisfies the [FantasyLand Apply spec](https://github.com/fantasyland/fantasy-land#apply).
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.7.0
-	     * @category Function
-	     * @sig (*... -> *) -> ([*]... -> [*])
-	     * @param {Function} fn The function to lift into higher context
-	     * @return {Function} The lifted function.
-	     * @see R.liftN
-	     * @example
-	     *
-	     *      var madd3 = R.lift(R.curry((a, b, c) => a + b + c));
-	     *
-	     *      madd3([1,2,3], [1,2,3], [1]); //=> [3, 4, 5, 4, 5, 6, 5, 6, 7]
-	     *
-	     *      var madd5 = R.lift(R.curry((a, b, c, d, e) => a + b + c + d + e));
-	     *
-	     *      madd5([1,2], [3], [4, 5], [6], [7, 8]); //=> [21, 22, 22, 23, 22, 23, 23, 24]
-	     */
-	    var lift = _curry1(function lift(fn) {
-	        return liftN(fn.length, fn);
-	    });
-	
-	    /**
-	     * Returns a partial copy of an object omitting the keys specified.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Object
-	     * @sig [String] -> {String: *} -> {String: *}
-	     * @param {Array} names an array of String property names to omit from the new object
-	     * @param {Object} obj The object to copy from
-	     * @return {Object} A new object with properties from `names` not on it.
-	     * @see R.pick
-	     * @example
-	     *
-	     *      R.omit(['a', 'd'], {a: 1, b: 2, c: 3, d: 4}); //=> {b: 2, c: 3}
-	     */
-	    var omit = _curry2(function omit(names, obj) {
-	        var result = {};
-	        for (var prop in obj) {
-	            if (!_contains(prop, names)) {
-	                result[prop] = obj[prop];
-	            }
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Returns the left-to-right Kleisli composition of the provided functions,
-	     * each of which must return a value of a type supported by [`chain`](#chain).
-	     *
-	     * `R.pipeK(f, g, h)` is equivalent to `R.pipe(R.chain(f), R.chain(g), R.chain(h))`.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category Function
-	     * @sig Chain m => ((a -> m b), (b -> m c), ..., (y -> m z)) -> (m a -> m z)
-	     * @param {...Function}
-	     * @return {Function}
-	     * @see R.composeK
-	     * @example
-	     *
-	     *      //  parseJson :: String -> Maybe *
-	     *      //  get :: String -> Object -> Maybe *
-	     *
-	     *      //  getStateCode :: Maybe String -> Maybe String
-	     *      var getStateCode = R.pipeK(
-	     *        parseJson,
-	     *        get('user'),
-	     *        get('address'),
-	     *        get('state'),
-	     *        R.compose(Maybe.of, R.toUpper)
-	     *      );
-	     *
-	     *      getStateCode(Maybe.of('{"user":{"address":{"state":"ny"}}}'));
-	     *      //=> Just('NY')
-	     *      getStateCode(Maybe.of('[Invalid JSON]'));
-	     *      //=> Nothing()
-	     */
-	    var pipeK = function pipeK() {
-	        return composeK.apply(this, reverse(arguments));
-	    };
-	
-	    /**
-	     * Returns the string representation of the given value. `eval`'ing the output
-	     * should result in a value equivalent to the input value. Many of the built-in
-	     * `toString` methods do not satisfy this requirement.
-	     *
-	     * If the given value is an `[object Object]` with a `toString` method other
-	     * than `Object.prototype.toString`, this method is invoked with no arguments
-	     * to produce the return value. This means user-defined constructor functions
-	     * can provide a suitable `toString` method. For example:
-	     *
-	     *     function Point(x, y) {
-	     *       this.x = x;
-	     *       this.y = y;
-	     *     }
-	     *
-	     *     Point.prototype.toString = function() {
-	     *       return 'new Point(' + this.x + ', ' + this.y + ')';
-	     *     };
-	     *
-	     *     R.toString(new Point(1, 2)); //=> 'new Point(1, 2)'
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.14.0
-	     * @category String
-	     * @sig * -> String
-	     * @param {*} val
-	     * @return {String}
-	     * @example
-	     *
-	     *      R.toString(42); //=> '42'
-	     *      R.toString('abc'); //=> '"abc"'
-	     *      R.toString([1, 2, 3]); //=> '[1, 2, 3]'
-	     *      R.toString({foo: 1, bar: 2, baz: 3}); //=> '{"bar": 2, "baz": 3, "foo": 1}'
-	     *      R.toString(new Date('2001-02-03T04:05:06Z')); //=> 'new Date("2001-02-03T04:05:06.000Z")'
-	     */
-	    var toString = _curry1(function toString(val) {
-	        return _toString(val, []);
-	    });
-	
-	    /**
-	     * Returns a new list without values in the first argument.
-	     * `R.equals` is used to determine equality.
-	     *
-	     * Acts as a transducer if a transformer is given in list position.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category List
-	     * @sig [a] -> [a] -> [a]
-	     * @param {Array} list1 The values to be removed from `list2`.
-	     * @param {Array} list2 The array to remove values from.
-	     * @return {Array} The new array without values in `list1`.
-	     * @see R.transduce
-	     * @example
-	     *
-	     *      R.without([1, 2], [1, 2, 1, 3, 4]); //=> [3, 4]
-	     */
-	    var without = _curry2(function (xs, list) {
-	        return reject(flip(_contains)(xs), list);
-	    });
-	
-	    // A simple Set type that honours R.equals semantics
-	    /* globals Set */
-	    // until we figure out why jsdoc chokes on this
-	    // @param item The item to add to the Set
-	    // @returns {boolean} true if the item did not exist prior, otherwise false
-	    //
-	    //
-	    // @param item The item to check for existence in the Set
-	    // @returns {boolean} true if the item exists in the Set, otherwise false
-	    //
-	    //
-	    // Combines the logic for checking whether an item is a member of the set and
-	    // for adding a new item to the set.
-	    //
-	    // @param item       The item to check or add to the Set instance.
-	    // @param shouldAdd  If true, the item will be added to the set if it doesn't
-	    //                   already exist.
-	    // @param set        The set instance to check or add to.
-	    // @return {boolean} true if the item already existed, otherwise false.
-	    //
-	    // distinguish between +0 and -0
-	    // these types can all utilise the native Set
-	    // set._items['boolean'] holds a two element array
-	    // representing [ falseExists, trueExists ]
-	    // compare functions for reference equality
-	    /* falls through */
-	    // reduce the search size of heterogeneous sets by creating buckets
-	    // for each type.
-	    // scan through all previously applied items
-	    var _Set = function () {
-	        function _Set() {
-	            /* globals Set */
-	            this._nativeSet = typeof Set === 'function' ? new Set() : null;
-	            this._items = {};
-	        }
-	        // until we figure out why jsdoc chokes on this
-	        // @param item The item to add to the Set
-	        // @returns {boolean} true if the item did not exist prior, otherwise false
-	        //
-	        _Set.prototype.add = function (item) {
-	            return !hasOrAdd(item, true, this);
-	        };
-	        //
-	        // @param item The item to check for existence in the Set
-	        // @returns {boolean} true if the item exists in the Set, otherwise false
-	        //
-	        _Set.prototype.has = function (item) {
-	            return hasOrAdd(item, false, this);
-	        };
-	        //
-	        // Combines the logic for checking whether an item is a member of the set and
-	        // for adding a new item to the set.
-	        //
-	        // @param item       The item to check or add to the Set instance.
-	        // @param shouldAdd  If true, the item will be added to the set if it doesn't
-	        //                   already exist.
-	        // @param set        The set instance to check or add to.
-	        // @return {boolean} true if the item already existed, otherwise false.
-	        //
-	        function hasOrAdd(item, shouldAdd, set) {
-	            var type = typeof item;
-	            var prevSize, newSize;
-	            switch (type) {
-	            case 'string':
-	            case 'number':
-	                // distinguish between +0 and -0
-	                if (item === 0 && 1 / item === -Infinity) {
-	                    if (set._items['-0']) {
-	                        return true;
-	                    } else {
-	                        if (shouldAdd) {
-	                            set._items['-0'] = true;
-	                        }
-	                        return false;
-	                    }
-	                }
-	                // these types can all utilise the native Set
-	                if (set._nativeSet !== null) {
-	                    if (shouldAdd) {
-	                        prevSize = set._nativeSet.size;
-	                        set._nativeSet.add(item);
-	                        newSize = set._nativeSet.size;
-	                        return newSize === prevSize;
-	                    } else {
-	                        return set._nativeSet.has(item);
-	                    }
-	                } else {
-	                    if (!(type in set._items)) {
-	                        if (shouldAdd) {
-	                            set._items[type] = {};
-	                            set._items[type][item] = true;
-	                        }
-	                        return false;
-	                    } else if (item in set._items[type]) {
-	                        return true;
-	                    } else {
-	                        if (shouldAdd) {
-	                            set._items[type][item] = true;
-	                        }
-	                        return false;
-	                    }
-	                }
-	            case 'boolean':
-	                // set._items['boolean'] holds a two element array
-	                // representing [ falseExists, trueExists ]
-	                if (type in set._items) {
-	                    var bIdx = item ? 1 : 0;
-	                    if (set._items[type][bIdx]) {
-	                        return true;
-	                    } else {
-	                        if (shouldAdd) {
-	                            set._items[type][bIdx] = true;
-	                        }
-	                        return false;
-	                    }
-	                } else {
-	                    if (shouldAdd) {
-	                        set._items[type] = item ? [
-	                            false,
-	                            true
-	                        ] : [
-	                            true,
-	                            false
-	                        ];
-	                    }
-	                    return false;
-	                }
-	            case 'function':
-	                // compare functions for reference equality
-	                if (set._nativeSet !== null) {
-	                    if (shouldAdd) {
-	                        prevSize = set._nativeSet.size;
-	                        set._nativeSet.add(item);
-	                        newSize = set._nativeSet.size;
-	                        return newSize > prevSize;
-	                    } else {
-	                        return set._nativeSet.has(item);
-	                    }
-	                } else {
-	                    if (!(type in set._items)) {
-	                        if (shouldAdd) {
-	                            set._items[type] = [item];
-	                        }
-	                        return false;
-	                    }
-	                    if (!_contains(item, set._items[type])) {
-	                        if (shouldAdd) {
-	                            set._items[type].push(item);
-	                        }
-	                        return false;
-	                    }
-	                    return true;
-	                }
-	            case 'undefined':
-	                if (set._items[type]) {
-	                    return true;
-	                } else {
-	                    if (shouldAdd) {
-	                        set._items[type] = true;
-	                    }
-	                    return false;
-	                }
-	            case 'object':
-	                if (item === null) {
-	                    if (!set._items['null']) {
-	                        if (shouldAdd) {
-	                            set._items['null'] = true;
-	                        }
-	                        return false;
-	                    }
-	                    return true;
-	                }
-	            /* falls through */
-	            default:
-	                // reduce the search size of heterogeneous sets by creating buckets
-	                // for each type.
-	                type = Object.prototype.toString.call(item);
-	                if (!(type in set._items)) {
-	                    if (shouldAdd) {
-	                        set._items[type] = [item];
-	                    }
-	                    return false;
-	                }
-	                // scan through all previously applied items
-	                if (!_contains(item, set._items[type])) {
-	                    if (shouldAdd) {
-	                        set._items[type].push(item);
-	                    }
-	                    return false;
-	                }
-	                return true;
-	            }
-	        }
-	        return _Set;
-	    }();
-	
-	    /**
-	     * A function wrapping calls to the two functions in an `&&` operation,
-	     * returning the result of the first function if it is false-y and the result
-	     * of the second function otherwise. Note that this is short-circuited,
-	     * meaning that the second function will not be invoked if the first returns a
-	     * false-y value.
-	     *
-	     * In addition to functions, `R.both` also accepts any fantasy-land compatible
-	     * applicative functor.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.12.0
-	     * @category Logic
-	     * @sig (*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)
-	     * @param {Function} f a predicate
-	     * @param {Function} g another predicate
-	     * @return {Function} a function that applies its arguments to `f` and `g` and `&&`s their outputs together.
-	     * @see R.and
-	     * @example
-	     *
-	     *      var gt10 = x => x > 10;
-	     *      var even = x => x % 2 === 0;
-	     *      var f = R.both(gt10, even);
-	     *      f(100); //=> true
-	     *      f(101); //=> false
-	     */
-	    var both = _curry2(function both(f, g) {
-	        return _isFunction(f) ? function _both() {
-	            return f.apply(this, arguments) && g.apply(this, arguments);
-	        } : lift(and)(f, g);
-	    });
-	
-	    /**
-	     * Takes a function `f` and returns a function `g` such that:
-	     *
-	     *   - applying `g` to zero or more arguments will give __true__ if applying
-	     *     the same arguments to `f` gives a logical __false__ value; and
-	     *
-	     *   - applying `g` to zero or more arguments will give __false__ if applying
-	     *     the same arguments to `f` gives a logical __true__ value.
-	     *
-	     * `R.complement` will work on all other functors as well.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.12.0
-	     * @category Logic
-	     * @sig (*... -> *) -> (*... -> Boolean)
-	     * @param {Function} f
-	     * @return {Function}
-	     * @see R.not
-	     * @example
-	     *
-	     *      var isEven = n => n % 2 === 0;
-	     *      var isOdd = R.complement(isEven);
-	     *      isOdd(21); //=> true
-	     *      isOdd(42); //=> false
-	     */
-	    var complement = lift(not);
-	
-	    /**
-	     * Returns the result of concatenating the given lists or strings.
-	     *
-	     * Note: `R.concat` expects both arguments to be of the same type,
-	     * unlike the native `Array.prototype.concat` method. It will throw
-	     * an error if you `concat` an Array with a non-Array value.
-	     *
-	     * Dispatches to the `concat` method of the first argument, if present.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig [a] -> [a] -> [a]
-	     * @sig String -> String -> String
-	     * @param {Array|String} a
-	     * @param {Array|String} b
-	     * @return {Array|String}
-	     *
-	     * @example
-	     *
-	     *      R.concat([], []); //=> []
-	     *      R.concat([4, 5, 6], [1, 2, 3]); //=> [4, 5, 6, 1, 2, 3]
-	     *      R.concat('ABC', 'DEF'); // 'ABCDEF'
-	     */
-	    var concat = _curry2(function concat(a, b) {
-	        if (a == null || !_isFunction(a.concat)) {
-	            throw new TypeError(toString(a) + ' does not have a method named "concat"');
-	        }
-	        if (_isArray(a) && !_isArray(b)) {
-	            throw new TypeError(toString(b) + ' is not an array');
-	        }
-	        return a.concat(b);
-	    });
-	
-	    /**
-	     * A function wrapping calls to the two functions in an `||` operation,
-	     * returning the result of the first function if it is truth-y and the result
-	     * of the second function otherwise. Note that this is short-circuited,
-	     * meaning that the second function will not be invoked if the first returns a
-	     * truth-y value.
-	     *
-	     * In addition to functions, `R.either` also accepts any fantasy-land compatible
-	     * applicative functor.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.12.0
-	     * @category Logic
-	     * @sig (*... -> Boolean) -> (*... -> Boolean) -> (*... -> Boolean)
-	     * @param {Function} f a predicate
-	     * @param {Function} g another predicate
-	     * @return {Function} a function that applies its arguments to `f` and `g` and `||`s their outputs together.
-	     * @see R.or
-	     * @example
-	     *
-	     *      var gt10 = x => x > 10;
-	     *      var even = x => x % 2 === 0;
-	     *      var f = R.either(gt10, even);
-	     *      f(101); //=> true
-	     *      f(8); //=> true
-	     */
-	    var either = _curry2(function either(f, g) {
-	        return _isFunction(f) ? function _either() {
-	            return f.apply(this, arguments) || g.apply(this, arguments);
-	        } : lift(or)(f, g);
-	    });
-	
-	    /**
-	     * Turns a named method with a specified arity into a function that can be
-	     * called directly supplied with arguments and a target object.
-	     *
-	     * The returned function is curried and accepts `arity + 1` parameters where
-	     * the final parameter is the target object.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig Number -> String -> (a -> b -> ... -> n -> Object -> *)
-	     * @param {Number} arity Number of arguments the returned function should take
-	     *        before the target object.
-	     * @param {String} method Name of the method to call.
-	     * @return {Function} A new curried function.
-	     * @example
-	     *
-	     *      var sliceFrom = R.invoker(1, 'slice');
-	     *      sliceFrom(6, 'abcdefghijklm'); //=> 'ghijklm'
-	     *      var sliceFrom6 = R.invoker(2, 'slice')(6);
-	     *      sliceFrom6(8, 'abcdefghijklm'); //=> 'gh'
-	     */
-	    var invoker = _curry2(function invoker(arity, method) {
-	        return curryN(arity + 1, function () {
-	            var target = arguments[arity];
-	            if (target != null && _isFunction(target[method])) {
-	                return target[method].apply(target, _slice(arguments, 0, arity));
-	            }
-	            throw new TypeError(toString(target) + ' does not have a method named "' + method + '"');
-	        });
-	    });
-	
-	    /**
-	     * Returns a string made by inserting the `separator` between each element and
-	     * concatenating all the elements into a single string.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig String -> [a] -> String
-	     * @param {Number|String} separator The string used to separate the elements.
-	     * @param {Array} xs The elements to join into a string.
-	     * @return {String} str The string made by concatenating `xs` with `separator`.
-	     * @see R.split
-	     * @example
-	     *
-	     *      var spacer = R.join(' ');
-	     *      spacer(['a', 2, 3.4]);   //=> 'a 2 3.4'
-	     *      R.join('|', [1, 2, 3]);    //=> '1|2|3'
-	     */
-	    var join = invoker(1, 'join');
-	
-	    /**
-	     * Creates a new function that, when invoked, caches the result of calling `fn`
-	     * for a given argument set and returns the result. Subsequent calls to the
-	     * memoized `fn` with the same argument set will not result in an additional
-	     * call to `fn`; instead, the cached result for that set of arguments will be
-	     * returned.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Function
-	     * @sig (*... -> a) -> (*... -> a)
-	     * @param {Function} fn The function to memoize.
-	     * @return {Function} Memoized version of `fn`.
-	     * @example
-	     *
-	     *      var count = 0;
-	     *      var factorial = R.memoize(n => {
-	     *        count += 1;
-	     *        return R.product(R.range(1, n + 1));
-	     *      });
-	     *      factorial(5); //=> 120
-	     *      factorial(5); //=> 120
-	     *      factorial(5); //=> 120
-	     *      count; //=> 1
-	     */
-	    var memoize = _curry1(function memoize(fn) {
-	        var cache = {};
-	        return _arity(fn.length, function () {
-	            var key = toString(arguments);
-	            if (!_has(key, cache)) {
-	                cache[key] = fn.apply(this, arguments);
-	            }
-	            return cache[key];
-	        });
-	    });
-	
-	    /**
-	     * Splits a string into an array of strings based on the given
-	     * separator.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category String
-	     * @sig (String | RegExp) -> String -> [String]
-	     * @param {String|RegExp} sep The pattern.
-	     * @param {String} str The string to separate into an array.
-	     * @return {Array} The array of strings from `str` separated by `str`.
-	     * @see R.join
-	     * @example
-	     *
-	     *      var pathComponents = R.split('/');
-	     *      R.tail(pathComponents('/usr/local/bin/node')); //=> ['usr', 'local', 'bin', 'node']
-	     *
-	     *      R.split('.', 'a.b.c.xyz.d'); //=> ['a', 'b', 'c', 'xyz', 'd']
-	     */
-	    var split = invoker(1, 'split');
-	
-	    /**
-	     * Finds the set (i.e. no duplicates) of all elements contained in the first or
-	     * second list, but not both.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category Relation
-	     * @sig [*] -> [*] -> [*]
-	     * @param {Array} list1 The first list.
-	     * @param {Array} list2 The second list.
-	     * @return {Array} The elements in `list1` or `list2`, but not both.
-	     * @see R.symmetricDifferenceWith, R.difference, R.differenceWith
-	     * @example
-	     *
-	     *      R.symmetricDifference([1,2,3,4], [7,6,5,4,3]); //=> [1,2,7,6,5]
-	     *      R.symmetricDifference([7,6,5,4,3], [1,2,3,4]); //=> [7,6,5,1,2]
-	     */
-	    var symmetricDifference = _curry2(function symmetricDifference(list1, list2) {
-	        return concat(difference(list1, list2), difference(list2, list1));
-	    });
-	
-	    /**
-	     * Finds the set (i.e. no duplicates) of all elements contained in the first or
-	     * second list, but not both. Duplication is determined according to the value
-	     * returned by applying the supplied predicate to two list elements.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.19.0
-	     * @category Relation
-	     * @sig (a -> a -> Boolean) -> [a] -> [a] -> [a]
-	     * @param {Function} pred A predicate used to test whether two items are equal.
-	     * @param {Array} list1 The first list.
-	     * @param {Array} list2 The second list.
-	     * @return {Array} The elements in `list1` or `list2`, but not both.
-	     * @see R.symmetricDifference, R.difference, R.differenceWith
-	     * @example
-	     *
-	     *      var eqA = R.eqBy(R.prop('a'));
-	     *      var l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}];
-	     *      var l2 = [{a: 3}, {a: 4}, {a: 5}, {a: 6}];
-	     *      R.symmetricDifferenceWith(eqA, l1, l2); //=> [{a: 1}, {a: 2}, {a: 5}, {a: 6}]
-	     */
-	    var symmetricDifferenceWith = _curry3(function symmetricDifferenceWith(pred, list1, list2) {
-	        return concat(differenceWith(pred, list1, list2), differenceWith(pred, list2, list1));
-	    });
-	
-	    /**
-	     * Determines whether a given string matches a given regular expression.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.12.0
-	     * @category String
-	     * @sig RegExp -> String -> Boolean
-	     * @param {RegExp} pattern
-	     * @param {String} str
-	     * @return {Boolean}
-	     * @see R.match
-	     * @example
-	     *
-	     *      R.test(/^x/, 'xyz'); //=> true
-	     *      R.test(/^y/, 'xyz'); //=> false
-	     */
-	    var test = _curry2(function test(pattern, str) {
-	        if (!_isRegExp(pattern)) {
-	            throw new TypeError('\u2018test\u2019 requires a value of type RegExp as its first argument; received ' + toString(pattern));
-	        }
-	        return _cloneRegExp(pattern).test(str);
-	    });
-	
-	    /**
-	     * The lower case version of a string.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category String
-	     * @sig String -> String
-	     * @param {String} str The string to lower case.
-	     * @return {String} The lower case version of `str`.
-	     * @see R.toUpper
-	     * @example
-	     *
-	     *      R.toLower('XYZ'); //=> 'xyz'
-	     */
-	    var toLower = invoker(0, 'toLowerCase');
-	
-	    /**
-	     * The upper case version of a string.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.9.0
-	     * @category String
-	     * @sig String -> String
-	     * @param {String} str The string to upper case.
-	     * @return {String} The upper case version of `str`.
-	     * @see R.toLower
-	     * @example
-	     *
-	     *      R.toUpper('abc'); //=> 'ABC'
-	     */
-	    var toUpper = invoker(0, 'toUpperCase');
-	
-	    /**
-	     * Returns a new list containing only one copy of each element in the original
-	     * list, based upon the value returned by applying the supplied function to
-	     * each list element. Prefers the first item if the supplied function produces
-	     * the same value on two items. `R.equals` is used for comparison.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.16.0
-	     * @category List
-	     * @sig (a -> b) -> [a] -> [a]
-	     * @param {Function} fn A function used to produce a value to use during comparisons.
-	     * @param {Array} list The array to consider.
-	     * @return {Array} The list of unique items.
-	     * @example
-	     *
-	     *      R.uniqBy(Math.abs, [-1, -5, 2, 10, 1, 2]); //=> [-1, -5, 2, 10]
-	     */
-	    var uniqBy = _curry2(function uniqBy(fn, list) {
-	        var set = new _Set();
-	        var result = [];
-	        var idx = 0;
-	        var appliedItem, item;
-	        while (idx < list.length) {
-	            item = list[idx];
-	            appliedItem = fn(item);
-	            if (set.add(appliedItem)) {
-	                result.push(item);
-	            }
-	            idx += 1;
-	        }
-	        return result;
-	    });
-	
-	    /**
-	     * Returns a new list containing only one copy of each element in the original
-	     * list. `R.equals` is used to determine equality.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category List
-	     * @sig [a] -> [a]
-	     * @param {Array} list The array to consider.
-	     * @return {Array} The list of unique items.
-	     * @example
-	     *
-	     *      R.uniq([1, 1, 2, 1]); //=> [1, 2]
-	     *      R.uniq([1, '1']);     //=> [1, '1']
-	     *      R.uniq([[42], [42]]); //=> [[42]]
-	     */
-	    var uniq = uniqBy(identity);
-	
-	    /**
-	     * Combines two lists into a set (i.e. no duplicates) composed of those
-	     * elements common to both lists.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig [*] -> [*] -> [*]
-	     * @param {Array} list1 The first list.
-	     * @param {Array} list2 The second list.
-	     * @return {Array} The list of elements found in both `list1` and `list2`.
-	     * @see R.intersectionWith
-	     * @example
-	     *
-	     *      R.intersection([1,2,3,4], [7,6,5,4,3]); //=> [4, 3]
-	     */
-	    var intersection = _curry2(function intersection(list1, list2) {
-	        var lookupList, filteredList;
-	        if (list1.length > list2.length) {
-	            lookupList = list1;
-	            filteredList = list2;
-	        } else {
-	            lookupList = list2;
-	            filteredList = list1;
-	        }
-	        return uniq(_filter(flip(_contains)(lookupList), filteredList));
-	    });
-	
-	    /**
-	     * Combines two lists into a set (i.e. no duplicates) composed of the elements
-	     * of each list.
-	     *
-	     * @func
-	     * @memberOf R
-	     * @since v0.1.0
-	     * @category Relation
-	     * @sig [*] -> [*] -> [*]
-	     * @param {Array} as The first list.
-	     * @param {Array} bs The second list.
-	     * @return {Array} The first and second lists concatenated, with
-	     *         duplicates removed.
-	     * @example
-	     *
-	     *      R.union([1, 2, 3], [2, 3, 4]); //=> [1, 2, 3, 4]
-	     */
-	    var union = _curry2(compose(uniq, _concat));
-	
-	    var R = {
-	        F: F,
-	        T: T,
-	        __: __,
-	        add: add,
-	        addIndex: addIndex,
-	        adjust: adjust,
-	        all: all,
-	        allPass: allPass,
-	        always: always,
-	        and: and,
-	        any: any,
-	        anyPass: anyPass,
-	        ap: ap,
-	        aperture: aperture,
-	        append: append,
-	        apply: apply,
-	        applySpec: applySpec,
-	        assoc: assoc,
-	        assocPath: assocPath,
-	        binary: binary,
-	        bind: bind,
-	        both: both,
-	        call: call,
-	        chain: chain,
-	        clamp: clamp,
-	        clone: clone,
-	        comparator: comparator,
-	        complement: complement,
-	        compose: compose,
-	        composeK: composeK,
-	        composeP: composeP,
-	        concat: concat,
-	        cond: cond,
-	        construct: construct,
-	        constructN: constructN,
-	        contains: contains,
-	        converge: converge,
-	        countBy: countBy,
-	        curry: curry,
-	        curryN: curryN,
-	        dec: dec,
-	        defaultTo: defaultTo,
-	        difference: difference,
-	        differenceWith: differenceWith,
-	        dissoc: dissoc,
-	        dissocPath: dissocPath,
-	        divide: divide,
-	        drop: drop,
-	        dropLast: dropLast,
-	        dropLastWhile: dropLastWhile,
-	        dropRepeats: dropRepeats,
-	        dropRepeatsWith: dropRepeatsWith,
-	        dropWhile: dropWhile,
-	        either: either,
-	        empty: empty,
-	        eqBy: eqBy,
-	        eqProps: eqProps,
-	        equals: equals,
-	        evolve: evolve,
-	        filter: filter,
-	        find: find,
-	        findIndex: findIndex,
-	        findLast: findLast,
-	        findLastIndex: findLastIndex,
-	        flatten: flatten,
-	        flip: flip,
-	        forEach: forEach,
-	        fromPairs: fromPairs,
-	        groupBy: groupBy,
-	        groupWith: groupWith,
-	        gt: gt,
-	        gte: gte,
-	        has: has,
-	        hasIn: hasIn,
-	        head: head,
-	        identical: identical,
-	        identity: identity,
-	        ifElse: ifElse,
-	        inc: inc,
-	        indexBy: indexBy,
-	        indexOf: indexOf,
-	        init: init,
-	        insert: insert,
-	        insertAll: insertAll,
-	        intersection: intersection,
-	        intersectionWith: intersectionWith,
-	        intersperse: intersperse,
-	        into: into,
-	        invert: invert,
-	        invertObj: invertObj,
-	        invoker: invoker,
-	        is: is,
-	        isArrayLike: isArrayLike,
-	        isEmpty: isEmpty,
-	        isNil: isNil,
-	        join: join,
-	        juxt: juxt,
-	        keys: keys,
-	        keysIn: keysIn,
-	        last: last,
-	        lastIndexOf: lastIndexOf,
-	        length: length,
-	        lens: lens,
-	        lensIndex: lensIndex,
-	        lensPath: lensPath,
-	        lensProp: lensProp,
-	        lift: lift,
-	        liftN: liftN,
-	        lt: lt,
-	        lte: lte,
-	        map: map,
-	        mapAccum: mapAccum,
-	        mapAccumRight: mapAccumRight,
-	        mapObjIndexed: mapObjIndexed,
-	        match: match,
-	        mathMod: mathMod,
-	        max: max,
-	        maxBy: maxBy,
-	        mean: mean,
-	        median: median,
-	        memoize: memoize,
-	        merge: merge,
-	        mergeAll: mergeAll,
-	        mergeWith: mergeWith,
-	        mergeWithKey: mergeWithKey,
-	        min: min,
-	        minBy: minBy,
-	        modulo: modulo,
-	        multiply: multiply,
-	        nAry: nAry,
-	        negate: negate,
-	        none: none,
-	        not: not,
-	        nth: nth,
-	        nthArg: nthArg,
-	        objOf: objOf,
-	        of: of,
-	        omit: omit,
-	        once: once,
-	        or: or,
-	        over: over,
-	        pair: pair,
-	        partial: partial,
-	        partialRight: partialRight,
-	        partition: partition,
-	        path: path,
-	        pathEq: pathEq,
-	        pathOr: pathOr,
-	        pathSatisfies: pathSatisfies,
-	        pick: pick,
-	        pickAll: pickAll,
-	        pickBy: pickBy,
-	        pipe: pipe,
-	        pipeK: pipeK,
-	        pipeP: pipeP,
-	        pluck: pluck,
-	        prepend: prepend,
-	        product: product,
-	        project: project,
-	        prop: prop,
-	        propEq: propEq,
-	        propIs: propIs,
-	        propOr: propOr,
-	        propSatisfies: propSatisfies,
-	        props: props,
-	        range: range,
-	        reduce: reduce,
-	        reduceBy: reduceBy,
-	        reduceRight: reduceRight,
-	        reduceWhile: reduceWhile,
-	        reduced: reduced,
-	        reject: reject,
-	        remove: remove,
-	        repeat: repeat,
-	        replace: replace,
-	        reverse: reverse,
-	        scan: scan,
-	        sequence: sequence,
-	        set: set,
-	        slice: slice,
-	        sort: sort,
-	        sortBy: sortBy,
-	        split: split,
-	        splitAt: splitAt,
-	        splitEvery: splitEvery,
-	        splitWhen: splitWhen,
-	        subtract: subtract,
-	        sum: sum,
-	        symmetricDifference: symmetricDifference,
-	        symmetricDifferenceWith: symmetricDifferenceWith,
-	        tail: tail,
-	        take: take,
-	        takeLast: takeLast,
-	        takeLastWhile: takeLastWhile,
-	        takeWhile: takeWhile,
-	        tap: tap,
-	        test: test,
-	        times: times,
-	        toLower: toLower,
-	        toPairs: toPairs,
-	        toPairsIn: toPairsIn,
-	        toString: toString,
-	        toUpper: toUpper,
-	        transduce: transduce,
-	        transpose: transpose,
-	        traverse: traverse,
-	        trim: trim,
-	        tryCatch: tryCatch,
-	        type: type,
-	        unapply: unapply,
-	        unary: unary,
-	        uncurryN: uncurryN,
-	        unfold: unfold,
-	        union: union,
-	        unionWith: unionWith,
-	        uniq: uniq,
-	        uniqBy: uniqBy,
-	        uniqWith: uniqWith,
-	        unless: unless,
-	        unnest: unnest,
-	        until: until,
-	        update: update,
-	        useWith: useWith,
-	        values: values,
-	        valuesIn: valuesIn,
-	        view: view,
-	        when: when,
-	        where: where,
-	        whereEq: whereEq,
-	        without: without,
-	        wrap: wrap,
-	        xprod: xprod,
-	        zip: zip,
-	        zipObj: zipObj,
-	        zipWith: zipWith
-	    };
-	  /* eslint-env amd */
-	
-	  /* TEST_ENTRY_POINT */
-	
-	  if (true) {
-	    module.exports = R;
-	  } else if (typeof define === 'function' && define.amd) {
-	    define(function() { return R; });
-	  } else {
-	    this.R = R;
-	  }
-	
-	}.call(this));
-
-
-/***/ },
-/* 319 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	__webpack_require__(320);
-	
-	var _HomeGrid = __webpack_require__(322);
-	
-	var _HomeGrid2 = _interopRequireDefault(_HomeGrid);
-	
-	var _HomeViewControl = __webpack_require__(362);
-	
-	var _HomeViewControl2 = _interopRequireDefault(_HomeViewControl);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Home = function (_React$Component) {
-		_inherits(Home, _React$Component);
-	
-		function Home(props) {
-			_classCallCheck(this, Home);
-	
-			return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
-		}
-	
-		_createClass(Home, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'home' },
-					_react2.default.createElement(
-						'main',
-						null,
-						_react2.default.createElement(_HomeViewControl2.default, this.props),
-						_react2.default.createElement(_HomeGrid2.default, this.props)
-					)
-				);
-			}
-		}]);
-	
-		return Home;
-	}(_react2.default.Component);
-	
-	exports.default = Home;
-
-/***/ },
-/* 320 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(321);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./home.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./home.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 321 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".home {\n  background: #E9EAEB;\n  padding: 0.5rem;\n  min-width: 340px;\n  /* Tablets Portrait or Landscape */\n  /* Tablets Portrait or Landscape */\n  /* Mobile Phones */\n  /* Mobile Phones */\n  /* Mobile Phones */\n}\n\n.home main {\n  background: #fff;\n  position: relative;\n  padding: 1rem;\n}\n\n.home .grid {\n  display: flex;\n  justify-content: space-between;\n  flex-flow: wrap;\n}\n\n.home .heart-btn,\n.home .document-btn {\n  border-radius: 2px;\n  border: solid 1px #ccc;\n  text-align: center;\n  height: 25px;\n  width: 25px;\n  line-height: 10px;\n  vertical-align: middle;\n  margin-right: 1rem;\n}\n\n.home .heart-btn:hover,\n.home .document-btn:hover {\n  border-color: #aaa;\n}\n\n.home .heart-btn:hover i,\n.home .document-btn:hover i {\n  color: #999;\n}\n\n.home .heart-btn i,\n.home .document-btn i {\n  color: #B6B8B6;\n  display: inline-block;\n  vertical-align: middle;\n  font-size: 1.1rem;\n}\n\n.home .item,\n.home .detail-modal {\n  width: 23%;\n  margin-bottom: 1.5rem;\n  text-align: center;\n}\n\n.home .item .star-wrapper,\n.home .detail-modal .star-wrapper {\n  unicode-bidi: bidi-override;\n  direction: rtl;\n  cursor: default;\n}\n\n.home .item .rating,\n.home .detail-modal .rating {\n  margin-bottom: 1rem;\n}\n\n.home .item .tool-star i,\n.home .detail-modal .tool-star i {\n  color: #D3E5E4;\n  margin-right: 0.1rem;\n}\n\n.home .item .img-wrapper,\n.home .detail-modal .img-wrapper {\n  text-align: center;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.home .item img,\n.home .detail-modal img {\n  max-width: 100%;\n}\n\n.home .item .price,\n.home .detail-modal .price {\n  margin-bottom: 10px;\n  font-weight: 500;\n}\n\n.home .item .title,\n.home .detail-modal .title {\n  margin-top: 3rem;\n  margin-bottom: 2rem;\n  font-weight: 600;\n}\n\n.home .item .size,\n.home .detail-modal .size {\n  background: #828384;\n  padding: 0.5rem;\n  color: #fff;\n}\n\n.home .item section,\n.home .detail-modal section {\n  border: solid 1px #eee;\n}\n\n.home .item .star i,\n.home .detail-modal .star i {\n  color: #ccc;\n  margin-right: 0.1rem;\n}\n\n.home .star-wrapper > span {\n  display: inline-block;\n  position: relative;\n  width: 1.1em;\n}\n\n.home .star-wrapper > span:hover,\n.home .star-wrapper > span:hover ~ span {\n  color: transparent;\n}\n\n.home .star-wrapper > span:hover:before,\n.home .star-wrapper > span:hover ~ span:before {\n  content: \"\\2605\";\n  position: absolute;\n  color: gold;\n}\n\n.home .star-count {\n  color: #ccc;\n  font-size: 1.2rem;\n  vertical-align: top;\n  margin-top: 2px;\n}\n\n.home .view-control-wrapper {\n  position: relative;\n  margin-bottom: 1rem;\n}\n\n.home .view-control.fixed {\n  position: fixed;\n  top: 0;\n  width: inherit;\n  right: 1.5rem;\n  left: 1.5rem;\n  background: #fff;\n}\n\n.home .view-control {\n  height: 30px;\n  line-height: 30px;\n  display: flex;\n}\n\n.home .view-control .left {\n  flex: 1;\n  min-width: 190px;\n}\n\n.home .view-control .right {\n  min-width: 131px;\n  flex: 1;\n  text-align: right;\n}\n\n.home .view-control .right span {\n  margin-right: 10px;\n}\n\n.home .view-control button {\n  width: 25px;\n  height: 25px;\n  text-align: center;\n  display: inline-block;\n}\n\n.home .view-control button i {\n  color: #999;\n  vertical-align: middle;\n  font-size: 1.8rem;\n}\n\n.home .view-control button i:hover {\n  color: #aaa;\n}\n\n@media screen and (max-width: 1028px) {\n  .home .item {\n    width: 31.1%;\n  }\n\n  .home .__react_component_tooltip {\n    max-width: 30% !important;\n  }\n}\n\n@media screen and (max-width: 768px) {\n  .home .item {\n    width: 31.1%;\n  }\n\n  .home .__react_component_tooltip {\n    max-width: 40% !important;\n  }\n}\n\n@media screen and (max-width: 640px) {\n  .home .item {\n    width: 48%;\n  }\n\n  .home .__react_component_tooltip {\n    max-width: 50% !important;\n  }\n}\n\n@media screen and (max-width: 480px) {\n  .home .item {\n    width: 48%;\n  }\n\n  .home .__react_component_tooltip {\n    max-width: 60% !important;\n  }\n}\n\n@media screen and (max-width: 360px) {\n  .home .item {\n    width: 100%;\n  }\n\n  .home .__react_component_tooltip {\n    max-width: 70% !important;\n  }\n}\n\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 322 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactModal = __webpack_require__(323);
-	
-	var _reactModal2 = _interopRequireDefault(_reactModal);
-	
-	var _product = __webpack_require__(317);
-	
-	var _product2 = _interopRequireDefault(_product);
-	
-	__webpack_require__(343);
-	
-	var _reactTooltip = __webpack_require__(345);
-	
-	var _reactTooltip2 = _interopRequireDefault(_reactTooltip);
-	
-	__webpack_require__(356);
-	
-	__webpack_require__(358);
-	
-	__webpack_require__(360);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var HomeGrid = function (_React$Component) {
-		_inherits(HomeGrid, _React$Component);
-	
-		function HomeGrid(props) {
-			_classCallCheck(this, HomeGrid);
-	
-			var _this = _possibleConstructorReturn(this, (HomeGrid.__proto__ || Object.getPrototypeOf(HomeGrid)).call(this, props));
-	
-			_this.renderProduct = _this.renderProduct.bind(_this);
-			_this.renderStar = _this.renderStar.bind(_this);
-			_this.renderSize = _this.renderSize.bind(_this);
-			_this.renderInfo = _this.renderInfo.bind(_this);
-			_this.openDetailModal = _this.openDetailModal.bind(_this);
-			_this.renderContent = _this.renderContent.bind(_this);
-			_this.renderTooltip = _this.renderTooltip.bind(_this);
-			_this.disableTooltip = _this.disableTooltip.bind(_this);
-			_this.handleWindowResize = _this.handleWindowResize.bind(_this);
-	
-			console.log(props);
-			_this.state = { item: null };
-			_this.product = _this.props.home.data;
-			return _this;
-		}
-	
-		_createClass(HomeGrid, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				this.disableTooltip();
-				this.handleWindowResize();
-			}
-		}, {
-			key: 'renderStar',
-			value: function renderStar() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement('i', { className: 'fa fa-star', 'aria-hidden': 'true' }),
-					_react2.default.createElement('i', { className: 'fa fa-star', 'aria-hidden': 'true' }),
-					_react2.default.createElement('i', { className: 'fa fa-star', 'aria-hidden': 'true' }),
-					_react2.default.createElement('i', { className: 'fa fa-star', 'aria-hidden': 'true' }),
-					_react2.default.createElement('i', { className: 'fa fa-star', 'aria-hidden': 'true' })
-				);
-			}
-		}, {
-			key: 'renderSize',
-			value: function renderSize(item) {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'size' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'uc' },
-						'available sizes'
-					),
-					_react2.default.createElement(
-						'div',
-						null,
-						item.size.join(' ')
-					)
-				);
-			}
-		}, {
-			key: 'renderInfo',
-			value: function renderInfo(item) {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'div',
-						{ className: 'tool-title' },
-						item.title
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'tool-price' },
-						item.price + ' kr'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'uc brand' },
-						item.brand
-					)
-				);
-			}
-		}, {
-			key: 'renderModal',
-			value: function renderModal() {
-				// if (!this.state.detailModal) {
-				//   return null;
-				// }
-				var item = this.state.item;
-	
-				return this.renderContent(item);
-			}
-		}, {
-			key: 'renderTooltip',
-			value: function renderTooltip(item) {
-				return this.renderContent(item);
-			}
-		}, {
-			key: 'renderContent',
-			value: function renderContent(item) {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'section',
-						null,
-						_react2.default.createElement(
-							'div',
-							{ className: 'img-wrapper', 'data-tip': true, 'data-for': item.id, 'data-event': 'mouseover' },
-							_react2.default.createElement('img', { src: 'image/' + item.images[0].url })
-						),
-						this.renderSize(item)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'rating' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'tool-star' },
-							this.renderStar()
-						)
-					),
-					this.renderInfo(item)
-				);
-			}
-		}, {
-			key: 'handleWindowResize',
-			value: function handleWindowResize() {
-				var _this2 = this;
-	
-				window.addEventListener('resize', function () {
-					_this2.disableTooltip();
-				}, false);
-			}
-		}, {
-			key: 'handleImageClick',
-			value: function handleImageClick(item, e) {
-				// only enable modal when screen size is smaller than 640
-				if (window.innerWidth <= 640) {
-					console.log('a');
-					this.setState({
-						detailModal: true,
-						item: item
-					});
-				}
-			}
-		}, {
-			key: 'disableTooltip',
-			value: function disableTooltip() {
-				// console.log('aaa')
-				// select all tooltip
-				var array = [].slice.call(document.querySelectorAll('.__react_component_tooltip'));
-	
-				// for screen size smaller than 640, disable tooltip
-				if (window.innerWidth <= 640) {
-	
-					var _array = [].slice.call(document.querySelectorAll('.__react_component_tooltip'));
-					_array.map(function (i) {
-						return i.style.display = 'none';
-					});
-				} else {
-					var _array2 = [].slice.call(document.querySelectorAll('.__react_component_tooltip'));
-					_array2.map(function (i) {
-						return i.style.display = 'inherit';
-					});
-				}
-			}
-		}, {
-			key: 'closeDetailModal',
-			value: function closeDetailModal() {
-				this.setState({
-					detailModal: false
-				});
-			}
-		}, {
-			key: 'openDetailModal',
-			value: function openDetailModal() {
-				this.setState({
-					detailModal: true
-				});
-			}
-		}, {
-			key: 'renderProduct',
-			value: function renderProduct() {
-				var _this3 = this;
-	
-				return this.props.home.data.map(function (item) {
-					return _react2.default.createElement(
-						'div',
-						{ className: 'item', key: item.id },
-						_react2.default.createElement(
-							'div',
-							{ className: 'img-wrapper', 'data-tip': true, 'data-for': 'i' + item.id },
-							_react2.default.createElement('img', { src: 'image/' + item.images[0].url, onClick: _this3.handleImageClick.bind(_this3, item) })
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'title l b' },
-							item.title
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'price l b' },
-							item.price
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'rating l' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'star ib' },
-								_this3.renderStar()
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'star-count ib' },
-								'(0)'
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'l btns' },
-							_react2.default.createElement(
-								'button',
-								{ className: 'heart-btn' },
-								_react2.default.createElement('i', { className: 'fa fa-heart', 'aria-hidden': 'true' })
-							),
-							_react2.default.createElement(
-								'button',
-								{ className: 'document-btn' },
-								_react2.default.createElement('i', { className: 'fa fa-file-o', 'aria-hidden': 'true' })
-							)
-						),
-						_react2.default.createElement(
-							_reactTooltip2.default,
-							{ id: 'i' + item.id, 'aria-haspopup': 'true', role: 'example', 'data-class': 'tool' },
-							_this3.renderTooltip(item)
-						)
-					);
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'grid' },
-					this.renderProduct(),
-					_react2.default.createElement(
-						_reactModal2.default,
-						{
-							overlayClassName: 'detail-modal-overlay',
-							className: 'detail-modal',
-							isOpen: this.state.detailModal,
-							onRequestClose: this.closeDetailModal.bind(this) },
-						this.state.item ? this.renderContent(this.state.item) : null
-					)
-				);
-			}
-		}]);
-	
-		return HomeGrid;
-	}(_react2.default.Component);
-	
-	exports.default = HomeGrid;
-
-/***/ },
-/* 323 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(324);
-	
-
-
-/***/ },
-/* 324 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(37);
-	var ExecutionEnvironment = __webpack_require__(325);
-	var ModalPortal = React.createFactory(__webpack_require__(326));
-	var ariaAppHider = __webpack_require__(341);
-	var elementClass = __webpack_require__(342);
-	var renderSubtreeIntoContainer = __webpack_require__(37).unstable_renderSubtreeIntoContainer;
-	var Assign = __webpack_require__(330);
-	
-	var SafeHTMLElement = ExecutionEnvironment.canUseDOM ? window.HTMLElement : {};
-	var AppElement = ExecutionEnvironment.canUseDOM ? document.body : {appendChild: function() {}};
-	
-	var Modal = React.createClass({
-	
-	  displayName: 'Modal',
-	  statics: {
-	    setAppElement: function(element) {
-	        AppElement = ariaAppHider.setElement(element);
-	    },
-	    injectCSS: function() {
-	      "production" !== ("development")
-	        && console.warn('React-Modal: injectCSS has been deprecated ' +
-	                        'and no longer has any effect. It will be removed in a later version');
-	    }
-	  },
-	
-	  propTypes: {
-	    isOpen: React.PropTypes.bool.isRequired,
-	    style: React.PropTypes.shape({
-	      content: React.PropTypes.object,
-	      overlay: React.PropTypes.object
-	    }),
-	    appElement: React.PropTypes.instanceOf(SafeHTMLElement),
-	    onAfterOpen: React.PropTypes.func,
-	    onRequestClose: React.PropTypes.func,
-	    closeTimeoutMS: React.PropTypes.number,
-	    ariaHideApp: React.PropTypes.bool,
-	    shouldCloseOnOverlayClick: React.PropTypes.bool
-	  },
-	
-	  getDefaultProps: function () {
-	    return {
-	      isOpen: false,
-	      ariaHideApp: true,
-	      closeTimeoutMS: 0,
-	      shouldCloseOnOverlayClick: true
-	    };
-	  },
-	
-	  componentDidMount: function() {
-	    this.node = document.createElement('div');
-	    this.node.className = 'ReactModalPortal';
-	    document.body.appendChild(this.node);
-	    this.renderPortal(this.props);
-	  },
-	
-	  componentWillReceiveProps: function(newProps) {
-	    this.renderPortal(newProps);
-	  },
-	
-	  componentWillUnmount: function() {
-	    ReactDOM.unmountComponentAtNode(this.node);
-	    document.body.removeChild(this.node);
-	    elementClass(document.body).remove('ReactModal__Body--open');
-	  },
-	
-	  renderPortal: function(props) {
-	    if (props.isOpen) {
-	      elementClass(document.body).add('ReactModal__Body--open');
-	    } else {
-	      elementClass(document.body).remove('ReactModal__Body--open');
-	    }
-	
-	    if (props.ariaHideApp) {
-	      ariaAppHider.toggle(props.isOpen, props.appElement);
-	    }
-	
-	    this.portal = renderSubtreeIntoContainer(this, ModalPortal(Assign({}, props, {defaultStyles: Modal.defaultStyles})), this.node);
-	  },
-	
-	  render: function () {
-	    return React.DOM.noscript();
-	  }
-	});
-	
-	Modal.defaultStyles = {
-	  overlay: {
-	    position        : 'fixed',
-	    top             : 0,
-	    left            : 0,
-	    right           : 0,
-	    bottom          : 0,
-	    backgroundColor : 'rgba(255, 255, 255, 0.75)'
-	  },
-	  content: {
-	    position                : 'absolute',
-	    top                     : '40px',
-	    left                    : '40px',
-	    right                   : '40px',
-	    bottom                  : '40px',
-	    border                  : '1px solid #ccc',
-	    background              : '#fff',
-	    overflow                : 'auto',
-	    WebkitOverflowScrolling : 'touch',
-	    borderRadius            : '4px',
-	    outline                 : 'none',
-	    padding                 : '20px'
-	  }
-	}
-	
-	module.exports = Modal
-
-
-/***/ },
-/* 325 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
-	  Based on code that is Copyright 2013-2015, Facebook, Inc.
-	  All rights reserved.
-	*/
-	
-	(function () {
-		'use strict';
-	
-		var canUseDOM = !!(
-			typeof window !== 'undefined' &&
-			window.document &&
-			window.document.createElement
-		);
-	
-		var ExecutionEnvironment = {
-	
-			canUseDOM: canUseDOM,
-	
-			canUseWorkers: typeof Worker !== 'undefined',
-	
-			canUseEventListeners:
-				canUseDOM && !!(window.addEventListener || window.attachEvent),
-	
-			canUseViewport: canUseDOM && !!window.screen
-	
-		};
-	
-		if (true) {
-			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return ExecutionEnvironment;
-			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else if (typeof module !== 'undefined' && module.exports) {
-			module.exports = ExecutionEnvironment;
-		} else {
-			window.ExecutionEnvironment = ExecutionEnvironment;
-		}
-	
-	}());
-
-
-/***/ },
-/* 326 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-	var div = React.DOM.div;
-	var focusManager = __webpack_require__(327);
-	var scopeTab = __webpack_require__(329);
-	var Assign = __webpack_require__(330);
-	
-	// so that our CSS is statically analyzable
-	var CLASS_NAMES = {
-	  overlay: {
-	    base: 'ReactModal__Overlay',
-	    afterOpen: 'ReactModal__Overlay--after-open',
-	    beforeClose: 'ReactModal__Overlay--before-close'
-	  },
-	  content: {
-	    base: 'ReactModal__Content',
-	    afterOpen: 'ReactModal__Content--after-open',
-	    beforeClose: 'ReactModal__Content--before-close'
-	  }
-	};
-	
-	var ModalPortal = module.exports = React.createClass({
-	
-	  displayName: 'ModalPortal',
-	
-	  getDefaultProps: function() {
-	    return {
-	      style: {
-	        overlay: {},
-	        content: {}
-	      }
-	    };
-	  },
-	
-	  getInitialState: function() {
-	    return {
-	      afterOpen: false,
-	      beforeClose: false
-	    };
-	  },
-	
-	  componentDidMount: function() {
-	    // Focus needs to be set when mounting and already open
-	    if (this.props.isOpen) {
-	      this.setFocusAfterRender(true);
-	      this.open();
-	    }
-	  },
-	
-	  componentWillUnmount: function() {
-	    clearTimeout(this.closeTimer);
-	  },
-	
-	  componentWillReceiveProps: function(newProps) {
-	    // Focus only needs to be set once when the modal is being opened
-	    if (!this.props.isOpen && newProps.isOpen) {
-	      this.setFocusAfterRender(true);
-	      this.open();
-	    } else if (this.props.isOpen && !newProps.isOpen) {
-	      this.close();
-	    }
-	  },
-	
-	  componentDidUpdate: function () {
-	    if (this.focusAfterRender) {
-	      this.focusContent();
-	      this.setFocusAfterRender(false);
-	    }
-	  },
-	
-	  setFocusAfterRender: function (focus) {
-	    this.focusAfterRender = focus;
-	  },
-	
-	  open: function() {
-	    if (this.state.afterOpen && this.state.beforeClose) {
-	      clearTimeout(this.closeTimer);
-	      this.setState({ beforeClose: false });
-	    } else {
-	      focusManager.setupScopedFocus(this.node);
-	      focusManager.markForFocusLater();
-	      this.setState({isOpen: true}, function() {
-	        this.setState({afterOpen: true});
-	
-	        if (this.props.isOpen && this.props.onAfterOpen) {
-	          this.props.onAfterOpen();
-	        }
-	      }.bind(this));
-	    }
-	  },
-	
-	  close: function() {
-	    if (!this.ownerHandlesClose())
-	      return;
-	    if (this.props.closeTimeoutMS > 0)
-	      this.closeWithTimeout();
-	    else
-	      this.closeWithoutTimeout();
-	  },
-	
-	  focusContent: function() {
-	    this.refs.content.focus();
-	  },
-	
-	  closeWithTimeout: function() {
-	    this.setState({beforeClose: true}, function() {
-	      this.closeTimer = setTimeout(this.closeWithoutTimeout, this.props.closeTimeoutMS);
-	    }.bind(this));
-	  },
-	
-	  closeWithoutTimeout: function() {
-	    this.setState({
-	      beforeClose: false,
-	      isOpen: false,
-	      afterOpen: false,
-	    }, this.afterClose);
-	  },
-	
-	  afterClose: function() {
-	    focusManager.returnFocus();
-	    focusManager.teardownScopedFocus();
-	  },
-	
-	  handleKeyDown: function(event) {
-	    if (event.keyCode == 9 /*tab*/) scopeTab(this.refs.content, event);
-	    if (event.keyCode == 27 /*esc*/) {
-	      event.preventDefault();
-	      this.requestClose(event);
-	    }
-	  },
-	
-	  handleOverlayClick: function(event) {
-	    var node = event.target
-	
-	    while (node) {
-	      if (node === this.refs.content) return
-	      node = node.parentNode
-	    }
-	
-	    if (this.props.shouldCloseOnOverlayClick) {
-	      if (this.ownerHandlesClose())
-	        this.requestClose(event);
-	      else
-	        this.focusContent();
-	    }
-	  },
-	
-	  requestClose: function(event) {
-	    if (this.ownerHandlesClose())
-	      this.props.onRequestClose(event);
-	  },
-	
-	  ownerHandlesClose: function() {
-	    return this.props.onRequestClose;
-	  },
-	
-	  shouldBeClosed: function() {
-	    return !this.props.isOpen && !this.state.beforeClose;
-	  },
-	
-	  buildClassName: function(which, additional) {
-	    var className = CLASS_NAMES[which].base;
-	    if (this.state.afterOpen)
-	      className += ' '+CLASS_NAMES[which].afterOpen;
-	    if (this.state.beforeClose)
-	      className += ' '+CLASS_NAMES[which].beforeClose;
-	    return additional ? className + ' ' + additional : className;
-	  },
-	
-	  render: function() {
-	    var contentStyles = (this.props.className) ? {} : this.props.defaultStyles.content;
-	    var overlayStyles = (this.props.overlayClassName) ? {} : this.props.defaultStyles.overlay;
-	
-	    return this.shouldBeClosed() ? div() : (
-	      div({
-	        ref: "overlay",
-	        className: this.buildClassName('overlay', this.props.overlayClassName),
-	        style: Assign({}, overlayStyles, this.props.style.overlay || {}),
-	        onClick: this.handleOverlayClick
-	      },
-	        div({
-	          ref: "content",
-	          style: Assign({}, contentStyles, this.props.style.content || {}),
-	          className: this.buildClassName('content', this.props.className),
-	          tabIndex: "-1",
-	          onKeyDown: this.handleKeyDown
-	        },
-	          this.props.children
-	        )
-	      )
-	    );
-	  }
-	});
-
-
-/***/ },
-/* 327 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var findTabbable = __webpack_require__(328);
-	var modalElement = null;
-	var focusLaterElement = null;
-	var needToFocus = false;
-	
-	function handleBlur(event) {
-	  needToFocus = true;
-	}
-	
-	function handleFocus(event) {
-	  if (needToFocus) {
-	    needToFocus = false;
-	    if (!modalElement) {
-	      return;
-	    }
-	    // need to see how jQuery shims document.on('focusin') so we don't need the
-	    // setTimeout, firefox doesn't support focusin, if it did, we could focus
-	    // the element outside of a setTimeout. Side-effect of this implementation 
-	    // is that the document.body gets focus, and then we focus our element right 
-	    // after, seems fine.
-	    setTimeout(function() {
-	      if (modalElement.contains(document.activeElement))
-	        return;
-	      var el = (findTabbable(modalElement)[0] || modalElement);
-	      el.focus();
-	    }, 0);
-	  }
-	}
-	
-	exports.markForFocusLater = function() {
-	  focusLaterElement = document.activeElement;
-	};
-	
-	exports.returnFocus = function() {
-	  try {
-	    focusLaterElement.focus();
-	  }
-	  catch (e) {
-	    console.warn('You tried to return focus to '+focusLaterElement+' but it is not in the DOM anymore');
-	  }
-	  focusLaterElement = null;
-	};
-	
-	exports.setupScopedFocus = function(element) {
-	  modalElement = element;
-	
-	  if (window.addEventListener) {
-	    window.addEventListener('blur', handleBlur, false);
-	    document.addEventListener('focus', handleFocus, true);
-	  } else {
-	    window.attachEvent('onBlur', handleBlur);
-	    document.attachEvent('onFocus', handleFocus);
-	  }
-	};
-	
-	exports.teardownScopedFocus = function() {
-	  modalElement = null;
-	
-	  if (window.addEventListener) {
-	    window.removeEventListener('blur', handleBlur);
-	    document.removeEventListener('focus', handleFocus);
-	  } else {
-	    window.detachEvent('onBlur', handleBlur);
-	    document.detachEvent('onFocus', handleFocus);
-	  }
-	};
-	
-	
-
-
-/***/ },
-/* 328 */
-/***/ function(module, exports) {
-
-	/*!
-	 * Adapted from jQuery UI core
-	 *
-	 * http://jqueryui.com
-	 *
-	 * Copyright 2014 jQuery Foundation and other contributors
-	 * Released under the MIT license.
-	 * http://jquery.org/license
-	 *
-	 * http://api.jqueryui.com/category/ui-core/
-	 */
-	
-	function focusable(element, isTabIndexNotNaN) {
-	  var nodeName = element.nodeName.toLowerCase();
-	  return (/input|select|textarea|button|object/.test(nodeName) ?
-	    !element.disabled :
-	    "a" === nodeName ?
-	      element.href || isTabIndexNotNaN :
-	      isTabIndexNotNaN) && visible(element);
-	}
-	
-	function hidden(el) {
-	  return (el.offsetWidth <= 0 && el.offsetHeight <= 0) ||
-	    el.style.display === 'none';
-	}
-	
-	function visible(element) {
-	  while (element) {
-	    if (element === document.body) break;
-	    if (hidden(element)) return false;
-	    element = element.parentNode;
-	  }
-	  return true;
-	}
-	
-	function tabbable(element) {
-	  var tabIndex = element.getAttribute('tabindex');
-	  if (tabIndex === null) tabIndex = undefined;
-	  var isTabIndexNaN = isNaN(tabIndex);
-	  return (isTabIndexNaN || tabIndex >= 0) && focusable(element, !isTabIndexNaN);
-	}
-	
-	function findTabbableDescendants(element) {
-	  return [].slice.call(element.querySelectorAll('*'), 0).filter(function(el) {
-	    return tabbable(el);
-	  });
-	}
-	
-	module.exports = findTabbableDescendants;
-	
-
-
-/***/ },
-/* 329 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var findTabbable = __webpack_require__(328);
-	
-	module.exports = function(node, event) {
-	  var tabbable = findTabbable(node);
-	  if (!tabbable.length) {
-	      event.preventDefault();
-	      return;
-	  }
-	  var finalTabbable = tabbable[event.shiftKey ? 0 : tabbable.length - 1];
-	  var leavingFinalTabbable = (
-	    finalTabbable === document.activeElement ||
-	    // handle immediate shift+tab after opening with mouse
-	    node === document.activeElement
-	  );
-	  if (!leavingFinalTabbable) return;
-	  event.preventDefault();
-	  var target = tabbable[event.shiftKey ? tabbable.length - 1 : 0];
-	  target.focus();
-	};
-
-
-/***/ },
-/* 330 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * lodash 3.2.0 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	var baseAssign = __webpack_require__(331),
-	    createAssigner = __webpack_require__(337),
-	    keys = __webpack_require__(333);
-	
-	/**
-	 * A specialized version of `_.assign` for customizing assigned values without
-	 * support for argument juggling, multiple sources, and `this` binding `customizer`
-	 * functions.
-	 *
-	 * @private
-	 * @param {Object} object The destination object.
-	 * @param {Object} source The source object.
-	 * @param {Function} customizer The function to customize assigned values.
-	 * @returns {Object} Returns `object`.
-	 */
-	function assignWith(object, source, customizer) {
-	  var index = -1,
-	      props = keys(source),
-	      length = props.length;
-	
-	  while (++index < length) {
-	    var key = props[index],
-	        value = object[key],
-	        result = customizer(value, source[key], key, object, source);
-	
-	    if ((result === result ? (result !== value) : (value === value)) ||
-	        (value === undefined && !(key in object))) {
-	      object[key] = result;
-	    }
-	  }
-	  return object;
-	}
-	
-	/**
-	 * Assigns own enumerable properties of source object(s) to the destination
-	 * object. Subsequent sources overwrite property assignments of previous sources.
-	 * If `customizer` is provided it is invoked to produce the assigned values.
-	 * The `customizer` is bound to `thisArg` and invoked with five arguments:
-	 * (objectValue, sourceValue, key, object, source).
-	 *
-	 * **Note:** This method mutates `object` and is based on
-	 * [`Object.assign`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign).
-	 *
-	 * @static
-	 * @memberOf _
-	 * @alias extend
-	 * @category Object
-	 * @param {Object} object The destination object.
-	 * @param {...Object} [sources] The source objects.
-	 * @param {Function} [customizer] The function to customize assigned values.
-	 * @param {*} [thisArg] The `this` binding of `customizer`.
-	 * @returns {Object} Returns `object`.
-	 * @example
-	 *
-	 * _.assign({ 'user': 'barney' }, { 'age': 40 }, { 'user': 'fred' });
-	 * // => { 'user': 'fred', 'age': 40 }
-	 *
-	 * // using a customizer callback
-	 * var defaults = _.partialRight(_.assign, function(value, other) {
-	 *   return _.isUndefined(value) ? other : value;
-	 * });
-	 *
-	 * defaults({ 'user': 'barney' }, { 'age': 36 }, { 'user': 'fred' });
-	 * // => { 'user': 'barney', 'age': 36 }
-	 */
-	var assign = createAssigner(function(object, source, customizer) {
-	  return customizer
-	    ? assignWith(object, source, customizer)
-	    : baseAssign(object, source);
-	});
-	
-	module.exports = assign;
-
-
-/***/ },
-/* 331 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * lodash 3.2.0 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	var baseCopy = __webpack_require__(332),
-	    keys = __webpack_require__(333);
-	
-	/**
-	 * The base implementation of `_.assign` without support for argument juggling,
-	 * multiple sources, and `customizer` functions.
-	 *
-	 * @private
-	 * @param {Object} object The destination object.
-	 * @param {Object} source The source object.
-	 * @returns {Object} Returns `object`.
-	 */
-	function baseAssign(object, source) {
-	  return source == null
-	    ? object
-	    : baseCopy(source, keys(source), object);
-	}
-	
-	module.exports = baseAssign;
-
-
-/***/ },
-/* 332 */
-/***/ function(module, exports) {
-
-	/**
-	 * lodash 3.0.1 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	
-	/**
-	 * Copies properties of `source` to `object`.
-	 *
-	 * @private
-	 * @param {Object} source The object to copy properties from.
-	 * @param {Array} props The property names to copy.
-	 * @param {Object} [object={}] The object to copy properties to.
-	 * @returns {Object} Returns `object`.
-	 */
-	function baseCopy(source, props, object) {
-	  object || (object = {});
-	
-	  var index = -1,
-	      length = props.length;
-	
-	  while (++index < length) {
-	    var key = props[index];
-	    object[key] = source[key];
-	  }
-	  return object;
-	}
-	
-	module.exports = baseCopy;
-
-
-/***/ },
-/* 333 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * lodash 3.1.2 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	var getNative = __webpack_require__(334),
-	    isArguments = __webpack_require__(335),
-	    isArray = __webpack_require__(336);
-	
-	/** Used to detect unsigned integer values. */
-	var reIsUint = /^\d+$/;
-	
-	/** Used for native method references. */
-	var objectProto = Object.prototype;
-	
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-	
-	/* Native method references for those with the same name as other `lodash` methods. */
-	var nativeKeys = getNative(Object, 'keys');
-	
-	/**
-	 * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
-	 * of an array-like value.
-	 */
-	var MAX_SAFE_INTEGER = 9007199254740991;
-	
-	/**
-	 * The base implementation of `_.property` without support for deep paths.
-	 *
-	 * @private
-	 * @param {string} key The key of the property to get.
-	 * @returns {Function} Returns the new function.
-	 */
-	function baseProperty(key) {
-	  return function(object) {
-	    return object == null ? undefined : object[key];
-	  };
-	}
-	
-	/**
-	 * Gets the "length" property value of `object`.
-	 *
-	 * **Note:** This function is used to avoid a [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792)
-	 * that affects Safari on at least iOS 8.1-8.3 ARM64.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {*} Returns the "length" value.
-	 */
-	var getLength = baseProperty('length');
-	
-	/**
-	 * Checks if `value` is array-like.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
-	 */
-	function isArrayLike(value) {
-	  return value != null && isLength(getLength(value));
-	}
-	
-	/**
-	 * Checks if `value` is a valid array-like index.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
-	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
-	 */
-	function isIndex(value, length) {
-	  value = (typeof value == 'number' || reIsUint.test(value)) ? +value : -1;
-	  length = length == null ? MAX_SAFE_INTEGER : length;
-	  return value > -1 && value % 1 == 0 && value < length;
-	}
-	
-	/**
-	 * Checks if `value` is a valid array-like length.
-	 *
-	 * **Note:** This function is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
-	 */
-	function isLength(value) {
-	  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-	}
-	
-	/**
-	 * A fallback implementation of `Object.keys` which creates an array of the
-	 * own enumerable property names of `object`.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of property names.
-	 */
-	function shimKeys(object) {
-	  var props = keysIn(object),
-	      propsLength = props.length,
-	      length = propsLength && object.length;
-	
-	  var allowIndexes = !!length && isLength(length) &&
-	    (isArray(object) || isArguments(object));
-	
-	  var index = -1,
-	      result = [];
-	
-	  while (++index < propsLength) {
-	    var key = props[index];
-	    if ((allowIndexes && isIndex(key, length)) || hasOwnProperty.call(object, key)) {
-	      result.push(key);
-	    }
-	  }
-	  return result;
-	}
-	
-	/**
-	 * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
-	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
-	 * @example
-	 *
-	 * _.isObject({});
-	 * // => true
-	 *
-	 * _.isObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObject(1);
-	 * // => false
-	 */
-	function isObject(value) {
-	  // Avoid a V8 JIT bug in Chrome 19-20.
-	  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
-	  var type = typeof value;
-	  return !!value && (type == 'object' || type == 'function');
-	}
-	
-	/**
-	 * Creates an array of the own enumerable property names of `object`.
-	 *
-	 * **Note:** Non-object values are coerced to objects. See the
-	 * [ES spec](http://ecma-international.org/ecma-262/6.0/#sec-object.keys)
-	 * for more details.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Object
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of property names.
-	 * @example
-	 *
-	 * function Foo() {
-	 *   this.a = 1;
-	 *   this.b = 2;
-	 * }
-	 *
-	 * Foo.prototype.c = 3;
-	 *
-	 * _.keys(new Foo);
-	 * // => ['a', 'b'] (iteration order is not guaranteed)
-	 *
-	 * _.keys('hi');
-	 * // => ['0', '1']
-	 */
-	var keys = !nativeKeys ? shimKeys : function(object) {
-	  var Ctor = object == null ? undefined : object.constructor;
-	  if ((typeof Ctor == 'function' && Ctor.prototype === object) ||
-	      (typeof object != 'function' && isArrayLike(object))) {
-	    return shimKeys(object);
-	  }
-	  return isObject(object) ? nativeKeys(object) : [];
-	};
-	
-	/**
-	 * Creates an array of the own and inherited enumerable property names of `object`.
-	 *
-	 * **Note:** Non-object values are coerced to objects.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Object
-	 * @param {Object} object The object to query.
-	 * @returns {Array} Returns the array of property names.
-	 * @example
-	 *
-	 * function Foo() {
-	 *   this.a = 1;
-	 *   this.b = 2;
-	 * }
-	 *
-	 * Foo.prototype.c = 3;
-	 *
-	 * _.keysIn(new Foo);
-	 * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
-	 */
-	function keysIn(object) {
-	  if (object == null) {
-	    return [];
-	  }
-	  if (!isObject(object)) {
-	    object = Object(object);
-	  }
-	  var length = object.length;
-	  length = (length && isLength(length) &&
-	    (isArray(object) || isArguments(object)) && length) || 0;
-	
-	  var Ctor = object.constructor,
-	      index = -1,
-	      isProto = typeof Ctor == 'function' && Ctor.prototype === object,
-	      result = Array(length),
-	      skipIndexes = length > 0;
-	
-	  while (++index < length) {
-	    result[index] = (index + '');
-	  }
-	  for (var key in object) {
-	    if (!(skipIndexes && isIndex(key, length)) &&
-	        !(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
-	      result.push(key);
-	    }
-	  }
-	  return result;
-	}
-	
-	module.exports = keys;
-
-
-/***/ },
-/* 334 */
-/***/ function(module, exports) {
-
-	/**
-	 * lodash 3.9.1 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	
-	/** `Object#toString` result references. */
-	var funcTag = '[object Function]';
-	
-	/** Used to detect host constructors (Safari > 5). */
-	var reIsHostCtor = /^\[object .+?Constructor\]$/;
-	
-	/**
-	 * Checks if `value` is object-like.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-	 */
-	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
-	}
-	
-	/** Used for native method references. */
-	var objectProto = Object.prototype;
-	
-	/** Used to resolve the decompiled source of functions. */
-	var fnToString = Function.prototype.toString;
-	
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-	
-	/**
-	 * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objToString = objectProto.toString;
-	
-	/** Used to detect if a method is native. */
-	var reIsNative = RegExp('^' +
-	  fnToString.call(hasOwnProperty).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
-	  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
-	);
-	
-	/**
-	 * Gets the native function at `key` of `object`.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @param {string} key The key of the method to get.
-	 * @returns {*} Returns the function if it's native, else `undefined`.
-	 */
-	function getNative(object, key) {
-	  var value = object == null ? undefined : object[key];
-	  return isNative(value) ? value : undefined;
-	}
-	
-	/**
-	 * Checks if `value` is classified as a `Function` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
-	 * @example
-	 *
-	 * _.isFunction(_);
-	 * // => true
-	 *
-	 * _.isFunction(/abc/);
-	 * // => false
-	 */
-	function isFunction(value) {
-	  // The use of `Object#toString` avoids issues with the `typeof` operator
-	  // in older versions of Chrome and Safari which return 'function' for regexes
-	  // and Safari 8 equivalents which return 'object' for typed array constructors.
-	  return isObject(value) && objToString.call(value) == funcTag;
-	}
-	
-	/**
-	 * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
-	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
-	 * @example
-	 *
-	 * _.isObject({});
-	 * // => true
-	 *
-	 * _.isObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObject(1);
-	 * // => false
-	 */
-	function isObject(value) {
-	  // Avoid a V8 JIT bug in Chrome 19-20.
-	  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
-	  var type = typeof value;
-	  return !!value && (type == 'object' || type == 'function');
-	}
-	
-	/**
-	 * Checks if `value` is a native function.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a native function, else `false`.
-	 * @example
-	 *
-	 * _.isNative(Array.prototype.push);
-	 * // => true
-	 *
-	 * _.isNative(_);
-	 * // => false
-	 */
-	function isNative(value) {
-	  if (value == null) {
-	    return false;
-	  }
-	  if (isFunction(value)) {
-	    return reIsNative.test(fnToString.call(value));
-	  }
-	  return isObjectLike(value) && reIsHostCtor.test(value);
-	}
-	
-	module.exports = getNative;
-
-
-/***/ },
-/* 335 */
-/***/ function(module, exports) {
-
-	/**
-	 * lodash (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modularize exports="npm" -o ./`
-	 * Copyright jQuery Foundation and other contributors <https://jquery.org/>
-	 * Released under MIT license <https://lodash.com/license>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 */
-	
-	/** Used as references for various `Number` constants. */
-	var MAX_SAFE_INTEGER = 9007199254740991;
-	
-	/** `Object#toString` result references. */
-	var argsTag = '[object Arguments]',
-	    funcTag = '[object Function]',
-	    genTag = '[object GeneratorFunction]';
-	
-	/** Used for built-in method references. */
-	var objectProto = Object.prototype;
-	
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-	
-	/**
-	 * Used to resolve the
-	 * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objectToString = objectProto.toString;
-	
-	/** Built-in value references. */
-	var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-	
-	/**
-	 * Checks if `value` is likely an `arguments` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an `arguments` object,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isArguments(function() { return arguments; }());
-	 * // => true
-	 *
-	 * _.isArguments([1, 2, 3]);
-	 * // => false
-	 */
-	function isArguments(value) {
-	  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
-	  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
-	    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
-	}
-	
-	/**
-	 * Checks if `value` is array-like. A value is considered array-like if it's
-	 * not a function and has a `value.length` that's an integer greater than or
-	 * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
-	 * @example
-	 *
-	 * _.isArrayLike([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isArrayLike(document.body.children);
-	 * // => true
-	 *
-	 * _.isArrayLike('abc');
-	 * // => true
-	 *
-	 * _.isArrayLike(_.noop);
-	 * // => false
-	 */
-	function isArrayLike(value) {
-	  return value != null && isLength(value.length) && !isFunction(value);
-	}
-	
-	/**
-	 * This method is like `_.isArrayLike` except that it also checks if `value`
-	 * is an object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an array-like object,
-	 *  else `false`.
-	 * @example
-	 *
-	 * _.isArrayLikeObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isArrayLikeObject(document.body.children);
-	 * // => true
-	 *
-	 * _.isArrayLikeObject('abc');
-	 * // => false
-	 *
-	 * _.isArrayLikeObject(_.noop);
-	 * // => false
-	 */
-	function isArrayLikeObject(value) {
-	  return isObjectLike(value) && isArrayLike(value);
-	}
-	
-	/**
-	 * Checks if `value` is classified as a `Function` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a function, else `false`.
-	 * @example
-	 *
-	 * _.isFunction(_);
-	 * // => true
-	 *
-	 * _.isFunction(/abc/);
-	 * // => false
-	 */
-	function isFunction(value) {
-	  // The use of `Object#toString` avoids issues with the `typeof` operator
-	  // in Safari 8-9 which returns 'object' for typed array and other constructors.
-	  var tag = isObject(value) ? objectToString.call(value) : '';
-	  return tag == funcTag || tag == genTag;
-	}
-	
-	/**
-	 * Checks if `value` is a valid array-like length.
-	 *
-	 * **Note:** This method is loosely based on
-	 * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
-	 * @example
-	 *
-	 * _.isLength(3);
-	 * // => true
-	 *
-	 * _.isLength(Number.MIN_VALUE);
-	 * // => false
-	 *
-	 * _.isLength(Infinity);
-	 * // => false
-	 *
-	 * _.isLength('3');
-	 * // => false
-	 */
-	function isLength(value) {
-	  return typeof value == 'number' &&
-	    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-	}
-	
-	/**
-	 * Checks if `value` is the
-	 * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
-	 * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 0.1.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
-	 * @example
-	 *
-	 * _.isObject({});
-	 * // => true
-	 *
-	 * _.isObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObject(_.noop);
-	 * // => true
-	 *
-	 * _.isObject(null);
-	 * // => false
-	 */
-	function isObject(value) {
-	  var type = typeof value;
-	  return !!value && (type == 'object' || type == 'function');
-	}
-	
-	/**
-	 * Checks if `value` is object-like. A value is object-like if it's not `null`
-	 * and has a `typeof` result of "object".
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.0.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-	 * @example
-	 *
-	 * _.isObjectLike({});
-	 * // => true
-	 *
-	 * _.isObjectLike([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObjectLike(_.noop);
-	 * // => false
-	 *
-	 * _.isObjectLike(null);
-	 * // => false
-	 */
-	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
-	}
-	
-	module.exports = isArguments;
-
-
-/***/ },
-/* 336 */
-/***/ function(module, exports) {
-
-	/**
-	 * lodash 3.0.4 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	
-	/** `Object#toString` result references. */
-	var arrayTag = '[object Array]',
-	    funcTag = '[object Function]';
-	
-	/** Used to detect host constructors (Safari > 5). */
-	var reIsHostCtor = /^\[object .+?Constructor\]$/;
-	
-	/**
-	 * Checks if `value` is object-like.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
-	 */
-	function isObjectLike(value) {
-	  return !!value && typeof value == 'object';
-	}
-	
-	/** Used for native method references. */
-	var objectProto = Object.prototype;
-	
-	/** Used to resolve the decompiled source of functions. */
-	var fnToString = Function.prototype.toString;
-	
-	/** Used to check objects for own properties. */
-	var hasOwnProperty = objectProto.hasOwnProperty;
-	
-	/**
-	 * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objToString = objectProto.toString;
-	
-	/** Used to detect if a method is native. */
-	var reIsNative = RegExp('^' +
-	  fnToString.call(hasOwnProperty).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
-	  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
-	);
-	
-	/* Native method references for those with the same name as other `lodash` methods. */
-	var nativeIsArray = getNative(Array, 'isArray');
-	
-	/**
-	 * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
-	 * of an array-like value.
-	 */
-	var MAX_SAFE_INTEGER = 9007199254740991;
-	
-	/**
-	 * Gets the native function at `key` of `object`.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @param {string} key The key of the method to get.
-	 * @returns {*} Returns the function if it's native, else `undefined`.
-	 */
-	function getNative(object, key) {
-	  var value = object == null ? undefined : object[key];
-	  return isNative(value) ? value : undefined;
-	}
-	
-	/**
-	 * Checks if `value` is a valid array-like length.
-	 *
-	 * **Note:** This function is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
-	 */
-	function isLength(value) {
-	  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-	}
-	
-	/**
-	 * Checks if `value` is classified as an `Array` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
-	 * @example
-	 *
-	 * _.isArray([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isArray(function() { return arguments; }());
-	 * // => false
-	 */
-	var isArray = nativeIsArray || function(value) {
-	  return isObjectLike(value) && isLength(value.length) && objToString.call(value) == arrayTag;
-	};
-	
-	/**
-	 * Checks if `value` is classified as a `Function` object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
-	 * @example
-	 *
-	 * _.isFunction(_);
-	 * // => true
-	 *
-	 * _.isFunction(/abc/);
-	 * // => false
-	 */
-	function isFunction(value) {
-	  // The use of `Object#toString` avoids issues with the `typeof` operator
-	  // in older versions of Chrome and Safari which return 'function' for regexes
-	  // and Safari 8 equivalents which return 'object' for typed array constructors.
-	  return isObject(value) && objToString.call(value) == funcTag;
-	}
-	
-	/**
-	 * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
-	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
-	 * @example
-	 *
-	 * _.isObject({});
-	 * // => true
-	 *
-	 * _.isObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObject(1);
-	 * // => false
-	 */
-	function isObject(value) {
-	  // Avoid a V8 JIT bug in Chrome 19-20.
-	  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
-	  var type = typeof value;
-	  return !!value && (type == 'object' || type == 'function');
-	}
-	
-	/**
-	 * Checks if `value` is a native function.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a native function, else `false`.
-	 * @example
-	 *
-	 * _.isNative(Array.prototype.push);
-	 * // => true
-	 *
-	 * _.isNative(_);
-	 * // => false
-	 */
-	function isNative(value) {
-	  if (value == null) {
-	    return false;
-	  }
-	  if (isFunction(value)) {
-	    return reIsNative.test(fnToString.call(value));
-	  }
-	  return isObjectLike(value) && reIsHostCtor.test(value);
-	}
-	
-	module.exports = isArray;
-
-
-/***/ },
-/* 337 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * lodash 3.1.1 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	var bindCallback = __webpack_require__(338),
-	    isIterateeCall = __webpack_require__(339),
-	    restParam = __webpack_require__(340);
-	
-	/**
-	 * Creates a function that assigns properties of source object(s) to a given
-	 * destination object.
-	 *
-	 * **Note:** This function is used to create `_.assign`, `_.defaults`, and `_.merge`.
-	 *
-	 * @private
-	 * @param {Function} assigner The function to assign values.
-	 * @returns {Function} Returns the new assigner function.
-	 */
-	function createAssigner(assigner) {
-	  return restParam(function(object, sources) {
-	    var index = -1,
-	        length = object == null ? 0 : sources.length,
-	        customizer = length > 2 ? sources[length - 2] : undefined,
-	        guard = length > 2 ? sources[2] : undefined,
-	        thisArg = length > 1 ? sources[length - 1] : undefined;
-	
-	    if (typeof customizer == 'function') {
-	      customizer = bindCallback(customizer, thisArg, 5);
-	      length -= 2;
-	    } else {
-	      customizer = typeof thisArg == 'function' ? thisArg : undefined;
-	      length -= (customizer ? 1 : 0);
-	    }
-	    if (guard && isIterateeCall(sources[0], sources[1], guard)) {
-	      customizer = length < 3 ? undefined : customizer;
-	      length = 1;
-	    }
-	    while (++index < length) {
-	      var source = sources[index];
-	      if (source) {
-	        assigner(object, source, customizer);
-	      }
-	    }
-	    return object;
-	  });
-	}
-	
-	module.exports = createAssigner;
-
-
-/***/ },
-/* 338 */
-/***/ function(module, exports) {
-
-	/**
-	 * lodash 3.0.1 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	
-	/**
-	 * A specialized version of `baseCallback` which only supports `this` binding
-	 * and specifying the number of arguments to provide to `func`.
-	 *
-	 * @private
-	 * @param {Function} func The function to bind.
-	 * @param {*} thisArg The `this` binding of `func`.
-	 * @param {number} [argCount] The number of arguments to provide to `func`.
-	 * @returns {Function} Returns the callback.
-	 */
-	function bindCallback(func, thisArg, argCount) {
-	  if (typeof func != 'function') {
-	    return identity;
-	  }
-	  if (thisArg === undefined) {
-	    return func;
-	  }
-	  switch (argCount) {
-	    case 1: return function(value) {
-	      return func.call(thisArg, value);
-	    };
-	    case 3: return function(value, index, collection) {
-	      return func.call(thisArg, value, index, collection);
-	    };
-	    case 4: return function(accumulator, value, index, collection) {
-	      return func.call(thisArg, accumulator, value, index, collection);
-	    };
-	    case 5: return function(value, other, key, object, source) {
-	      return func.call(thisArg, value, other, key, object, source);
-	    };
-	  }
-	  return function() {
-	    return func.apply(thisArg, arguments);
-	  };
-	}
-	
-	/**
-	 * This method returns the first argument provided to it.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Utility
-	 * @param {*} value Any value.
-	 * @returns {*} Returns `value`.
-	 * @example
-	 *
-	 * var object = { 'user': 'fred' };
-	 *
-	 * _.identity(object) === object;
-	 * // => true
-	 */
-	function identity(value) {
-	  return value;
-	}
-	
-	module.exports = bindCallback;
-
-
-/***/ },
-/* 339 */
-/***/ function(module, exports) {
-
-	/**
-	 * lodash 3.0.9 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	
-	/** Used to detect unsigned integer values. */
-	var reIsUint = /^\d+$/;
-	
-	/**
-	 * Used as the [maximum length](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
-	 * of an array-like value.
-	 */
-	var MAX_SAFE_INTEGER = 9007199254740991;
-	
-	/**
-	 * The base implementation of `_.property` without support for deep paths.
-	 *
-	 * @private
-	 * @param {string} key The key of the property to get.
-	 * @returns {Function} Returns the new function.
-	 */
-	function baseProperty(key) {
-	  return function(object) {
-	    return object == null ? undefined : object[key];
-	  };
-	}
-	
-	/**
-	 * Gets the "length" property value of `object`.
-	 *
-	 * **Note:** This function is used to avoid a [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792)
-	 * that affects Safari on at least iOS 8.1-8.3 ARM64.
-	 *
-	 * @private
-	 * @param {Object} object The object to query.
-	 * @returns {*} Returns the "length" value.
-	 */
-	var getLength = baseProperty('length');
-	
-	/**
-	 * Checks if `value` is array-like.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
-	 */
-	function isArrayLike(value) {
-	  return value != null && isLength(getLength(value));
-	}
-	
-	/**
-	 * Checks if `value` is a valid array-like index.
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
-	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
-	 */
-	function isIndex(value, length) {
-	  value = (typeof value == 'number' || reIsUint.test(value)) ? +value : -1;
-	  length = length == null ? MAX_SAFE_INTEGER : length;
-	  return value > -1 && value % 1 == 0 && value < length;
-	}
-	
-	/**
-	 * Checks if the provided arguments are from an iteratee call.
-	 *
-	 * @private
-	 * @param {*} value The potential iteratee value argument.
-	 * @param {*} index The potential iteratee index or key argument.
-	 * @param {*} object The potential iteratee object argument.
-	 * @returns {boolean} Returns `true` if the arguments are from an iteratee call, else `false`.
-	 */
-	function isIterateeCall(value, index, object) {
-	  if (!isObject(object)) {
-	    return false;
-	  }
-	  var type = typeof index;
-	  if (type == 'number'
-	      ? (isArrayLike(object) && isIndex(index, object.length))
-	      : (type == 'string' && index in object)) {
-	    var other = object[index];
-	    return value === value ? (value === other) : (other !== other);
-	  }
-	  return false;
-	}
-	
-	/**
-	 * Checks if `value` is a valid array-like length.
-	 *
-	 * **Note:** This function is based on [`ToLength`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength).
-	 *
-	 * @private
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
-	 */
-	function isLength(value) {
-	  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-	}
-	
-	/**
-	 * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
-	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
-	 * @example
-	 *
-	 * _.isObject({});
-	 * // => true
-	 *
-	 * _.isObject([1, 2, 3]);
-	 * // => true
-	 *
-	 * _.isObject(1);
-	 * // => false
-	 */
-	function isObject(value) {
-	  // Avoid a V8 JIT bug in Chrome 19-20.
-	  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
-	  var type = typeof value;
-	  return !!value && (type == 'object' || type == 'function');
-	}
-	
-	module.exports = isIterateeCall;
-
-
-/***/ },
-/* 340 */
-/***/ function(module, exports) {
-
-	/**
-	 * lodash 3.6.1 (Custom Build) <https://lodash.com/>
-	 * Build: `lodash modern modularize exports="npm" -o ./`
-	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
-	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
-	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-	 * Available under MIT license <https://lodash.com/license>
-	 */
-	
-	/** Used as the `TypeError` message for "Functions" methods. */
-	var FUNC_ERROR_TEXT = 'Expected a function';
-	
-	/* Native method references for those with the same name as other `lodash` methods. */
-	var nativeMax = Math.max;
-	
-	/**
-	 * Creates a function that invokes `func` with the `this` binding of the
-	 * created function and arguments from `start` and beyond provided as an array.
-	 *
-	 * **Note:** This method is based on the [rest parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters).
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Function
-	 * @param {Function} func The function to apply a rest parameter to.
-	 * @param {number} [start=func.length-1] The start position of the rest parameter.
-	 * @returns {Function} Returns the new function.
-	 * @example
-	 *
-	 * var say = _.restParam(function(what, names) {
-	 *   return what + ' ' + _.initial(names).join(', ') +
-	 *     (_.size(names) > 1 ? ', & ' : '') + _.last(names);
-	 * });
-	 *
-	 * say('hello', 'fred', 'barney', 'pebbles');
-	 * // => 'hello fred, barney, & pebbles'
-	 */
-	function restParam(func, start) {
-	  if (typeof func != 'function') {
-	    throw new TypeError(FUNC_ERROR_TEXT);
-	  }
-	  start = nativeMax(start === undefined ? (func.length - 1) : (+start || 0), 0);
-	  return function() {
-	    var args = arguments,
-	        index = -1,
-	        length = nativeMax(args.length - start, 0),
-	        rest = Array(length);
-	
-	    while (++index < length) {
-	      rest[index] = args[start + index];
-	    }
-	    switch (start) {
-	      case 0: return func.call(this, rest);
-	      case 1: return func.call(this, args[0], rest);
-	      case 2: return func.call(this, args[0], args[1], rest);
-	    }
-	    var otherArgs = Array(start + 1);
-	    index = -1;
-	    while (++index < start) {
-	      otherArgs[index] = args[index];
-	    }
-	    otherArgs[start] = rest;
-	    return func.apply(this, otherArgs);
-	  };
-	}
-	
-	module.exports = restParam;
-
-
-/***/ },
-/* 341 */
-/***/ function(module, exports) {
-
-	var _element = typeof document !== 'undefined' ? document.body : null;
-	
-	function setElement(element) {
-	  if (typeof element === 'string') {
-	    var el = document.querySelectorAll(element);
-	    element = 'length' in el ? el[0] : el;
-	  }
-	  _element = element || _element;
-	  return _element;
-	}
-	
-	function hide(appElement) {
-	  validateElement(appElement);
-	  (appElement || _element).setAttribute('aria-hidden', 'true');
-	}
-	
-	function show(appElement) {
-	  validateElement(appElement);
-	  (appElement || _element).removeAttribute('aria-hidden');
-	}
-	
-	function toggle(shouldHide, appElement) {
-	  if (shouldHide)
-	    hide(appElement);
-	  else
-	    show(appElement);
-	}
-	
-	function validateElement(appElement) {
-	  if (!appElement && !_element)
-	    throw new Error('react-modal: You must set an element with `Modal.setAppElement(el)` to make this accessible');
-	}
-	
-	function resetForTesting() {
-	  _element = document.body;
-	}
-	
-	exports.toggle = toggle;
-	exports.setElement = setElement;
-	exports.show = show;
-	exports.hide = hide;
-	exports.resetForTesting = resetForTesting;
-
-
-/***/ },
-/* 342 */
-/***/ function(module, exports) {
-
-	module.exports = function(opts) {
-	  return new ElementClass(opts)
-	}
-	
-	function indexOf(arr, prop) {
-	  if (arr.indexOf) return arr.indexOf(prop)
-	  for (var i = 0, len = arr.length; i < len; i++)
-	    if (arr[i] === prop) return i
-	  return -1
-	}
-	
-	function ElementClass(opts) {
-	  if (!(this instanceof ElementClass)) return new ElementClass(opts)
-	  var self = this
-	  if (!opts) opts = {}
-	
-	  // similar doing instanceof HTMLElement but works in IE8
-	  if (opts.nodeType) opts = {el: opts}
-	
-	  this.opts = opts
-	  this.el = opts.el || document.body
-	  if (typeof this.el !== 'object') this.el = document.querySelector(this.el)
-	}
-	
-	ElementClass.prototype.add = function(className) {
-	  var el = this.el
-	  if (!el) return
-	  if (el.className === "") return el.className = className
-	  var classes = el.className.split(' ')
-	  if (indexOf(classes, className) > -1) return classes
-	  classes.push(className)
-	  el.className = classes.join(' ')
-	  return classes
-	}
-	
-	ElementClass.prototype.remove = function(className) {
-	  var el = this.el
-	  if (!el) return
-	  if (el.className === "") return
-	  var classes = el.className.split(' ')
-	  var idx = indexOf(classes, className)
-	  if (idx > -1) classes.splice(idx, 1)
-	  el.className = classes.join(' ')
-	  return classes
-	}
-	
-	ElementClass.prototype.has = function(className) {
-	  var el = this.el
-	  if (!el) return
-	  var classes = el.className.split(' ')
-	  return indexOf(classes, className) > -1
-	}
-	
-	ElementClass.prototype.toggle = function(className) {
-	  var el = this.el
-	  if (!el) return
-	  if (this.has(className)) this.remove(className)
-	  else this.add(className)
-	}
-
-
-/***/ },
-/* 343 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(344);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./tooltip.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./tooltip.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 344 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".__react_component_tooltip {\n  border-radius: 3px;\n  display: inline-block;\n  font-size: 13px;\n  left: -999em;\n  opacity: 1 !important;\n  padding: 1.5rem !important;\n  position: fixed;\n  pointer-events: none;\n  transition: none !important;\n  top: -999em;\n  visibility: hidden;\n  z-index: 999;\n  /* Rectangle 63: */\n  background: #fff !important;\n  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2) !important;\n  border-radius: 0 !important;\n  color: #515253 !important;\n  border: 0 !important;\n  font-size: 12px !important;\n  max-width: 22%;\n}\n\n.__react_component_tooltip:before,\n.__react_component_tooltip:after {\n  display: none;\n}\n\n.__react_component_tooltip.show {\n  opacity: 1 !important;\n  margin-top: 0px;\n  margin-left: 0px;\n  visibility: visible;\n}\n\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 345 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _class, _class2, _temp;
-	
-	/* Decoraters */
-	
-	
-	/* Utils */
-	
-	
-	/* CSS */
-	
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(37);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _classnames = __webpack_require__(346);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _staticMethods = __webpack_require__(347);
-	
-	var _staticMethods2 = _interopRequireDefault(_staticMethods);
-	
-	var _windowListener = __webpack_require__(349);
-	
-	var _windowListener2 = _interopRequireDefault(_windowListener);
-	
-	var _customEvent = __webpack_require__(350);
-	
-	var _customEvent2 = _interopRequireDefault(_customEvent);
-	
-	var _isCapture = __webpack_require__(351);
-	
-	var _isCapture2 = _interopRequireDefault(_isCapture);
-	
-	var _getPosition = __webpack_require__(352);
-	
-	var _getPosition2 = _interopRequireDefault(_getPosition);
-	
-	var _getTipContent = __webpack_require__(353);
-	
-	var _getTipContent2 = _interopRequireDefault(_getTipContent);
-	
-	var _aria = __webpack_require__(354);
-	
-	var _style = __webpack_require__(355);
-	
-	var _style2 = _interopRequireDefault(_style);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var ReactTooltip = (0, _staticMethods2.default)(_class = (0, _windowListener2.default)(_class = (0, _customEvent2.default)(_class = (0, _isCapture2.default)(_class = (_temp = _class2 = function (_Component) {
-	  _inherits(ReactTooltip, _Component);
-	
-	  function ReactTooltip(props) {
-	    _classCallCheck(this, ReactTooltip);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReactTooltip).call(this, props));
-	
-	    _this.state = {
-	      place: 'top', // Direction of tooltip
-	      type: 'dark', // Color theme of tooltip
-	      effect: 'float', // float or fixed
-	      show: false,
-	      border: false,
-	      placeholder: '',
-	      offset: {},
-	      extraClass: '',
-	      html: false,
-	      delayHide: 0,
-	      delayShow: 0,
-	      event: props.event || null,
-	      eventOff: props.eventOff || null,
-	      currentEvent: null, // Current mouse event
-	      currentTarget: null, // Current target of mouse event
-	      ariaProps: (0, _aria.parseAria)(props) // aria- and role attributes
-	    };
-	
-	    _this.bind(['showTooltip', 'updateTooltip', 'hideTooltip', 'globalRebuild', 'globalShow', 'onWindowResize']);
-	
-	    _this.mount = true;
-	    _this.delayShowLoop = null;
-	    _this.delayHideLoop = null;
-	    _this.intervalUpdateContent = null;
-	    return _this;
-	  }
-	
-	  /**
-	   * For unify the bind and unbind listener
-	   */
-	
-	
-	  _createClass(ReactTooltip, [{
-	    key: 'bind',
-	    value: function bind(methodArray) {
-	      var _this2 = this;
-	
-	      methodArray.forEach(function (method) {
-	        _this2[method] = _this2[method].bind(_this2);
-	      });
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.setStyleHeader(); // Set the style to the <link>
-	      this.bindListener(); // Bind listener for tooltip
-	      this.bindWindowEvents(); // Bind global event for static method
-	    }
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(props) {
-	      var ariaProps = this.state.ariaProps;
-	
-	      var newAriaProps = (0, _aria.parseAria)(props);
-	
-	      var isChanged = Object.keys(newAriaProps).some(function (props) {
-	        return newAriaProps[props] !== ariaProps[props];
-	      });
-	      if (isChanged) {
-	        this.setState({ ariaProps: newAriaProps });
-	      }
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      this.mount = false;
-	
-	      this.clearTimer();
-	
-	      this.unbindListener();
-	      this.removeScrollListener();
-	      this.unbindWindowEvents();
-	    }
-	
-	    /**
-	     * Pick out corresponded target elements
-	     */
-	
-	  }, {
-	    key: 'getTargetArray',
-	    value: function getTargetArray(id) {
-	      var targetArray = void 0;
-	
-	      if (!id) {
-	        targetArray = document.querySelectorAll('[data-tip]:not([data-for])');
-	      } else {
-	        targetArray = document.querySelectorAll('[data-tip][data-for="' + id + '"]');
-	      }
-	
-	      // targetArray is a NodeList, convert it to a real array
-	      // I hope I can use Object.values...
-	      return Object.keys(targetArray).filter(function (key) {
-	        return key !== 'length';
-	      }).map(function (key) {
-	        return targetArray[key];
-	      });
-	    }
-	
-	    /**
-	     * Bind listener to the target elements
-	     * These listeners used to trigger showing or hiding the tooltip
-	     */
-	
-	  }, {
-	    key: 'bindListener',
-	    value: function bindListener() {
-	      var _this3 = this;
-	
-	      var _props = this.props;
-	      var id = _props.id;
-	      var globalEventOff = _props.globalEventOff;
-	
-	      var targetArray = this.getTargetArray(id);
-	
-	      targetArray.forEach(function (target) {
-	        var isCaptureMode = _this3.isCapture(target);
-	        if (target.getAttribute('currentItem') === null) {
-	          target.setAttribute('currentItem', 'false');
-	        }
-	        _this3.unbindBasicListener(target);
-	
-	        if (_this3.isCustomEvent(target)) {
-	          _this3.customBindListener(target);
-	          return;
-	        }
-	
-	        target.addEventListener('mouseenter', _this3.showTooltip, isCaptureMode);
-	        if (_this3.state.effect === 'float') {
-	          target.addEventListener('mousemove', _this3.updateTooltip, isCaptureMode);
-	        }
-	        target.addEventListener('mouseleave', _this3.hideTooltip, isCaptureMode);
-	      });
-	
-	      // Global event to hide tooltip
-	      if (globalEventOff) {
-	        window.removeEventListener(globalEventOff, this.hideTooltip);
-	        window.addEventListener(globalEventOff, this.hideTooltip, false);
-	      }
-	    }
-	
-	    /**
-	     * Unbind listeners on target elements
-	     */
-	
-	  }, {
-	    key: 'unbindListener',
-	    value: function unbindListener() {
-	      var _this4 = this;
-	
-	      var _props2 = this.props;
-	      var id = _props2.id;
-	      var globalEventOff = _props2.globalEventOff;
-	
-	      var targetArray = this.getTargetArray(id);
-	      targetArray.forEach(function (target) {
-	        _this4.unbindBasicListener(target);
-	        if (_this4.isCustomEvent(target)) _this4.customUnbindListener(target);
-	      });
-	
-	      if (globalEventOff) window.removeEventListener(globalEventOff, this.hideTooltip);
-	    }
-	
-	    /**
-	     * Invoke this before bind listener and ummount the compont
-	     * it is necessary to invloke this even when binding custom event
-	     * so that the tooltip can switch between custom and default listener
-	     */
-	
-	  }, {
-	    key: 'unbindBasicListener',
-	    value: function unbindBasicListener(target) {
-	      target.removeEventListener('mouseenter', this.showTooltip);
-	      target.removeEventListener('mousemove', this.updateTooltip);
-	      target.removeEventListener('mouseleave', this.hideTooltip);
-	    }
-	
-	    /**
-	     * When mouse enter, show the tooltip
-	     */
-	
-	  }, {
-	    key: 'showTooltip',
-	    value: function showTooltip(e, isGlobalCall) {
-	      var _this5 = this;
-	
-	      if (isGlobalCall) {
-	        // Don't trigger other elements belongs to other ReactTooltip
-	        var targetArray = this.getTargetArray(this.props.id);
-	        var isMyElement = targetArray.some(function (ele) {
-	          return ele === e.currentTarget;
-	        });
-	        if (!isMyElement || this.state.show) return;
-	      }
-	      // Get the tooltip content
-	      // calculate in this phrase so that tip width height can be detected
-	      var _props3 = this.props;
-	      var children = _props3.children;
-	      var multiline = _props3.multiline;
-	      var getContent = _props3.getContent;
-	
-	      var originTooltip = e.currentTarget.getAttribute('data-tip');
-	      var isMultiline = e.currentTarget.getAttribute('data-multiline') || multiline || false;
-	
-	      // Generate tootlip content
-	      var content = children;
-	      if (getContent) {
-	        if (Array.isArray(getContent)) {
-	          content = getContent[0] && getContent[0]();
-	        } else {
-	          content = getContent();
-	        }
-	      }
-	      var placeholder = (0, _getTipContent2.default)(originTooltip, content, isMultiline);
-	
-	      // If it is focus event or called by ReactTooltip.show, switch to `solid` effect
-	      var switchToSolid = e instanceof window.FocusEvent || isGlobalCall;
-	      this.setState({
-	        placeholder: placeholder,
-	        place: e.currentTarget.getAttribute('data-place') || this.props.place || 'top',
-	        type: e.currentTarget.getAttribute('data-type') || this.props.type || 'dark',
-	        effect: switchToSolid && 'solid' || e.currentTarget.getAttribute('data-effect') || this.props.effect || 'float',
-	        offset: e.currentTarget.getAttribute('data-offset') || this.props.offset || {},
-	        html: e.currentTarget.getAttribute('data-html') ? e.currentTarget.getAttribute('data-html') === 'true' : this.props.html || false,
-	        delayShow: e.currentTarget.getAttribute('data-delay-show') || this.props.delayShow || 0,
-	        delayHide: e.currentTarget.getAttribute('data-delay-hide') || this.props.delayHide || 0,
-	        border: e.currentTarget.getAttribute('data-border') ? e.currentTarget.getAttribute('data-border') === 'true' : this.props.border || false,
-	        extraClass: e.currentTarget.getAttribute('data-class') || this.props.class || '',
-	        countTransform: e.currentTarget.getAttribute('data-count-transform') ? e.currentTarget.getAttribute('data-count-transform') === 'true' : this.props.countTransform != null ? this.props.countTransform : true
-	      }, function () {
-	        _this5.addScrollListener(e);
-	        _this5.updateTooltip(e);
-	
-	        if (getContent && Array.isArray(getContent)) {
-	          _this5.intervalUpdateContent = setInterval(function () {
-	            if (_this5.mount) {
-	              var _getContent = _this5.props.getContent;
-	
-	              var _placeholder = (0, _getTipContent2.default)(originTooltip, _getContent[0](), isMultiline);
-	              _this5.setState({
-	                placeholder: _placeholder
-	              });
-	            }
-	          }, getContent[1]);
-	        }
-	      });
-	    }
-	
-	    /**
-	     * When mouse hover, updatetooltip
-	     */
-	
-	  }, {
-	    key: 'updateTooltip',
-	    value: function updateTooltip(e) {
-	      var _this6 = this;
-	
-	      var _state = this.state;
-	      var delayShow = _state.delayShow;
-	      var show = _state.show;
-	      var afterShow = this.props.afterShow;
-	      var placeholder = this.state.placeholder;
-	
-	      var delayTime = show ? 0 : parseInt(delayShow, 10);
-	      var eventTarget = e.currentTarget;
-	
-	      var updateState = function updateState() {
-	        if (typeof placeholder === 'string') placeholder = placeholder.trim();
-	        if (Array.isArray(placeholder) && placeholder.length > 0 || placeholder) {
-	          (function () {
-	            var isInvisible = !_this6.state.show;
-	            _this6.setState({
-	              currentEvent: e,
-	              currentTarget: eventTarget,
-	              show: true
-	            }, function () {
-	              _this6.updatePosition();
-	              if (isInvisible && afterShow) afterShow();
-	            });
-	          })();
-	        }
-	      };
-	
-	      clearTimeout(this.delayShowLoop);
-	      if (delayShow) {
-	        this.delayShowLoop = setTimeout(updateState, delayTime);
-	      } else {
-	        updateState();
-	      }
-	    }
-	
-	    /**
-	     * When mouse leave, hide tooltip
-	     */
-	
-	  }, {
-	    key: 'hideTooltip',
-	    value: function hideTooltip() {
-	      var _this7 = this;
-	
-	      var delayHide = this.state.delayHide;
-	      var afterHide = this.props.afterHide;
-	
-	
-	      if (!this.mount) return;
-	
-	      var resetState = function resetState() {
-	        var isVisible = _this7.state.show;
-	        _this7.setState({
-	          show: false
-	        }, function () {
-	          _this7.removeScrollListener();
-	          if (isVisible && afterHide) afterHide();
-	        });
-	      };
-	
-	      this.clearTimer();
-	      if (delayHide) {
-	        this.delayHideLoop = setTimeout(resetState, parseInt(delayHide, 10));
-	      } else {
-	        resetState();
-	      }
-	    }
-	
-	    /**
-	     * Add scroll eventlistener when tooltip show
-	     * automatically hide the tooltip when scrolling
-	     */
-	
-	  }, {
-	    key: 'addScrollListener',
-	    value: function addScrollListener(e) {
-	      var isCaptureMode = this.isCapture(e.currentTarget);
-	      window.addEventListener('scroll', this.hideTooltip, isCaptureMode);
-	    }
-	  }, {
-	    key: 'removeScrollListener',
-	    value: function removeScrollListener() {
-	      window.removeEventListener('scroll', this.hideTooltip);
-	    }
-	
-	    // Calculation the position
-	
-	  }, {
-	    key: 'updatePosition',
-	    value: function updatePosition() {
-	      var _this8 = this;
-	
-	      var _state2 = this.state;
-	      var currentEvent = _state2.currentEvent;
-	      var currentTarget = _state2.currentTarget;
-	      var place = _state2.place;
-	      var effect = _state2.effect;
-	      var offset = _state2.offset;
-	      var countTransform = _state2.countTransform;
-	
-	      var node = _reactDom2.default.findDOMNode(this);
-	
-	      var result = (0, _getPosition2.default)(currentEvent, currentTarget, node, place, effect, offset, countTransform);
-	
-	      if (result.isNewState) {
-	        // Switch to reverse placement
-	        return this.setState(result.newState, function () {
-	          _this8.updatePosition();
-	        });
-	      }
-	      // Set tooltip position
-	      node.style.left = result.position.left + 'px';
-	      node.style.top = result.position.top + 'px';
-	    }
-	
-	    /**
-	     * Set style tag in header
-	     * in this way we can insert default css
-	     */
-	
-	  }, {
-	    key: 'setStyleHeader',
-	    value: function setStyleHeader() {
-	      if (!document.getElementsByTagName('head')[0].querySelector('style[id="react-tooltip"]')) {
-	        var tag = document.createElement('style');
-	        tag.id = 'react-tooltip';
-	        tag.innerHTML = _style2.default;
-	        document.getElementsByTagName('head')[0].appendChild(tag);
-	      }
-	    }
-	
-	    /**
-	     * CLear all kinds of timeout of interval
-	     */
-	
-	  }, {
-	    key: 'clearTimer',
-	    value: function clearTimer() {
-	      clearTimeout(this.delayShowLoop);
-	      clearTimeout(this.delayHideLoop);
-	      clearInterval(this.intervalUpdateContent);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _state3 = this.state;
-	      var placeholder = _state3.placeholder;
-	      var extraClass = _state3.extraClass;
-	      var html = _state3.html;
-	      var ariaProps = _state3.ariaProps;
-	
-	      var tooltipClass = (0, _classnames2.default)('__react_component_tooltip', { 'show': this.state.show }, { 'border': this.state.border }, { 'place-top': this.state.place === 'top' }, { 'place-bottom': this.state.place === 'bottom' }, { 'place-left': this.state.place === 'left' }, { 'place-right': this.state.place === 'right' }, { 'type-dark': this.state.type === 'dark' }, { 'type-success': this.state.type === 'success' }, { 'type-warning': this.state.type === 'warning' }, { 'type-error': this.state.type === 'error' }, { 'type-info': this.state.type === 'info' }, { 'type-light': this.state.type === 'light' });
-	
-	      if (html) {
-	        return _react2.default.createElement('div', _extends({ className: tooltipClass + ' ' + extraClass
-	        }, ariaProps, {
-	          'data-id': 'tooltip',
-	          dangerouslySetInnerHTML: { __html: placeholder } }));
-	      } else {
-	        return _react2.default.createElement(
-	          'div',
-	          _extends({ className: tooltipClass + ' ' + extraClass
-	          }, ariaProps, {
-	            'data-id': 'tooltip' }),
-	          placeholder
-	        );
-	      }
-	    }
-	  }]);
-	
-	  return ReactTooltip;
-	}(_react.Component), _class2.propTypes = {
-	  children: _react.PropTypes.any,
-	  place: _react.PropTypes.string,
-	  type: _react.PropTypes.string,
-	  effect: _react.PropTypes.string,
-	  offset: _react.PropTypes.object,
-	  multiline: _react.PropTypes.bool,
-	  border: _react.PropTypes.bool,
-	  class: _react.PropTypes.string,
-	  id: _react.PropTypes.string,
-	  html: _react.PropTypes.bool,
-	  delayHide: _react.PropTypes.number,
-	  delayShow: _react.PropTypes.number,
-	  event: _react.PropTypes.string,
-	  eventOff: _react.PropTypes.string,
-	  watchWindow: _react.PropTypes.bool,
-	  isCapture: _react.PropTypes.bool,
-	  globalEventOff: _react.PropTypes.string,
-	  getContent: _react.PropTypes.any,
-	  countTransform: _react.PropTypes.bool,
-	  afterShow: _react.PropTypes.func,
-	  afterHide: _react.PropTypes.func
-	}, _temp)) || _class) || _class) || _class) || _class;
-	
-	/* export default not fit for standalone, it will exports {default:...} */
-	
-	
-	module.exports = ReactTooltip;
-
-/***/ },
-/* 346 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2016 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	/* global define */
-	
-	(function () {
-		'use strict';
-	
-		var hasOwn = {}.hasOwnProperty;
-	
-		function classNames () {
-			var classes = [];
-	
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-	
-				var argType = typeof arg;
-	
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
-				} else if (argType === 'object') {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				}
-			}
-	
-			return classes.join(' ');
-		}
-	
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	}());
-
-
-/***/ },
-/* 347 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	exports.default = function (target) {
-	  /**
-	   * Hide all tooltip
-	   * @trigger ReactTooltip.hide()
-	   */
-	  target.hide = function () {
-	    dispatchGlobalEvent(_constant2.default.GLOBAL.HIDE);
-	  };
-	
-	  /**
-	   * Rebuild all tooltip
-	   * @trigger ReactTooltip.rebuild()
-	   */
-	  target.rebuild = function () {
-	    dispatchGlobalEvent(_constant2.default.GLOBAL.REBUILD);
-	  };
-	
-	  /**
-	   * Show specific tooltip
-	   * @trigger ReactTooltip.show()
-	   */
-	  target.show = function (target) {
-	    dispatchGlobalEvent(_constant2.default.GLOBAL.SHOW, { target: target });
-	  };
-	
-	  target.prototype.globalRebuild = function () {
-	    if (this.mount) {
-	      this.unbindListener();
-	      this.bindListener();
-	    }
-	  };
-	
-	  target.prototype.globalShow = function (event) {
-	    if (this.mount) {
-	      // Create a fake event, specific show will limit the type to `solid`
-	      // only `float` type cares e.clientX e.clientY
-	      var e = { currentTarget: event.detail.target };
-	      this.showTooltip(e, true);
-	    }
-	  };
-	};
-	
-	var _constant = __webpack_require__(348);
-	
-	var _constant2 = _interopRequireDefault(_constant);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var dispatchGlobalEvent = function dispatchGlobalEvent(eventName, opts) {
-	  // Compatibale with IE
-	  // @see http://stackoverflow.com/questions/26596123/internet-explorer-9-10-11-event-constructor-doesnt-work
-	  var event = void 0;
-	
-	  if (typeof window.CustomEvent === 'function') {
-	    event = new window.CustomEvent(eventName, { detail: opts });
-	  } else {
-	    event = document.createEvent('Event');
-	    event.initEvent(eventName, false, true, opts);
-	  }
-	
-	  window.dispatchEvent(event);
-	}; /**
-	    * Static methods for react-tooltip
-	    */
-
-/***/ },
-/* 348 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = {
-	
-	  GLOBAL: {
-	    HIDE: '__react_tooltip_hide_event',
-	    REBUILD: '__react_tooltip_rebuild_event',
-	    SHOW: '__react_tooltip_show_event'
-	  }
-	};
-
-/***/ },
-/* 349 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	exports.default = function (target) {
-	  target.prototype.bindWindowEvents = function () {
-	    // ReactTooltip.hide
-	    window.removeEventListener(_constant2.default.GLOBAL.HIDE, this.hideTooltip);
-	    window.addEventListener(_constant2.default.GLOBAL.HIDE, this.hideTooltip, false);
-	
-	    // ReactTooltip.rebuild
-	    window.removeEventListener(_constant2.default.GLOBAL.REBUILD, this.globalRebuild);
-	    window.addEventListener(_constant2.default.GLOBAL.REBUILD, this.globalRebuild, false);
-	
-	    // ReactTooltip.show
-	    window.removeEventListener(_constant2.default.GLOBAL.SHOW, this.globalShow);
-	    window.addEventListener(_constant2.default.GLOBAL.SHOW, this.globalShow, false);
-	
-	    // Resize
-	    window.removeEventListener('resize', this.onWindowResize);
-	    window.addEventListener('resize', this.onWindowResize, false);
-	  };
-	
-	  target.prototype.unbindWindowEvents = function () {
-	    window.removeEventListener(_constant2.default.GLOBAL.HIDE, this.hideTooltip);
-	    window.removeEventListener(_constant2.default.GLOBAL.REBUILD, this.globalRebuild);
-	    window.removeEventListener(_constant2.default.GLOBAL.SHOW, this.globalShow);
-	    window.removeEventListener('resize', this.onWindowResize);
-	  };
-	
-	  /**
-	   * invoked by resize event of window
-	   */
-	  target.prototype.onWindowResize = function () {
-	    if (!this.mount) return;
-	    this.hideTooltip();
-	  };
-	};
-	
-	var _constant = __webpack_require__(348);
-	
-	var _constant2 = _interopRequireDefault(_constant);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ },
-/* 350 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	exports.default = function (target) {
-	  target.prototype.isCustomEvent = function (ele) {
-	    var event = this.state.event;
-	
-	    return event || !!ele.getAttribute('data-event');
-	  };
-	
-	  /* Bind listener for custom event */
-	  target.prototype.customBindListener = function (ele) {
-	    var _this = this;
-	
-	    var _state = this.state;
-	    var event = _state.event;
-	    var eventOff = _state.eventOff;
-	
-	    var dataEvent = ele.getAttribute('data-event') || event;
-	    var dataEventOff = ele.getAttribute('data-event-off') || eventOff;
-	
-	    dataEvent.split(' ').forEach(function (event) {
-	      ele.removeEventListener(event, customListener);
-	      customListener = checkStatus.bind(_this, dataEventOff);
-	      ele.addEventListener(event, customListener, false);
-	    });
-	    if (dataEventOff) {
-	      dataEventOff.split(' ').forEach(function (event) {
-	        ele.removeEventListener(event, _this.hideTooltip);
-	        ele.addEventListener(event, _this.hideTooltip, false);
-	      });
-	    }
-	  };
-	
-	  /* Unbind listener for custom event */
-	  target.prototype.customUnbindListener = function (ele) {
-	    var _state2 = this.state;
-	    var event = _state2.event;
-	    var eventOff = _state2.eventOff;
-	
-	    var dataEvent = event || ele.getAttribute('data-event');
-	    var dataEventOff = eventOff || ele.getAttribute('data-event-off');
-	
-	    ele.removeEventListener(dataEvent, customListener);
-	    if (dataEventOff) ele.removeEventListener(dataEventOff, this.hideTooltip);
-	  };
-	};
-	
-	/**
-	 * Custom events to control showing and hiding of tooltip
-	 *
-	 * @attributes
-	 * - `event` {String}
-	 * - `eventOff` {String}
-	 */
-	
-	var checkStatus = function checkStatus(dataEventOff, e) {
-	  var show = this.state.show;
-	  var id = this.props.id;
-	
-	  var dataIsCapture = e.currentTarget.getAttribute('data-iscapture');
-	  var isCapture = dataIsCapture && dataIsCapture === 'true' || this.props.isCapture;
-	  var currentItem = e.currentTarget.getAttribute('currentItem');
-	
-	  if (!isCapture) e.stopPropagation();
-	  if (show && currentItem === 'true') {
-	    if (!dataEventOff) this.hideTooltip(e);
-	  } else {
-	    e.currentTarget.setAttribute('currentItem', 'true');
-	    setUntargetItems(e.currentTarget, this.getTargetArray(id));
-	    this.showTooltip(e);
-	  }
-	};
-	
-	var setUntargetItems = function setUntargetItems(currentTarget, targetArray) {
-	  for (var i = 0; i < targetArray.length; i++) {
-	    if (currentTarget !== targetArray[i]) {
-	      targetArray[i].setAttribute('currentItem', 'false');
-	    } else {
-	      targetArray[i].setAttribute('currentItem', 'true');
-	    }
-	  }
-	};
-	
-	var customListener = void 0;
-
-/***/ },
-/* 351 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	exports.default = function (target) {
-	  target.prototype.isCapture = function (currentTarget) {
-	    var dataIsCapture = currentTarget.getAttribute('data-iscapture');
-	    return dataIsCapture && dataIsCapture === 'true' || this.props.isCapture || false;
-	  };
-	};
-
-/***/ },
-/* 352 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	exports.default = function (e, target, node, place, effect, offset, countTransform) {
-	  var tipWidth = node.clientWidth;
-	  var tipHeight = node.clientHeight;
-	
-	  var _getCurrentOffset = getCurrentOffset(e, target, effect);
-	
-	  var mouseX = _getCurrentOffset.mouseX;
-	  var mouseY = _getCurrentOffset.mouseY;
-	
-	  var defaultOffset = getDefaultPosition(effect, target.clientWidth, target.clientHeight, tipWidth, tipHeight);
-	
-	  var _calculateOffset = calculateOffset(offset);
-	
-	  var extraOffset_X = _calculateOffset.extraOffset_X;
-	  var extraOffset_Y = _calculateOffset.extraOffset_Y;
-	
-	
-	  var windowWidth = window.innerWidth;
-	  var windowHeight = window.innerHeight;
-	
-	  var _ref = countTransform && getParent(target, countTransform) || { parentTop: 0, parentLeft: 0 };
-	
-	  var parentTop = _ref.parentTop;
-	  var parentLeft = _ref.parentLeft;
-	
-	  // Get the edge offset of the tooltip
-	
-	  var getTipOffsetLeft = function getTipOffsetLeft(place) {
-	    var offset_X = defaultOffset[place].l;
-	    return mouseX + offset_X + extraOffset_X;
-	  };
-	  var getTipOffsetRight = function getTipOffsetRight(place) {
-	    var offset_X = defaultOffset[place].r;
-	    return mouseX + offset_X + extraOffset_X;
-	  };
-	  var getTipOffsetTop = function getTipOffsetTop(place) {
-	    var offset_Y = defaultOffset[place].t;
-	    return mouseY + offset_Y + extraOffset_Y;
-	  };
-	  var getTipOffsetBottom = function getTipOffsetBottom(place) {
-	    var offset_Y = defaultOffset[place].b;
-	    return mouseY + offset_Y + extraOffset_Y;
-	  };
-	
-	  // Judge if the tooltip has over the window(screen)
-	  var outsideVertical = function outsideVertical() {
-	    var result = false;
-	    var newPlace = void 0;
-	    if (getTipOffsetTop('left') < 0 && getTipOffsetBottom('left') <= windowHeight && getTipOffsetBottom('bottom') <= windowHeight) {
-	      result = true;
-	      newPlace = 'bottom';
-	    } else if (getTipOffsetBottom('left') > windowHeight && getTipOffsetTop('left') >= 0 && getTipOffsetTop('top') >= 0) {
-	      result = true;
-	      newPlace = 'top';
-	    }
-	    return { result: result, newPlace: newPlace };
-	  };
-	  var outsideLeft = function outsideLeft() {
-	    var _outsideVertical = outsideVertical();
-	
-	    var result = _outsideVertical.result;
-	    var newPlace = _outsideVertical.newPlace; // Deal with vertical as first priority
-	
-	    if (result && outsideHorizontal().result) {
-	      return { result: false }; // No need to change, if change to vertical will out of space
-	    }
-	    if (!result && getTipOffsetLeft('left') < 0 && getTipOffsetRight('right') <= windowWidth) {
-	      result = true; // If vertical ok, but let out of side and right won't out of side
-	      newPlace = 'right';
-	    }
-	    return { result: result, newPlace: newPlace };
-	  };
-	  var outsideRight = function outsideRight() {
-	    var _outsideVertical2 = outsideVertical();
-	
-	    var result = _outsideVertical2.result;
-	    var newPlace = _outsideVertical2.newPlace;
-	
-	    if (result && outsideHorizontal().result) {
-	      return { result: false }; // No need to change, if change to vertical will out of space
-	    }
-	    if (!result && getTipOffsetRight('right') > windowWidth && getTipOffsetLeft('left') >= 0) {
-	      result = true;
-	      newPlace = 'left';
-	    }
-	    return { result: result, newPlace: newPlace };
-	  };
-	
-	  var outsideHorizontal = function outsideHorizontal() {
-	    var result = false;
-	    var newPlace = void 0;
-	    if (getTipOffsetLeft('top') < 0 && getTipOffsetRight('top') <= windowWidth && getTipOffsetRight('right') <= windowWidth) {
-	      result = true;
-	      newPlace = 'right';
-	    } else if (getTipOffsetRight('top') > windowWidth && getTipOffsetLeft('top') >= 0 && getTipOffsetLeft('left') >= 0) {
-	      result = true;
-	      newPlace = 'left';
-	    }
-	    return { result: result, newPlace: newPlace };
-	  };
-	  var outsideTop = function outsideTop() {
-	    var _outsideHorizontal = outsideHorizontal();
-	
-	    var result = _outsideHorizontal.result;
-	    var newPlace = _outsideHorizontal.newPlace;
-	
-	    if (result && outsideVertical().result) {
-	      return { result: false };
-	    }
-	    if (!result && getTipOffsetTop('top') < 0 && getTipOffsetBottom('bottom') <= windowHeight) {
-	      result = true;
-	      newPlace = 'bottom';
-	    }
-	    return { result: result, newPlace: newPlace };
-	  };
-	  var outsideBottom = function outsideBottom() {
-	    var _outsideHorizontal2 = outsideHorizontal();
-	
-	    var result = _outsideHorizontal2.result;
-	    var newPlace = _outsideHorizontal2.newPlace;
-	
-	    if (result && outsideVertical().result) {
-	      return { result: false };
-	    }
-	    if (!result && getTipOffsetBottom('bottom') > windowHeight && getTipOffsetTop('top') >= 0) {
-	      result = true;
-	      newPlace = 'top';
-	    }
-	    return { result: result, newPlace: newPlace };
-	  };
-	
-	  // Return new state to change the placement to the reverse if possible
-	  var outsideLeftResult = outsideLeft();
-	  var outsideRightResult = outsideRight();
-	  var outsideTopResult = outsideTop();
-	  var outsideBottomResult = outsideBottom();
-	
-	  if (place === 'left' && outsideLeftResult.result) {
-	    return {
-	      isNewState: true,
-	      newState: { place: outsideLeftResult.newPlace }
-	    };
-	  } else if (place === 'right' && outsideRightResult.result) {
-	    return {
-	      isNewState: true,
-	      newState: { place: outsideRightResult.newPlace }
-	    };
-	  } else if (place === 'top' && outsideTopResult.result) {
-	    return {
-	      isNewState: true,
-	      newState: { place: outsideTopResult.newPlace }
-	    };
-	  } else if (place === 'bottom' && outsideBottomResult.result) {
-	    return {
-	      isNewState: true,
-	      newState: { place: outsideBottomResult.newPlace }
-	    };
-	  }
-	
-	  // Return tooltip offset position
-	  return {
-	    isNewState: false,
-	    position: {
-	      left: parseInt(getTipOffsetLeft(place) - parentLeft, 10),
-	      top: parseInt(getTipOffsetTop(place) - parentTop, 10)
-	    }
-	  };
-	};
-	
-	// Get current mouse offset
-	var getCurrentOffset = function getCurrentOffset(e, currentTarget, effect) {
-	  var boundingClientRect = currentTarget.getBoundingClientRect();
-	  var targetTop = boundingClientRect.top;
-	  var targetLeft = boundingClientRect.left;
-	  var targetWidth = currentTarget.clientWidth;
-	  var targetHeight = currentTarget.clientHeight;
-	
-	  if (effect === 'float') {
-	    return {
-	      mouseX: e.clientX,
-	      mouseY: e.clientY
-	    };
-	  }
-	  return {
-	    mouseX: targetLeft + targetWidth / 2,
-	    mouseY: targetTop + targetHeight / 2
-	  };
-	};
-	
-	// List all possibility of tooltip final offset
-	// This is useful in judging if it is necessary for tooltip to switch position when out of window
-	/**
-	 * Calculate the position of tooltip
-	 *
-	 * @params
-	 * - `e` {Event} the event of current mouse
-	 * - `target` {Element} the currentTarget of the event
-	 * - `node` {DOM} the react-tooltip object
-	 * - `place` {String} top / right / bottom / left
-	 * - `effect` {String} float / solid
-	 * - `offset` {Object} the offset to default position
-	 *
-	 * @return {Object
-	 * - `isNewState` {Bool} required
-	 * - `newState` {Object}
-	 * - `position` {OBject} {left: {Number}, top: {Number}}
-	 */
-	var getDefaultPosition = function getDefaultPosition(effect, targetWidth, targetHeight, tipWidth, tipHeight) {
-	  var top = void 0;
-	  var right = void 0;
-	  var bottom = void 0;
-	  var left = void 0;
-	  var disToMouse = 3;
-	  var triangleHeight = 2;
-	  var cursorHeight = 12; // Optimize for float bottom only, cause the cursor will hide the tooltip
-	
-	  if (effect === 'float') {
-	    top = {
-	      l: -(tipWidth / 2),
-	      r: tipWidth / 2,
-	      t: -(tipHeight + disToMouse + triangleHeight),
-	      b: -disToMouse
-	    };
-	    bottom = {
-	      l: -(tipWidth / 2),
-	      r: tipWidth / 2,
-	      t: disToMouse + cursorHeight,
-	      b: tipHeight + disToMouse + triangleHeight + cursorHeight
-	    };
-	    left = {
-	      l: -(tipWidth + disToMouse + triangleHeight),
-	      r: -disToMouse,
-	      t: -(tipHeight / 2),
-	      b: tipHeight / 2
-	    };
-	    right = {
-	      l: disToMouse,
-	      r: tipWidth + disToMouse + triangleHeight,
-	      t: -(tipHeight / 2),
-	      b: tipHeight / 2
-	    };
-	  } else if (effect === 'solid') {
-	    top = {
-	      l: -(tipWidth / 2),
-	      r: tipWidth / 2,
-	      t: -(targetHeight / 2 + tipHeight + triangleHeight),
-	      b: -(targetHeight / 2)
-	    };
-	    bottom = {
-	      l: -(tipWidth / 2),
-	      r: tipWidth / 2,
-	      t: targetHeight / 2,
-	      b: targetHeight / 2 + tipHeight + triangleHeight
-	    };
-	    left = {
-	      l: -(tipWidth + targetWidth / 2 + triangleHeight),
-	      r: -(targetWidth / 2),
-	      t: -(tipHeight / 2),
-	      b: tipHeight / 2
-	    };
-	    right = {
-	      l: targetWidth / 2,
-	      r: tipWidth + targetWidth / 2 + triangleHeight,
-	      t: -(tipHeight / 2),
-	      b: tipHeight / 2
-	    };
-	  }
-	
-	  return { top: top, bottom: bottom, left: left, right: right };
-	};
-	
-	// Consider additional offset into position calculation
-	var calculateOffset = function calculateOffset(offset) {
-	  var extraOffset_X = 0;
-	  var extraOffset_Y = 0;
-	
-	  if (Object.prototype.toString.apply(offset) === '[object String]') {
-	    offset = JSON.parse(offset.toString().replace(/\'/g, '\"'));
-	  }
-	  for (var key in offset) {
-	    if (key === 'top') {
-	      extraOffset_Y -= parseInt(offset[key], 10);
-	    } else if (key === 'bottom') {
-	      extraOffset_Y += parseInt(offset[key], 10);
-	    } else if (key === 'left') {
-	      extraOffset_X -= parseInt(offset[key], 10);
-	    } else if (key === 'right') {
-	      extraOffset_X += parseInt(offset[key], 10);
-	    }
-	  }
-	
-	  return { extraOffset_X: extraOffset_X, extraOffset_Y: extraOffset_Y };
-	};
-	
-	// Get the offset of the parent elements
-	var getParent = function getParent(currentTarget) {
-	  var currentParent = currentTarget;
-	  while (currentParent) {
-	    if (window.getComputedStyle(currentParent).getPropertyValue('transform') !== 'none') break;
-	    currentParent = currentParent.parentElement;
-	  }
-	
-	  var parentTop = currentParent && currentParent.getBoundingClientRect().top || 0;
-	  var parentLeft = currentParent && currentParent.getBoundingClientRect().left || 0;
-	
-	  return { parentTop: parentTop, parentLeft: parentLeft };
-	};
-
-/***/ },
-/* 353 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	exports.default = function (tip, children, multiline) {
-	  if (children) return children;
-	
-	  var regexp = /<br\s*\/?>/;
-	  if (!multiline || multiline === 'false' || !regexp.test(tip)) {
-	    return tip;
-	  }
-	
-	  // Multiline tooltip content
-	  return tip.split(regexp).map(function (d, i) {
-	    return _react2.default.createElement(
-	      'span',
-	      { key: i, className: 'multi-line' },
-	      d
-	    );
-	  });
-	};
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ },
-/* 354 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.parseAria = parseAria;
-	/**
-	 * Support aria- and role in ReactTooltip
-	 *
-	 * @params props {Object}
-	 * @return {Object}
-	 */
-	function parseAria(props) {
-	  var ariaObj = {};
-	  Object.keys(props).filter(function (prop) {
-	    // aria-xxx and role is acceptable
-	    return (/(^aria-\w+$|^role$)/.test(prop)
-	    );
-	  }).forEach(function (prop) {
-	    ariaObj[prop] = props[prop];
-	  });
-	
-	  return ariaObj;
-	}
-
-/***/ },
-/* 355 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = '.__react_component_tooltip{border-radius:3px;display:inline-block;font-size:13px;left:-999em;opacity:0;padding:8px 21px;position:fixed;pointer-events:none;transition:opacity 0.3s ease-out;top:-999em;visibility:hidden;z-index:999}.__react_component_tooltip:before,.__react_component_tooltip:after{content:"";width:0;height:0;position:absolute}.__react_component_tooltip.show{opacity:0.9;margin-top:0px;margin-left:0px;visibility:visible}.__react_component_tooltip.type-dark{color:#fff;background-color:#222}.__react_component_tooltip.type-dark.place-top:after{border-top-color:#222;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-dark.place-bottom:after{border-bottom-color:#222;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-dark.place-left:after{border-left-color:#222;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-dark.place-right:after{border-right-color:#222;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-dark.border{border:1px solid #fff}.__react_component_tooltip.type-dark.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-dark.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-dark.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-dark.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-success{color:#fff;background-color:#8DC572}.__react_component_tooltip.type-success.place-top:after{border-top-color:#8DC572;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-success.place-bottom:after{border-bottom-color:#8DC572;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-success.place-left:after{border-left-color:#8DC572;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-success.place-right:after{border-right-color:#8DC572;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-success.border{border:1px solid #fff}.__react_component_tooltip.type-success.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-success.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-success.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-success.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-warning{color:#fff;background-color:#F0AD4E}.__react_component_tooltip.type-warning.place-top:after{border-top-color:#F0AD4E;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-warning.place-bottom:after{border-bottom-color:#F0AD4E;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-warning.place-left:after{border-left-color:#F0AD4E;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-warning.place-right:after{border-right-color:#F0AD4E;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-warning.border{border:1px solid #fff}.__react_component_tooltip.type-warning.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-warning.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-warning.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-warning.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-error{color:#fff;background-color:#BE6464}.__react_component_tooltip.type-error.place-top:after{border-top-color:#BE6464;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-error.place-bottom:after{border-bottom-color:#BE6464;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-error.place-left:after{border-left-color:#BE6464;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-error.place-right:after{border-right-color:#BE6464;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-error.border{border:1px solid #fff}.__react_component_tooltip.type-error.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-error.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-error.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-error.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-info{color:#fff;background-color:#337AB7}.__react_component_tooltip.type-info.place-top:after{border-top-color:#337AB7;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-info.place-bottom:after{border-bottom-color:#337AB7;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-info.place-left:after{border-left-color:#337AB7;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-info.place-right:after{border-right-color:#337AB7;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-info.border{border:1px solid #fff}.__react_component_tooltip.type-info.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-info.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-info.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-info.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-light{color:#222;background-color:#fff}.__react_component_tooltip.type-light.place-top:after{border-top-color:#fff;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-light.place-bottom:after{border-bottom-color:#fff;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-light.place-left:after{border-left-color:#fff;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-light.place-right:after{border-right-color:#fff;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-light.border{border:1px solid #222}.__react_component_tooltip.type-light.border.place-top:before{border-top:8px solid #222}.__react_component_tooltip.type-light.border.place-bottom:before{border-bottom:8px solid #222}.__react_component_tooltip.type-light.border.place-left:before{border-left:8px solid #222}.__react_component_tooltip.type-light.border.place-right:before{border-right:8px solid #222}.__react_component_tooltip.place-top{margin-top:-10px}.__react_component_tooltip.place-top:before{border-left:10px solid transparent;border-right:10px solid transparent;bottom:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-top:after{border-left:8px solid transparent;border-right:8px solid transparent;bottom:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-bottom{margin-top:10px}.__react_component_tooltip.place-bottom:before{border-left:10px solid transparent;border-right:10px solid transparent;top:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-bottom:after{border-left:8px solid transparent;border-right:8px solid transparent;top:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-left{margin-left:-10px}.__react_component_tooltip.place-left:before{border-top:6px solid transparent;border-bottom:6px solid transparent;right:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-left:after{border-top:5px solid transparent;border-bottom:5px solid transparent;right:-6px;top:50%;margin-top:-4px}.__react_component_tooltip.place-right{margin-left:10px}.__react_component_tooltip.place-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;left:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-right:after{border-top:5px solid transparent;border-bottom:5px solid transparent;left:-6px;top:50%;margin-top:-4px}.__react_component_tooltip .multi-line{display:block;padding:2px 0px;text-align:center}';
-
-/***/ },
-/* 356 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(357);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./tooltipContent.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./tooltipContent.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 357 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 358 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(359);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./modal.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./modal.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 359 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".detail-modal {\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  border: none;\n  padding: 0;\n  outline: none;\n  position: fixed;\n  background-color: #fff;\n  width: 80%;\n  max-height: 80%;\n}\n\n.detail-modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.15);\n}\n\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 360 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(361);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./itemModal.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./itemModal.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 361 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".detail-modal {\n  text-align: center;\n}\n\n.detail-modal > div {\n  padding: 1.5rem;\n}\n\n.detail-modal section {\n  margin-bottom: 1rem;\n  border: solid 1px #999;\n}\n\n.detail-modal .size {\n  background: #828384;\n  padding: 0.5rem;\n  color: #fff;\n}\n\n.detail-modal .brand {\n  font-size: 1.1rem;\n  color: #999B97;\n}\n\n.detail-modal img {\n  width: 100%;\n  margin-bottom: 1.5rem;\n}\n\n.detail-modal .rating {\n  margin-bottom: 0.5rem;\n}\n\n.detail-modal .tool-star {\n  color: #D3E5E4;\n  margin-right: 0.1rem;\n}\n\n.detail-modal .tool-title {\n  font-size: 1.6rem;\n  margin-bottom: 0.4rem;\n}\n\n.detail-modal .tool-price {\n  font-size: 1.3rem;\n  margin-bottom: 0.3rem;\n  font-weight: 600;\n}\n\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 362 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactSelect = __webpack_require__(363);
-	
-	var _reactSelect2 = _interopRequireDefault(_reactSelect);
-	
-	__webpack_require__(372);
-	
-	__webpack_require__(374);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var HomeViewControl = function (_React$Component) {
-		_inherits(HomeViewControl, _React$Component);
-	
-		function HomeViewControl(props) {
-			_classCallCheck(this, HomeViewControl);
-	
-			var _this = _possibleConstructorReturn(this, (HomeViewControl.__proto__ || Object.getPrototypeOf(HomeViewControl)).call(this, props));
-	
-			_this.state = {
-				selected: 'price'
-			};
-			_this.fixViewControlPosition = _this.fixViewControlPosition.bind(_this);
-			_this.selectChange = _this.selectChange.bind(_this);
-			_this.data = _this.props.home.data;
-			return _this;
-		}
-	
-		_createClass(HomeViewControl, [{
-			key: 'selectChange',
-			value: function selectChange(val) {
-				this.setState({
-					selected: val
-				});
-				console.log(val);
-				if (val.value === 'title') {
-					// console.log('mama') 
-					this.props.sortTitle(this.data);
-				}
-				if (val.value === 'price') {
-					this.props.sortPrice(this.data);
-				}
-			}
-		}, {
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				this.fixViewControlPosition();
-			}
-		}, {
-			key: 'fixViewControlPosition',
-			value: function fixViewControlPosition() {
-				var top1 = document.getElementById('top1');
-				var top1Height = top1.offsetHeight;
-				// let widthOfWrapper = document.getElementById('')
-				window.addEventListener("scroll", function (e) {
-	
-					// console.log(top1Height)
-					var top = this.scrollY || document.documentElement.scrollTop;
-					if (top >= 15) {
-						top1.classList.add('fixed');
-						top1.parentNode.style.paddingTop = top1Height + 'px';
-					} else {
-						top1.classList.remove('fixed');
-						top1.parentNode.style.paddingTop = 0 + 'px';
-					}
-				}, false);
-			}
-		}, {
-			key: 'logChange',
-			value: function logChange(val) {
-				console.log("Selected: " + val);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-	
-				var options = [{ value: 'price', label: 'Price' }, { value: 'title', label: 'Title' }];
-				return _react2.default.createElement(
-					'div',
-					{ className: 'view-control-wrapper' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'view-control', id: 'top1' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'left' },
-							_react2.default.createElement(
-								'span',
-								{ className: 'cap ib vam' },
-								'sorting:'
-							),
-							_react2.default.createElement(_reactSelect2.default, {
-								name: 'sort',
-								clearable: false,
-								value: this.state.selected,
-								options: options,
-								onChange: this.selectChange,
-								backspaceRemoves: false
-							})
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'right' },
-							_react2.default.createElement(
-								'span',
-								{ className: 'fc' },
-								'Image size'
-							),
-							_react2.default.createElement(
-								'button',
-								null,
-								_react2.default.createElement('i', { className: 'fa fa-th', 'aria-hidden': 'true' })
-							),
-							_react2.default.createElement(
-								'button',
-								null,
-								_react2.default.createElement('i', { className: 'fa fa-th-large', 'aria-hidden': 'true' })
-							)
-						)
-					)
-				);
-			}
-		}]);
-	
-		return HomeViewControl;
-	}(_react2.default.Component);
-	
-	exports.default = HomeViewControl;
-
-/***/ },
-/* 363 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-		value: true
-	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(37);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _reactInputAutosize = __webpack_require__(364);
-	
-	var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
-	
-	var _classnames = __webpack_require__(346);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _utilsDefaultFilterOptions = __webpack_require__(365);
-	
-	var _utilsDefaultFilterOptions2 = _interopRequireDefault(_utilsDefaultFilterOptions);
-	
-	var _utilsDefaultMenuRenderer = __webpack_require__(367);
-	
-	var _utilsDefaultMenuRenderer2 = _interopRequireDefault(_utilsDefaultMenuRenderer);
-	
-	var _Async = __webpack_require__(368);
-	
-	var _Async2 = _interopRequireDefault(_Async);
-	
-	var _Creatable = __webpack_require__(369);
-	
-	var _Creatable2 = _interopRequireDefault(_Creatable);
-	
-	var _Option = __webpack_require__(370);
-	
-	var _Option2 = _interopRequireDefault(_Option);
-	
-	var _Value = __webpack_require__(371);
-	
-	var _Value2 = _interopRequireDefault(_Value);
-	
-	function stringifyValue(value) {
-		if (typeof value === 'string') {
-			return value;
-		} else if (typeof value === 'object') {
-			return JSON.stringify(value);
-		} else if (value || value === 0) {
-			return String(value);
-		} else {
-			return '';
-		}
-	}
-	
-	var stringOrNode = _react2['default'].PropTypes.oneOfType([_react2['default'].PropTypes.string, _react2['default'].PropTypes.node]);
-	
-	var instanceId = 1;
-	
-	var Select = _react2['default'].createClass({
-	
-		displayName: 'Select',
-	
-		propTypes: {
-			addLabelText: _react2['default'].PropTypes.string, // placeholder displayed when you want to add a label on a multi-value input
-			'aria-label': _react2['default'].PropTypes.string, // Aria label (for assistive tech)
-			'aria-labelledby': _react2['default'].PropTypes.string, // HTML ID of an element that should be used as the label (for assistive tech)
-			autoBlur: _react2['default'].PropTypes.bool, // automatically blur the component when an option is selected
-			autofocus: _react2['default'].PropTypes.bool, // autofocus the component on mount
-			autosize: _react2['default'].PropTypes.bool, // whether to enable autosizing or not
-			backspaceRemoves: _react2['default'].PropTypes.bool, // whether backspace removes an item if there is no text input
-			backspaceToRemoveMessage: _react2['default'].PropTypes.string, // Message to use for screenreaders to press backspace to remove the current item -
-			// {label} is replaced with the item label
-			className: _react2['default'].PropTypes.string, // className for the outer element
-			clearAllText: stringOrNode, // title for the "clear" control when multi: true
-			clearValueText: stringOrNode, // title for the "clear" control
-			clearable: _react2['default'].PropTypes.bool, // should it be possible to reset value
-			delimiter: _react2['default'].PropTypes.string, // delimiter to use to join multiple values for the hidden field value
-			disabled: _react2['default'].PropTypes.bool, // whether the Select is disabled or not
-			escapeClearsValue: _react2['default'].PropTypes.bool, // whether escape clears the value when the menu is closed
-			filterOption: _react2['default'].PropTypes.func, // method to filter a single option (option, filterString)
-			filterOptions: _react2['default'].PropTypes.any, // boolean to enable default filtering or function to filter the options array ([options], filterString, [values])
-			ignoreAccents: _react2['default'].PropTypes.bool, // whether to strip diacritics when filtering
-			ignoreCase: _react2['default'].PropTypes.bool, // whether to perform case-insensitive filtering
-			inputProps: _react2['default'].PropTypes.object, // custom attributes for the Input
-			inputRenderer: _react2['default'].PropTypes.func, // returns a custom input component
-			instanceId: _react2['default'].PropTypes.string, // set the components instanceId
-			isLoading: _react2['default'].PropTypes.bool, // whether the Select is loading externally or not (such as options being loaded)
-			joinValues: _react2['default'].PropTypes.bool, // joins multiple values into a single form field with the delimiter (legacy mode)
-			labelKey: _react2['default'].PropTypes.string, // path of the label value in option objects
-			matchPos: _react2['default'].PropTypes.string, // (any|start) match the start or entire string when filtering
-			matchProp: _react2['default'].PropTypes.string, // (any|label|value) which option property to filter on
-			menuBuffer: _react2['default'].PropTypes.number, // optional buffer (in px) between the bottom of the viewport and the bottom of the menu
-			menuContainerStyle: _react2['default'].PropTypes.object, // optional style to apply to the menu container
-			menuRenderer: _react2['default'].PropTypes.func, // renders a custom menu with options
-			menuStyle: _react2['default'].PropTypes.object, // optional style to apply to the menu
-			multi: _react2['default'].PropTypes.bool, // multi-value input
-			name: _react2['default'].PropTypes.string, // generates a hidden <input /> tag with this field name for html forms
-			noResultsText: stringOrNode, // placeholder displayed when there are no matching search results
-			onBlur: _react2['default'].PropTypes.func, // onBlur handler: function (event) {}
-			onBlurResetsInput: _react2['default'].PropTypes.bool, // whether input is cleared on blur
-			onChange: _react2['default'].PropTypes.func, // onChange handler: function (newValue) {}
-			onClose: _react2['default'].PropTypes.func, // fires when the menu is closed
-			onCloseResetsInput: _react2['default'].PropTypes.bool, // whether input is cleared when menu is closed through the arrow
-			onFocus: _react2['default'].PropTypes.func, // onFocus handler: function (event) {}
-			onInputChange: _react2['default'].PropTypes.func, // onInputChange handler: function (inputValue) {}
-			onInputKeyDown: _react2['default'].PropTypes.func, // input keyDown handler: function (event) {}
-			onMenuScrollToBottom: _react2['default'].PropTypes.func, // fires when the menu is scrolled to the bottom; can be used to paginate options
-			onOpen: _react2['default'].PropTypes.func, // fires when the menu is opened
-			onValueClick: _react2['default'].PropTypes.func, // onClick handler for value labels: function (value, event) {}
-			openAfterFocus: _react2['default'].PropTypes.bool, // boolean to enable opening dropdown when focused
-			openOnFocus: _react2['default'].PropTypes.bool, // always open options menu on focus
-			optionClassName: _react2['default'].PropTypes.string, // additional class(es) to apply to the <Option /> elements
-			optionComponent: _react2['default'].PropTypes.func, // option component to render in dropdown
-			optionRenderer: _react2['default'].PropTypes.func, // optionRenderer: function (option) {}
-			options: _react2['default'].PropTypes.array, // array of options
-			pageSize: _react2['default'].PropTypes.number, // number of entries to page when using page up/down keys
-			placeholder: stringOrNode, // field placeholder, displayed when there's no value
-			required: _react2['default'].PropTypes.bool, // applies HTML5 required attribute when needed
-			resetValue: _react2['default'].PropTypes.any, // value to use when you clear the control
-			scrollMenuIntoView: _react2['default'].PropTypes.bool, // boolean to enable the viewport to shift so that the full menu fully visible when engaged
-			searchable: _react2['default'].PropTypes.bool, // whether to enable searching feature or not
-			simpleValue: _react2['default'].PropTypes.bool, // pass the value to onChange as a simple value (legacy pre 1.0 mode), defaults to false
-			style: _react2['default'].PropTypes.object, // optional style to apply to the control
-			tabIndex: _react2['default'].PropTypes.string, // optional tab index of the control
-			tabSelectsValue: _react2['default'].PropTypes.bool, // whether to treat tabbing out while focused to be value selection
-			value: _react2['default'].PropTypes.any, // initial field value
-			valueComponent: _react2['default'].PropTypes.func, // value component to render
-			valueKey: _react2['default'].PropTypes.string, // path of the label value in option objects
-			valueRenderer: _react2['default'].PropTypes.func, // valueRenderer: function (option) {}
-			wrapperStyle: _react2['default'].PropTypes.object },
-	
-		// optional style to apply to the component wrapper
-		statics: { Async: _Async2['default'], Creatable: _Creatable2['default'] },
-	
-		getDefaultProps: function getDefaultProps() {
-			return {
-				addLabelText: 'Add "{label}"?',
-				autosize: true,
-				backspaceRemoves: true,
-				backspaceToRemoveMessage: 'Press backspace to remove {label}',
-				clearable: true,
-				clearAllText: 'Clear all',
-				clearValueText: 'Clear value',
-				delimiter: ',',
-				disabled: false,
-				escapeClearsValue: true,
-				filterOptions: _utilsDefaultFilterOptions2['default'],
-				ignoreAccents: true,
-				ignoreCase: true,
-				inputProps: {},
-				isLoading: false,
-				joinValues: false,
-				labelKey: 'label',
-				matchPos: 'any',
-				matchProp: 'any',
-				menuBuffer: 0,
-				menuRenderer: _utilsDefaultMenuRenderer2['default'],
-				multi: false,
-				noResultsText: 'No results found',
-				onBlurResetsInput: true,
-				onCloseResetsInput: true,
-				openAfterFocus: false,
-				optionComponent: _Option2['default'],
-				pageSize: 5,
-				placeholder: 'Select...',
-				required: false,
-				scrollMenuIntoView: true,
-				searchable: true,
-				simpleValue: false,
-				tabSelectsValue: true,
-				valueComponent: _Value2['default'],
-				valueKey: 'value'
-			};
-		},
-	
-		getInitialState: function getInitialState() {
-			return {
-				inputValue: '',
-				isFocused: false,
-				isOpen: false,
-				isPseudoFocused: false,
-				required: false
-			};
-		},
-	
-		componentWillMount: function componentWillMount() {
-			this._instancePrefix = 'react-select-' + (this.props.instanceId || ++instanceId) + '-';
-			var valueArray = this.getValueArray(this.props.value);
-	
-			if (this.props.required) {
-				this.setState({
-					required: this.handleRequired(valueArray[0], this.props.multi)
-				});
-			}
-		},
-	
-		componentDidMount: function componentDidMount() {
-			if (this.props.autofocus) {
-				this.focus();
-			}
-		},
-	
-		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-			var valueArray = this.getValueArray(nextProps.value, nextProps);
-	
-			if (nextProps.required) {
-				this.setState({
-					required: this.handleRequired(valueArray[0], nextProps.multi)
-				});
-			}
-		},
-	
-		componentWillUpdate: function componentWillUpdate(nextProps, nextState) {
-			if (nextState.isOpen !== this.state.isOpen) {
-				this.toggleTouchOutsideEvent(nextState.isOpen);
-				var handler = nextState.isOpen ? nextProps.onOpen : nextProps.onClose;
-				handler && handler();
-			}
-		},
-	
-		componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-			// focus to the selected option
-			if (this.menu && this.focused && this.state.isOpen && !this.hasScrolledToOption) {
-				var focusedOptionNode = _reactDom2['default'].findDOMNode(this.focused);
-				var menuNode = _reactDom2['default'].findDOMNode(this.menu);
-				menuNode.scrollTop = focusedOptionNode.offsetTop;
-				this.hasScrolledToOption = true;
-			} else if (!this.state.isOpen) {
-				this.hasScrolledToOption = false;
-			}
-	
-			if (this._scrollToFocusedOptionOnUpdate && this.focused && this.menu) {
-				this._scrollToFocusedOptionOnUpdate = false;
-				var focusedDOM = _reactDom2['default'].findDOMNode(this.focused);
-				var menuDOM = _reactDom2['default'].findDOMNode(this.menu);
-				var focusedRect = focusedDOM.getBoundingClientRect();
-				var menuRect = menuDOM.getBoundingClientRect();
-				if (focusedRect.bottom > menuRect.bottom || focusedRect.top < menuRect.top) {
-					menuDOM.scrollTop = focusedDOM.offsetTop + focusedDOM.clientHeight - menuDOM.offsetHeight;
-				}
-			}
-			if (this.props.scrollMenuIntoView && this.menuContainer) {
-				var menuContainerRect = this.menuContainer.getBoundingClientRect();
-				if (window.innerHeight < menuContainerRect.bottom + this.props.menuBuffer) {
-					window.scrollBy(0, menuContainerRect.bottom + this.props.menuBuffer - window.innerHeight);
-				}
-			}
-			if (prevProps.disabled !== this.props.disabled) {
-				this.setState({ isFocused: false }); // eslint-disable-line react/no-did-update-set-state
-				this.closeMenu();
-			}
-		},
-	
-		componentWillUnmount: function componentWillUnmount() {
-			document.removeEventListener('touchstart', this.handleTouchOutside);
-		},
-	
-		toggleTouchOutsideEvent: function toggleTouchOutsideEvent(enabled) {
-			if (enabled) {
-				document.addEventListener('touchstart', this.handleTouchOutside);
-			} else {
-				document.removeEventListener('touchstart', this.handleTouchOutside);
-			}
-		},
-	
-		handleTouchOutside: function handleTouchOutside(event) {
-			// handle touch outside on ios to dismiss menu
-			if (this.wrapper && !this.wrapper.contains(event.target)) {
-				this.closeMenu();
-			}
-		},
-	
-		focus: function focus() {
-			if (!this.input) return;
-			this.input.focus();
-	
-			if (this.props.openAfterFocus) {
-				this.setState({
-					isOpen: true
-				});
-			}
-		},
-	
-		blurInput: function blurInput() {
-			if (!this.input) return;
-			this.input.blur();
-		},
-	
-		handleTouchMove: function handleTouchMove(event) {
-			// Set a flag that the view is being dragged
-			this.dragging = true;
-		},
-	
-		handleTouchStart: function handleTouchStart(event) {
-			// Set a flag that the view is not being dragged
-			this.dragging = false;
-		},
-	
-		handleTouchEnd: function handleTouchEnd(event) {
-			// Check if the view is being dragged, In this case
-			// we don't want to fire the click event (because the user only wants to scroll)
-			if (this.dragging) return;
-	
-			// Fire the mouse events
-			this.handleMouseDown(event);
-		},
-	
-		handleTouchEndClearValue: function handleTouchEndClearValue(event) {
-			// Check if the view is being dragged, In this case
-			// we don't want to fire the click event (because the user only wants to scroll)
-			if (this.dragging) return;
-	
-			// Clear the value
-			this.clearValue(event);
-		},
-	
-		handleMouseDown: function handleMouseDown(event) {
-			// if the event was triggered by a mousedown and not the primary
-			// button, or if the component is disabled, ignore it.
-			if (this.props.disabled || event.type === 'mousedown' && event.button !== 0) {
-				return;
-			}
-	
-			if (event.target.tagName === 'INPUT') {
-				return;
-			}
-	
-			// prevent default event handlers
-			event.stopPropagation();
-			event.preventDefault();
-	
-			// for the non-searchable select, toggle the menu
-			if (!this.props.searchable) {
-				this.focus();
-				return this.setState({
-					isOpen: !this.state.isOpen
-				});
-			}
-	
-			if (this.state.isFocused) {
-				// On iOS, we can get into a state where we think the input is focused but it isn't really,
-				// since iOS ignores programmatic calls to input.focus() that weren't triggered by a click event.
-				// Call focus() again here to be safe.
-				this.focus();
-	
-				var input = this.input;
-				if (typeof input.getInput === 'function') {
-					// Get the actual DOM input if the ref is an <Input /> component
-					input = input.getInput();
-				}
-	
-				// clears the value so that the cursor will be at the end of input when the component re-renders
-				input.value = '';
-	
-				// if the input is focused, ensure the menu is open
-				this.setState({
-					isOpen: true,
-					isPseudoFocused: false
-				});
-			} else {
-				// otherwise, focus the input and open the menu
-				this._openAfterFocus = true;
-				this.focus();
-			}
-		},
-	
-		handleMouseDownOnArrow: function handleMouseDownOnArrow(event) {
-			// if the event was triggered by a mousedown and not the primary
-			// button, or if the component is disabled, ignore it.
-			if (this.props.disabled || event.type === 'mousedown' && event.button !== 0) {
-				return;
-			}
-			// If the menu isn't open, let the event bubble to the main handleMouseDown
-			if (!this.state.isOpen) {
-				return;
-			}
-			// prevent default event handlers
-			event.stopPropagation();
-			event.preventDefault();
-			// close the menu
-			this.closeMenu();
-		},
-	
-		handleMouseDownOnMenu: function handleMouseDownOnMenu(event) {
-			// if the event was triggered by a mousedown and not the primary
-			// button, or if the component is disabled, ignore it.
-			if (this.props.disabled || event.type === 'mousedown' && event.button !== 0) {
-				return;
-			}
-			event.stopPropagation();
-			event.preventDefault();
-	
-			this._openAfterFocus = true;
-			this.focus();
-		},
-	
-		closeMenu: function closeMenu() {
-			if (this.props.onCloseResetsInput) {
-				this.setState({
-					isOpen: false,
-					isPseudoFocused: this.state.isFocused && !this.props.multi,
-					inputValue: ''
-				});
-			} else {
-				this.setState({
-					isOpen: false,
-					isPseudoFocused: this.state.isFocused && !this.props.multi,
-					inputValue: this.state.inputValue
-				});
-			}
-			this.hasScrolledToOption = false;
-		},
-	
-		handleInputFocus: function handleInputFocus(event) {
-			var isOpen = this.state.isOpen || this._openAfterFocus || this.props.openOnFocus;
-			if (this.props.onFocus) {
-				this.props.onFocus(event);
-			}
-			this.setState({
-				isFocused: true,
-				isOpen: isOpen
-			});
-			this._openAfterFocus = false;
-		},
-	
-		handleInputBlur: function handleInputBlur(event) {
-			// The check for menu.contains(activeElement) is necessary to prevent IE11's scrollbar from closing the menu in certain contexts.
-			if (this.menu && (this.menu === document.activeElement || this.menu.contains(document.activeElement))) {
-				this.focus();
-				return;
-			}
-	
-			if (this.props.onBlur) {
-				this.props.onBlur(event);
-			}
-			var onBlurredState = {
-				isFocused: false,
-				isOpen: false,
-				isPseudoFocused: false
-			};
-			if (this.props.onBlurResetsInput) {
-				onBlurredState.inputValue = '';
-			}
-			this.setState(onBlurredState);
-		},
-	
-		handleInputChange: function handleInputChange(event) {
-			var newInputValue = event.target.value;
-	
-			if (this.state.inputValue !== event.target.value && this.props.onInputChange) {
-				var nextState = this.props.onInputChange(newInputValue);
-				// Note: != used deliberately here to catch undefined and null
-				if (nextState != null && typeof nextState !== 'object') {
-					newInputValue = '' + nextState;
-				}
-			}
-	
-			this.setState({
-				isOpen: true,
-				isPseudoFocused: false,
-				inputValue: newInputValue
-			});
-		},
-	
-		handleKeyDown: function handleKeyDown(event) {
-			if (this.props.disabled) return;
-	
-			if (typeof this.props.onInputKeyDown === 'function') {
-				this.props.onInputKeyDown(event);
-				if (event.defaultPrevented) {
-					return;
-				}
-			}
-	
-			switch (event.keyCode) {
-				case 8:
-					// backspace
-					if (!this.state.inputValue && this.props.backspaceRemoves) {
-						event.preventDefault();
-						this.popValue();
-					}
-					return;
-				case 9:
-					// tab
-					if (event.shiftKey || !this.state.isOpen || !this.props.tabSelectsValue) {
-						return;
-					}
-					this.selectFocusedOption();
-					return;
-				case 13:
-					// enter
-					if (!this.state.isOpen) return;
-					event.stopPropagation();
-					this.selectFocusedOption();
-					break;
-				case 27:
-					// escape
-					if (this.state.isOpen) {
-						this.closeMenu();
-						event.stopPropagation();
-					} else if (this.props.clearable && this.props.escapeClearsValue) {
-						this.clearValue(event);
-						event.stopPropagation();
-					}
-					break;
-				case 38:
-					// up
-					this.focusPreviousOption();
-					break;
-				case 40:
-					// down
-					this.focusNextOption();
-					break;
-				case 33:
-					// page up
-					this.focusPageUpOption();
-					break;
-				case 34:
-					// page down
-					this.focusPageDownOption();
-					break;
-				case 35:
-					// end key
-					this.focusEndOption();
-					break;
-				case 36:
-					// home key
-					this.focusStartOption();
-					break;
-				default:
-					return;
-			}
-			event.preventDefault();
-		},
-	
-		handleValueClick: function handleValueClick(option, event) {
-			if (!this.props.onValueClick) return;
-			this.props.onValueClick(option, event);
-		},
-	
-		handleMenuScroll: function handleMenuScroll(event) {
-			if (!this.props.onMenuScrollToBottom) return;
-			var target = event.target;
-	
-			if (target.scrollHeight > target.offsetHeight && !(target.scrollHeight - target.offsetHeight - target.scrollTop)) {
-				this.props.onMenuScrollToBottom();
-			}
-		},
-	
-		handleRequired: function handleRequired(value, multi) {
-			if (!value) return true;
-			return multi ? value.length === 0 : Object.keys(value).length === 0;
-		},
-	
-		getOptionLabel: function getOptionLabel(op) {
-			return op[this.props.labelKey];
-		},
-	
-		/**
-	  * Turns a value into an array from the given options
-	  * @param	{String|Number|Array}	value		- the value of the select input
-	  * @param	{Object}		nextProps	- optionally specify the nextProps so the returned array uses the latest configuration
-	  * @returns	{Array}	the value of the select represented in an array
-	  */
-		getValueArray: function getValueArray(value, nextProps) {
-			var _this = this;
-	
-			/** support optionally passing in the `nextProps` so `componentWillReceiveProps` updates will function as expected */
-			var props = typeof nextProps === 'object' ? nextProps : this.props;
-			if (props.multi) {
-				if (typeof value === 'string') value = value.split(props.delimiter);
-				if (!Array.isArray(value)) {
-					if (value === null || value === undefined) return [];
-					value = [value];
-				}
-				return value.map(function (value) {
-					return _this.expandValue(value, props);
-				}).filter(function (i) {
-					return i;
-				});
-			}
-			var expandedValue = this.expandValue(value, props);
-			return expandedValue ? [expandedValue] : [];
-		},
-	
-		/**
-	  * Retrieve a value from the given options and valueKey
-	  * @param	{String|Number|Array}	value	- the selected value(s)
-	  * @param	{Object}		props	- the Select component's props (or nextProps)
-	  */
-		expandValue: function expandValue(value, props) {
-			if (typeof value !== 'string' && typeof value !== 'number') return value;
-			var options = props.options;
-			var valueKey = props.valueKey;
-	
-			if (!options) return;
-			for (var i = 0; i < options.length; i++) {
-				if (options[i][valueKey] === value) return options[i];
-			}
-		},
-	
-		setValue: function setValue(value) {
-			var _this2 = this;
-	
-			if (this.props.autoBlur) {
-				this.blurInput();
-			}
-			if (!this.props.onChange) return;
-			if (this.props.required) {
-				var required = this.handleRequired(value, this.props.multi);
-				this.setState({ required: required });
-			}
-			if (this.props.simpleValue && value) {
-				value = this.props.multi ? value.map(function (i) {
-					return i[_this2.props.valueKey];
-				}).join(this.props.delimiter) : value[this.props.valueKey];
-			}
-			this.props.onChange(value);
-		},
-	
-		selectValue: function selectValue(value) {
-			var _this3 = this;
-	
-			//NOTE: update value in the callback to make sure the input value is empty so that there are no styling issues (Chrome had issue otherwise)
-			this.hasScrolledToOption = false;
-			if (this.props.multi) {
-				this.setState({
-					inputValue: '',
-					focusedIndex: null
-				}, function () {
-					_this3.addValue(value);
-				});
-			} else {
-				this.setState({
-					isOpen: false,
-					inputValue: '',
-					isPseudoFocused: this.state.isFocused
-				}, function () {
-					_this3.setValue(value);
-				});
-			}
-		},
-	
-		addValue: function addValue(value) {
-			var valueArray = this.getValueArray(this.props.value);
-			this.setValue(valueArray.concat(value));
-		},
-	
-		popValue: function popValue() {
-			var valueArray = this.getValueArray(this.props.value);
-			if (!valueArray.length) return;
-			if (valueArray[valueArray.length - 1].clearableValue === false) return;
-			this.setValue(valueArray.slice(0, valueArray.length - 1));
-		},
-	
-		removeValue: function removeValue(value) {
-			var valueArray = this.getValueArray(this.props.value);
-			this.setValue(valueArray.filter(function (i) {
-				return i !== value;
-			}));
-			this.focus();
-		},
-	
-		clearValue: function clearValue(event) {
-			// if the event was triggered by a mousedown and not the primary
-			// button, ignore it.
-			if (event && event.type === 'mousedown' && event.button !== 0) {
-				return;
-			}
-			event.stopPropagation();
-			event.preventDefault();
-			this.setValue(this.getResetValue());
-			this.setState({
-				isOpen: false,
-				inputValue: ''
-			}, this.focus);
-		},
-	
-		getResetValue: function getResetValue() {
-			if (this.props.resetValue !== undefined) {
-				return this.props.resetValue;
-			} else if (this.props.multi) {
-				return [];
-			} else {
-				return null;
-			}
-		},
-	
-		focusOption: function focusOption(option) {
-			this.setState({
-				focusedOption: option
-			});
-		},
-	
-		focusNextOption: function focusNextOption() {
-			this.focusAdjacentOption('next');
-		},
-	
-		focusPreviousOption: function focusPreviousOption() {
-			this.focusAdjacentOption('previous');
-		},
-	
-		focusPageUpOption: function focusPageUpOption() {
-			this.focusAdjacentOption('page_up');
-		},
-	
-		focusPageDownOption: function focusPageDownOption() {
-			this.focusAdjacentOption('page_down');
-		},
-	
-		focusStartOption: function focusStartOption() {
-			this.focusAdjacentOption('start');
-		},
-	
-		focusEndOption: function focusEndOption() {
-			this.focusAdjacentOption('end');
-		},
-	
-		focusAdjacentOption: function focusAdjacentOption(dir) {
-			var options = this._visibleOptions.map(function (option, index) {
-				return { option: option, index: index };
-			}).filter(function (option) {
-				return !option.option.disabled;
-			});
-			this._scrollToFocusedOptionOnUpdate = true;
-			if (!this.state.isOpen) {
-				this.setState({
-					isOpen: true,
-					inputValue: '',
-					focusedOption: this._focusedOption || options[dir === 'next' ? 0 : options.length - 1].option
-				});
-				return;
-			}
-			if (!options.length) return;
-			var focusedIndex = -1;
-			for (var i = 0; i < options.length; i++) {
-				if (this._focusedOption === options[i].option) {
-					focusedIndex = i;
-					break;
-				}
-			}
-			if (dir === 'next' && focusedIndex !== -1) {
-				focusedIndex = (focusedIndex + 1) % options.length;
-			} else if (dir === 'previous') {
-				if (focusedIndex > 0) {
-					focusedIndex = focusedIndex - 1;
-				} else {
-					focusedIndex = options.length - 1;
-				}
-			} else if (dir === 'start') {
-				focusedIndex = 0;
-			} else if (dir === 'end') {
-				focusedIndex = options.length - 1;
-			} else if (dir === 'page_up') {
-				var potentialIndex = focusedIndex - this.props.pageSize;
-				if (potentialIndex < 0) {
-					focusedIndex = 0;
-				} else {
-					focusedIndex = potentialIndex;
-				}
-			} else if (dir === 'page_down') {
-				var potentialIndex = focusedIndex + this.props.pageSize;
-				if (potentialIndex > options.length - 1) {
-					focusedIndex = options.length - 1;
-				} else {
-					focusedIndex = potentialIndex;
-				}
-			}
-	
-			if (focusedIndex === -1) {
-				focusedIndex = 0;
-			}
-	
-			this.setState({
-				focusedIndex: options[focusedIndex].index,
-				focusedOption: options[focusedIndex].option
-			});
-		},
-	
-		getFocusedOption: function getFocusedOption() {
-			return this._focusedOption;
-		},
-	
-		getInputValue: function getInputValue() {
-			return this.state.inputValue;
-		},
-	
-		selectFocusedOption: function selectFocusedOption() {
-			if (this._focusedOption) {
-				return this.selectValue(this._focusedOption);
-			}
-		},
-	
-		renderLoading: function renderLoading() {
-			if (!this.props.isLoading) return;
-			return _react2['default'].createElement(
-				'span',
-				{ className: 'Select-loading-zone', 'aria-hidden': 'true' },
-				_react2['default'].createElement('span', { className: 'Select-loading' })
-			);
-		},
-	
-		renderValue: function renderValue(valueArray, isOpen) {
-			var _this4 = this;
-	
-			var renderLabel = this.props.valueRenderer || this.getOptionLabel;
-			var ValueComponent = this.props.valueComponent;
-			if (!valueArray.length) {
-				return !this.state.inputValue ? _react2['default'].createElement(
-					'div',
-					{ className: 'Select-placeholder' },
-					this.props.placeholder
-				) : null;
-			}
-			var onClick = this.props.onValueClick ? this.handleValueClick : null;
-			if (this.props.multi) {
-				return valueArray.map(function (value, i) {
-					return _react2['default'].createElement(
-						ValueComponent,
-						{
-							id: _this4._instancePrefix + '-value-' + i,
-							instancePrefix: _this4._instancePrefix,
-							disabled: _this4.props.disabled || value.clearableValue === false,
-							key: 'value-' + i + '-' + value[_this4.props.valueKey],
-							onClick: onClick,
-							onRemove: _this4.removeValue,
-							value: value
-						},
-						renderLabel(value, i),
-						_react2['default'].createElement(
-							'span',
-							{ className: 'Select-aria-only' },
-							' '
-						)
-					);
-				});
-			} else if (!this.state.inputValue) {
-				if (isOpen) onClick = null;
-				return _react2['default'].createElement(
-					ValueComponent,
-					{
-						id: this._instancePrefix + '-value-item',
-						disabled: this.props.disabled,
-						instancePrefix: this._instancePrefix,
-						onClick: onClick,
-						value: valueArray[0]
-					},
-					renderLabel(valueArray[0])
-				);
-			}
-		},
-	
-		renderInput: function renderInput(valueArray, focusedOptionIndex) {
-			var _this5 = this;
-	
-			if (this.props.inputRenderer) {
-				return this.props.inputRenderer();
-			} else {
-				var _classNames;
-	
-				var className = (0, _classnames2['default'])('Select-input', this.props.inputProps.className);
-				var isOpen = !!this.state.isOpen;
-	
-				var ariaOwns = (0, _classnames2['default'])((_classNames = {}, _defineProperty(_classNames, this._instancePrefix + '-list', isOpen), _defineProperty(_classNames, this._instancePrefix + '-backspace-remove-message', this.props.multi && !this.props.disabled && this.state.isFocused && !this.state.inputValue), _classNames));
-	
-				// TODO: Check how this project includes Object.assign()
-				var inputProps = _extends({}, this.props.inputProps, {
-					role: 'combobox',
-					'aria-expanded': '' + isOpen,
-					'aria-owns': ariaOwns,
-					'aria-haspopup': '' + isOpen,
-					'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
-					'aria-labelledby': this.props['aria-labelledby'],
-					'aria-label': this.props['aria-label'],
-					className: className,
-					tabIndex: this.props.tabIndex,
-					onBlur: this.handleInputBlur,
-					onChange: this.handleInputChange,
-					onFocus: this.handleInputFocus,
-					ref: function ref(_ref) {
-						return _this5.input = _ref;
-					},
-					required: this.state.required,
-					value: this.state.inputValue
-				});
-	
-				if (this.props.disabled || !this.props.searchable) {
-					var _props$inputProps = this.props.inputProps;
-					var inputClassName = _props$inputProps.inputClassName;
-	
-					var divProps = _objectWithoutProperties(_props$inputProps, ['inputClassName']);
-	
-					return _react2['default'].createElement('div', _extends({}, divProps, {
-						role: 'combobox',
-						'aria-expanded': isOpen,
-						'aria-owns': isOpen ? this._instancePrefix + '-list' : this._instancePrefix + '-value',
-						'aria-activedescendant': isOpen ? this._instancePrefix + '-option-' + focusedOptionIndex : this._instancePrefix + '-value',
-						className: className,
-						tabIndex: this.props.tabIndex || 0,
-						onBlur: this.handleInputBlur,
-						onFocus: this.handleInputFocus,
-						ref: function (ref) {
-							return _this5.input = ref;
-						},
-						'aria-readonly': '' + !!this.props.disabled,
-						style: { border: 0, width: 1, display: 'inline-block' } }));
-				}
-	
-				if (this.props.autosize) {
-					return _react2['default'].createElement(_reactInputAutosize2['default'], _extends({}, inputProps, { minWidth: '5px' }));
-				}
-				return _react2['default'].createElement(
-					'div',
-					{ className: className },
-					_react2['default'].createElement('input', inputProps)
-				);
-			}
-		},
-	
-		renderClear: function renderClear() {
-			if (!this.props.clearable || !this.props.value || this.props.value === 0 || this.props.multi && !this.props.value.length || this.props.disabled || this.props.isLoading) return;
-			return _react2['default'].createElement(
-				'span',
-				{ className: 'Select-clear-zone', title: this.props.multi ? this.props.clearAllText : this.props.clearValueText,
-					'aria-label': this.props.multi ? this.props.clearAllText : this.props.clearValueText,
-					onMouseDown: this.clearValue,
-					onTouchStart: this.handleTouchStart,
-					onTouchMove: this.handleTouchMove,
-					onTouchEnd: this.handleTouchEndClearValue
-				},
-				_react2['default'].createElement('span', { className: 'Select-clear', dangerouslySetInnerHTML: { __html: '&times;' } })
-			);
-		},
-	
-		renderArrow: function renderArrow() {
-			return _react2['default'].createElement(
-				'span',
-				{ className: 'Select-arrow-zone', onMouseDown: this.handleMouseDownOnArrow },
-				_react2['default'].createElement('span', { className: 'Select-arrow', onMouseDown: this.handleMouseDownOnArrow })
-			);
-		},
-	
-		filterOptions: function filterOptions(excludeOptions) {
-			var filterValue = this.state.inputValue;
-			var options = this.props.options || [];
-			if (this.props.filterOptions) {
-				// Maintain backwards compatibility with boolean attribute
-				var filterOptions = typeof this.props.filterOptions === 'function' ? this.props.filterOptions : _utilsDefaultFilterOptions2['default'];
-	
-				return filterOptions(options, filterValue, excludeOptions, {
-					filterOption: this.props.filterOption,
-					ignoreAccents: this.props.ignoreAccents,
-					ignoreCase: this.props.ignoreCase,
-					labelKey: this.props.labelKey,
-					matchPos: this.props.matchPos,
-					matchProp: this.props.matchProp,
-					valueKey: this.props.valueKey
-				});
-			} else {
-				return options;
-			}
-		},
-	
-		renderMenu: function renderMenu(options, valueArray, focusedOption) {
-			if (options && options.length) {
-				return this.props.menuRenderer({
-					focusedOption: focusedOption,
-					focusOption: this.focusOption,
-					instancePrefix: this._instancePrefix,
-					labelKey: this.props.labelKey,
-					onFocus: this.focusOption,
-					onSelect: this.selectValue,
-					optionClassName: this.props.optionClassName,
-					optionComponent: this.props.optionComponent,
-					optionRenderer: this.props.optionRenderer || this.getOptionLabel,
-					options: options,
-					selectValue: this.selectValue,
-					valueArray: valueArray,
-					valueKey: this.props.valueKey
-				});
-			} else if (this.props.noResultsText) {
-				return _react2['default'].createElement(
-					'div',
-					{ className: 'Select-noresults' },
-					this.props.noResultsText
-				);
-			} else {
-				return null;
-			}
-		},
-	
-		renderHiddenField: function renderHiddenField(valueArray) {
-			var _this6 = this;
-	
-			if (!this.props.name) return;
-			if (this.props.joinValues) {
-				var value = valueArray.map(function (i) {
-					return stringifyValue(i[_this6.props.valueKey]);
-				}).join(this.props.delimiter);
-				return _react2['default'].createElement('input', {
-					type: 'hidden',
-					ref: function (ref) {
-						return _this6.value = ref;
-					},
-					name: this.props.name,
-					value: value,
-					disabled: this.props.disabled });
-			}
-			return valueArray.map(function (item, index) {
-				return _react2['default'].createElement('input', { key: 'hidden.' + index,
-					type: 'hidden',
-					ref: 'value' + index,
-					name: _this6.props.name,
-					value: stringifyValue(item[_this6.props.valueKey]),
-					disabled: _this6.props.disabled });
-			});
-		},
-	
-		getFocusableOptionIndex: function getFocusableOptionIndex(selectedOption) {
-			var options = this._visibleOptions;
-			if (!options.length) return null;
-	
-			var focusedOption = this.state.focusedOption || selectedOption;
-			if (focusedOption && !focusedOption.disabled) {
-				var focusedOptionIndex = options.indexOf(focusedOption);
-				if (focusedOptionIndex !== -1) {
-					return focusedOptionIndex;
-				}
-			}
-	
-			for (var i = 0; i < options.length; i++) {
-				if (!options[i].disabled) return i;
-			}
-			return null;
-		},
-	
-		renderOuter: function renderOuter(options, valueArray, focusedOption) {
-			var _this7 = this;
-	
-			var menu = this.renderMenu(options, valueArray, focusedOption);
-			if (!menu) {
-				return null;
-			}
-	
-			return _react2['default'].createElement(
-				'div',
-				{ ref: function (ref) {
-						return _this7.menuContainer = ref;
-					}, className: 'Select-menu-outer', style: this.props.menuContainerStyle },
-				_react2['default'].createElement(
-					'div',
-					{ ref: function (ref) {
-							return _this7.menu = ref;
-						}, role: 'listbox', className: 'Select-menu', id: this._instancePrefix + '-list',
-						style: this.props.menuStyle,
-						onScroll: this.handleMenuScroll,
-						onMouseDown: this.handleMouseDownOnMenu },
-					menu
-				)
-			);
-		},
-	
-		render: function render() {
-			var _this8 = this;
-	
-			var valueArray = this.getValueArray(this.props.value);
-			var options = this._visibleOptions = this.filterOptions(this.props.multi ? this.getValueArray(this.props.value) : null);
-			var isOpen = this.state.isOpen;
-			if (this.props.multi && !options.length && valueArray.length && !this.state.inputValue) isOpen = false;
-			var focusedOptionIndex = this.getFocusableOptionIndex(valueArray[0]);
-	
-			var focusedOption = null;
-			if (focusedOptionIndex !== null) {
-				focusedOption = this._focusedOption = options[focusedOptionIndex];
-			} else {
-				focusedOption = this._focusedOption = null;
-			}
-			var className = (0, _classnames2['default'])('Select', this.props.className, {
-				'Select--multi': this.props.multi,
-				'Select--single': !this.props.multi,
-				'is-disabled': this.props.disabled,
-				'is-focused': this.state.isFocused,
-				'is-loading': this.props.isLoading,
-				'is-open': isOpen,
-				'is-pseudo-focused': this.state.isPseudoFocused,
-				'is-searchable': this.props.searchable,
-				'has-value': valueArray.length
-			});
-	
-			var removeMessage = null;
-			if (this.props.multi && !this.props.disabled && valueArray.length && !this.state.inputValue && this.state.isFocused && this.props.backspaceRemoves) {
-				removeMessage = _react2['default'].createElement(
-					'span',
-					{ id: this._instancePrefix + '-backspace-remove-message', className: 'Select-aria-only', 'aria-live': 'assertive' },
-					this.props.backspaceToRemoveMessage.replace('{label}', valueArray[valueArray.length - 1][this.props.labelKey])
-				);
-			}
-	
-			return _react2['default'].createElement(
-				'div',
-				{ ref: function (ref) {
-						return _this8.wrapper = ref;
-					},
-					className: className,
-					style: this.props.wrapperStyle },
-				this.renderHiddenField(valueArray),
-				_react2['default'].createElement(
-					'div',
-					{ ref: function (ref) {
-							return _this8.control = ref;
-						},
-						className: 'Select-control',
-						style: this.props.style,
-						onKeyDown: this.handleKeyDown,
-						onMouseDown: this.handleMouseDown,
-						onTouchEnd: this.handleTouchEnd,
-						onTouchStart: this.handleTouchStart,
-						onTouchMove: this.handleTouchMove
-					},
-					_react2['default'].createElement(
-						'span',
-						{ className: 'Select-multi-value-wrapper', id: this._instancePrefix + '-value' },
-						this.renderValue(valueArray, isOpen),
-						this.renderInput(valueArray, focusedOptionIndex)
-					),
-					removeMessage,
-					this.renderLoading(),
-					this.renderClear(),
-					this.renderArrow()
-				),
-				isOpen ? this.renderOuter(options, !this.props.multi ? valueArray : null, focusedOption) : null
-			);
-		}
-	
-	});
-	
-	exports['default'] = Select;
-	module.exports = exports['default'];
-
-/***/ },
-/* 364 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var React = __webpack_require__(1);
-	
-	var sizerStyle = { position: 'absolute', top: 0, left: 0, visibility: 'hidden', height: 0, overflow: 'scroll', whiteSpace: 'pre' };
-	
-	var AutosizeInput = React.createClass({
-		displayName: 'AutosizeInput',
-	
-		propTypes: {
-			className: React.PropTypes.string, // className for the outer element
-			defaultValue: React.PropTypes.any, // default field value
-			inputClassName: React.PropTypes.string, // className for the input element
-			inputStyle: React.PropTypes.object, // css styles for the input element
-			minWidth: React.PropTypes.oneOfType([// minimum width for input element
-			React.PropTypes.number, React.PropTypes.string]),
-			onChange: React.PropTypes.func, // onChange handler: function(newValue) {}
-			placeholder: React.PropTypes.string, // placeholder text
-			placeholderIsMinWidth: React.PropTypes.bool, // don't collapse size to less than the placeholder
-			style: React.PropTypes.object, // css styles for the outer element
-			value: React.PropTypes.any },
-		// field value
-		getDefaultProps: function getDefaultProps() {
-			return {
-				minWidth: 1
-			};
-		},
-		getInitialState: function getInitialState() {
-			return {
-				inputWidth: this.props.minWidth
-			};
-		},
-		componentDidMount: function componentDidMount() {
-			this.copyInputStyles();
-			this.updateInputWidth();
-		},
-		componentDidUpdate: function componentDidUpdate() {
-			this.updateInputWidth();
-		},
-		copyInputStyles: function copyInputStyles() {
-			if (!this.isMounted() || !window.getComputedStyle) {
-				return;
-			}
-			var inputStyle = window.getComputedStyle(this.refs.input);
-			if (!inputStyle) {
-				return;
-			}
-			var widthNode = this.refs.sizer;
-			widthNode.style.fontSize = inputStyle.fontSize;
-			widthNode.style.fontFamily = inputStyle.fontFamily;
-			widthNode.style.fontWeight = inputStyle.fontWeight;
-			widthNode.style.fontStyle = inputStyle.fontStyle;
-			widthNode.style.letterSpacing = inputStyle.letterSpacing;
-			if (this.props.placeholder) {
-				var placeholderNode = this.refs.placeholderSizer;
-				placeholderNode.style.fontSize = inputStyle.fontSize;
-				placeholderNode.style.fontFamily = inputStyle.fontFamily;
-				placeholderNode.style.fontWeight = inputStyle.fontWeight;
-				placeholderNode.style.fontStyle = inputStyle.fontStyle;
-				placeholderNode.style.letterSpacing = inputStyle.letterSpacing;
-			}
-		},
-		updateInputWidth: function updateInputWidth() {
-			if (!this.isMounted() || typeof this.refs.sizer.scrollWidth === 'undefined') {
-				return;
-			}
-			var newInputWidth = undefined;
-			if (this.props.placeholder && (!this.props.value || this.props.value && this.props.placeholderIsMinWidth)) {
-				newInputWidth = Math.max(this.refs.sizer.scrollWidth, this.refs.placeholderSizer.scrollWidth) + 2;
-			} else {
-				newInputWidth = this.refs.sizer.scrollWidth + 2;
-			}
-			if (newInputWidth < this.props.minWidth) {
-				newInputWidth = this.props.minWidth;
-			}
-			if (newInputWidth !== this.state.inputWidth) {
-				this.setState({
-					inputWidth: newInputWidth
-				});
-			}
-		},
-		getInput: function getInput() {
-			return this.refs.input;
-		},
-		focus: function focus() {
-			this.refs.input.focus();
-		},
-		blur: function blur() {
-			this.refs.input.blur();
-		},
-		select: function select() {
-			this.refs.input.select();
-		},
-		render: function render() {
-			var sizerValue = this.props.defaultValue || this.props.value || '';
-			var wrapperStyle = this.props.style || {};
-			if (!wrapperStyle.display) wrapperStyle.display = 'inline-block';
-			var inputStyle = _extends({}, this.props.inputStyle);
-			inputStyle.width = this.state.inputWidth + 'px';
-			inputStyle.boxSizing = 'content-box';
-			var inputProps = _extends({}, this.props);
-			inputProps.className = this.props.inputClassName;
-			inputProps.style = inputStyle;
-			// ensure props meant for `AutosizeInput` don't end up on the `input`
-			delete inputProps.inputClassName;
-			delete inputProps.inputStyle;
-			delete inputProps.minWidth;
-			delete inputProps.placeholderIsMinWidth;
-			return React.createElement(
-				'div',
-				{ className: this.props.className, style: wrapperStyle },
-				React.createElement('input', _extends({}, inputProps, { ref: 'input' })),
-				React.createElement(
-					'div',
-					{ ref: 'sizer', style: sizerStyle },
-					sizerValue
-				),
-				this.props.placeholder ? React.createElement(
-					'div',
-					{ ref: 'placeholderSizer', style: sizerStyle },
-					this.props.placeholder
-				) : null
-			);
-		}
-	});
-	
-	module.exports = AutosizeInput;
-
-/***/ },
-/* 365 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _stripDiacritics = __webpack_require__(366);
-	
-	var _stripDiacritics2 = _interopRequireDefault(_stripDiacritics);
-	
-	function filterOptions(options, filterValue, excludeOptions, props) {
-		var _this = this;
-	
-		if (props.ignoreAccents) {
-			filterValue = (0, _stripDiacritics2['default'])(filterValue);
-		}
-	
-		if (props.ignoreCase) {
-			filterValue = filterValue.toLowerCase();
-		}
-	
-		if (excludeOptions) excludeOptions = excludeOptions.map(function (i) {
-			return i[props.valueKey];
-		});
-	
-		return options.filter(function (option) {
-			if (excludeOptions && excludeOptions.indexOf(option[props.valueKey]) > -1) return false;
-			if (props.filterOption) return props.filterOption.call(_this, option, filterValue);
-			if (!filterValue) return true;
-			var valueTest = String(option[props.valueKey]);
-			var labelTest = String(option[props.labelKey]);
-			if (props.ignoreAccents) {
-				if (props.matchProp !== 'label') valueTest = (0, _stripDiacritics2['default'])(valueTest);
-				if (props.matchProp !== 'value') labelTest = (0, _stripDiacritics2['default'])(labelTest);
-			}
-			if (props.ignoreCase) {
-				if (props.matchProp !== 'label') valueTest = valueTest.toLowerCase();
-				if (props.matchProp !== 'value') labelTest = labelTest.toLowerCase();
-			}
-			return props.matchPos === 'start' ? props.matchProp !== 'label' && valueTest.substr(0, filterValue.length) === filterValue || props.matchProp !== 'value' && labelTest.substr(0, filterValue.length) === filterValue : props.matchProp !== 'label' && valueTest.indexOf(filterValue) >= 0 || props.matchProp !== 'value' && labelTest.indexOf(filterValue) >= 0;
-		});
-	}
-	
-	module.exports = filterOptions;
-
-/***/ },
-/* 366 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	var map = [{ 'base': 'A', 'letters': /[\u0041\u24B6\uFF21\u00C0\u00C1\u00C2\u1EA6\u1EA4\u1EAA\u1EA8\u00C3\u0100\u0102\u1EB0\u1EAE\u1EB4\u1EB2\u0226\u01E0\u00C4\u01DE\u1EA2\u00C5\u01FA\u01CD\u0200\u0202\u1EA0\u1EAC\u1EB6\u1E00\u0104\u023A\u2C6F]/g }, { 'base': 'AA', 'letters': /[\uA732]/g }, { 'base': 'AE', 'letters': /[\u00C6\u01FC\u01E2]/g }, { 'base': 'AO', 'letters': /[\uA734]/g }, { 'base': 'AU', 'letters': /[\uA736]/g }, { 'base': 'AV', 'letters': /[\uA738\uA73A]/g }, { 'base': 'AY', 'letters': /[\uA73C]/g }, { 'base': 'B', 'letters': /[\u0042\u24B7\uFF22\u1E02\u1E04\u1E06\u0243\u0182\u0181]/g }, { 'base': 'C', 'letters': /[\u0043\u24B8\uFF23\u0106\u0108\u010A\u010C\u00C7\u1E08\u0187\u023B\uA73E]/g }, { 'base': 'D', 'letters': /[\u0044\u24B9\uFF24\u1E0A\u010E\u1E0C\u1E10\u1E12\u1E0E\u0110\u018B\u018A\u0189\uA779]/g }, { 'base': 'DZ', 'letters': /[\u01F1\u01C4]/g }, { 'base': 'Dz', 'letters': /[\u01F2\u01C5]/g }, { 'base': 'E', 'letters': /[\u0045\u24BA\uFF25\u00C8\u00C9\u00CA\u1EC0\u1EBE\u1EC4\u1EC2\u1EBC\u0112\u1E14\u1E16\u0114\u0116\u00CB\u1EBA\u011A\u0204\u0206\u1EB8\u1EC6\u0228\u1E1C\u0118\u1E18\u1E1A\u0190\u018E]/g }, { 'base': 'F', 'letters': /[\u0046\u24BB\uFF26\u1E1E\u0191\uA77B]/g }, { 'base': 'G', 'letters': /[\u0047\u24BC\uFF27\u01F4\u011C\u1E20\u011E\u0120\u01E6\u0122\u01E4\u0193\uA7A0\uA77D\uA77E]/g }, { 'base': 'H', 'letters': /[\u0048\u24BD\uFF28\u0124\u1E22\u1E26\u021E\u1E24\u1E28\u1E2A\u0126\u2C67\u2C75\uA78D]/g }, { 'base': 'I', 'letters': /[\u0049\u24BE\uFF29\u00CC\u00CD\u00CE\u0128\u012A\u012C\u0130\u00CF\u1E2E\u1EC8\u01CF\u0208\u020A\u1ECA\u012E\u1E2C\u0197]/g }, { 'base': 'J', 'letters': /[\u004A\u24BF\uFF2A\u0134\u0248]/g }, { 'base': 'K', 'letters': /[\u004B\u24C0\uFF2B\u1E30\u01E8\u1E32\u0136\u1E34\u0198\u2C69\uA740\uA742\uA744\uA7A2]/g }, { 'base': 'L', 'letters': /[\u004C\u24C1\uFF2C\u013F\u0139\u013D\u1E36\u1E38\u013B\u1E3C\u1E3A\u0141\u023D\u2C62\u2C60\uA748\uA746\uA780]/g }, { 'base': 'LJ', 'letters': /[\u01C7]/g }, { 'base': 'Lj', 'letters': /[\u01C8]/g }, { 'base': 'M', 'letters': /[\u004D\u24C2\uFF2D\u1E3E\u1E40\u1E42\u2C6E\u019C]/g }, { 'base': 'N', 'letters': /[\u004E\u24C3\uFF2E\u01F8\u0143\u00D1\u1E44\u0147\u1E46\u0145\u1E4A\u1E48\u0220\u019D\uA790\uA7A4]/g }, { 'base': 'NJ', 'letters': /[\u01CA]/g }, { 'base': 'Nj', 'letters': /[\u01CB]/g }, { 'base': 'O', 'letters': /[\u004F\u24C4\uFF2F\u00D2\u00D3\u00D4\u1ED2\u1ED0\u1ED6\u1ED4\u00D5\u1E4C\u022C\u1E4E\u014C\u1E50\u1E52\u014E\u022E\u0230\u00D6\u022A\u1ECE\u0150\u01D1\u020C\u020E\u01A0\u1EDC\u1EDA\u1EE0\u1EDE\u1EE2\u1ECC\u1ED8\u01EA\u01EC\u00D8\u01FE\u0186\u019F\uA74A\uA74C]/g }, { 'base': 'OI', 'letters': /[\u01A2]/g }, { 'base': 'OO', 'letters': /[\uA74E]/g }, { 'base': 'OU', 'letters': /[\u0222]/g }, { 'base': 'P', 'letters': /[\u0050\u24C5\uFF30\u1E54\u1E56\u01A4\u2C63\uA750\uA752\uA754]/g }, { 'base': 'Q', 'letters': /[\u0051\u24C6\uFF31\uA756\uA758\u024A]/g }, { 'base': 'R', 'letters': /[\u0052\u24C7\uFF32\u0154\u1E58\u0158\u0210\u0212\u1E5A\u1E5C\u0156\u1E5E\u024C\u2C64\uA75A\uA7A6\uA782]/g }, { 'base': 'S', 'letters': /[\u0053\u24C8\uFF33\u1E9E\u015A\u1E64\u015C\u1E60\u0160\u1E66\u1E62\u1E68\u0218\u015E\u2C7E\uA7A8\uA784]/g }, { 'base': 'T', 'letters': /[\u0054\u24C9\uFF34\u1E6A\u0164\u1E6C\u021A\u0162\u1E70\u1E6E\u0166\u01AC\u01AE\u023E\uA786]/g }, { 'base': 'TZ', 'letters': /[\uA728]/g }, { 'base': 'U', 'letters': /[\u0055\u24CA\uFF35\u00D9\u00DA\u00DB\u0168\u1E78\u016A\u1E7A\u016C\u00DC\u01DB\u01D7\u01D5\u01D9\u1EE6\u016E\u0170\u01D3\u0214\u0216\u01AF\u1EEA\u1EE8\u1EEE\u1EEC\u1EF0\u1EE4\u1E72\u0172\u1E76\u1E74\u0244]/g }, { 'base': 'V', 'letters': /[\u0056\u24CB\uFF36\u1E7C\u1E7E\u01B2\uA75E\u0245]/g }, { 'base': 'VY', 'letters': /[\uA760]/g }, { 'base': 'W', 'letters': /[\u0057\u24CC\uFF37\u1E80\u1E82\u0174\u1E86\u1E84\u1E88\u2C72]/g }, { 'base': 'X', 'letters': /[\u0058\u24CD\uFF38\u1E8A\u1E8C]/g }, { 'base': 'Y', 'letters': /[\u0059\u24CE\uFF39\u1EF2\u00DD\u0176\u1EF8\u0232\u1E8E\u0178\u1EF6\u1EF4\u01B3\u024E\u1EFE]/g }, { 'base': 'Z', 'letters': /[\u005A\u24CF\uFF3A\u0179\u1E90\u017B\u017D\u1E92\u1E94\u01B5\u0224\u2C7F\u2C6B\uA762]/g }, { 'base': 'a', 'letters': /[\u0061\u24D0\uFF41\u1E9A\u00E0\u00E1\u00E2\u1EA7\u1EA5\u1EAB\u1EA9\u00E3\u0101\u0103\u1EB1\u1EAF\u1EB5\u1EB3\u0227\u01E1\u00E4\u01DF\u1EA3\u00E5\u01FB\u01CE\u0201\u0203\u1EA1\u1EAD\u1EB7\u1E01\u0105\u2C65\u0250]/g }, { 'base': 'aa', 'letters': /[\uA733]/g }, { 'base': 'ae', 'letters': /[\u00E6\u01FD\u01E3]/g }, { 'base': 'ao', 'letters': /[\uA735]/g }, { 'base': 'au', 'letters': /[\uA737]/g }, { 'base': 'av', 'letters': /[\uA739\uA73B]/g }, { 'base': 'ay', 'letters': /[\uA73D]/g }, { 'base': 'b', 'letters': /[\u0062\u24D1\uFF42\u1E03\u1E05\u1E07\u0180\u0183\u0253]/g }, { 'base': 'c', 'letters': /[\u0063\u24D2\uFF43\u0107\u0109\u010B\u010D\u00E7\u1E09\u0188\u023C\uA73F\u2184]/g }, { 'base': 'd', 'letters': /[\u0064\u24D3\uFF44\u1E0B\u010F\u1E0D\u1E11\u1E13\u1E0F\u0111\u018C\u0256\u0257\uA77A]/g }, { 'base': 'dz', 'letters': /[\u01F3\u01C6]/g }, { 'base': 'e', 'letters': /[\u0065\u24D4\uFF45\u00E8\u00E9\u00EA\u1EC1\u1EBF\u1EC5\u1EC3\u1EBD\u0113\u1E15\u1E17\u0115\u0117\u00EB\u1EBB\u011B\u0205\u0207\u1EB9\u1EC7\u0229\u1E1D\u0119\u1E19\u1E1B\u0247\u025B\u01DD]/g }, { 'base': 'f', 'letters': /[\u0066\u24D5\uFF46\u1E1F\u0192\uA77C]/g }, { 'base': 'g', 'letters': /[\u0067\u24D6\uFF47\u01F5\u011D\u1E21\u011F\u0121\u01E7\u0123\u01E5\u0260\uA7A1\u1D79\uA77F]/g }, { 'base': 'h', 'letters': /[\u0068\u24D7\uFF48\u0125\u1E23\u1E27\u021F\u1E25\u1E29\u1E2B\u1E96\u0127\u2C68\u2C76\u0265]/g }, { 'base': 'hv', 'letters': /[\u0195]/g }, { 'base': 'i', 'letters': /[\u0069\u24D8\uFF49\u00EC\u00ED\u00EE\u0129\u012B\u012D\u00EF\u1E2F\u1EC9\u01D0\u0209\u020B\u1ECB\u012F\u1E2D\u0268\u0131]/g }, { 'base': 'j', 'letters': /[\u006A\u24D9\uFF4A\u0135\u01F0\u0249]/g }, { 'base': 'k', 'letters': /[\u006B\u24DA\uFF4B\u1E31\u01E9\u1E33\u0137\u1E35\u0199\u2C6A\uA741\uA743\uA745\uA7A3]/g }, { 'base': 'l', 'letters': /[\u006C\u24DB\uFF4C\u0140\u013A\u013E\u1E37\u1E39\u013C\u1E3D\u1E3B\u017F\u0142\u019A\u026B\u2C61\uA749\uA781\uA747]/g }, { 'base': 'lj', 'letters': /[\u01C9]/g }, { 'base': 'm', 'letters': /[\u006D\u24DC\uFF4D\u1E3F\u1E41\u1E43\u0271\u026F]/g }, { 'base': 'n', 'letters': /[\u006E\u24DD\uFF4E\u01F9\u0144\u00F1\u1E45\u0148\u1E47\u0146\u1E4B\u1E49\u019E\u0272\u0149\uA791\uA7A5]/g }, { 'base': 'nj', 'letters': /[\u01CC]/g }, { 'base': 'o', 'letters': /[\u006F\u24DE\uFF4F\u00F2\u00F3\u00F4\u1ED3\u1ED1\u1ED7\u1ED5\u00F5\u1E4D\u022D\u1E4F\u014D\u1E51\u1E53\u014F\u022F\u0231\u00F6\u022B\u1ECF\u0151\u01D2\u020D\u020F\u01A1\u1EDD\u1EDB\u1EE1\u1EDF\u1EE3\u1ECD\u1ED9\u01EB\u01ED\u00F8\u01FF\u0254\uA74B\uA74D\u0275]/g }, { 'base': 'oi', 'letters': /[\u01A3]/g }, { 'base': 'ou', 'letters': /[\u0223]/g }, { 'base': 'oo', 'letters': /[\uA74F]/g }, { 'base': 'p', 'letters': /[\u0070\u24DF\uFF50\u1E55\u1E57\u01A5\u1D7D\uA751\uA753\uA755]/g }, { 'base': 'q', 'letters': /[\u0071\u24E0\uFF51\u024B\uA757\uA759]/g }, { 'base': 'r', 'letters': /[\u0072\u24E1\uFF52\u0155\u1E59\u0159\u0211\u0213\u1E5B\u1E5D\u0157\u1E5F\u024D\u027D\uA75B\uA7A7\uA783]/g }, { 'base': 's', 'letters': /[\u0073\u24E2\uFF53\u00DF\u015B\u1E65\u015D\u1E61\u0161\u1E67\u1E63\u1E69\u0219\u015F\u023F\uA7A9\uA785\u1E9B]/g }, { 'base': 't', 'letters': /[\u0074\u24E3\uFF54\u1E6B\u1E97\u0165\u1E6D\u021B\u0163\u1E71\u1E6F\u0167\u01AD\u0288\u2C66\uA787]/g }, { 'base': 'tz', 'letters': /[\uA729]/g }, { 'base': 'u', 'letters': /[\u0075\u24E4\uFF55\u00F9\u00FA\u00FB\u0169\u1E79\u016B\u1E7B\u016D\u00FC\u01DC\u01D8\u01D6\u01DA\u1EE7\u016F\u0171\u01D4\u0215\u0217\u01B0\u1EEB\u1EE9\u1EEF\u1EED\u1EF1\u1EE5\u1E73\u0173\u1E77\u1E75\u0289]/g }, { 'base': 'v', 'letters': /[\u0076\u24E5\uFF56\u1E7D\u1E7F\u028B\uA75F\u028C]/g }, { 'base': 'vy', 'letters': /[\uA761]/g }, { 'base': 'w', 'letters': /[\u0077\u24E6\uFF57\u1E81\u1E83\u0175\u1E87\u1E85\u1E98\u1E89\u2C73]/g }, { 'base': 'x', 'letters': /[\u0078\u24E7\uFF58\u1E8B\u1E8D]/g }, { 'base': 'y', 'letters': /[\u0079\u24E8\uFF59\u1EF3\u00FD\u0177\u1EF9\u0233\u1E8F\u00FF\u1EF7\u1E99\u1EF5\u01B4\u024F\u1EFF]/g }, { 'base': 'z', 'letters': /[\u007A\u24E9\uFF5A\u017A\u1E91\u017C\u017E\u1E93\u1E95\u01B6\u0225\u0240\u2C6C\uA763]/g }];
-	
-	module.exports = function stripDiacritics(str) {
-		for (var i = 0; i < map.length; i++) {
-			str = str.replace(map[i].letters, map[i].base);
-		}
-		return str;
-	};
-
-/***/ },
-/* 367 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _classnames = __webpack_require__(346);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function menuRenderer(_ref) {
-		var focusedOption = _ref.focusedOption;
-		var instancePrefix = _ref.instancePrefix;
-		var labelKey = _ref.labelKey;
-		var onFocus = _ref.onFocus;
-		var onSelect = _ref.onSelect;
-		var optionClassName = _ref.optionClassName;
-		var optionComponent = _ref.optionComponent;
-		var optionRenderer = _ref.optionRenderer;
-		var options = _ref.options;
-		var valueArray = _ref.valueArray;
-		var valueKey = _ref.valueKey;
-	
-		var Option = optionComponent;
-	
-		return options.map(function (option, i) {
-			var isSelected = valueArray && valueArray.indexOf(option) > -1;
-			var isFocused = option === focusedOption;
-			var optionRef = isFocused ? 'focused' : null;
-			var optionClass = (0, _classnames2['default'])(optionClassName, {
-				'Select-option': true,
-				'is-selected': isSelected,
-				'is-focused': isFocused,
-				'is-disabled': option.disabled
-			});
-	
-			return _react2['default'].createElement(
-				Option,
-				{
-					className: optionClass,
-					instancePrefix: instancePrefix,
-					isDisabled: option.disabled,
-					isFocused: isFocused,
-					isSelected: isSelected,
-					key: 'option-' + i + '-' + option[valueKey],
-					onFocus: onFocus,
-					onSelect: onSelect,
-					option: option,
-					optionIndex: i,
-					ref: optionRef
-				},
-				optionRenderer(option, i)
-			);
-		});
-	}
-	
-	module.exports = menuRenderer;
-
-/***/ },
-/* 368 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Select = __webpack_require__(363);
-	
-	var _Select2 = _interopRequireDefault(_Select);
-	
-	var _utilsStripDiacritics = __webpack_require__(366);
-	
-	var _utilsStripDiacritics2 = _interopRequireDefault(_utilsStripDiacritics);
-	
-	var requestId = 0;
-	
-	function initCache(cache) {
-		if (cache && typeof cache !== 'object') {
-			cache = {};
-		}
-		return cache ? cache : null;
-	}
-	
-	function updateCache(cache, input, data) {
-		if (!cache) return;
-		cache[input] = data;
-	}
-	
-	function getFromCache(cache, input) {
-		if (!cache) return;
-		for (var i = input.length; i >= 0; --i) {
-			var cacheKey = input.slice(0, i);
-			if (cache[cacheKey] && (input === cacheKey || cache[cacheKey].complete)) {
-				return cache[cacheKey];
-			}
-		}
-	}
-	
-	function thenPromise(promise, callback) {
-		if (!promise || typeof promise.then !== 'function') return;
-		return promise.then(function (data) {
-			callback(null, data);
-		}, function (err) {
-			callback(err);
-		});
-	}
-	
-	var stringOrNode = _react2['default'].PropTypes.oneOfType([_react2['default'].PropTypes.string, _react2['default'].PropTypes.node]);
-	
-	var Async = _react2['default'].createClass({
-		displayName: 'Async',
-	
-		propTypes: {
-			cache: _react2['default'].PropTypes.any, // object to use to cache results, can be null to disable cache
-			ignoreAccents: _react2['default'].PropTypes.bool, // whether to strip diacritics when filtering (shared with Select)
-			ignoreCase: _react2['default'].PropTypes.bool, // whether to perform case-insensitive filtering (shared with Select)
-			isLoading: _react2['default'].PropTypes.bool, // overrides the isLoading state when set to true
-			loadOptions: _react2['default'].PropTypes.func.isRequired, // function to call to load options asynchronously
-			loadingPlaceholder: _react2['default'].PropTypes.string, // replaces the placeholder while options are loading
-			minimumInput: _react2['default'].PropTypes.number, // the minimum number of characters that trigger loadOptions
-			noResultsText: stringOrNode, // placeholder displayed when there are no matching search results (shared with Select)
-			onInputChange: _react2['default'].PropTypes.func, // onInputChange handler: function (inputValue) {}
-			placeholder: stringOrNode, // field placeholder, displayed when there's no value (shared with Select)
-			searchPromptText: stringOrNode, // label to prompt for search input
-			searchingText: _react2['default'].PropTypes.string },
-		// message to display while options are loading
-		getDefaultProps: function getDefaultProps() {
-			return {
-				cache: true,
-				ignoreAccents: true,
-				ignoreCase: true,
-				loadingPlaceholder: 'Loading...',
-				minimumInput: 0,
-				searchingText: 'Searching...',
-				searchPromptText: 'Type to search'
-			};
-		},
-		getInitialState: function getInitialState() {
-			return {
-				cache: initCache(this.props.cache),
-				isLoading: false,
-				options: []
-			};
-		},
-		componentWillMount: function componentWillMount() {
-			this._lastInput = '';
-		},
-		componentDidMount: function componentDidMount() {
-			this.loadOptions('');
-		},
-		componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-			if (nextProps.cache !== this.props.cache) {
-				this.setState({
-					cache: initCache(nextProps.cache)
-				});
-			}
-		},
-		focus: function focus() {
-			this.select.focus();
-		},
-		resetState: function resetState() {
-			this._currentRequestId = -1;
-			this.setState({
-				isLoading: false,
-				options: []
-			});
-		},
-		getResponseHandler: function getResponseHandler(input) {
-			var _this = this;
-	
-			var _requestId = this._currentRequestId = requestId++;
-			return function (err, data) {
-				if (err) throw err;
-				if (!_this.isMounted()) return;
-				updateCache(_this.state.cache, input, data);
-				if (_requestId !== _this._currentRequestId) return;
-				_this.setState({
-					isLoading: false,
-					options: data && data.options || []
-				});
-			};
-		},
-		loadOptions: function loadOptions(input) {
-			if (this.props.onInputChange) {
-				var nextState = this.props.onInputChange(input);
-				// Note: != used deliberately here to catch undefined and null
-				if (nextState != null) {
-					input = '' + nextState;
-				}
-			}
-			if (this.props.ignoreAccents) input = (0, _utilsStripDiacritics2['default'])(input);
-			if (this.props.ignoreCase) input = input.toLowerCase();
-	
-			this._lastInput = input;
-			if (input.length < this.props.minimumInput) {
-				return this.resetState();
-			}
-			var cacheResult = getFromCache(this.state.cache, input);
-			if (cacheResult) {
-				return this.setState({
-					options: cacheResult.options
-				});
-			}
-			this.setState({
-				isLoading: true
-			});
-			var responseHandler = this.getResponseHandler(input);
-			var inputPromise = thenPromise(this.props.loadOptions(input, responseHandler), responseHandler);
-			return inputPromise ? inputPromise.then(function () {
-				return input;
-			}) : input;
-		},
-		render: function render() {
-			var _this2 = this;
-	
-			var noResultsText = this.props.noResultsText;
-			var _state = this.state;
-			var isLoading = _state.isLoading;
-			var options = _state.options;
-	
-			if (this.props.isLoading) isLoading = true;
-			var placeholder = isLoading ? this.props.loadingPlaceholder : this.props.placeholder;
-			if (isLoading) {
-				noResultsText = this.props.searchingText;
-			} else if (!options.length && this._lastInput.length < this.props.minimumInput) {
-				noResultsText = this.props.searchPromptText;
-			}
-			return _react2['default'].createElement(_Select2['default'], _extends({}, this.props, {
-				ref: function (ref) {
-					return _this2.select = ref;
-				},
-				isLoading: isLoading,
-				noResultsText: noResultsText,
-				onInputChange: this.loadOptions,
-				options: options,
-				placeholder: placeholder
-			}));
-		}
-	});
-	
-	module.exports = Async;
-
-/***/ },
-/* 369 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Select = __webpack_require__(363);
-	
-	var _Select2 = _interopRequireDefault(_Select);
-	
-	var _utilsDefaultFilterOptions = __webpack_require__(365);
-	
-	var _utilsDefaultFilterOptions2 = _interopRequireDefault(_utilsDefaultFilterOptions);
-	
-	var _utilsDefaultMenuRenderer = __webpack_require__(367);
-	
-	var _utilsDefaultMenuRenderer2 = _interopRequireDefault(_utilsDefaultMenuRenderer);
-	
-	var Creatable = _react2['default'].createClass({
-		displayName: 'CreatableSelect',
-	
-		propTypes: {
-			// See Select.propTypes.filterOptions
-			filterOptions: _react2['default'].PropTypes.any,
-	
-			// Searches for any matching option within the set of options.
-			// This function prevents duplicate options from being created.
-			// ({ option: Object, options: Array, labelKey: string, valueKey: string }): boolean
-			isOptionUnique: _react2['default'].PropTypes.func,
-	
-			// Determines if the current input text represents a valid option.
-			// ({ label: string }): boolean
-			isValidNewOption: _react2['default'].PropTypes.func,
-	
-			// See Select.propTypes.menuRenderer
-			menuRenderer: _react2['default'].PropTypes.any,
-	
-			// Factory to create new option.
-			// ({ label: string, labelKey: string, valueKey: string }): Object
-			newOptionCreator: _react2['default'].PropTypes.func,
-	
-			// Creates prompt/placeholder option text.
-			// (filterText: string): string
-			promptTextCreator: _react2['default'].PropTypes.func,
-	
-			// Decides if a keyDown event (eg its `keyCode`) should result in the creation of a new option.
-			shouldKeyDownEventCreateNewOption: _react2['default'].PropTypes.func
-		},
-	
-		// Default prop methods
-		statics: {
-			isOptionUnique: isOptionUnique,
-			isValidNewOption: isValidNewOption,
-			newOptionCreator: newOptionCreator,
-			promptTextCreator: promptTextCreator,
-			shouldKeyDownEventCreateNewOption: shouldKeyDownEventCreateNewOption
-		},
-	
-		getDefaultProps: function getDefaultProps() {
-			return {
-				filterOptions: _utilsDefaultFilterOptions2['default'],
-				isOptionUnique: isOptionUnique,
-				isValidNewOption: isValidNewOption,
-				menuRenderer: _utilsDefaultMenuRenderer2['default'],
-				newOptionCreator: newOptionCreator,
-				promptTextCreator: promptTextCreator,
-				shouldKeyDownEventCreateNewOption: shouldKeyDownEventCreateNewOption
-			};
-		},
-	
-		createNewOption: function createNewOption() {
-			var _props = this.props;
-			var isValidNewOption = _props.isValidNewOption;
-			var newOptionCreator = _props.newOptionCreator;
-			var shouldKeyDownEventCreateNewOption = _props.shouldKeyDownEventCreateNewOption;
-			var _select$props = this.select.props;
-			var labelKey = _select$props.labelKey;
-			var options = _select$props.options;
-			var valueKey = _select$props.valueKey;
-	
-			var inputValue = this.select.getInputValue();
-	
-			if (isValidNewOption({ label: inputValue })) {
-				var option = newOptionCreator({ label: inputValue, labelKey: labelKey, valueKey: valueKey });
-				var _isOptionUnique = this.isOptionUnique({ option: option });
-	
-				// Don't add the same option twice.
-				if (_isOptionUnique) {
-					options.unshift(option);
-	
-					this.select.selectValue(option);
-				}
-			}
-		},
-	
-		filterOptions: function filterOptions() {
-			var _props2 = this.props;
-			var filterOptions = _props2.filterOptions;
-			var isValidNewOption = _props2.isValidNewOption;
-			var promptTextCreator = _props2.promptTextCreator;
-	
-			var filteredOptions = filterOptions.apply(undefined, arguments);
-	
-			var inputValue = this.select ? this.select.getInputValue() : '';
-	
-			if (isValidNewOption({ label: inputValue })) {
-				var _newOptionCreator = this.props.newOptionCreator;
-				var _select$props2 = this.select.props;
-				var labelKey = _select$props2.labelKey;
-				var options = _select$props2.options;
-				var valueKey = _select$props2.valueKey;
-	
-				var option = _newOptionCreator({ label: inputValue, labelKey: labelKey, valueKey: valueKey });
-	
-				// TRICKY Compare to all options (not just filtered options) in case option has already been selected).
-				// For multi-selects, this would remove it from the filtered list.
-				var _isOptionUnique2 = this.isOptionUnique({ option: option, options: options });
-	
-				if (_isOptionUnique2) {
-					var _prompt = promptTextCreator(inputValue);
-	
-					this._createPlaceholderOption = _newOptionCreator({ label: _prompt, labelKey: labelKey, valueKey: valueKey });
-	
-					filteredOptions.unshift(this._createPlaceholderOption);
-				}
-			}
-	
-			return filteredOptions;
-		},
-	
-		isOptionUnique: function isOptionUnique(_ref) {
-			var option = _ref.option;
-			var options = _ref.options;
-	
-			if (!this.select) {
-				return false;
-			}
-	
-			var isOptionUnique = this.props.isOptionUnique;
-			var _select$props3 = this.select.props;
-			var labelKey = _select$props3.labelKey;
-			var valueKey = _select$props3.valueKey;
-	
-			options = options || this.select.filterOptions();
-	
-			return isOptionUnique({
-				labelKey: labelKey,
-				option: option,
-				options: options,
-				valueKey: valueKey
-			});
-		},
-	
-		menuRenderer: function menuRenderer(params) {
-			var menuRenderer = this.props.menuRenderer;
-	
-			return menuRenderer(_extends({}, params, {
-				onSelect: this.onOptionSelect
-			}));
-		},
-	
-		onInputKeyDown: function onInputKeyDown(event) {
-			var shouldKeyDownEventCreateNewOption = this.props.shouldKeyDownEventCreateNewOption;
-	
-			var focusedOption = this.select.getFocusedOption();
-	
-			if (focusedOption && focusedOption === this._createPlaceholderOption && shouldKeyDownEventCreateNewOption({ keyCode: event.keyCode })) {
-				this.createNewOption();
-	
-				// Prevent decorated Select from doing anything additional with this keyDown event
-				event.preventDefault();
-			}
-		},
-	
-		onOptionSelect: function onOptionSelect(option, event) {
-			if (option === this._createPlaceholderOption) {
-				this.createNewOption();
-			} else {
-				this.select.selectValue(option);
-			}
-		},
-	
-		render: function render() {
-			var _this = this;
-	
-			var _props3 = this.props;
-			var newOptionCreator = _props3.newOptionCreator;
-			var shouldKeyDownEventCreateNewOption = _props3.shouldKeyDownEventCreateNewOption;
-	
-			var restProps = _objectWithoutProperties(_props3, ['newOptionCreator', 'shouldKeyDownEventCreateNewOption']);
-	
-			return _react2['default'].createElement(_Select2['default'], _extends({}, restProps, {
-				allowCreate: true,
-				filterOptions: this.filterOptions,
-				menuRenderer: this.menuRenderer,
-				onInputKeyDown: this.onInputKeyDown,
-				ref: function (ref) {
-					return _this.select = ref;
-				}
-			}));
-		}
-	});
-	
-	function isOptionUnique(_ref2) {
-		var option = _ref2.option;
-		var options = _ref2.options;
-		var labelKey = _ref2.labelKey;
-		var valueKey = _ref2.valueKey;
-	
-		return options.filter(function (existingOption) {
-			return existingOption[labelKey] === option[labelKey] || existingOption[valueKey] === option[valueKey];
-		}).length === 0;
-	};
-	
-	function isValidNewOption(_ref3) {
-		var label = _ref3.label;
-	
-		return !!label;
-	};
-	
-	function newOptionCreator(_ref4) {
-		var label = _ref4.label;
-		var labelKey = _ref4.labelKey;
-		var valueKey = _ref4.valueKey;
-	
-		var option = {};
-		option[valueKey] = label;
-		option[labelKey] = label;
-		option.className = 'Select-create-option-placeholder';
-		return option;
-	};
-	
-	function promptTextCreator(label) {
-		return 'Create option "' + label + '"';
-	}
-	
-	function shouldKeyDownEventCreateNewOption(_ref5) {
-		var keyCode = _ref5.keyCode;
-	
-		switch (keyCode) {
-			case 9: // TAB
-			case 13: // ENTER
-			case 188:
-				// COMMA
-				return true;
-		}
-	
-		return false;
-	};
-	
-	module.exports = Creatable;
-
-/***/ },
-/* 370 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(346);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var Option = _react2['default'].createClass({
-		displayName: 'Option',
-	
-		propTypes: {
-			children: _react2['default'].PropTypes.node,
-			className: _react2['default'].PropTypes.string, // className (based on mouse position)
-			instancePrefix: _react2['default'].PropTypes.string.isRequired, // unique prefix for the ids (used for aria)
-			isDisabled: _react2['default'].PropTypes.bool, // the option is disabled
-			isFocused: _react2['default'].PropTypes.bool, // the option is focused
-			isSelected: _react2['default'].PropTypes.bool, // the option is selected
-			onFocus: _react2['default'].PropTypes.func, // method to handle mouseEnter on option element
-			onSelect: _react2['default'].PropTypes.func, // method to handle click on option element
-			onUnfocus: _react2['default'].PropTypes.func, // method to handle mouseLeave on option element
-			option: _react2['default'].PropTypes.object.isRequired, // object that is base for that option
-			optionIndex: _react2['default'].PropTypes.number },
-		// index of the option, used to generate unique ids for aria
-		blockEvent: function blockEvent(event) {
-			event.preventDefault();
-			event.stopPropagation();
-			if (event.target.tagName !== 'A' || !('href' in event.target)) {
-				return;
-			}
-			if (event.target.target) {
-				window.open(event.target.href, event.target.target);
-			} else {
-				window.location.href = event.target.href;
-			}
-		},
-	
-		handleMouseDown: function handleMouseDown(event) {
-			event.preventDefault();
-			event.stopPropagation();
-			this.props.onSelect(this.props.option, event);
-		},
-	
-		handleMouseEnter: function handleMouseEnter(event) {
-			this.onFocus(event);
-		},
-	
-		handleMouseMove: function handleMouseMove(event) {
-			this.onFocus(event);
-		},
-	
-		handleTouchEnd: function handleTouchEnd(event) {
-			// Check if the view is being dragged, In this case
-			// we don't want to fire the click event (because the user only wants to scroll)
-			if (this.dragging) return;
-	
-			this.handleMouseDown(event);
-		},
-	
-		handleTouchMove: function handleTouchMove(event) {
-			// Set a flag that the view is being dragged
-			this.dragging = true;
-		},
-	
-		handleTouchStart: function handleTouchStart(event) {
-			// Set a flag that the view is not being dragged
-			this.dragging = false;
-		},
-	
-		onFocus: function onFocus(event) {
-			if (!this.props.isFocused) {
-				this.props.onFocus(this.props.option, event);
-			}
-		},
-		render: function render() {
-			var _props = this.props;
-			var option = _props.option;
-			var instancePrefix = _props.instancePrefix;
-			var optionIndex = _props.optionIndex;
-	
-			var className = (0, _classnames2['default'])(this.props.className, option.className);
-	
-			return option.disabled ? _react2['default'].createElement(
-				'div',
-				{ className: className,
-					onMouseDown: this.blockEvent,
-					onClick: this.blockEvent },
-				this.props.children
-			) : _react2['default'].createElement(
-				'div',
-				{ className: className,
-					style: option.style,
-					role: 'option',
-					onMouseDown: this.handleMouseDown,
-					onMouseEnter: this.handleMouseEnter,
-					onMouseMove: this.handleMouseMove,
-					onTouchStart: this.handleTouchStart,
-					onTouchMove: this.handleTouchMove,
-					onTouchEnd: this.handleTouchEnd,
-					id: instancePrefix + '-option-' + optionIndex,
-					title: option.title },
-				this.props.children
-			);
-		}
-	});
-	
-	module.exports = Option;
-
-/***/ },
-/* 371 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _classnames = __webpack_require__(346);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
-	var Value = _react2['default'].createClass({
-	
-		displayName: 'Value',
-	
-		propTypes: {
-			children: _react2['default'].PropTypes.node,
-			disabled: _react2['default'].PropTypes.bool, // disabled prop passed to ReactSelect
-			id: _react2['default'].PropTypes.string, // Unique id for the value - used for aria
-			onClick: _react2['default'].PropTypes.func, // method to handle click on value label
-			onRemove: _react2['default'].PropTypes.func, // method to handle removal of the value
-			value: _react2['default'].PropTypes.object.isRequired },
-	
-		// the option object for this value
-		handleMouseDown: function handleMouseDown(event) {
-			if (event.type === 'mousedown' && event.button !== 0) {
-				return;
-			}
-			if (this.props.onClick) {
-				event.stopPropagation();
-				this.props.onClick(this.props.value, event);
-				return;
-			}
-			if (this.props.value.href) {
-				event.stopPropagation();
-			}
-		},
-	
-		onRemove: function onRemove(event) {
-			event.preventDefault();
-			event.stopPropagation();
-			this.props.onRemove(this.props.value);
-		},
-	
-		handleTouchEndRemove: function handleTouchEndRemove(event) {
-			// Check if the view is being dragged, In this case
-			// we don't want to fire the click event (because the user only wants to scroll)
-			if (this.dragging) return;
-	
-			// Fire the mouse events
-			this.onRemove(event);
-		},
-	
-		handleTouchMove: function handleTouchMove(event) {
-			// Set a flag that the view is being dragged
-			this.dragging = true;
-		},
-	
-		handleTouchStart: function handleTouchStart(event) {
-			// Set a flag that the view is not being dragged
-			this.dragging = false;
-		},
-	
-		renderRemoveIcon: function renderRemoveIcon() {
-			if (this.props.disabled || !this.props.onRemove) return;
-			return _react2['default'].createElement(
-				'span',
-				{ className: 'Select-value-icon',
-					'aria-hidden': 'true',
-					onMouseDown: this.onRemove,
-					onTouchEnd: this.handleTouchEndRemove,
-					onTouchStart: this.handleTouchStart,
-					onTouchMove: this.handleTouchMove },
-				'×'
-			);
-		},
-	
-		renderLabel: function renderLabel() {
-			var className = 'Select-value-label';
-			return this.props.onClick || this.props.value.href ? _react2['default'].createElement(
-				'a',
-				{ className: className, href: this.props.value.href, target: this.props.value.target, onMouseDown: this.handleMouseDown, onTouchEnd: this.handleMouseDown },
-				this.props.children
-			) : _react2['default'].createElement(
-				'span',
-				{ className: className, role: 'option', 'aria-selected': 'true', id: this.props.id },
-				this.props.children
-			);
-		},
-	
-		render: function render() {
-			return _react2['default'].createElement(
-				'div',
-				{ className: (0, _classnames2['default'])('Select-value', this.props.value.className),
-					style: this.props.value.style,
-					title: this.props.value.title
-				},
-				this.renderRemoveIcon(),
-				this.renderLabel()
-			);
-		}
-	
-	});
-	
-	module.exports = Value;
-
-/***/ },
-/* 372 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(373);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../css-loader/index.js?sourceMap!./../../resolve-url-loader/index.js!./react-select.css", function() {
-				var newContent = require("!!./../../css-loader/index.js?sourceMap!./../../resolve-url-loader/index.js!./react-select.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 373 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, "/**\n * React Select\n * ============\n * Created by Jed Watson and Joss Mackison for KeystoneJS, http://www.keystonejs.com/\n * https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs\n * MIT License: https://github.com/JedWatson/react-select\n*/\n\n.Select {\n  position: relative;\n}\n\n.Select,\n.Select div,\n.Select input,\n.Select span {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n\n.Select.is-disabled > .Select-control {\n  background-color: #f9f9f9;\n}\n\n.Select.is-disabled > .Select-control:hover {\n  box-shadow: none;\n}\n\n.Select.is-disabled .Select-arrow-zone {\n  cursor: default;\n  pointer-events: none;\n  opacity: 0.35;\n}\n\n.Select-control {\n  background-color: #fff;\n  border-color: #d9d9d9 #ccc #b3b3b3;\n  border-radius: 4px;\n  border: 1px solid #ccc;\n  color: #333;\n  cursor: default;\n  display: table;\n  border-spacing: 0;\n  border-collapse: separate;\n  height: 36px;\n  outline: none;\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n\n.Select-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n\n.Select-control .Select-input:focus {\n  outline: none;\n}\n\n.is-searchable.is-open > .Select-control {\n  cursor: text;\n}\n\n.is-open > .Select-control {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n  background: #fff;\n  border-color: #b3b3b3 #ccc #d9d9d9;\n}\n\n.is-open > .Select-control > .Select-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n\n.is-searchable.is-focused:not(.is-open) > .Select-control {\n  cursor: text;\n}\n\n.is-focused:not(.is-open) > .Select-control {\n  border-color: #007eff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 126, 255, 0.1);\n}\n\n.Select-placeholder,\n.Select--single > .Select-control .Select-value {\n  bottom: 0;\n  color: #aaa;\n  left: 0;\n  line-height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.has-value.Select--single > .Select-control .Select-value .Select-value-label,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {\n  color: #333;\n}\n\n.has-value.Select--single > .Select-control .Select-value a.Select-value-label,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label {\n  cursor: pointer;\n  text-decoration: none;\n}\n\n.has-value.Select--single > .Select-control .Select-value a.Select-value-label:hover,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label:hover,\n.has-value.Select--single > .Select-control .Select-value a.Select-value-label:focus,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label:focus {\n  color: #007eff;\n  outline: none;\n  text-decoration: underline;\n}\n\n.Select-input {\n  height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  vertical-align: middle;\n}\n\n.Select-input > input {\n  width: 100%;\n  background: none transparent;\n  border: 0 none;\n  box-shadow: none;\n  cursor: default;\n  display: inline-block;\n  font-family: inherit;\n  font-size: inherit;\n  margin: 0;\n  outline: none;\n  line-height: 14px;\n  /* For IE 8 compatibility */\n  padding: 8px 0 12px;\n  /* For IE 8 compatibility */\n  -webkit-appearance: none;\n}\n\n.is-focused .Select-input > input {\n  cursor: text;\n}\n\n.has-value.is-pseudo-focused .Select-input {\n  opacity: 0;\n}\n\n.Select-control:not(.is-searchable) > .Select-input {\n  outline: none;\n}\n\n.Select-loading-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 16px;\n}\n\n.Select-loading {\n  -webkit-animation: Select-animation-spin 400ms infinite linear;\n  -o-animation: Select-animation-spin 400ms infinite linear;\n  animation: Select-animation-spin 400ms infinite linear;\n  width: 16px;\n  height: 16px;\n  box-sizing: border-box;\n  border-radius: 50%;\n  border: 2px solid #ccc;\n  border-right-color: #333;\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n}\n\n.Select-clear-zone {\n  -webkit-animation: Select-animation-fadeIn 200ms;\n  -o-animation: Select-animation-fadeIn 200ms;\n  animation: Select-animation-fadeIn 200ms;\n  color: #999;\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 17px;\n}\n\n.Select-clear-zone:hover {\n  color: #D0021B;\n}\n\n.Select-clear {\n  display: inline-block;\n  font-size: 18px;\n  line-height: 1;\n}\n\n.Select--multi .Select-clear-zone {\n  width: 17px;\n}\n\n.Select-arrow-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 25px;\n  padding-right: 5px;\n}\n\n.Select-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 2.5px;\n  display: inline-block;\n  height: 0;\n  width: 0;\n}\n\n.is-open .Select-arrow,\n.Select-arrow-zone:hover > .Select-arrow {\n  border-top-color: #666;\n}\n\n.Select--multi .Select-multi-value-wrapper {\n  display: inline-block;\n}\n\n.Select .Select-aria-only {\n  display: inline-block;\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  clip: rect(0, 0, 0, 0);\n  overflow: hidden;\n}\n\n@-webkit-keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0;\n  }\n\n  to {\n    opacity: 1;\n  }\n}\n\n@keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0;\n  }\n\n  to {\n    opacity: 1;\n  }\n}\n\n.Select-menu-outer {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-top-color: #e6e6e6;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1;\n  -webkit-overflow-scrolling: touch;\n}\n\n.Select-menu {\n  max-height: 198px;\n  overflow-y: auto;\n}\n\n.Select-option {\n  box-sizing: border-box;\n  background-color: #fff;\n  color: #666666;\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Select-option:last-child {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\n\n.Select-option.is-selected {\n  background-color: #f5faff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.04);\n  color: #333;\n}\n\n.Select-option.is-focused {\n  background-color: #ebf5ff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.08);\n  color: #333;\n}\n\n.Select-option.is-disabled {\n  color: #cccccc;\n  cursor: default;\n}\n\n.Select-noresults {\n  box-sizing: border-box;\n  color: #999999;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n\n.Select--multi .Select-input {\n  vertical-align: middle;\n  margin-left: 10px;\n  padding: 0;\n}\n\n.Select--multi.has-value .Select-input {\n  margin-left: 5px;\n}\n\n.Select--multi .Select-value {\n  background-color: #ebf5ff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.08);\n  border-radius: 2px;\n  border: 1px solid #c2e0ff;\n  /* Fallback color for IE 8 */\n  border: 1px solid rgba(0, 126, 255, 0.24);\n  color: #007eff;\n  display: inline-block;\n  font-size: 0.9em;\n  line-height: 1.4;\n  margin-left: 5px;\n  margin-top: 5px;\n  vertical-align: top;\n}\n\n.Select--multi .Select-value-icon,\n.Select--multi .Select-value-label {\n  display: inline-block;\n  vertical-align: middle;\n}\n\n.Select--multi .Select-value-label {\n  border-bottom-right-radius: 2px;\n  border-top-right-radius: 2px;\n  cursor: default;\n  padding: 2px 5px;\n}\n\n.Select--multi a.Select-value-label {\n  color: #007eff;\n  cursor: pointer;\n  text-decoration: none;\n}\n\n.Select--multi a.Select-value-label:hover {\n  text-decoration: underline;\n}\n\n.Select--multi .Select-value-icon {\n  cursor: pointer;\n  border-bottom-left-radius: 2px;\n  border-top-left-radius: 2px;\n  border-right: 1px solid #c2e0ff;\n  /* Fallback color for IE 8 */\n  border-right: 1px solid rgba(0, 126, 255, 0.24);\n  padding: 1px 5px 3px;\n}\n\n.Select--multi .Select-value-icon:hover,\n.Select--multi .Select-value-icon:focus {\n  background-color: #d8eafd;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 113, 230, 0.08);\n  color: #0071e6;\n}\n\n.Select--multi .Select-value-icon:active {\n  background-color: #c2e0ff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.24);\n}\n\n.Select--multi.is-disabled .Select-value {\n  background-color: #fcfcfc;\n  border: 1px solid #e3e3e3;\n  color: #333;\n}\n\n.Select--multi.is-disabled .Select-value-icon {\n  cursor: not-allowed;\n  border-right: 1px solid #e3e3e3;\n}\n\n.Select--multi.is-disabled .Select-value-icon:hover,\n.Select--multi.is-disabled .Select-value-icon:focus,\n.Select--multi.is-disabled .Select-value-icon:active {\n  background-color: #fcfcfc;\n}\n\n@keyframes Select-animation-spin {\n  to {\n    transform: rotate(1turn);\n  }\n}\n\n@-webkit-keyframes Select-animation-spin {\n  to {\n    -webkit-transform: rotate(1turn);\n  }\n}", "", {"version":3,"sources":["/./node_modules/react-select/dist/react-select.css"],"names":[],"mappings":"AAAA;;;;;;EAME;;AACF;EACE,mBAAA;CAED;;AAAD;;;;EAIE,+BAAA;EACA,4BAAA;EACA,uBAAA;CAGD;;AADD;EACE,0BAAA;CAID;;AAFD;EACE,iBAAA;CAKD;;AAHD;EACE,gBAAA;EACA,qBAAA;EACA,cAAA;CAMD;;AAJD;EACE,uBAAA;EACA,mCAAA;EACA,mBAAA;EACA,uBAAA;EACA,YAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;EACA,0BAAA;EACA,aAAA;EACA,cAAA;EACA,iBAAA;EACA,mBAAA;EACA,YAAA;CAOD;;AALD;EACE,wCAAA;CAQD;;AAND;EACE,cAAA;CASD;;AAPD;EACE,aAAA;CAUD;;AARD;EACE,8BAAA;EACA,6BAAA;EACA,iBAAA;EACA,mCAAA;CAWD;;AATD;EACE,2CAAA;EACA,wBAAA;CAYD;;AAVD;EACE,aAAA;CAaD;;AAXD;EACE,sBAAA;EACA,mFAAA;CAcD;;AAZD;;EAEE,UAAA;EACA,YAAA;EACA,QAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;EACA,mBAAA;EACA,SAAA;EACA,OAAA;EACA,gBAAA;EACA,iBAAA;EACA,wBAAA;EACA,oBAAA;CAeD;;AAbD;;EAEE,YAAA;CAgBD;;AAdD;;EAEE,gBAAA;EACA,sBAAA;CAiBD;;AAfD;;;;EAIE,eAAA;EACA,cAAA;EACA,2BAAA;CAkBD;;AAhBD;EACE,aAAA;EACA,mBAAA;EACA,oBAAA;EACA,uBAAA;CAmBD;;AAjBD;EACE,YAAA;EACA,6BAAA;EACA,eAAA;EACA,iBAAA;EACA,gBAAA;EACA,sBAAA;EACA,qBAAA;EACA,mBAAA;EACA,UAAA;EACA,cAAA;EACA,kBAAA;EACA,4BAAA;EACA,oBAAA;EACA,4BAAA;EACA,yBAAA;CAoBD;;AAlBD;EACE,aAAA;CAqBD;;AAnBD;EACE,WAAA;CAsBD;;AApBD;EACE,cAAA;CAuBD;;AArBD;EACE,gBAAA;EACA,oBAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;EACA,YAAA;CAwBD;;AAtBD;EACE,+DAAA;EACA,0DAAA;EACA,uDAAA;EACA,YAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,uBAAA;EACA,yBAAA;EACA,sBAAA;EACA,mBAAA;EACA,uBAAA;CAyBD;;AAvBD;EACE,iDAAA;EACA,4CAAA;EACA,yCAAA;EACA,YAAA;EACA,gBAAA;EACA,oBAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;EACA,YAAA;CA0BD;;AAxBD;EACE,eAAA;CA2BD;;AAzBD;EACE,sBAAA;EACA,gBAAA;EACA,eAAA;CA4BD;;AA1BD;EACE,YAAA;CA6BD;;AA3BD;EACE,gBAAA;EACA,oBAAA;EACA,mBAAA;EACA,mBAAA;EACA,uBAAA;EACA,YAAA;EACA,mBAAA;CA8BD;;AA5BD;EACE,2CAAA;EACA,oBAAA;EACA,4BAAA;EACA,sBAAA;EACA,UAAA;EACA,SAAA;CA+BD;;AA7BD;;EAEE,uBAAA;CAgCD;;AA9BD;EACE,sBAAA;CAiCD;;AA/BD;EACE,sBAAA;EACA,YAAA;EACA,WAAA;EACA,aAAA;EACA,uBAAA;EACA,iBAAA;CAkCD;;AAhCD;EACE;IACE,WAAA;GAmCD;;EAjCD;IACE,WAAA;GAoCD;CACF;;AAlCD;EACE;IACE,WAAA;GAqCD;;EAnCD;IACE,WAAA;GAsCD;CACF;;AApCD;EACE,gCAAA;EACA,+BAAA;EACA,uBAAA;EACA,uBAAA;EACA,0BAAA;EACA,wCAAA;EACA,uBAAA;EACA,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,UAAA;EACA,YAAA;EACA,WAAA;EACA,kCAAA;CAuCD;;AArCD;EACE,kBAAA;EACA,iBAAA;CAwCD;;AAtCD;EACE,uBAAA;EACA,uBAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;CAyCD;;AAvCD;EACE,gCAAA;EACA,+BAAA;CA0CD;;AAxCD;EACE,0BAAA;EACA,6BAAA;EACA,0CAAA;EACA,YAAA;CA2CD;;AAzCD;EACE,0BAAA;EACA,6BAAA;EACA,0CAAA;EACA,YAAA;CA4CD;;AA1CD;EACE,eAAA;EACA,gBAAA;CA6CD;;AA3CD;EACE,uBAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;EACA,kBAAA;CA8CD;;AA5CD;EACE,uBAAA;EACA,kBAAA;EACA,WAAA;CA+CD;;AA7CD;EACE,iBAAA;CAgDD;;AA9CD;EACE,0BAAA;EACA,6BAAA;EACA,0CAAA;EACA,mBAAA;EACA,0BAAA;EACA,6BAAA;EACA,0CAAA;EACA,eAAA;EACA,sBAAA;EACA,iBAAA;EACA,iBAAA;EACA,iBAAA;EACA,gBAAA;EACA,oBAAA;CAiDD;;AA/CD;;EAEE,sBAAA;EACA,uBAAA;CAkDD;;AAhDD;EACE,gCAAA;EACA,6BAAA;EACA,gBAAA;EACA,iBAAA;CAmDD;;AAjDD;EACE,eAAA;EACA,gBAAA;EACA,sBAAA;CAoDD;;AAlDD;EACE,2BAAA;CAqDD;;AAnDD;EACE,gBAAA;EACA,+BAAA;EACA,4BAAA;EACA,gCAAA;EACA,6BAAA;EACA,gDAAA;EACA,qBAAA;CAsDD;;AApDD;;EAEE,0BAAA;EACA,6BAAA;EACA,0CAAA;EACA,eAAA;CAuDD;;AArDD;EACE,0BAAA;EACA,6BAAA;EACA,0CAAA;CAwDD;;AAtDD;EACE,0BAAA;EACA,0BAAA;EACA,YAAA;CAyDD;;AAvDD;EACE,oBAAA;EACA,gCAAA;CA0DD;;AAxDD;;;EAGE,0BAAA;CA2DD;;AAzDD;EACE;IACE,yBAAA;GA4DD;CACF;;AA1DD;EACE;IACE,iCAAA;GA6DD;CACF","file":"react-select.css","sourcesContent":["/**\n * React Select\n * ============\n * Created by Jed Watson and Joss Mackison for KeystoneJS, http://www.keystonejs.com/\n * https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs\n * MIT License: https://github.com/JedWatson/react-select\n*/\n.Select {\n  position: relative;\n}\n.Select,\n.Select div,\n.Select input,\n.Select span {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n.Select.is-disabled > .Select-control {\n  background-color: #f9f9f9;\n}\n.Select.is-disabled > .Select-control:hover {\n  box-shadow: none;\n}\n.Select.is-disabled .Select-arrow-zone {\n  cursor: default;\n  pointer-events: none;\n  opacity: 0.35;\n}\n.Select-control {\n  background-color: #fff;\n  border-color: #d9d9d9 #ccc #b3b3b3;\n  border-radius: 4px;\n  border: 1px solid #ccc;\n  color: #333;\n  cursor: default;\n  display: table;\n  border-spacing: 0;\n  border-collapse: separate;\n  height: 36px;\n  outline: none;\n  overflow: hidden;\n  position: relative;\n  width: 100%;\n}\n.Select-control:hover {\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n}\n.Select-control .Select-input:focus {\n  outline: none;\n}\n.is-searchable.is-open > .Select-control {\n  cursor: text;\n}\n.is-open > .Select-control {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n  background: #fff;\n  border-color: #b3b3b3 #ccc #d9d9d9;\n}\n.is-open > .Select-control > .Select-arrow {\n  border-color: transparent transparent #999;\n  border-width: 0 5px 5px;\n}\n.is-searchable.is-focused:not(.is-open) > .Select-control {\n  cursor: text;\n}\n.is-focused:not(.is-open) > .Select-control {\n  border-color: #007eff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 126, 255, 0.1);\n}\n.Select-placeholder,\n.Select--single > .Select-control .Select-value {\n  bottom: 0;\n  color: #aaa;\n  left: 0;\n  line-height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  max-width: 100%;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.has-value.Select--single > .Select-control .Select-value .Select-value-label,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {\n  color: #333;\n}\n.has-value.Select--single > .Select-control .Select-value a.Select-value-label,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label {\n  cursor: pointer;\n  text-decoration: none;\n}\n.has-value.Select--single > .Select-control .Select-value a.Select-value-label:hover,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label:hover,\n.has-value.Select--single > .Select-control .Select-value a.Select-value-label:focus,\n.has-value.is-pseudo-focused.Select--single > .Select-control .Select-value a.Select-value-label:focus {\n  color: #007eff;\n  outline: none;\n  text-decoration: underline;\n}\n.Select-input {\n  height: 34px;\n  padding-left: 10px;\n  padding-right: 10px;\n  vertical-align: middle;\n}\n.Select-input > input {\n  width: 100%;\n  background: none transparent;\n  border: 0 none;\n  box-shadow: none;\n  cursor: default;\n  display: inline-block;\n  font-family: inherit;\n  font-size: inherit;\n  margin: 0;\n  outline: none;\n  line-height: 14px;\n  /* For IE 8 compatibility */\n  padding: 8px 0 12px;\n  /* For IE 8 compatibility */\n  -webkit-appearance: none;\n}\n.is-focused .Select-input > input {\n  cursor: text;\n}\n.has-value.is-pseudo-focused .Select-input {\n  opacity: 0;\n}\n.Select-control:not(.is-searchable) > .Select-input {\n  outline: none;\n}\n.Select-loading-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 16px;\n}\n.Select-loading {\n  -webkit-animation: Select-animation-spin 400ms infinite linear;\n  -o-animation: Select-animation-spin 400ms infinite linear;\n  animation: Select-animation-spin 400ms infinite linear;\n  width: 16px;\n  height: 16px;\n  box-sizing: border-box;\n  border-radius: 50%;\n  border: 2px solid #ccc;\n  border-right-color: #333;\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n}\n.Select-clear-zone {\n  -webkit-animation: Select-animation-fadeIn 200ms;\n  -o-animation: Select-animation-fadeIn 200ms;\n  animation: Select-animation-fadeIn 200ms;\n  color: #999;\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 17px;\n}\n.Select-clear-zone:hover {\n  color: #D0021B;\n}\n.Select-clear {\n  display: inline-block;\n  font-size: 18px;\n  line-height: 1;\n}\n.Select--multi .Select-clear-zone {\n  width: 17px;\n}\n.Select-arrow-zone {\n  cursor: pointer;\n  display: table-cell;\n  position: relative;\n  text-align: center;\n  vertical-align: middle;\n  width: 25px;\n  padding-right: 5px;\n}\n.Select-arrow {\n  border-color: #999 transparent transparent;\n  border-style: solid;\n  border-width: 5px 5px 2.5px;\n  display: inline-block;\n  height: 0;\n  width: 0;\n}\n.is-open .Select-arrow,\n.Select-arrow-zone:hover > .Select-arrow {\n  border-top-color: #666;\n}\n.Select--multi .Select-multi-value-wrapper {\n  display: inline-block;\n}\n.Select .Select-aria-only {\n  display: inline-block;\n  height: 1px;\n  width: 1px;\n  margin: -1px;\n  clip: rect(0, 0, 0, 0);\n  overflow: hidden;\n}\n@-webkit-keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes Select-animation-fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n.Select-menu-outer {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n  background-color: #fff;\n  border: 1px solid #ccc;\n  border-top-color: #e6e6e6;\n  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);\n  box-sizing: border-box;\n  margin-top: -1px;\n  max-height: 200px;\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  z-index: 1;\n  -webkit-overflow-scrolling: touch;\n}\n.Select-menu {\n  max-height: 198px;\n  overflow-y: auto;\n}\n.Select-option {\n  box-sizing: border-box;\n  background-color: #fff;\n  color: #666666;\n  cursor: pointer;\n  display: block;\n  padding: 8px 10px;\n}\n.Select-option:last-child {\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\n.Select-option.is-selected {\n  background-color: #f5faff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.04);\n  color: #333;\n}\n.Select-option.is-focused {\n  background-color: #ebf5ff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.08);\n  color: #333;\n}\n.Select-option.is-disabled {\n  color: #cccccc;\n  cursor: default;\n}\n.Select-noresults {\n  box-sizing: border-box;\n  color: #999999;\n  cursor: default;\n  display: block;\n  padding: 8px 10px;\n}\n.Select--multi .Select-input {\n  vertical-align: middle;\n  margin-left: 10px;\n  padding: 0;\n}\n.Select--multi.has-value .Select-input {\n  margin-left: 5px;\n}\n.Select--multi .Select-value {\n  background-color: #ebf5ff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.08);\n  border-radius: 2px;\n  border: 1px solid #c2e0ff;\n  /* Fallback color for IE 8 */\n  border: 1px solid rgba(0, 126, 255, 0.24);\n  color: #007eff;\n  display: inline-block;\n  font-size: 0.9em;\n  line-height: 1.4;\n  margin-left: 5px;\n  margin-top: 5px;\n  vertical-align: top;\n}\n.Select--multi .Select-value-icon,\n.Select--multi .Select-value-label {\n  display: inline-block;\n  vertical-align: middle;\n}\n.Select--multi .Select-value-label {\n  border-bottom-right-radius: 2px;\n  border-top-right-radius: 2px;\n  cursor: default;\n  padding: 2px 5px;\n}\n.Select--multi a.Select-value-label {\n  color: #007eff;\n  cursor: pointer;\n  text-decoration: none;\n}\n.Select--multi a.Select-value-label:hover {\n  text-decoration: underline;\n}\n.Select--multi .Select-value-icon {\n  cursor: pointer;\n  border-bottom-left-radius: 2px;\n  border-top-left-radius: 2px;\n  border-right: 1px solid #c2e0ff;\n  /* Fallback color for IE 8 */\n  border-right: 1px solid rgba(0, 126, 255, 0.24);\n  padding: 1px 5px 3px;\n}\n.Select--multi .Select-value-icon:hover,\n.Select--multi .Select-value-icon:focus {\n  background-color: #d8eafd;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 113, 230, 0.08);\n  color: #0071e6;\n}\n.Select--multi .Select-value-icon:active {\n  background-color: #c2e0ff;\n  /* Fallback color for IE 8 */\n  background-color: rgba(0, 126, 255, 0.24);\n}\n.Select--multi.is-disabled .Select-value {\n  background-color: #fcfcfc;\n  border: 1px solid #e3e3e3;\n  color: #333;\n}\n.Select--multi.is-disabled .Select-value-icon {\n  cursor: not-allowed;\n  border-right: 1px solid #e3e3e3;\n}\n.Select--multi.is-disabled .Select-value-icon:hover,\n.Select--multi.is-disabled .Select-value-icon:focus,\n.Select--multi.is-disabled .Select-value-icon:active {\n  background-color: #fcfcfc;\n}\n@keyframes Select-animation-spin {\n  to {\n    transform: rotate(1turn);\n  }\n}\n@-webkit-keyframes Select-animation-spin {\n  to {\n    -webkit-transform: rotate(1turn);\n  }\n}\n"],"sourceRoot":"webpack://"}]);
-	
-	// exports
-
-
-/***/ },
-/* 374 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(375);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(264)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./selectCustom.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/resolve-url-loader/index.js!./../../node_modules/sass-loader/index.js?sourceMap!./selectCustom.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 375 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(263)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".Select {\n  display: inline-block;\n  vertical-align: middle;\n  max-width: 130px;\n  min-width: 130px;\n  margin-left: 1rem;\n}\n\n.Select .Select-control {\n  background: #C9CED1;\n  height: 20px;\n  line-height: 20px;\n  border: 0;\n}\n\n.Select .Select-value-label {\n  line-height: 20px;\n}\n\n.Select .Select-multi-value-wrapper {\n  line-height: 20px;\n  height: 20px;\n  display: inline-block;\n}\n\n.Select .Select-value {\n  line-height: 20px !important;\n  height: 20px;\n}\n\n.Select .Select-input {\n  height: 20px;\n  line-height: 20px;\n  vertical-align: top;\n}\n\n.Select .Select-input input {\n  line-height: 20px;\n  padding: 0;\n}\n\n.Select .Select-menu-outer {\n  border: 0;\n  margin: 0;\n}\n\n.Select-menu {\n  border: 0;\n}\n\n.Select-menu .Select-option {\n  background: #C9CED1 !important;\n  padding-bottom: 0;\n  padding-top: 0;\n}\n\n.Select-menu .Select-option.is-focused {\n  background: #FE8282 !important;\n}\n\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 376 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactSelect = __webpack_require__(363);
-	
-	var _reactSelect2 = _interopRequireDefault(_reactSelect);
-	
-	__webpack_require__(372);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Select = function (_React$Component) {
-		_inherits(Select, _React$Component);
-	
-		function Select(props) {
-			_classCallCheck(this, Select);
-	
-			var _this = _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).call(this, props));
-	
-			_this.state = {
-				selected: 'one'
-			};
-			_this.change = _this.change.bind(_this);
-			return _this;
-		}
-	
-		_createClass(Select, [{
-			key: 'change',
-			value: function change(val) {
-				console.log(val);
-				this.setState({
-					selected: val
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var options = [{ value: 'one', label: 'One' }, { value: 'two', label: 'Two' }];
-				return _react2.default.createElement(_reactSelect2.default, {
-					name: 'sort',
-					value: this.state.selected,
-					options: options,
-					onChange: this.change
-				});
-			}
-		}]);
-	
-		return Select;
-	}(_react2.default.Component);
-	
-	exports.default = Select;
-
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map

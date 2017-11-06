@@ -43,7 +43,7 @@ export default {
         loaders: loaders
     },
     resolve: {
-        modulesDirectories: [modulesDirectories, 'node_modules']
+        modulesDirectories: [...modulesDirectories, 'node_modules']
     },
     plugins: [
         new webpack.EnvironmentPlugin(['NODE_ENV']),
